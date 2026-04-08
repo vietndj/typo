@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo cáo: Cuộc Chiến Không Chân - Geometric vs Humanist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* Tùy chỉnh Font để thể hiện đúng tinh thần bài viết */
+        .font-geometric { font-family: 'Space Grotesk', sans-serif; }
+        .font-humanist { font-family: 'Playfair Display', serif; } /* Dùng serif nhẹ để tạo độ tương phản humanist rõ rệt trong art */
+        
+        body { font-family: 'Space Grotesk', sans-serif; background-color: #0a0a0a; color: #f3f4f6; overflow-x: hidden; }
+
+        /* --- CSS ABSTRACT ART CLASSES --- */
+        
+        /* 1. Hình học (Geometric) - Cứng cáp, toán học, màu Cyan/Xám */
+        .art-geo-circle {
+            width: 200px; height: 200px;
+            border: 4px solid #06b6d4;
+            border-radius: 50%; /* Tròn tuyệt đối */
+            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(6, 182, 212, 0.1) 10px, rgba(6, 182, 212, 0.1) 20px);
+        }
+        .art-geo-square {
+            width: 150px; height: 150px;
+            background-color: rgba(30, 41, 59, 0.8);
+            border: 2px solid #38bdf8;
+            box-shadow: 20px 20px 0px 0px rgba(6, 182, 212, 0.3);
+        }
+        .art-geo-triangle {
+            width: 0; height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 173px solid rgba(71, 85, 105, 0.5);
+        }
+        .art-geo-grid {
+            background-image: 
+                linear-gradient(rgba(6, 182, 212, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(6, 182, 212, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* 2. Nhân văn (Humanist) - Hữu cơ, mềm mại, màu Gold/Beige */
+        .art-hum-blob {
+            width: 250px; height: 250px;
+            background: linear-gradient(135deg, #d4af37 0%, #facc15 100%);
+            /* Hình dạng hữu cơ không đều */
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; 
+            opacity: 0.8;
+            box-shadow: inset -20px -20px 40px rgba(0,0,0,0.2);
+        }
+        .art-hum-oval {
+            width: 160px; height: 220px;
+            border: 6px solid #fbbf24;
+            border-radius: 50%;
+            transform: rotate(-15deg); /* Trục nghiêng đặc trưng */
+        }
+        .art-hum-brush {
+            width: 300px; height: 60px;
+            background: #b45309;
+            border-radius: 100px 20px 100px 30px / 50px 10px 40px 20px;
+            transform: rotate(-5deg);
+            opacity: 0.6;
+        }
+
+        /* Hiệu ứng chuyển động nhẹ cho Art */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        
+        @keyframes blob {
+            0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+            50% { border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%; }
+            100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+        }
+        .animate-blob { animation: blob 8s ease-in-out infinite; }
+
+        /* Kính lúp CSS cho phần Lead Magnet */
+        .css-magnifier {
+            width: 100px; height: 100px;
+            border: 8px solid #facc15;
+            border-radius: 50%;
+            position: relative;
+        }
+        .css-magnifier::after {
+            content: '';
+            position: absolute;
+            bottom: -30px; right: -30px;
+            width: 40px; height: 12px;
+            background-color: #facc15;
+            transform: rotate(45deg);
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-cyan-500 selection:text-white">
+
+    <!-- ==========================================
+         MÀN HÌNH 1: HERO SECTION (SPLIT DESIGN)
+    =========================================== -->
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Nền Split: Trái Geometric (Lạnh) - Phải Humanist (Ấm) -->
+        <div class="absolute inset-0 flex">
+            <!-- Trái -->
+            <div class="w-1/2 h-full bg-slate-900 art-geo-grid relative overflow-hidden">
+                <div class="absolute top-20 left-10 art-geo-circle animate-float opacity-30"></div>
+                <div class="absolute bottom-20 right-10 art-geo-square opacity-40"></div>
+                <!-- Chữ O Geometric -->
+                <div class="absolute top-1/2 right-10 transform -translate-y-1/2 text-[300px] leading-none text-cyan-500 opacity-10 font-geometric font-bold tracking-tighter">O</div>
+            </div>
+            <!-- Phải -->
+            <div class="w-1/2 h-full bg-[#1a1512] relative overflow-hidden">
+                <div class="absolute top-32 right-20 art-hum-blob animate-blob opacity-30"></div>
+                <div class="absolute bottom-32 left-10 art-hum-oval opacity-30"></div>
+                <!-- Chữ O Humanist -->
+                <div class="absolute top-1/2 left-10 transform -translate-y-1/2 text-[300px] leading-none text-amber-500 opacity-10 font-humanist italic">O</div>
+            </div>
+        </div>
+
+        <!-- Lớp phủ cho mobile dễ đọc -->
+        <div class="absolute inset-0 bg-black/60 md:bg-transparent md:bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+
+        <!-- Content -->
+        <div class="relative z-10 container mx-auto px-6 text-center max-w-4xl pt-20">
+            <span class="inline-block py-1 px-3 rounded-full bg-slate-800 border border-slate-700 text-cyan-400 text-sm font-semibold tracking-wider mb-6 uppercase shadow-lg">
+                Báo cáo giải mã Tâm lý học Typography dành cho Art Director
+            </span>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                CUỘC CHIẾN <span class="text-cyan-400 font-geometric tracking-tighter">"KHÔNG CHÂN"</span>
+            </h1>
+            <h2 class="text-2xl md:text-3xl font-light text-gray-300 mb-8 font-humanist italic">
+                Khi Nào Chọn Hình Học Lạnh Lùng, Khi Nào Cần Nét Cọ Con Người?
+            </h2>
+            <p class="text-lg text-gray-400 mb-10 leading-relaxed max-w-3xl mx-auto">
+                Bạn nghĩ cứ dùng font không chân (Sans Serif) là "Hiện đại"? Đây là <strong class="text-amber-400">sai lầm chết người của 90% Designer</strong>. Sự khác biệt giữa một cỗ máy công nghiệp và một kiệt tác thủ công đắt tiền nằm ở chính trục nghiêng và độ thanh đậm của con chữ. Khám phá cách các tập đoàn định giá sản phẩm thông qua 2 nhánh font đối lập này!
+            </p>
+            <a href="#download" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-gray-900 bg-gradient-to-r from-amber-400 to-amber-500 rounded-lg hover:from-amber-300 hover:to-amber-400 transition-all shadow-[0_0_30px_rgba(251,191,36,0.3)] hover:scale-105 uppercase tracking-wide">
+                👉 Tải Xuống Báo Cáo PDF (Miễn Phí)
+            </a>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         MÀN HÌNH 2: THE HOOK 
+    =========================================== -->
+    <section class="py-24 bg-zinc-950 relative overflow-hidden">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Đừng Gom Chung Tất Cả Sans Serif Thành Một Chữ <span class="text-cyan-400">"Hiện Đại"!</span></h2>
+                <p class="text-xl text-gray-400 max-w-4xl mx-auto">Khi thiết kế logo hay nhãn mác, phần lớn tay ngang chỉ biết chọn bừa một font chữ không chân và tự nhủ rằng "trông nó khá hiện đại và sạch sẽ". Nhưng trong thế giới của chuyên gia, Sans Serif bị chia làm 2 thái cực tâm lý hoàn toàn đối lập:</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center relative">
+                <!-- Art nền trung tâm nối 2 khối -->
+                <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-px h-full bg-gradient-to-b from-transparent via-gray-700 to-transparent hidden md:block"></div>
+
+                <!-- Khối Geometric -->
+                <div class="bg-slate-900/50 p-10 rounded-2xl border border-slate-800 relative overflow-hidden group">
+                    <div class="absolute top-5 right-5 art-geo-circle w-24 h-24 opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                    <h3 class="text-3xl font-bold text-cyan-400 mb-4 flex items-center gap-3">
+                        <span class="w-8 h-8 inline-block border-2 border-cyan-400"></span> Geometric Sans
+                    </h3>
+                    <p class="text-gray-400 text-lg mb-4"><strong>(Hình học)</strong> Được vẽ hoàn toàn bằng toán học (compa, thước kẻ). Mọi nét đều chằn chặn.</p>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center gap-2">✓ Lạnh lùng & Khách quan</li>
+                        <li class="flex items-center gap-2">✓ Cảm giác máy móc, tự động</li>
+                        <li class="flex items-center gap-2">✓ Tính công năng & Chính xác tuyệt đối</li>
+                    </ul>
+                </div>
+
+                <!-- Khối Humanist -->
+                <div class="bg-[#1a1512]/80 p-10 rounded-2xl border border-amber-900/50 relative overflow-hidden group">
+                    <div class="absolute top-5 right-5 art-hum-oval w-16 h-24 opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                    <h3 class="text-3xl font-bold text-amber-400 mb-4 flex items-center gap-3 font-humanist italic">
+                        <span class="w-8 h-8 inline-block bg-amber-600 rounded-full" style="border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;"></span> Humanist Sans
+                    </h3>
+                    <p class="text-gray-400 text-lg mb-4"><strong>(Nhân văn)</strong> Mô phỏng lại nét bút lông viết tay của con người. Có nét thanh nét đậm, trục chữ hơi nghiêng.</p>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center gap-2">✓ Thanh lịch & Ấm áp</li>
+                        <li class="flex items-center gap-2">✓ Mang tính thủ công, tỉ mỉ</li>
+                        <li class="flex items-center gap-2">✓ Gần gũi và "có tính người"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-red-900/20 border border-red-900/50 p-6 rounded-xl text-center max-w-3xl mx-auto">
+                <p class="text-red-400 text-lg font-medium">⚠️ <strong>CẢNH BÁO:</strong> Nếu bạn dùng Geometric cho một hãng mỹ phẩm thiên nhiên, hoặc dùng Humanist cho một công ty cơ khí tự động hóa, bạn đã tự tay phá nát định vị thương hiệu của mình!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         MÀN HÌNH 3: CASE STUDY
+    =========================================== -->
+    <section class="py-24 bg-[#050505] border-t border-b border-gray-800 relative">
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <h2 class="text-4xl font-bold text-center mb-20">Mổ Xẻ Case Study Từ <span class="text-gray-500 line-through">Lý Thuyết</span> Đến Thực Tế</h2>
+
+            <div class="space-y-24">
+                <!-- Case 1: Geometric -->
+                <div class="flex flex-col md:flex-row gap-12 items-center">
+                    <div class="w-full md:w-1/3 relative h-64 flex justify-center items-center">
+                        <!-- Abstract Art: Máy móc/Kiến trúc -->
+                        <div class="art-geo-triangle absolute z-0 opacity-50 transform -translate-y-4"></div>
+                        <div class="w-32 h-32 bg-slate-800 border-4 border-cyan-500 absolute z-10 flex justify-center items-center transform rotate-45 shadow-[0_0_40px_rgba(6,182,212,0.4)]">
+                            <span class="text-5xl font-bold text-white transform -rotate-45 font-geometric">B</span>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-2/3">
+                        <span class="text-cyan-500 font-bold tracking-widest uppercase text-sm mb-2 block">Thái cực 1</span>
+                        <h3 class="text-3xl font-bold mb-4">Quyền Lực Của Toán Học & Máy Móc <br>(Geometric Sans)</h3>
+                        <p class="text-gray-400 text-lg mb-4"><strong class="text-white">Thương hiệu:</strong> Built Robotics (Máy xúc) & Marina Bay Sands.</p>
+                        <p class="text-gray-300 leading-relaxed bg-slate-900/50 p-6 rounded-lg border-l-4 border-cyan-500">
+                            <strong>Giải mã Logic:</strong> Built Robotics sử dụng chữ 'B' với sự cân bằng tuyệt đối từ các khối hình học, cánh chữ thiết kế sắc lẹm mô phỏng chiếc máy xúc công nghiệp. Tương tự, Marina Bay Sands dùng font Futura (đại diện kinh điển của Geometric) để phản ánh cấu trúc kiến trúc tòa nhà hoành tráng, công nghệ và tính chính xác cao cấp.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Case 2: Humanist -->
+                <div class="flex flex-col md:flex-row-reverse gap-12 items-center">
+                    <div class="w-full md:w-1/3 relative h-64 flex justify-center items-center">
+                        <!-- Abstract Art: Thủ công/Mỹ phẩm -->
+                        <div class="art-hum-blob absolute z-0 opacity-40 animate-blob"></div>
+                        <div class="w-32 h-40 border-2 border-amber-500/50 rounded-full absolute z-10 flex justify-center items-center bg-[#1a1512]/80 backdrop-blur-sm transform rotate-[-15deg]">
+                            <span class="text-6xl text-amber-400 font-humanist italic transform rotate-[15deg]">S</span>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-2/3 text-left md:text-right">
+                        <span class="text-amber-500 font-bold tracking-widest uppercase text-sm mb-2 block">Thái cực 2</span>
+                        <h3 class="text-3xl font-bold mb-4 font-humanist">Sự Tinh Tế Của Bàn Tay Con Người <br>(Humanist Sans)</h3>
+                        <p class="text-gray-400 text-lg mb-4"><strong class="text-white">Thương hiệu:</strong> Dịch vụ nội thất S/S Interior & Mỹ phẩm Sulwhasoo.</p>
+                        <p class="text-gray-300 leading-relaxed bg-[#1a1512]/50 p-6 rounded-lg border-r-4 border-amber-500">
+                            <strong>Giải mã Logic:</strong> Dù bán nội thất hiện đại, S/S Interior không dùng font cứng nhắc. Họ chọn Humanist Sans với trục chữ 'O' hơi nghiêng, độ dày nét thay đổi cầu kỳ truyền tải thông điệp đục đẽo thủ công, tạo sự sang trọng đắt tiền thay vì sản xuất hàng loạt. Sulwhasoo cũng áp dụng logic này để nhấn mạnh nguồn gốc làm đẹp tự nhiên.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Case 3: Pha trộn -->
+                <div class="flex flex-col md:flex-row gap-12 items-center">
+                    <div class="w-full md:w-1/3 relative h-64 flex justify-center items-center">
+                        <!-- Abstract Art: Sự pha trộn bí ẩn -->
+                        <div class="w-40 h-40 bg-zinc-800 border-2 border-gray-600 rounded-sm absolute z-0 transform rotate-45"></div>
+                        <div class="art-hum-blob w-24 h-24 bg-gradient-to-br from-purple-900 to-black absolute z-10 shadow-2xl border border-gray-700"></div>
+                        <span class="absolute z-20 tracking-[0.5em] text-white font-humanist uppercase text-xl">A L C</span>
+                    </div>
+                    <div class="w-full md:w-2/3">
+                        <span class="text-purple-400 font-bold tracking-widest uppercase text-sm mb-2 block">Thái cực 3</span>
+                        <h3 class="text-3xl font-bold mb-4">Sự Pha Trộn Độc Đáo</h3>
+                        <p class="text-gray-400 text-lg mb-4"><strong class="text-white">Thương hiệu:</strong> Quán Bar The Alchemist.</p>
+                        <p class="text-gray-300 leading-relaxed bg-zinc-900/80 p-6 rounded-lg border-l-4 border-purple-500">
+                            <strong>Giải mã Logic:</strong> Nằm ẩn mình trên tầng 2 mang phong cách giả kim thuật bí ẩn. Họ dùng font Humanist (nét viết tay, thân thiện) kết hợp với <strong>Kerning (khoảng cách) thật rộng</strong> và IN HOA toàn bộ để biến sự gần gũi đó thành đẳng cấp tinh tế, sang trọng, tạo không gian tĩnh lặng đắt tiền.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         MÀN HÌNH MỞ RỘNG: Q&A KỸ THUẬT SÂU
+    =========================================== -->
+    <section class="py-20 bg-zinc-900 relative">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <h2 class="text-3xl font-bold text-center mb-12">Giải Mã Tâm Lý Học & Kỹ Thuật Typography Bậc Cao</h2>
+            
+            <div class="space-y-8">
+                <!-- Q1 -->
+                <div class="bg-black/40 p-8 rounded-xl border border-gray-800 hover:border-gray-600 transition-colors">
+                    <h4 class="text-xl font-bold text-white mb-3"><span class="text-cyan-500 mr-2">Q1.</span> Sự khác biệt tính cách giữa Serif (Có chân) và Monospace (Chữ đánh máy) là gì?</h4>
+                    <p class="text-gray-400 mb-4 leading-relaxed">Hai dòng này đại diện cho hai trường phái tính cách hoàn toàn khác biệt:</p>
+                    <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                        <li><strong class="text-amber-400 font-humanist">Font Serif (Có chân):</strong> Bắt nguồn từ việc khắc chữ trên đá La Mã. Mang tính cách hoành tráng, lịch sử, truyền thống. Tạo cảm giác chắc chắn, nghiêm túc, trang trọng "vượt thời gian". Thường dùng bởi giới thời trang, xa xỉ.</li>
+                        <li><strong class="text-cyan-400 font-mono tracking-tight">Font Monospace:</strong> Mỗi ký tự chiếm khoảng cách cơ khí bằng nhau. Tạo 3 cảm giác đối lập: "Công nghệ tương lai" (máy móc/khoa học), "Thủ công cẩn thận" (gõ máy chữ tỉ mỉ), và "Cổ điển xưa cũ".</li>
+                    </ul>
+                </div>
+
+                <!-- Q2 -->
+                <div class="bg-black/40 p-8 rounded-xl border border-gray-800 hover:border-gray-600 transition-colors">
+                    <h4 class="text-xl font-bold text-white mb-3"><span class="text-cyan-500 mr-2">Q2.</span> 'Aperture' và 'Counter' trong kỹ thuật Typography là gì?</h4>
+                    <p class="text-gray-400 mb-4 leading-relaxed">Đây là 2 "thuật toán" thao túng không gian vô hình bên trong chữ:</p>
+                    <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                        <li><strong>Counter (Lòng chữ):</strong> Diện tích khoảng không khép kín (như p, g, o). Counter LỚN = Hiện đại, thoáng đãng, dễ đọc. Counter BÉ = Cổ điển, ấm cúng.</li>
+                        <li><strong>Aperture (Độ mở):</strong> Khoảng hở của hai đầu nét (c, e, s). Aperture MỞ = Hướng ngoại, hiện đại, chống dính nét khi thu nhỏ. Aperture ĐÓNG = An toàn, bảo thủ, vững vàng.</li>
+                    </ul>
+                </div>
+
+                <!-- Q3 -->
+                <div class="bg-black/40 p-8 rounded-xl border border-gray-800 hover:border-gray-600 transition-colors">
+                    <h4 class="text-xl font-bold text-white mb-3"><span class="text-cyan-500 mr-2">Q3.</span> Ngành nghề nào thường dùng font Monospace hiện nay?</h4>
+                    <p class="text-gray-400 mb-4 leading-relaxed">Monospace là "vũ khí" cho 2 nhóm ngành đối lập:</p>
+                    <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                        <li><strong>Công nghệ & Khoa học:</strong> Lập trình, AI, Data. Điển hình: <em>JetBrains Mono</em> (cảm giác module, chính xác).</li>
+                        <li><strong>Xa xỉ & Chế tác thủ công:</strong> Khẳng định tính độc bản, không đại trà. Điển hình: Nước hoa <em>Le Labo</em>, Sôcôla <em>Recchiuti</em> (cảm giác gõ chữ cẩn thận, tỉ mỉ).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         MÀN HÌNH 4: FORM ĐĂNG KÝ (WHAT'S INSIDE)
+    =========================================== -->
+    <section id="download" class="py-24 bg-zinc-950 relative overflow-hidden">
+        <!-- Abstract Art nền -->
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-amber-500/10 to-transparent rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-cyan-500/10 to-transparent rounded-full blur-3xl"></div>
+
+        <div class="container mx-auto px-6 max-w-5xl relative z-10 flex flex-col md:flex-row items-center gap-16">
+            
+            <!-- Left: Info -->
+            <div class="w-full md:w-1/2">
+                <div class="mb-8 flex justify-center md:justify-start">
+                    <!-- Art: CSS Magnifier -->
+                    <div class="css-magnifier transform scale-75 md:scale-100 origin-left">
+                        <div class="absolute inset-0 flex items-center justify-center font-bold text-4xl text-white font-geometric">A</div>
+                    </div>
+                </div>
+                <h2 class="text-4xl font-bold mb-6">Bạn sẽ tìm thấy gì trong Báo cáo này?</h2>
+                <p class="text-xl text-gray-400 mb-8">Trang bị ngay lăng kính phân tích của chuyên gia để không bao giờ chọn sai font:</p>
+                
+                <ul class="space-y-6">
+                    <li class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-cyan-900/50 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-1">✓</div>
+                        <div>
+                            <strong class="text-white text-lg">Dấu hiệu nhận biết 3s:</strong>
+                            <p class="text-gray-400 mt-1">Cách soi trục chữ 'O' và nét 'a' để phân biệt ngay lập tức Geometric và Humanist.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-cyan-900/50 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-1">✓</div>
+                        <div>
+                            <strong class="text-white text-lg">Công thức định vị:</strong>
+                            <p class="text-gray-400 mt-1">Khi nào cần sự vô hồn máy móc (App, Tech) và khi nào cần hơi thở con người (Mỹ phẩm, Nghệ thuật).</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-cyan-900/50 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-1">✓</div>
+                        <div>
+                            <strong class="text-white text-lg">Bí mật Optical Balance:</strong>
+                            <p class="text-gray-400 mt-1">Tại sao chữ 'O' trong font hình học không bao giờ được phép là một hình tròn toán học tuyệt đối?</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Right: Form Box -->
+            <div class="w-full md:w-1/2">
+                <div class="bg-gray-900 p-8 md:p-10 rounded-2xl border border-gray-700 shadow-2xl relative">
+                    <div class="absolute -top-4 -right-4 bg-amber-500 text-gray-900 font-bold px-4 py-1 rounded-full text-sm transform rotate-12 shadow-lg">Miễn phí 100%</div>
+                    
+                    <h3 class="text-2xl font-bold mb-2">Bạn đang thiết kế cho Máy móc hay Con người?</h3>
+                    <p class="text-gray-400 mb-8">Câu trả lời nằm ở Typography! Nhập thông tin để nhận ngay báo cáo.</p>
+                    
+                    <form onsubmit="event.preventDefault(); alert('Cảm ơn bạn! Báo cáo đã được gửi vào Email.');" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-1">Tên của bạn</label>
+                            <input type="text" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:border-cyan-500 text-white" placeholder="VD: Nguyễn Văn A">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-1">Địa chỉ Email</label>
+                            <input type="email" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:border-cyan-500 text-white" placeholder="email@cuaban.com">
+                        </div>
+                        <button type="submit" class="w-full py-4 mt-4 text-lg font-bold text-gray-900 bg-amber-400 rounded-lg hover:bg-amber-300 transition-colors uppercase tracking-wider">
+                            Nhận Báo Cáo Phân Tích
+                        </button>
+                    </form>
+                    <p class="text-xs text-gray-500 text-center mt-4">Cam kết không Spam. Bạn có thể hủy đăng ký bất cứ lúc nào.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         MÀN HÌNH 5: 25 FLASHCARD ÔN TẬP
+    =========================================== -->
+    <section class="py-20 bg-[#0a0a0a] border-t border-gray-800">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Khối Ôn Tập Nhanh: 25 Flashcard Cốt Lõi</h2>
+                <p class="text-gray-400">Xem lại nhanh các kiến thức trọng tâm. (Không cần lật thẻ, đọc trực tiếp)</p>
+            </div>
+
+            <!-- CSS Grid cho Flashcards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Card 1 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-cyan-900 transition-colors">
+                    <span class="text-cyan-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 01</span>
+                    <h4 class="font-bold text-lg mb-3">Đặc trưng cốt lõi của dòng font Geometric Sans là gì?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> Dựa trên hình học cơ bản (Vuông, Tròn, Tam giác), nét đều đặn không có độ tương phản thanh đậm.</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> Nhớ đến thước kẻ & compa. Cấu trúc H(vuông), O(tròn), A(tam giác).</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-amber-900 transition-colors">
+                    <span class="text-amber-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 02</span>
+                    <h4 class="font-bold text-lg mb-3">Dòng font Humanist Sans mang lại cảm giác gì?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> Sự tinh tế, thanh lịch, thân thiện và "có tính người" (Human-centric).</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> Mô phỏng nhịp điệu bút viết tay/đục đẽo, không bị lạnh lùng.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-cyan-900 transition-colors">
+                    <span class="text-cyan-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 03</span>
+                    <h4 class="font-bold text-lg mb-3">Tại sao hãng máy xúc Built Robotics dùng Geometric?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> Khẳng định tính công nghệ, sự chính xác máy móc, tự động hóa và sức mạnh cơ khí.</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> Chữ 'B' cấu tạo như chiếc máy xúc vững chãi.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-amber-900 transition-colors">
+                    <span class="text-amber-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 04</span>
+                    <h4 class="font-bold text-lg mb-3">S/S Interior bán nội thất hiện đại lại dùng Humanist?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> Nhấn mạnh tính cá nhân hóa, tỉ mỉ đục đẽo thủ công và hướng tới trải nghiệm con người.</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> Chữ 'O' nghiêng tự nhiên mô tả sự điêu khắc cầu kỳ.</p>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-cyan-900 transition-colors">
+                    <span class="text-cyan-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 05</span>
+                    <h4 class="font-bold text-lg mb-3">Chữ 'O' trong Geometric có tròn tuyệt đối 100% không?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> Không. Nó phải là hình oval (nhô cao hơn) để cân bằng thị giác (Overshoot).</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> Nếu tròn xoe, chữ 'O' trông sẽ bị nhỏ hơn chữ H.</p>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-cyan-900 transition-colors">
+                    <span class="text-cyan-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 06</span>
+                    <h4 class="font-bold text-lg mb-3">Lĩnh vực nào phổ biến dùng Geometric nhất?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> Công nghệ máy tính, Kiến trúc, Khoa học dữ liệu, thiết kế tối giản lạnh lùng.</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> Font Futura của Marina Bay Sands.</p>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-amber-900 transition-colors">
+                    <span class="text-amber-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 07</span>
+                    <h4 class="font-bold text-lg mb-3">Mỹ phẩm Sulwhasoo dùng phong cách chữ gì?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> Humanist Sans (hoặc kết hợp yếu tố Humanist có chân mềm mại).</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> Sự mượt mà toát lên vẻ cao cấp, truyền thống, tự nhiên chống lão hóa.</p>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-amber-900 transition-colors">
+                    <span class="text-amber-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 08</span>
+                    <h4 class="font-bold text-lg mb-3">Trục chữ (Axis) của Humanist có đặc điểm gì?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> Trục (ở chữ O, e, c) hơi nghiêng theo hướng nét bút viết tay, không thẳng đứng.</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> Cảm hứng từ Calligraphy (thư pháp Châu Âu).</p>
+                    </div>
+                </div>
+
+                <!-- Card 9 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-purple-900 transition-colors">
+                    <span class="text-purple-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 09</span>
+                    <h4 class="font-bold text-lg mb-3">Cách làm Bar bí ẩn The Alchemist trông đắt tiền?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> Dùng Humanist IN HOA toàn bộ + mở rộng KERNING thật lớn.</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> In hoa nghiêm túc + Kerning rộng tạo không gian tĩnh lặng, tinh tế.</p>
+                    </div>
+                </div>
+
+                <!-- Card 10 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-red-900 transition-colors">
+                    <span class="text-red-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 10</span>
+                    <h4 class="font-bold text-lg mb-3">Nhược điểm của Geometric khi trình bày văn bản dài?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> Tính hình học lặp lại đóng kín làm mắt nhanh mỏi, công năng đọc kém.</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> Neo-Grotesque đọc khối văn bản dài tốt hơn Geometric.</p>
+                    </div>
+                </div>
+
+                <!-- Card 11 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-green-900 transition-colors">
+                    <span class="text-green-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 11</span>
+                    <h4 class="font-bold text-lg mb-3">Ứng dụng Duolingo làm mềm Geometric bằng cách nào?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> Tùy biến góc cắt (Terminal) thành bo tròn mô phỏng hình dáng con cú.</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> Chữ 'g'/'d' vẽ lại nhất quán với mắt/lông linh vật.</p>
+                    </div>
+                </div>
+
+                <!-- Card 12 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-amber-900 transition-colors">
+                    <span class="text-amber-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 12</span>
+                    <h4 class="font-bold text-lg mb-3">Tại sao chữ 'A' Humanist có nét trái mảnh, phải đậm?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> Tuân theo Calligraphy: Đưa bút từ dưới lên nhẹ lực hơn kéo từ trên xuống.</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> Áp dụng chung cho V, W, Y tạo nhịp tự nhiên.</p>
+                    </div>
+                </div>
+
+                <!-- Card 13 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-red-900 transition-colors">
+                    <span class="text-red-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 13</span>
+                    <h4 class="font-bold text-lg mb-3">Lotte Mart dùng cấu trúc chữ dầy, hẹp làm gì?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> Tạo khối bắt mắt, mạnh mẽ, tiết kiệm diện tích để đập vào mắt người đi đường.</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> Phù hợp cho Marketing/Sale bán lẻ bình dân.</p>
+                    </div>
+                </div>
+
+                <!-- Card 14 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-cyan-900 transition-colors">
+                    <span class="text-cyan-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 14</span>
+                    <h4 class="font-bold text-lg mb-3">Chữ 'a' 1 tầng (tròn + 1 thẳng) đại diện cho gì?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> Tính công năng, tối giản, thực dụng và hiện đại (Geometric).</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> Trái ngược với 'a' 2 tầng cổ điển phức tạp.</p>
+                    </div>
+                </div>
+
+                <!-- Card 15 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-cyan-900 transition-colors">
+                    <span class="text-cyan-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 15</span>
+                    <h4 class="font-bold text-lg mb-3">Thời trang cao cấp chuyển sang Geometric để làm gì?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> Chiến lược Tech-Shift: Trở nên tối giản, trẻ trung, tối ưu hiển thị thiết bị số.</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> Xóa bỏ rườm rà của font Serif truyền thống.</p>
+                    </div>
+                </div>
+
+                <!-- Các Flashcard mở rộng từ Q&A để đủ 25 thẻ -->
+                
+                <!-- Card 16 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-amber-900 transition-colors">
+                    <span class="text-gray-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 16 (Bổ sung)</span>
+                    <h4 class="font-bold text-lg mb-3">Font Serif (Có chân) đại diện cho tính cách gì?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> Hoành tráng, cổ xưa, truyền thống, chắc chắn, nghiêm túc và đẳng cấp vượt thời gian.</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> Bắt nguồn từ khắc đá La Mã, dùng trong hàng xa xỉ.</p>
+                    </div>
+                </div>
+
+                <!-- Card 17 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-gray-600 transition-colors">
+                    <span class="text-gray-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 17 (Bổ sung)</span>
+                    <h4 class="font-bold text-lg mb-3">Đặc điểm vật lý cốt lõi của font Monospace là gì?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> Mỗi ký tự (kể cả chữ i và chữ W) đều chiếm một khoảng cách cơ khí rộng bằng nhau.</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> Mô phỏng hoàn hảo máy đánh chữ đời cũ.</p>
+                    </div>
+                </div>
+
+                <!-- Card 18 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-cyan-900 transition-colors">
+                    <span class="text-gray-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 18 (Bổ sung)</span>
+                    <h4 class="font-bold text-lg mb-3">Trong công nghệ, Monospace tạo ra cảm giác gì?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> Khoa học, lập trình, tương lai, sự lặp nhịp module và độ chính xác tuyệt đối.</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> Dùng cho giao diện code, AI, hiển thị dữ liệu.</p>
+                    </div>
+                </div>
+
+                <!-- Card 19 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-amber-900 transition-colors">
+                    <span class="text-gray-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 19 (Bổ sung)</span>
+                    <h4 class="font-bold text-lg mb-3">Tại sao một hãng Xa xỉ lại đi dùng Monospace?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> Để khẳng định tính "độc bản", thủ công cẩn thận, không sản xuất đại trà.</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> Cảm giác gõ máy chữ từng nhãn mác vật lý.</p>
+                    </div>
+                </div>
+
+                <!-- Card 20 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-gray-600 transition-colors">
+                    <span class="text-gray-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 20 (Bổ sung)</span>
+                    <h4 class="font-bold text-lg mb-3">Counter (Lòng chữ) diện tích LỚN mang lại cảm giác gì?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> Tối ưu công năng đọc, hiện đại, thoáng đãng và cao cấp.</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> Không gian trống bên trong chữ O, p, g rộng rãi.</p>
+                    </div>
+                </div>
+
+                <!-- Card 21 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-gray-600 transition-colors">
+                    <span class="text-gray-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 21 (Bổ sung)</span>
+                    <h4 class="font-bold text-lg mb-3">Counter (Lòng chữ) diện tích BÉ gợi lên điều gì?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> Sự cổ điển, truyền thống và ấm cúng.</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> Chữ có lòng hẹp thường chật chội nhưng mang nét hoài cổ.</p>
+                    </div>
+                </div>
+
+                <!-- Card 22 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-gray-600 transition-colors">
+                    <span class="text-gray-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 22 (Bổ sung)</span>
+                    <h4 class="font-bold text-lg mb-3">Aperture (Độ mở) LỚN có tác dụng kỹ thuật gì?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> Chống dính nét khi thu nhỏ cỡ chữ, tạo tính cách cởi mở, hướng ngoại.</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> Khoảng hở của chữ 'c' hoặc 'e' rất rộng.</p>
+                    </div>
+                </div>
+
+                <!-- Card 23 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-gray-600 transition-colors">
+                    <span class="text-gray-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 23 (Bổ sung)</span>
+                    <h4 class="font-bold text-lg mb-3">Aperture ĐÓNG (mở bé) tạo ra cảm giác tâm lý nào?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> An toàn, bảo thủ, vững vàng, độ nặng thị giác mạnh mẽ và chuyên nghiệp.</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> Hai đầu nét chữ 'c' gần như chạm vào nhau.</p>
+                    </div>
+                </div>
+
+                <!-- Card 24 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-cyan-900 transition-colors">
+                    <span class="text-gray-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 24 (Bổ sung)</span>
+                    <h4 class="font-bold text-lg mb-3">Kể tên font Monospace nổi tiếng đại diện cho Lập trình?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> JetBrains Mono hoặc Syne Mono.</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> Tối ưu cho việc đọc code nhiều giờ trên màn hình.</p>
+                    </div>
+                </div>
+
+                <!-- Card 25 -->
+                <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl hover:border-amber-900 transition-colors">
+                    <span class="text-gray-500 text-xs font-bold uppercase tracking-wider mb-2 block">Thẻ 25 (Bổ sung)</span>
+                    <h4 class="font-bold text-lg mb-3">Thương hiệu Nước hoa nào dùng Monospace làm định vị?</h4>
+                    <div class="text-gray-400 text-sm">
+                        <p class="mb-2"><strong class="text-white">Đáp án:</strong> Le Labo.</p>
+                        <p class="italic text-gray-500 text-xs"><strong class="text-gray-400">Gợi ý:</strong> Nhấn mạnh việc pha chế thủ công, in nhãn tên khách hàng bằng máy đánh chữ tại chỗ.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 border-t border-gray-900 text-center">
+        <p class="text-gray-600 text-sm">© Báo Cáo Typography Masterclass - Phân tích bởi Chuyên gia.</p>
+    </footer>
+
+</body>
+</html>
