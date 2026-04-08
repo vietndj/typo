@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giải Mã Tâm Lý Học & Kỹ Thuật Typography</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Fonts */
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0f172a; color: #f8fafc; }
+        .font-serif-custom { font-family: 'Playfair Display', serif; }
+        .font-mono-custom { font-family: 'Fira Code', monospace; }
+
+        /* CSS Abstract Art 1: Serif vs Monospace */
+        .art-1-container { position: relative; width: 250px; height: 250px; }
+        /* Serif representation: Sharp, classic, stone-like triangle */
+        .art-1-serif {
+            position: absolute; bottom: 20px; left: 20px;
+            width: 0; height: 0;
+            border-left: 80px solid transparent; border-right: 80px solid transparent; border-bottom: 140px solid #cbd5e1;
+            filter: drop-shadow(4px 4px 0px #475569);
+            z-index: 2;
+        }
+        .art-1-serif::before {
+            content: ''; position: absolute; bottom: -140px; left: -100px;
+            width: 200px; height: 20px; background-color: #cbd5e1;
+        } /* The 'Serif' base */
+        /* Monospace representation: Strict mechanical grid */
+        .art-1-mono {
+            position: absolute; top: 10px; right: 10px; width: 150px; height: 150px;
+            background-image: radial-gradient(#38bdf8 15%, transparent 16%), radial-gradient(#38bdf8 15%, transparent 16%);
+            background-size: 30px 30px; background-position: 0 0, 15px 15px;
+            opacity: 0.6; z-index: 1;
+        }
+
+        /* CSS Abstract Art 2: Aperture & Counter */
+        .art-2-container { position: relative; width: 250px; height: 250px; display: flex; justify-content: center; align-items: center; }
+        /* Counter representation: Closed inner space */
+        .art-2-counter {
+            position: absolute; width: 140px; height: 140px;
+            border: 20px solid #f59e0b; border-radius: 50%;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+            transform: translate(-30px, -20px); z-index: 1;
+        }
+        /* Aperture representation: Open, breathing space (C-shape) */
+        .art-2-aperture {
+            position: absolute; width: 160px; height: 160px;
+            border: 24px solid #10b981; border-radius: 50%;
+            border-right-color: transparent; /* Creates the aperture */
+            transform: translate(30px, 20px) rotate(45deg); z-index: 2;
+        }
+
+        /* CSS Abstract Art 3: Tech vs Craft (Monospace Use) */
+        .art-3-container { position: relative; width: 250px; height: 250px; overflow: hidden; border-radius: 1rem; background: #1e293b; border: 1px solid #334155; }
+        /* Tech representation: Code lines */
+        .art-3-tech {
+            position: absolute; top: 20px; left: 20px; display: flex; flex-direction: column; gap: 10px;
+        }
+        .art-3-line { height: 8px; background: #38bdf8; border-radius: 4px; }
+        .art-3-line:nth-child(1) { width: 120px; }
+        .art-3-line:nth-child(2) { width: 80px; margin-left: 20px; background: #a78bfa;}
+        .art-3-line:nth-child(3) { width: 140px; margin-left: 20px; }
+        .art-3-line:nth-child(4) { width: 60px; }
+        /* Craft/Organic representation: Soft, imperfect blur */
+        .art-3-craft {
+            position: absolute; bottom: -30px; right: -30px; width: 150px; height: 150px;
+            background: radial-gradient(circle, rgba(244,63,94,0.6) 0%, rgba(244,63,94,0) 70%);
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            filter: blur(10px); animation: morph 8s ease-in-out infinite;
+        }
+        @keyframes morph {
+            0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+            50% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+            100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+        }
+
+        /* Card Hover Effects */
+        .flashcard { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .flashcard:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5); border-color: #38bdf8; }
+    </style>
+</head>
+<body class="antialiased selection:bg-sky-500 selection:text-white">
+
+    <!-- HERO SECTION (LEAD MAGNET) -->
+    <header class="relative overflow-hidden bg-slate-900 border-b border-slate-800 pt-24 pb-16 lg:pt-32 lg:pb-24">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-0 left-1/4 w-96 h-96 bg-sky-600/20 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
+            <div class="absolute top-0 right-1/4 w-96 h-96 bg-fuchsia-600/20 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
+            <span class="inline-block py-1 px-3 rounded-full bg-slate-800 text-sky-400 text-sm font-semibold tracking-wider mb-6 border border-slate-700">TÀI LIỆU ĐỘC QUYỀN 2026</span>
+            <h1 class="text-4xl md:text-6xl font-serif-custom font-bold leading-tight mb-6">
+                Giải Mã Tâm Lý Học & <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-fuchsia-500">Kỹ Thuật Typography</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Khám phá bí mật đằng sau những con chữ. Tải ngay bộ tài liệu mồi nhử giúp bạn thấu hiểu tâm lý khách hàng qua việc chọn Font và thao túng không gian thị giác.
+            </p>
+            
+            <!-- Lead Capture Form -->
+            <form class="max-w-md mx-auto bg-slate-800/50 p-2 rounded-2xl border border-slate-700 backdrop-blur-sm flex flex-col sm:flex-row gap-2 shadow-2xl" onsubmit="event.preventDefault(); alert('Cảm ơn bạn! Tài liệu đã được gửi vào email.');">
+                <input type="email" placeholder="Nhập email của bạn..." required class="flex-1 bg-transparent px-4 py-3 text-white placeholder-slate-400 focus:outline-none rounded-xl">
+                <button type="submit" class="bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-semibold py-3 px-6 rounded-xl transition-all shadow-lg shadow-sky-500/30">
+                    Tải Tài Liệu Ngay
+                </button>
+            </form>
+            <p class="text-xs text-slate-500 mt-4">* 100% Miễn phí. Nhận tài liệu PDF full + 25 Flashcard ôn tập.</p>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT SECTIONS -->
+    <main class="max-w-6xl mx-auto px-6 py-20 space-y-32">
+
+        <!-- Block 1: Serif vs Monospace -->
+        <section class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            <div class="lg:w-1/2 order-2 lg:order-1">
+                <div class="inline-flex items-center gap-2 mb-4">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-sky-500/20 text-sky-400 font-bold font-mono-custom">01</span>
+                    <h2 class="text-2xl font-bold text-slate-100">Serif (Có chân) vs. Monospace</h2>
+                </div>
+                <h3 class="text-3xl lg:text-4xl font-serif-custom font-bold mb-6">Sự Khác Biệt Về Tính Cách</h3>
+                <div class="space-y-6 text-slate-300 leading-relaxed">
+                    <p>Hai dòng font này đại diện cho hai trường phái tính cách hoàn toàn khác biệt trong thiết kế.</p>
+                    <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700">
+                        <h4 class="text-xl font-serif-custom text-white mb-2 border-b border-slate-700 pb-2">A. Font Serif (Có chân)</h4>
+                        <p class="mb-3">Bắt nguồn từ việc khắc chữ trên đá thời La Mã, dòng font này mang trong mình tính cách <strong>hoành tráng, cổ xưa, lịch sử và vô cùng truyền thống</strong>.</p>
+                        <ul class="list-disc pl-5 space-y-1 text-sm">
+                            <li><strong>Cấu tạo:</strong> Các nét định hướng (serif) ở đầu và chân chữ giúp ổn định, mang lại cảm giác chắc chắn.</li>
+                            <li><strong>Ứng dụng:</strong> Giới thời trang, mỹ phẩm, tập đoàn lâu đời.</li>
+                            <li><strong>Cảm giác:</strong> Quyền lực, xa xỉ, đẳng cấp "vượt thời gian".</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700">
+                        <h4 class="text-xl font-mono-custom text-white mb-2 border-b border-slate-700 pb-2">B. Font Monospace</h4>
+                        <p class="mb-3">Đặc điểm là <strong>mỗi ký tự đều chiếm một khoảng cách cơ khí chính xác bằng nhau</strong>. Tính cách chia làm 3 hướng đối lập:</p>
+                        <ul class="list-disc pl-5 space-y-1 text-sm font-mono-custom">
+                            <li><strong>1. Công nghệ tương lai:</strong> Sự lặp nhịp module tạo cảm giác máy móc, khoa học.</li>
+                            <li><strong>2. Thủ công cẩn thận:</strong> Mô phỏng thao tác gõ máy chữ vật lý đòi hỏi sự tỉ mỉ.</li>
+                            <li><strong>3. Cổ điển xưa cũ:</strong> Mang tính hoài niệm, thô ráp.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:w-1/2 order-1 lg:order-2 flex justify-center">
+                <!-- CSS Abstract Art 1 -->
+                <div class="art-1-container">
+                    <div class="art-1-serif"></div>
+                    <div class="art-1-mono"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Block 2: Aperture & Counter -->
+        <section class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            <div class="lg:w-1/2 flex justify-center">
+                <!-- CSS Abstract Art 2 -->
+                <div class="art-2-container">
+                    <div class="art-2-counter"></div>
+                    <div class="art-2-aperture"></div>
+                </div>
+            </div>
+            <div class="lg:w-1/2">
+                <div class="inline-flex items-center gap-2 mb-4">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold font-mono-custom">02</span>
+                    <h2 class="text-2xl font-bold text-slate-100">Kỹ Thuật Typography</h2>
+                </div>
+                <h3 class="text-3xl lg:text-4xl font-serif-custom font-bold mb-6">Thao túng "Aperture" & "Counter"</h3>
+                <div class="space-y-6 text-slate-300 leading-relaxed">
+                    <p>Đây là hai "thuật toán" thao túng không gian vô hình bên trong con chữ mà các chuyên gia thường dùng để tạo cảm xúc.</p>
+                    
+                    <div class="pl-4 border-l-4 border-amber-500">
+                        <h4 class="text-lg font-bold text-white mb-2">1. Counter (Lòng chữ)</h4>
+                        <p class="text-sm mb-2">Là diện tích khoảng không khép kín bên trong của các chữ cái như <strong>p, g, o, d, b</strong>.</p>
+                        <ul class="text-sm space-y-2">
+                            <li><span class="text-amber-400 font-semibold">Counter lớn:</span> Tối ưu công năng đọc, mang lại cảm giác hiện đại, thoáng đãng, cởi mở và cao cấp.</li>
+                            <li><span class="text-amber-400 font-semibold">Counter bé:</span> Gợi lên sự cổ điển, ấm cúng, truyền thống và đôi khi là sự khép kín.</li>
+                            <li><span class="text-slate-400 italic">Lưu ý: Chuyên gia phải tính toán cân bằng diện tích Counter giữa các hình khối (vuông, tròn, tam giác) để chữ ổn định.</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="pl-4 border-l-4 border-emerald-500 mt-6">
+                        <h4 class="text-lg font-bold text-white mb-2">2. Aperture (Độ mở)</h4>
+                        <p class="text-sm mb-2">Là khoảng hở hay độ gần nhau của hai đầu nét ở các chữ cái mở như <strong>c, e, s, a</strong>.</p>
+                        <ul class="text-sm space-y-2">
+                            <li><span class="text-emerald-400 font-semibold">Aperture mở lớn:</span> Vùng âm bản rộng ra, chống dính nét khi thu nhỏ. Tạo tính cách cởi mở, hướng ngoại, thân thiện và hiện đại.</li>
+                            <li><span class="text-emerald-400 font-semibold">Aperture đóng (mở bé):</span> Diện tích dương bản lớn hơn, tạo độ nặng thị giác mạnh mẽ. Toát lên sự an toàn, bảo thủ, vững vàng và vô cùng chuyên nghiệp.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Block 3: Monospace Applications -->
+        <section class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            <div class="lg:w-1/2 order-2 lg:order-1">
+                <div class="inline-flex items-center gap-2 mb-4">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-fuchsia-500/20 text-fuchsia-400 font-bold font-mono-custom">03</span>
+                    <h2 class="text-2xl font-bold text-slate-100">Ứng Dụng Thực Tế</h2>
+                </div>
+                <h3 class="text-3xl lg:text-4xl font-serif-custom font-bold mb-6">Ai đang dùng Font Monospace?</h3>
+                <div class="space-y-6 text-slate-300 leading-relaxed">
+                    <p>Nhờ vào tính cách phân mảnh độc đáo, Monospace hiện nay là "vũ khí" được hai nhóm ngành hoàn toàn đối lập cực kỳ ưa chuộng:</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700">
+                            <div class="text-sky-400 mb-3"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg></div>
+                            <h4 class="font-bold text-white mb-2">Ngành Công Nghệ & Khoa Học</h4>
+                            <p class="text-sm text-slate-400 mb-3">Tận dụng cảm giác module, chính xác tuyệt đối. Dùng trong Lập trình, AI, Dữ liệu, Hàng không vũ trụ.</p>
+                            <div class="text-xs bg-slate-900 p-2 rounded text-sky-300 font-mono-custom">
+                                Ví dụ: JetBrains Mono, Syne Mono trên giao diện code.
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700">
+                            <div class="text-rose-400 mb-3"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg></div>
+                            <h4 class="font-bold text-white mb-2">Ngành Xa Xỉ & Thủ Công</h4>
+                            <p class="text-sm text-slate-400 mb-3">Lợi dụng cảm giác "gõ máy chữ tay" cẩn thận, không tẩy xóa để khẳng định tính độc bản, không đại trà.</p>
+                            <div class="text-xs bg-slate-900 p-2 rounded text-rose-300">
+                                Ví dụ: Nước hoa Le Labo, Hạt giống Row 7 Seed, Sôcôla Recchiuti.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:w-1/2 order-1 lg:order-2 flex justify-center">
+                <!-- CSS Abstract Art 3 -->
+                <div class="art-3-container">
+                    <div class="art-3-tech">
+                        <div class="art-3-line"></div>
+                        <div class="art-3-line"></div>
+                        <div class="art-3-line"></div>
+                        <div class="art-3-line"></div>
+                        <div class="art-3-line" style="width:100px; background:#4ade80;"></div>
+                    </div>
+                    <div class="art-3-craft"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FLASHCARD SECTION (Q&A) -->
+    <section class="bg-slate-900/50 border-t border-slate-800 py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-serif-custom font-bold text-white mb-4">Trạm Ôn Tập Chuyên Sâu</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">25 Câu hỏi flashcard hiển thị sẵn đáp án giúp bạn review và ghi nhớ ngay lập tức các kiến thức Typography bên trên.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="flashcard-grid">
+                <!-- Flashcards will be injected here. Manually writing the 25 requested cards based on content -->
+                
+                <!-- Topic 1: Serif & Monospace -->
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-sky-400 mb-2">Q01</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">Nguồn gốc lịch sử của Font Serif (có chân) là từ đâu?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">Bắt nguồn từ việc khắc chữ trên đá thời La Mã cổ đại.</p>
+                </div>
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-sky-400 mb-2">Q02</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">Chức năng chính của các nét định hướng (chân chữ) trong font Serif?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">Giúp ổn định cấu tạo chữ, mang lại cảm giác chắc chắn, vững chãi trên bề mặt.</p>
+                </div>
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-sky-400 mb-2">Q03</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">Tính cách đặc trưng nhất của font Serif là gì?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">Hoành tráng, cổ xưa, lịch sử, truyền thống, nghiêm túc và trang trọng.</p>
+                </div>
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-sky-400 mb-2">Q04</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">Nhóm ngành nào thường ưu tiên sử dụng font Serif?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">Giới thời trang cao cấp, mỹ phẩm, và các tập đoàn lâu đời.</p>
+                </div>
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-sky-400 mb-2">Q05</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">Sử dụng font Serif giúp thương hiệu định vị được điều gì?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">Định vị sự quyền lực, sự xa xỉ và đẳng cấp "vượt thời gian".</p>
+                </div>
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-sky-400 mb-2">Q06</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">Đặc điểm cơ khí vật lý khác biệt nhất của font Monospace là gì?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">Mỗi ký tự đều chiếm một khoảng cách (chiều rộng) cơ khí chính xác hoàn toàn bằng nhau.</p>
+                </div>
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-sky-400 mb-2">Q07</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">3 hướng tính cách đối lập của font Monospace là gì?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">1. Công nghệ tương lai. <br>2. Thủ công cẩn thận. <br>3. Cổ điển xưa cũ.</p>
+                </div>
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-sky-400 mb-2">Q08</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">Vì sao Monospace tạo được cảm giác "Công nghệ tương lai"?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">Vì sự lặp nhịp module đều đặn tạo ra cảm giác máy móc, khoa học và độ chính xác cao.</p>
+                </div>
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-sky-400 mb-2">Q09</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">Vì sao Monospace tạo được cảm giác "Thủ công cẩn thận"?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">Vì nó mô phỏng thao tác gõ máy chữ vật lý, đòi hỏi người gõ phải tập trung và tỉ mỉ tuyệt đối.</p>
+                </div>
+
+                <!-- Topic 2: Counter & Aperture -->
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-amber-400 mb-2">Q10</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">Định nghĩa thuật ngữ "Counter" trong Typography?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">Là diện tích khoảng không (âm bản) khép kín nằm bên trong của các chữ cái.</p>
+                </div>
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-amber-400 mb-2">Q11</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">Kể tên một số chữ cái điển hình có chứa Counter?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">Các chữ cái như: p, g, o, d, b, q.</p>
+                </div>
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-amber-400 mb-2">Q12</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">Việc thiết kế Counter LỚN mang lại cảm giác gì?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">Tối ưu công năng đọc, mang lại cảm giác hiện đại, thoáng đãng và cao cấp.</p>
+                </div>
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-amber-400 mb-2">Q13</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">Việc thiết kế Counter BÉ thường gợi lên điều gì?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">Thường gợi lên sự cổ điển, cảm giác ấm cúng, truyền thống và hơi khép kín.</p>
+                </div>
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-amber-400 mb-2">Q14</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">Tại sao phải tính toán cân bằng diện tích Counter giữa các hình khối?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">Để độ nặng thị giác phân bố đều, giúp dòng chữ ổn định và hài hòa khi đọc.</p>
+                </div>
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-emerald-400 mb-2">Q15</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">Định nghĩa thuật ngữ "Aperture" trong Typography?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">Là khoảng hở hay độ gần nhau của hai đầu nét ở các chữ cái mở.</p>
+                </div>
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-emerald-400 mb-2">Q16</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">Kể tên một số chữ cái điển hình thể hiện tính chất của Aperture?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">Các chữ cái hở như: c, e, s, a.</p>
+                </div>
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-emerald-400 mb-2">Q17</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">Aperture MỞ LỚN mang lại tác dụng công năng gì?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">Giúp vùng âm bản rộng ra, chống tình trạng dính nét khi thu nhỏ chữ trên màn hình.</p>
+                </div>
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-emerald-400 mb-2">Q18</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">Tính cách của một bộ font có Aperture MỞ LỚN?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">Tạo ra tính cách cởi mở, hướng ngoại, thân thiện và rất hiện đại.</p>
+                </div>
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-emerald-400 mb-2">Q19</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">Aperture ĐÓNG (mở bé) ảnh hưởng thế nào đến độ nặng thị giác?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">Tạo ra diện tích vùng dương bản lớn hơn, mang lại độ nặng thị giác mạnh mẽ, dày dặn.</p>
+                </div>
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-emerald-400 mb-2">Q20</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">Tính cách của thương hiệu dùng font có Aperture ĐÓNG?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">Toát lên sự an toàn, bảo thủ, vững vàng, đáng tin cậy và chuyên nghiệp.</p>
+                </div>
+
+                <!-- Topic 3: Applications -->
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-fuchsia-400 mb-2">Q21</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">2 nhóm ngành ĐỐI LẬP nào đang cực kỳ ưa chuộng font Monospace?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">1. Nhóm Công nghệ/Khoa học <br>2. Nhóm Xa xỉ/Chế tác thủ công.</p>
+                </div>
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-fuchsia-400 mb-2">Q22</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">Ví dụ 2 font Monospace phổ biến trong giao diện code?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">JetBrains Mono và Syne Mono.</p>
+                </div>
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-fuchsia-400 mb-2">Q23</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">Vì sao hãng nước hoa đắt tiền Le Labo lại dùng font Monospace?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">Để nhấn mạnh quy trình pha chế thủ công khác biệt, in nhãn tại chỗ mang tính độc bản.</p>
+                </div>
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-fuchsia-400 mb-2">Q24</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">Công ty lai tạo hạt giống Row 7 Seed dùng Monospace để truyền tải thông điệp gì?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">Thể hiện quy trình lai tạo cẩn thận, tỉ mỉ, có tính khoa học nhưng vẫn thủ công.</p>
+                </div>
+                <div class="flashcard bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-full">
+                    <span class="text-xs font-mono-custom text-fuchsia-400 mb-2">Q25</span>
+                    <h3 class="font-bold text-white mb-3 text-sm">Hãng sôcôla Recchiuti Confections dùng Monospace ngụ ý điều gì?</h3>
+                    <p class="text-sm text-slate-300 mt-auto pt-3 border-t border-slate-700/50">Khẳng định việc sản xuất thủ công theo kỹ thuật truyền thống Châu Âu, không sản xuất đại trà.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 py-8 border-t border-slate-800 text-center">
+        <p class="text-slate-500 text-sm">© 2026 Typography Psychology. Thiết kế dành riêng cho Lead Magnet.</p>
+    </footer>
+
+</body>
+</html>
