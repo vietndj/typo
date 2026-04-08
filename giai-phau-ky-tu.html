@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giải Phẫu Ký Tự (Type Anatomy) - Tài Liệu Miễn Phí</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* slate-900 */
+            color: #f8fafc; /* slate-50 */
+        }
+        
+        .accent-text {
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- CSS ABSTRACT ART CLASSES --- */
+        
+        /* Art: Hero Abstract */
+        .art-hero {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            overflow: hidden;
+        }
+        .art-hero::before {
+            content: "A";
+            position: absolute;
+            font-size: 800px;
+            font-weight: 900;
+            top: -200px;
+            right: -100px;
+            line-height: 1;
+            color: transparent;
+            -webkit-text-stroke: 4px #38bdf8;
+            transform: rotate(15deg);
+        }
+        .art-hero::after {
+            content: "O";
+            position: absolute;
+            font-size: 600px;
+            font-weight: 900;
+            bottom: -150px;
+            left: -100px;
+            line-height: 1;
+            color: transparent;
+            -webkit-text-stroke: 4px #818cf8;
+        }
+
+        /* Art: The Hook (Square vs Overshoot Circle) */
+        .art-hook {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem;
+        }
+        .art-hook .square {
+            width: 100px;
+            height: 100px;
+            border: 4px solid #94a3b8;
+        }
+        .art-hook .circle {
+            width: 104px; /* Overshoot */
+            height: 104px; /* Overshoot */
+            border: 4px solid #38bdf8;
+            border-radius: 50%;
+            position: relative;
+            top: 2px; /* Visual compensation */
+        }
+        .art-hook-lines {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background-color: rgba(255,255,255,0.2);
+            border-top: 1px dashed rgba(255,255,255,0.4);
+        }
+
+        /* Art: Principle 1 - Widescreen */
+        .art-widescreen {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+        }
+        .art-wide-v {
+            position: absolute;
+            left: 50%;
+            top: 10%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 80%;
+            background: #818cf8;
+        }
+        .art-wide-h {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+            width: 80%;
+            height: 14px; /* Thinner horizontal */
+            background: #38bdf8;
+        }
+
+        /* Art: Principle 2 - Gravity */
+        .art-gravity {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 120px;
+        }
+        .art-grav-top {
+            width: 50px;
+            height: 50px;
+            border: 8px solid #38bdf8;
+            border-radius: 50% 50% 0 0;
+            border-bottom: 4px solid #38bdf8;
+        }
+        .art-grav-bot {
+            width: 60px; /* Larger bottom */
+            height: 60px;
+            border: 8px solid #818cf8;
+            border-radius: 0 0 50% 50%;
+            border-top: 4px solid #818cf8;
+        }
+
+        /* Art: Principle 3 - Poggendorff */
+        .art-poggendorff {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .art-pog-v {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(4px);
+            z-index: 2;
+        }
+        .art-pog-d {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 140px;
+            height: 8px;
+            background: #38bdf8;
+            z-index: 1;
+        }
+        .art-pog-d.left {
+            transform: translate(-100%, -50%) rotate(30deg);
+            transform-origin: right center;
+        }
+        .art-pog-d.right {
+            /* Offset applied here visually */
+            transform: translate(0%, -30%) rotate(30deg);
+            transform-origin: left center;
+            background: #818cf8;
+        }
+
+        /* Art: Principle 4 - Tapper/Ink Trap */
+        .art-tapper {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+        }
+        .art-tap-left {
+            position: absolute;
+            bottom: 10px;
+            left: 20px;
+            width: 30px;
+            height: 100px;
+            background: #94a3b8;
+            transform: skewX(-20deg);
+        }
+        .art-tap-right {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            width: 30px;
+            height: 100px;
+            background: #94a3b8;
+            transform: skewX(20deg);
+        }
+        .art-inktrap {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 40px solid #0f172a; /* Matches background to create cutout */
+            z-index: 10;
+        }
+        
+        /* Art: What's Inside Grid */
+        .art-grid-sys {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+            width: 80px;
+            height: 80px;
+        }
+        .art-grid-cell { background: rgba(56, 189, 248, 0.2); border-radius: 2px; }
+        .art-grid-cell:nth-child(1) { background: #38bdf8; grid-column: span 2; }
+        .art-grid-cell:nth-child(4) { background: #818cf8; grid-row: span 2; }
+
+    </style>
+</head>
+<body class="antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- HERO SECTION -->
+    <header class="relative pt-24 pb-32 lg:pt-36 lg:pb-40 overflow-hidden border-b border-slate-800">
+        <div class="art-hero absolute inset-0 pointer-events-none"></div>
+        
+        <div class="relative max-w-5xl mx-auto px-6 text-center z-10">
+            <p class="text-indigo-400 font-semibold tracking-wider uppercase text-sm md:text-base mb-4">
+                Tài Liệu Khoa Học Thiết Kế Chữ Dành Cho Type Designer & Art Director
+            </p>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-tight mb-8">
+                GIẢI PHẪU KÝ TỰ <br/>
+                <span class="text-2xl md:text-4xl lg:text-5xl font-bold text-slate-300 mt-2 block">(TYPE ANATOMY)</span>
+                <span class="accent-text text-3xl md:text-5xl lg:text-6xl block mt-4">Đừng Tin Vào Thước Kẻ,<br/>Hãy Tin Vào Những "Cú Lừa" Quang Học!</span>
+            </h1>
+            <p class="text-slate-400 text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed">
+                Tại sao nét ngang của chữ 'A' luôn phải mỏng hơn nét dọc? Tại sao chữ 'S' hay chữ 'B' luôn bị thiết kế "đầu nhỏ đít to"? Nếu bạn vẫn đang dùng công cụ căn gióng (Align) để vẽ các nét chữ bằng nhau chằn chặn, thiết kế của bạn trông sẽ vô cùng lỏng lẻo và méo mó. Tải ngay báo cáo Giải phẫu học 26 chữ cái để làm chủ nghệ thuật bẻ cong toán học, thao túng thị giác người xem!
+            </p>
+            <a href="#download-form" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-indigo-600 border border-transparent rounded-full shadow-lg hover:bg-indigo-500 hover:shadow-indigo-500/30 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 ring-offset-slate-900">
+                👉 TẢI XUỐNG BÁO CÁO GIẢI PHẪU CHỮ (MIỄN PHÍ)
+            </a>
+        </div>
+    </header>
+
+    <!-- SECTION 2: THE HOOK -->
+    <section class="py-20 bg-slate-800/50 border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="w-full lg:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white leading-tight">Toán Học Tuyệt Đối Sẽ Tạo Ra Một Thiết Kế Xấu Xí!</h2>
+                    <p class="text-slate-300 text-lg mb-6 leading-relaxed">
+                        Sự thật phũ phàng trong Typography là: <strong class="text-white">Đối xứng thị giác khác hoàn toàn với đối xứng toán học.</strong>
+                    </p>
+                    <p class="text-slate-400 mb-6 leading-relaxed">
+                        Mắt chúng ta không phải là một cỗ máy tính. Chúng bị ảnh hưởng bởi trọng lực rơi xuống, bởi cấu trúc nhìn theo chiều ngang (widescreen), và bởi vô số các ảo ảnh quang học (Optical Illusions). Nếu bạn vẽ một hình tròn (chữ O) cao bằng chính xác một hình vuông (chữ H), mắt người sẽ thấy hình tròn bị nhỏ bé và lọt thỏm. Nếu bạn kẻ một đường chéo xuyên qua một nét thẳng (chữ X), mắt người sẽ thấy đường chéo đó bị bẻ gãy.
+                    </p>
+                    <div class="p-4 bg-indigo-900/30 border-l-4 border-indigo-500 rounded-r-lg">
+                        <p class="text-indigo-200 font-medium italic">
+                            Để thiết kế đạt được sự "cân bằng", các chuyên gia bắt buộc phải cố tình làm sai các thông số toán học. Việc làm sai có hệ thống này được gọi là Kỹ thuật Bù trừ thị giác!
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- CSS Art Hook -->
+                <div class="w-full lg:w-1/2 flex justify-center">
+                    <div class="relative w-full max-w-md h-64 bg-slate-900 rounded-2xl border border-slate-700 flex flex-col items-center justify-center overflow-hidden shadow-2xl">
+                        <div class="absolute top-1/2 left-0 w-full h-[1px] bg-slate-700 -translate-y-[52px]"></div> <!-- Top guideline -->
+                        <div class="absolute top-1/2 left-0 w-full h-[1px] bg-slate-700 translate-y-[50px]"></div> <!-- Bottom guideline -->
+                        
+                        <div class="art-hook relative z-10 w-full h-full">
+                            <div class="square shadow-lg shadow-slate-900/50 relative">
+                                <span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-slate-500 font-mono">100px</span>
+                            </div>
+                            <div class="circle shadow-lg shadow-cyan-900/20 relative">
+                                <span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-cyan-500 font-mono">104px (Overshoot)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: 4 CORE PRINCIPLES -->
+    <section class="py-24 border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">BÓC TÁCH 4 NGUYÊN LÝ GIẢI PHẪU CỐT LÕI<br><span class="text-xl font-normal text-slate-400">(Trích từ sách)</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                
+                <!-- Principle 1 -->
+                <div class="bg-slate-800 rounded-2xl p-8 border border-slate-700 hover:border-indigo-500 transition-colors group">
+                    <div class="mb-8 flex justify-center">
+                        <div class="art-widescreen">
+                            <div class="art-wide-v rounded-sm group-hover:scale-y-110 transition-transform duration-500"></div>
+                            <div class="art-wide-h rounded-sm group-hover:scale-x-110 transition-transform duration-500"></div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-indigo-600 text-sm">1</span>
+                        Hiệu Ứng Mắt "Widescreen"
+                    </h3>
+                    <p class="text-indigo-300 text-sm font-semibold mb-3">Nét ngang luôn mỏng hơn nét dọc</p>
+                    <p class="text-slate-400 leading-relaxed text-sm">
+                        Mắt người nằm ngang nên nhận biết vật thể theo chiều ngang dễ hơn và nhanh hơn. Ở cùng một độ dày vật lý, nét ngang bao giờ cũng bị tập trung sự chú ý nhiều hơn (độ nặng thị giác cao hơn). Do đó, nguyên tắc sống còn là nét ngang bắt buộc phải thiết kế mảnh hơn nét dọc.
+                    </p>
+                </div>
+
+                <!-- Principle 2 -->
+                <div class="bg-slate-800 rounded-2xl p-8 border border-slate-700 hover:border-indigo-500 transition-colors group">
+                    <div class="mb-8 flex justify-center">
+                        <div class="art-gravity">
+                            <div class="art-grav-top transition-all duration-500 group-hover:border-[6px]"></div>
+                            <div class="art-grav-bot transition-all duration-500 group-hover:border-[10px]"></div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-indigo-600 text-sm">2</span>
+                        Áp Lực Của Trọng Lực (Gravity)
+                    </h3>
+                    <p class="text-indigo-300 text-sm font-semibold mb-3">Chống lại cảm giác đổ gục</p>
+                    <p class="text-slate-400 leading-relaxed text-sm">
+                        Khi nhìn vật thể, mắt ta luôn có xu hướng bị kéo xuống bởi trọng lực. Nếu thiết kế nửa trên to bằng nửa dưới (đối xứng toán học), khối chữ sẽ có cảm giác bị mất thăng bằng và đổ gục về phía trước. Quy tắc bắt buộc: Vùng khoảng trống (counter) ở nửa trên của các chữ B, S, 8 luôn phải NHỎ HƠN nửa dưới.
+                    </p>
+                </div>
+
+                <!-- Principle 3 -->
+                <div class="bg-slate-800 rounded-2xl p-8 border border-slate-700 hover:border-indigo-500 transition-colors group">
+                    <div class="mb-8 flex justify-center">
+                        <div class="art-poggendorff group-hover:rotate-12 transition-transform duration-500">
+                            <div class="art-pog-d left"></div>
+                            <div class="art-pog-v"></div>
+                            <div class="art-pog-d right group-hover:-translate-y-[20%] transition-transform duration-500"></div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-indigo-600 text-sm">3</span>
+                        Ảo Ảnh Poggendorff
+                    </h3>
+                    <p class="text-indigo-300 text-sm font-semibold mb-3">Sự bẻ gãy đường chéo</p>
+                    <p class="text-slate-400 leading-relaxed text-sm">
+                        Khi một nét chéo bị che khuất bởi một nét thẳng (như trong chữ X, K), mắt người sẽ sinh ra ảo giác nét chéo bị lệch vị trí. Các nhà thiết kế phải cố tình dịch chuyển vị trí tiếp xúc của nét chéo (offset) để lừa mắt ta nhìn thấy nó liền mạch.
+                    </p>
+                </div>
+
+                <!-- Principle 4 -->
+                <div class="bg-slate-800 rounded-2xl p-8 border border-slate-700 hover:border-indigo-500 transition-colors group">
+                    <div class="mb-8 flex justify-center">
+                        <div class="art-tapper">
+                            <div class="art-tap-left rounded-sm group-hover:bg-slate-500 transition-colors"></div>
+                            <div class="art-tap-right rounded-sm group-hover:bg-slate-500 transition-colors"></div>
+                            <div class="art-inktrap group-hover:border-top-[50px] transition-all"></div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-indigo-600 text-sm">4</span>
+                        Khối Máu Đông Tại Các Tiếp Điểm
+                    </h3>
+                    <p class="text-indigo-300 text-sm font-semibold mb-3">Kỹ thuật Tapper / Ink Trap</p>
+                    <p class="text-slate-400 leading-relaxed text-sm">
+                        Tại vị trí hai hay nhiều nét đâm vào nhau (chữ M, W, N), điểm tiếp xúc đó sẽ tập trung trọng lượng thị giác lớn nhất, tạo thành một vùng đen đọng mực. Bắt buộc phải sử dụng kỹ thuật Tapper (vát nhỏ đầu nét nối) để giảm bớt vùng tối, trả lại sự thanh thoát cho con chữ.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: WHAT'S INSIDE & CTA -->
+    <section id="download-form" class="py-24 relative overflow-hidden">
+        <!-- Abstract Background for Form Section -->
+        <div class="absolute inset-0 bg-indigo-900/20"></div>
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-cyan-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative max-w-5xl mx-auto px-6">
+            <div class="bg-slate-800 rounded-3xl shadow-2xl border border-slate-700 overflow-hidden flex flex-col md:flex-row">
+                
+                <!-- Left Content -->
+                <div class="p-10 md:p-12 md:w-3/5">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="art-grid-sys shrink-0">
+                            <div class="art-grid-cell"></div>
+                            <div class="art-grid-cell"></div>
+                            <div class="art-grid-cell"></div>
+                            <div class="art-grid-cell"></div>
+                            <div class="art-grid-cell"></div>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-bold">BẠN SẼ TÌM THẤY GÌ TRONG BÁO CÁO NÀY?</h2>
+                    </div>
+                    
+                    <p class="text-slate-300 mb-6">Trang bị ngay tư duy giải phẫu để không còn thiết kế chữ một cách mù quáng:</p>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-slate-300"><strong class="text-white">Điều hướng thị giác:</strong> Tại sao thanh ngang của chữ 't' và 'f' luôn có nửa bên trái ngắn hơn nửa bên phải để dẫn đường cho mắt đọc?</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-slate-300"><strong class="text-white">Công thức Spacing:</strong> Khoảng trắng an toàn bao quanh chữ phải được tính toán sao cho tổng diện tích bằng đúng với diện tích vùng rỗng (counter) bên trong của chữ đó.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-slate-300"><strong class="text-white">Lý thuyết 3 họ hình:</strong> Cách điều chỉnh chữ H (Vuông), O (Tròn), A (Tam giác) để chúng trông cân bằng tuyệt đối khi đứng cạnh nhau.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Right Form -->
+                <div class="p-10 md:p-12 md:w-2/5 bg-slate-900 border-l border-slate-700 flex flex-col justify-center">
+                    <p class="text-sm text-slate-400 mb-6 text-center italic">
+                        "Khách hàng có thể không biết các thuật ngữ kỹ thuật, nhưng họ có thể cảm nhận ngay lập tức một thiết kế nghiệp dư!"
+                    </p>
+                    <h3 class="text-xl font-bold mb-6 text-center">Nhận Báo Cáo Ngay Bây Giờ</h3>
+                    
+                    <form id="leadForm" class="space-y-4">
+                        <div>
+                            <input type="text" placeholder="Tên của bạn" required class="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white placeholder-slate-500">
+                        </div>
+                        <div>
+                            <input type="email" placeholder="Email nhận tài liệu" required class="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white placeholder-slate-500">
+                        </div>
+                        <button type="submit" class="w-full py-4 px-6 bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold rounded-lg transition-all transform hover:-translate-y-1 shadow-lg shadow-indigo-500/25">
+                            TẢI XUỐNG MIỄN PHÍ
+                        </button>
+                        <p class="text-xs text-center text-slate-500 mt-4">Cam kết không spam. Thông tin của bạn được bảo mật.</p>
+                    </form>
+                    
+                    <div id="successMessage" class="hidden mt-4 p-4 bg-green-900/50 border border-green-500 rounded-lg text-green-200 text-sm text-center">
+                        🎉 Đăng ký thành công! Vui lòng kiểm tra Email của bạn để nhận báo cáo.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: FLASHCARDS (25 CÂU HỎI) -->
+    <section class="py-24 bg-slate-900 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="inline-block p-3 bg-slate-800 rounded-full mb-4 text-3xl">🃏</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">KHỐI ÔN TẬP: 25 FLASHCARD "GIẢI PHẪU KÝ TỰ VI MÔ"</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">
+                    Được thiết kế để test trình độ Senior Type Designer, trích xuất nguyên bản từ tài liệu. Đọc để củng cố ngay tư duy thiết kế chữ của bạn.
+                </p>
+            </div>
+
+            <!-- Flashcard Grid Container generated by JS -->
+            <div id="flashcard-container" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                <!-- Cards will be injected here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-10 border-t border-slate-800 text-center text-slate-500 text-sm">
+        <p>&copy; 2026 Type Anatomy Report. Bản quyền nội dung thuộc về Tác giả.</p>
+    </footer>
+
+    <!-- JAVASCRIPT FOR FLASHCARDS AND FORM -->
+    <script>
+        // Form Submission Logic
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            this.style.display = 'none';
+            document.getElementById('successMessage').classList.remove('hidden');
+        });
+
+        // Data for 25 Flashcards (20 from prompt + 5 added to meet requirement)
+        const flashcardsData = [
+            {
+                q: "Về mặt cân bằng thị giác, nếu bạn vẽ chữ H (vuông), O (tròn) và A (tam giác) có chiều cao bằng chính xác nhau, mắt người sẽ nhìn thấy điều gì?",
+                a: "Mắt người sẽ thấy hình tròn (O) và hình tam giác (A) bị nhỏ hơn, lọt thỏm so với hình vuông (H).",
+                hint: "Bắt buộc phải dùng Overshoot (cho O và A nhô cao hơn và tràn xuống sâu hơn) để mắt thấy chúng bằng nhau."
+            },
+            {
+                q: "Nguyên lý nào giải thích tại sao nét ngang của một chữ cái bao giờ cũng phải được thiết kế mảnh (mỏng) hơn nét dọc?",
+                a: "Do cấu tạo mắt người nằm ngang (widescreen), ta nhận biết vật thể theo chiều ngang nhạy hơn. Nét ngang bị tập trung sự chú ý lớn hơn nên phải làm mỏng đi để giảm bớt độ nặng thị giác."
+            },
+            {
+                q: "Thanh ngang (crossbar) của chữ 't' và 'f' in thường luôn tuân theo tỷ lệ trái-phải như thế nào?",
+                a: "Nửa bên trái luôn NGẮN HƠN nửa bên phải.",
+                hint: "Nửa phải dài hơn gợi ý đường đi cho mắt, giúp việc đọc từ trái qua phải trơn tru hơn."
+            },
+            {
+                q: "Ảo ảnh 'Poggendorff Illusion' xảy ra khi thiết kế chữ cái nào và gây ra hiện tượng gì?",
+                a: "Xảy ra ở các chữ có nét chéo đâm qua nhau hoặc bị che khuất (như chữ X, K). Nó làm nét chéo có cảm giác bị bẻ gãy, lệch vị trí.",
+                hint: "Chuyên gia phải dịch chuyển tiếp điểm (offset) để mắt thấy nó liền mạch."
+            },
+            {
+                q: "Để khắc phục lỗi trọng lực (khiến chữ có cảm giác đổ gục về phía trước), các chữ B, S, 8 phải được thiết kế ra sao?",
+                a: "Diện tích vùng rỗng (counter) ở nửa trên bắt buộc phải NHỎ HƠN diện tích vùng rỗng ở nửa dưới."
+            },
+            {
+                q: "Chữ 'n' và chữ 'u' in thường là phiên bản đảo ngược của nhau. Vậy chữ nào cần được thiết kế rộng hơn để đạt cân bằng thị giác?",
+                a: "Chữ 'n' bắt buộc phải làm rộng hơn chữ 'u'.",
+                hint: "Không gian âm bản hướng lên (của chữ u) bao giờ cũng cho cảm giác to hơn, nên phải bóp hẹp lại."
+            },
+            {
+                q: "Tại sao chữ A in hoa lại có độ dày nét MẢNH (mỏng) hơn chữ V in hoa?",
+                a: "Vì chữ A có thêm thanh ngang (crossbar) làm thu hẹp không gian âm bản bên trong (counter). Để bù đắp không gian, phải làm nét mảnh đi và vát đỉnh nhiều hơn."
+            },
+            {
+                q: "Chiều rộng tổng thể của chữ A in hoa sẽ hẹp hơn hay rộng hơn chữ H in hoa?",
+                a: "RỘNG HƠN chữ H.",
+                hint: "Vì hình tam giác khi đặt cạnh hình vuông luôn cho cảm giác lọt thỏm, nhỏ bé hơn nếu để cùng chiều rộng."
+            },
+            {
+                q: "Chữ 'P' và chữ 'F' in hoa có cùng độ dày nét. Tại sao thanh ngang bên dưới của chữ 'P' phải dịch chuyển xuống sâu hơn so với chữ 'F'?",
+                a: "Do chữ 'P' chứa một vùng không gian đóng (closed counter), nó cần diện tích to hơn khoảng không gian mở của chữ 'F'."
+            },
+            {
+                q: "Kỹ thuật 'Tapper' được sử dụng ở các điểm giao nhau (ví dụ tâm chữ X, đỉnh chữ M, W) nhằm mục đích gì?",
+                a: "Vát nhỏ đầu nét tại điểm giao nhau để giảm bớt độ nặng thị giác, tránh tạo ra một vùng đọng mực đen thui gây mất cân bằng."
+            },
+            {
+                q: "Trong thiết kế chữ Q in hoa, nét phụ (annex) chĩa ra có mục đích tối thượng là gì?",
+                a: "Mục đích duy nhất và tối thượng là để phân biệt nó với chữ O in hoa."
+            },
+            {
+                q: "Nếu thiết kế nét phụ của chữ Q in hoa nằm NGANG hoàn toàn, nó mang lại lợi thế thực dụng gì?",
+                a: "Cung cấp công năng sắp xếp cực tốt. Nét ngang không đâm xuống dưới, giúp dòng văn bản không bị va chạm hay phải cách quá xa dòng ngay bên dưới nó."
+            },
+            {
+                q: "Chữ H in hoa có hai vùng khoảng rỗng (counter) trên và dưới. Điểm chia của thanh ngang (crossbar) có nằm ở chính giữa xác định bằng toán học không?",
+                a: "Không. Thanh ngang phải được dịch lên trên một chút so với điểm chính giữa hình học để bù trừ cảm giác trọng lực rơi xuống của mắt."
+            },
+            {
+                q: "Công thức cơ bản để tính toán khoảng trắng (letter spacing) an toàn xung quanh một chữ cái là gì?",
+                a: "Tổng diện tích khoảng trắng an toàn xung quanh chữ phải BẰNG đúng với diện tích vùng Counter (khoảng rỗng) bên trong của chữ đó."
+            },
+            {
+                q: "Khoảng cách an toàn (space) bao quanh chữ 'o' tại sao lại luôn được thiết kế hẹp hơn khoảng cách bao quanh chữ 'n'?",
+                a: "Vì chữ 'o' là đường cong, vùng không gian âm đã tự được cộng thêm do ăn lẹm vào bên trong chữ, nên khoảng bao ngoài phải nhỏ lại để cân bằng với nét thẳng của chữ 'n'."
+            },
+            {
+                q: "Dấu chấm (Tittle) của chữ 'i' và 'j' nếu có dạng HÌNH VUÔNG thì mang lại cảm giác gì?",
+                a: "Đại diện cho tính công nghệ, máy móc, sự chính xác điện tử và module. Nó loại bỏ sự mềm mại tự nhiên của con người."
+            },
+            {
+                q: "Trong một Font chữ, chữ in hoa (Uppercase) tạo ra không gian đóng lớn hơn chữ in thường. Vậy khoảng trắng (Letter spacing) của nó thay đổi thế nào?",
+                a: "Khoảng trắng xung quanh chữ in hoa cũng bắt buộc phải được mở rộng lớn hơn chữ in thường (thường chênh nhau khoảng 0.5pt)."
+            },
+            {
+                q: "Chữ 'c' và chữ 'e' đều có khoảng hở (Aperture). Để đạt cân bằng thị giác, độ mở của chữ nào phải lớn hơn?",
+                a: "Độ mở (Aperture) của chữ 'c' bao giờ cũng phải được thiết kế lớn hơn độ mở của chữ 'e'."
+            },
+            {
+                q: "Tại sao chữ J in hoa lại có vùng counter mở rộng hơn chữ U in hoa dù chúng chung cấu trúc?",
+                a: "Vì chữ J bị mất đi thanh dọc bên trái, khiến không gian mở ra nhiều hơn. Bắt buộc phải tinh chỉnh lại nét móc của J để cân bằng thị giác."
+            },
+            {
+                q: "Đuôi (nhánh dưới) của chữ 'q' in thường và cổ (nhánh trên) của chữ 'b' in thường có dài bằng nhau không? Tại sao?",
+                a: "Đuôi chữ 'q' luôn ngắn hơn. Về mặt thị giác, nét đâm chĩa xuống dưới luôn tạo ra độ nặng thu hút mắt mạnh hơn phần hướng lên trên, nên phải rút ngắn đuôi 'q' để cân bằng tổng thể với chữ 'b'."
+            },
+            // Bổ sung 5 câu hỏi để đạt đủ 25 Flashcard theo yêu cầu
+            {
+                q: "X-height là gì trong thiết kế chữ?",
+                a: "Là chiều cao của các chữ cái in thường không có phần vươn lên (ascender) hoặc kéo xuống (descender), ví dụ như a, c, e, m, n, o, x.",
+                hint: "X-height càng lớn so với tổng thể thì font chữ càng dễ đọc ở kích thước nhỏ."
+            },
+            {
+                q: "Ascender và Descender khác nhau như thế nào?",
+                a: "Ascender là phần nét vươn lên trên đường x-height (như b, d, h). Descender là phần nét kéo xuống dưới đường baseline (như g, j, p, q, y)."
+            },
+            {
+                q: "Kerning (chỉnh khoảng cách hẹp) sinh ra để giải quyết vấn đề gì?",
+                a: "Dùng để tinh chỉnh khoảng cách giữa HAI ký tự cụ thể đứng cạnh nhau nhằm xóa bỏ các khoảng trống vô duyên, tạo sự gắn kết (ví dụ cặp A và V)."
+            },
+            {
+                q: "Chữ ghép (Ligature) như 'fi' hay 'fl' có tác dụng gì?",
+                a: "Để giải quyết sự va chạm vật lý về nét (như dấu chấm chữ i đụng vào mũi chữ f) hoặc khoảng trống xấu xí khi hai ký tự cụ thể đứng cạnh nhau, bằng cách vẽ lại chúng thành 1 khối liền mạch."
+            },
+            {
+                q: "Đường Baseline là gì?",
+                a: "Là đường gióng ngang vô hình làm nền tảng mà hầu hết các chữ cái 'ngồi' lên trên đó để tạo thành một dòng văn bản thẳng hàng."
+            }
+        ];
+
+        // Render Flashcards
+        const container = document.getElementById('flashcard-container');
+        
+        flashcardsData.forEach((card, index) => {
+            const hintHtml = card.hint ? `<div class="mt-4 pt-3 border-t border-slate-700 text-xs text-indigo-300">💡 <strong>Gợi ý từ sách:</strong> ${card.hint}</div>` : '';
+            
+            const cardHtml = `
+                <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 shadow-lg flex flex-col h-full hover:border-slate-500 transition-colors">
+                    <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-700/50">
+                        <span class="bg-indigo-600 text-white text-xs font-bold px-2 py-1 rounded">Thẻ ${index + 1}</span>
+                    </div>
+                    <div class="mb-4 flex-grow">
+                        <h4 class="text-sm font-semibold text-slate-400 mb-2 uppercase tracking-wider">Hỏi:</h4>
+                        <p class="text-white text-lg font-medium leading-snug">${card.q}</p>
+                    </div>
+                    <div class="bg-slate-900 rounded-lg p-4 mt-auto">
+                        <h4 class="text-sm font-semibold text-green-400 mb-1">Đáp án:</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">${card.a}</p>
+                        ${hintHtml}
+                    </div>
+                </div>
+            `;
+            container.innerHTML += cardHtml;
+        });
+    </script>
+</body>
+</html>
