@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bẫy Đu Trend - Báo Cáo Chiến Lược Typography</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        evergreen: {
+                            900: '#022c22',
+                            800: '#064e3b',
+                            700: '#047857',
+                        },
+                        trend: {
+                            500: '#f97316',
+                            600: '#ea580c',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* CSS Abstract Art Styles */
+        .abstract-bg {
+            position: absolute;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Hero Abstract: Clash between round orange (trend) and solid dark green square (evergreen) */
+        .art-hero-trend {
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.4) 0%, rgba(249, 115, 22, 0) 70%);
+            border-radius: 50%;
+            top: -10%;
+            right: -5%;
+            filter: blur(40px);
+            animation: pulse 6s infinite alternate;
+        }
+        .art-hero-evergreen {
+            width: 30vw;
+            height: 60vh;
+            background: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
+            clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 85%);
+            top: 20%;
+            right: 10%;
+            opacity: 0.1;
+        }
+
+        /* Hook Abstract: Wavy unstable lines vs Straight line */
+        .art-hook-wave {
+            width: 100%;
+            height: 200px;
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(234, 88, 12, 0.05) 10px, rgba(234, 88, 12, 0.05) 20px);
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        /* Case 1 Abstract: Bubbly, blobby, unstable */
+        .art-case-1 {
+            width: 300px;
+            height: 300px;
+            background: #ffedd5;
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            top: 50%;
+            left: -50px;
+            transform: translateY(-50%);
+            animation: morph 8s ease-in-out infinite;
+        }
+
+        /* Case 2 Abstract: Solid, geometric, monumental */
+        .art-case-2 {
+            width: 300px;
+            height: 400px;
+            background: repeating-linear-gradient(90deg, #ecfdf5, #ecfdf5 40px, #d1fae5 40px, #d1fae5 80px);
+            border-top: 20px solid #064e3b;
+            bottom: -50px;
+            right: -50px;
+            transform: rotate(-5deg);
+        }
+
+        /* Case 3 Abstract: Balanced intersection */
+        .art-case-3-circle {
+            width: 200px;
+            height: 200px;
+            border: 8px solid rgba(6, 78, 59, 0.1);
+            border-radius: 50%;
+            top: 20px;
+            right: 10%;
+        }
+        .art-case-3-square {
+            width: 150px;
+            height: 150px;
+            background: rgba(234, 88, 12, 0.1);
+            top: 80px;
+            right: 15%;
+            transform: rotate(45deg);
+        }
+
+        @keyframes morph {
+            0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+            34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+            67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .content-z {
+            position: relative;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-trend-500 selection:text-white">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="font-serif font-bold text-xl text-evergreen-800 tracking-tight">
+                Typo<span class="text-trend-600 italic">Strategy.</span>
+            </div>
+            <a href="#opt-in" class="bg-evergreen-800 hover:bg-evergreen-900 text-white px-5 py-2 rounded-full text-sm font-semibold transition-colors">
+                Tải Báo Cáo
+            </a>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: HERO -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-slate-50">
+        <!-- CSS Abstract Art -->
+        <div class="abstract-bg art-hero-trend"></div>
+        <div class="abstract-bg art-hero-evergreen"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative content-z">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="max-w-2xl">
+                    <span class="inline-block py-1 px-3 rounded-full bg-trend-100 text-trend-600 font-bold text-xs uppercase tracking-widest mb-6">
+                        Tài Liệu C-Level & Brand Manager
+                    </span>
+                    <h1 class="font-serif text-5xl lg:text-7xl font-black text-evergreen-900 leading-[1.1] mb-6">
+                        BẪY ĐU TREND <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-trend-500 to-trend-600 italic font-medium">Typography</span>
+                    </h1>
+                    <p class="text-xl lg:text-2xl font-medium text-slate-700 mb-4 leading-snug">
+                        Chi Phí Rebranding Khổng Lồ Cho Một Sự "Bùng Nổ" Chốc Lát!
+                    </p>
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                        Đánh đổi sự chuyên nghiệp lâu đời để lấy một thiết kế "béo nịch", bo tròn bắt trend mang lại hệ lụy gì về sau? Khám phá cách các tập đoàn tỷ đô quyết định vòng đời của logo, và tại sao một font chữ có thể tồn tại cả thế kỷ mà không tốn một xu chi phí thiết kế lại.
+                    </p>
+                    <a href="#opt-in" class="inline-flex items-center justify-center bg-trend-600 hover:bg-trend-500 text-white px-8 py-4 rounded-lg text-lg font-bold transition-all shadow-lg shadow-trend-500/30 hover:shadow-trend-500/50 hover:-translate-y-1">
+                        👉 TẢI XUỐNG BÁO CÁO (MIỄN PHÍ)
+                    </a>
+                </div>
+                
+                <!-- Hero Abstract Illustration (Visible mainly on Desktop) -->
+                <div class="hidden lg:flex relative h-[500px] w-full justify-center items-center">
+                    <!-- A visual representation of classic vs trend using CSS -->
+                    <div class="absolute left-10 top-20 text-[250px] font-serif font-black text-evergreen-900 leading-none opacity-90 drop-shadow-2xl">A</div>
+                    <div class="absolute right-20 bottom-10 text-[200px] font-sans font-black text-trend-500 leading-none opacity-80 blur-[2px] transform rotate-12 scale-y-125">a</div>
+                    <div class="absolute w-full h-1 bg-slate-300 top-1/2 -rotate-12"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: THE HOOK -->
+    <section class="relative py-24 bg-white overflow-hidden">
+        <div class="abstract-bg art-hook-wave"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative content-z text-center">
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-evergreen-900 mb-8">
+                Đu Trend Thì Dễ, <br><span class="text-trend-600 italic">Sống Sót Trăm Năm Mới Khó!</span>
+            </h2>
+            <div class="space-y-6 text-lg text-slate-600 text-left md:text-center">
+                <p>Điểm lợi của việc thiết kế logo theo xu hướng (Trend) là sự thú vị, bắt mắt và cực kỳ dễ truyền thông. Khi bạn bóp méo khối chữ, làm bo tròn trơn tuột hoặc thêm các hiệu ứng xô lệch, bạn sẽ ngay lập tức thu hút được tệp khách hàng Gen Z.</p>
+                <p class="font-semibold text-slate-800 p-6 bg-slate-50 border-l-4 border-trend-500 rounded-r-lg shadow-sm">
+                    Nhưng nhược điểm chết người của mốt là nhanh lỗi thời. Bạn có lợi về Marketing ban đầu, nhưng sẽ phải tốn hàng tỷ đồng chi phí làm mới (Rebranding) khi thế hệ khách hàng lớn lên và gu thẩm mỹ thay đổi.
+                </p>
+                <p>Ngược lại, một thương hiệu <strong class="text-evergreen-800">"Bền vững" (Evergreen)</strong> có thể tồn tại hàng thế kỷ bằng những cấu trúc hình học vững chãi, uy quyền và không bao giờ bị xô đổ bởi thời gian.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: CASE STUDIES -->
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-evergreen-700 font-bold tracking-widest uppercase text-sm">Mổ Xẻ Thị Trường Thực Tế</span>
+                <h2 class="font-serif text-4xl font-bold text-evergreen-900 mt-2">Bài Học Từ Các Tập Đoàn Lớn</h2>
+            </div>
+
+            <div class="space-y-24">
+                <!-- Case 1: Đu Trend -->
+                <div class="relative grid md:grid-cols-2 gap-12 items-center">
+                    <div class="abstract-bg art-case-1 hidden md:block"></div>
+                    <div class="content-z order-2 md:order-1 bg-white p-10 rounded-2xl shadow-xl border border-orange-100 relative">
+                        <div class="absolute -top-5 -left-5 w-12 h-12 bg-trend-500 text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">1</div>
+                        <h3 class="text-sm font-bold text-trend-600 uppercase tracking-wider mb-2">Sự Bùng Nổ Ngắn Hạn</h3>
+                        <h4 class="font-serif text-3xl font-bold text-slate-900 mb-4">Chiến Lược Đu Trend</h4>
+                        <p class="text-slate-600 mb-6 leading-relaxed"><strong>Ngân hàng số CAKE:</strong> Cake muốn tạo ra sự "boom" về mặt truyền thông để thu hút khách hàng trẻ. Họ đã chọn font siêu dày, viết in hoa, ép chặt kerning và bo tròn mọi góc cạnh để trở nên thân thiện tối đa.</p>
+                        <div class="bg-red-50 text-red-800 p-4 rounded-lg text-sm leading-relaxed border border-red-100">
+                            <strong>Hậu quả đánh đổi:</strong> Sự thân thiện "béo nịch" này đập thẳng vào mắt, nhưng lại làm mất đi sự nghiêm túc, uy quyền và độ dày lịch sử vốn có của ngành tài chính. Khi tệp khách hàng trưởng thành, thiết kế này sẽ lập tức bộc lộ sự thiếu chiều sâu và buộc phải định vị lại. Tương tự với TopZone.
+                        </div>
+                    </div>
+                    <!-- Abstract Visual Representation instead of image -->
+                    <div class="order-1 md:order-2 content-z flex justify-center items-center h-64 bg-gradient-to-br from-orange-100 to-rose-100 rounded-2xl">
+                         <div class="font-sans font-black text-8xl text-trend-500 tracking-tighter" style="border-radius: 50px; background: white; padding: 20px 40px; box-shadow: 10px 10px 0px #ea580c;">cake</div>
+                    </div>
+                </div>
+
+                <!-- Case 2: Bền Vững -->
+                <div class="relative grid md:grid-cols-2 gap-12 items-center">
+                    <div class="abstract-bg art-case-2 hidden md:block"></div>
+                    <!-- Abstract Visual Representation -->
+                    <div class="content-z flex justify-center items-center h-64 bg-gradient-to-br from-slate-800 to-evergreen-900 rounded-2xl">
+                        <div class="font-serif font-normal text-6xl text-white tracking-[0.2em] uppercase border-b border-white/30 pb-4">Lancôme</div>
+                    </div>
+                    <div class="content-z bg-white p-10 rounded-2xl shadow-xl border border-emerald-100 relative">
+                        <div class="absolute -top-5 -right-5 w-12 h-12 bg-evergreen-700 text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">2</div>
+                        <h3 class="text-sm font-bold text-evergreen-700 uppercase tracking-wider mb-2">Di Sản Trăm Năm</h3>
+                        <h4 class="font-serif text-3xl font-bold text-slate-900 mb-4">Chiến Lược Bền Vững</h4>
+                        <p class="text-slate-600 mb-4 leading-relaxed"><strong>Đế chế sắc đẹp Lancôme:</strong> Ra đời năm 1935, Lancôme là một trong số hiếm hoi các thương hiệu không hề thay đổi logo suốt gần một thế kỷ. Bằng cách dùng font Garamond (dòng Transitional Serif kinh điển), họ duy trì sự hoành tráng, lâu đời, khí chất sang chảnh của Pháp.</p>
+                        <p class="text-slate-600 leading-relaxed"><strong>"Khối bê tông" Volvo:</strong> Hãng xe an toàn nhất thế giới dùng dòng font Slab Serif với x-height thấp, nét siêu dày và chân đế vuông vức. Cấu trúc này vững chãi như một khối bê tông, tạo ra sự ổn định tuyệt đối và vĩnh cửu.</p>
+                    </div>
+                </div>
+
+                <!-- Case 3: Điều chỉnh -->
+                <div class="relative grid md:grid-cols-2 gap-12 items-center">
+                    <div class="abstract-bg art-case-3-circle hidden md:block"></div>
+                    <div class="abstract-bg art-case-3-square hidden md:block"></div>
+                    <div class="content-z order-2 md:order-1 bg-white p-10 rounded-2xl shadow-xl border border-slate-200 relative">
+                        <div class="absolute -top-5 -left-5 w-12 h-12 bg-slate-800 text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">3</div>
+                        <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Tìm Lại Di Sản</h3>
+                        <h4 class="font-serif text-3xl font-bold text-slate-900 mb-4">Sự Điều Chỉnh Tinh Tế</h4>
+                        <p class="text-slate-600 mb-4 leading-relaxed"><strong>Học viện Âm nhạc Hoàng gia Anh (RAM):</strong></p>
+                        <p class="text-slate-600 leading-relaxed">Để cân bằng lại tính "máy móc" của logo cũ, RAM đã đổi thiết kế chữ <strong class="font-serif text-xl">a</strong> từ 1 tầng (hiện đại, thực dụng) sang chữ <strong class="font-serif text-xl italic">a</strong> 2 tầng (cổ điển, truyền thống). Sự thay đổi siêu nhỏ này giúp thương hiệu lấy lại sự phức tạp, lịch sử và đẳng cấp học thuật của Hoàng gia.</p>
+                    </div>
+                     <!-- Abstract Visual Representation -->
+                     <div class="order-1 md:order-2 content-z flex justify-center items-center gap-8 h-64 bg-slate-100 rounded-2xl border-2 border-dashed border-slate-300">
+                        <div class="text-[120px] font-sans font-light text-slate-400 leading-none">a</div>
+                        <i class="fa-solid fa-arrow-right text-2xl text-trend-500"></i>
+                        <div class="text-[120px] font-serif font-italic text-evergreen-900 leading-none">a</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: LEAD MAGNET / OPT-IN -->
+    <section id="opt-in" class="py-24 bg-evergreen-900 text-white relative overflow-hidden">
+        <!-- Abstract Background Lines -->
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 30px 30px;"></div>
+        
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-5 gap-12 items-center">
+                <div class="lg:col-span-3">
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6 text-emerald-50">
+                        Bạn Sẽ Tìm Thấy Gì Trong Checklist Này?
+                    </h2>
+                    <p class="text-emerald-100 text-lg mb-8">Trang bị ngay tư duy của một Giám đốc Thương hiệu (Brand Manager) để ra quyết định thiết kế:</p>
+                    
+                    <ul class="space-y-6">
+                        <li class="flex items-start">
+                            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mt-1 mr-4">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            <div>
+                                <strong class="block text-xl font-serif text-white mb-1">Khung đánh giá Vòng đời</strong>
+                                <span class="text-emerald-100/80">Xác định xem thương hiệu của bạn đang cần sự "Bùng nổ truyền thông" hay "Độ dày lịch sử".</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mt-1 mr-4">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            <div>
+                                <strong class="block text-xl font-serif text-white mb-1">Danh sách Font Evergreen</strong>
+                                <span class="text-emerald-100/80">Các dòng chữ Transitional và Slab Serif có năng lực chống lại sự bào mòn của xu hướng.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mt-1 mr-4">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            <div>
+                                <strong class="block text-xl font-serif text-white mb-1">Ranh giới của sự Thân thiện</strong>
+                                <span class="text-emerald-100/80">Thân thiện quá đà sẽ khiến thiết kế trở nên rẻ tiền. Học cách kết hợp sự tối giản với khoảng trắng (Kerning) để nâng tầm định giá.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-xl p-8 shadow-2xl relative">
+                        <div class="absolute -top-4 -right-4 bg-trend-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide transform rotate-12 shadow-md">
+                            Miễn Phí 100%
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Nhận Báo Cáo Ngay</h3>
+                        <p class="text-slate-500 text-sm mb-6">Đừng để 5 năm nữa phải tốn tiền thiết kế lại toàn bộ hệ thống nhận diện!</p>
+                        
+                        <form class="space-y-4" onsubmit="event.preventDefault(); alert('Cảm ơn bạn! Tài liệu đã được gửi vào Email.');">
+                            <div>
+                                <label class="sr-only">Họ và Tên</label>
+                                <input type="text" placeholder="Họ và Tên của bạn" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-trend-500 focus:border-trend-500 outline-none transition-all text-slate-800 placeholder-slate-400">
+                            </div>
+                            <div>
+                                <label class="sr-only">Email công việc</label>
+                                <input type="email" placeholder="Email công việc của bạn" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-trend-500 focus:border-trend-500 outline-none transition-all text-slate-800 placeholder-slate-400">
+                            </div>
+                            <button type="submit" class="w-full bg-trend-600 hover:bg-trend-700 text-white font-bold py-4 rounded-lg transition-colors shadow-lg shadow-trend-600/30">
+                                GỬI BÁO CÁO CHO TÔI 👉
+                            </button>
+                        </form>
+                        <p class="text-center text-xs text-slate-400 mt-4">
+                            <i class="fa-solid fa-lock mr-1"></i> Thông tin của bạn được bảo mật an toàn.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: FLASHCARDS -->
+    <section class="py-24 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <h2 class="font-serif text-4xl font-bold text-slate-900 mb-4">🃏 Flashcard Ôn Tập Nhanh</h2>
+                <p class="text-lg text-slate-600">15 Câu hỏi cốt lõi để test tư duy thiết kế chữ. Sử dụng ôn luyện nội bộ hoặc làm tài liệu tra cứu nhanh định kỳ.</p>
+            </div>
+
+            <!-- Flashcard Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Javascript will populate this grid -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center border-t border-slate-800">
+        <p>© 2024 TypoStrategy Report. Dành riêng cho C-Level & Brand Manager.</p>
+    </footer>
+
+    <!-- Script to render Flashcards -->
+    <script>
+        const flashcardsData = [
+            { q: "Điểm yếu lớn nhất của các font chữ được thiết kế theo dạng 'Bắt trend' (Xu hướng) là gì?", a: "Rất nhanh lỗi thời. Lợi thế về Marketing ban đầu rất lớn nhưng sẽ tốn chi phí khổng lồ để làm mới (Rebranding) về sau.", h: "Trend mang lại sự thú vị, bắt mắt nhưng không có độ ổn định dài hạn." },
+            { q: "Để tạo ra hình ảnh 'Bền vững, Ổn định', thương hiệu xe Volvo đã sử dụng dòng font nào?", a: "Dòng Slab Serif với x-height thấp, chân vuông vức.", h: "Tạo ra cấu trúc vững chãi như một khối bê tông an toàn tuyệt đối." },
+            { q: "Tại sao hãng mỹ phẩm Lancôme từ 1935 tới nay chưa từng thay đổi Logo?", a: "Sử dụng font Garamond (Transitional Serif kinh điển), tạo ra khí chất sang chảnh, quyền lực, hoành tráng và cao cấp bất biến.", h: "Thiết kế này sinh ra để trường tồn, mang đậm phong cách Pháp." },
+            { q: "Ngân hàng số Cake đánh đổi điều gì khi chọn font chữ siêu dày, bo tròn, béo nịch?", a: "Đánh đổi sự nghiêm túc và độ dày lịch sử để lấy sự bùng nổ truyền thông, thu hút giới trẻ (Gen Z).", h: "Một thương hiệu non trẻ thường hy sinh chiều sâu để tạo sự chú ý tức thì." },
+            { q: "Nếu thiết kế thương hiệu với tính cách 'Thân thiện quá đà' (tròn xoe, không góc cạnh), rủi ro lớn nhất là gì?", a: "Thiết kế mất đi độ sâu logic, mang lại cảm giác bình dân, rẻ tiền và thiếu tính chuyên nghiệp.", h: "Chỉ phù hợp cho quán ăn vỉa hè hoặc ứng dụng tiêu dùng nhanh." },
+            { q: "Sử dụng chữ IN HOA toàn bộ kết hợp với Nét sắc nhọn thường đại diện cho tính cách gì?", a: "Sự chuyên nghiệp, kỷ luật, nghiêm túc, ổn định và uy quyền.", h: "Các tập đoàn đa quốc gia và ngân hàng truyền thống thường sử dụng để tạo độ tin cậy." },
+            { q: "Dòng font 'Transitional Bracketed' (ví dụ: font Trajan) thường được sử dụng cho chủ đề nào?", a: "Hoành tráng, sử thi, cổ điển, sang trọng và uy quyền.", h: "Thường thấy trên poster phim lịch sử hoặc đền thờ La Mã cổ đại." },
+            { q: "Tại sao thiết kế chữ 'Phổ thông, Đại chúng' lại cần nét đậm và kerning ép chặt?", a: "Để tối ưu hóa công năng Sale, tạo khối vững chắc đập ngay vào mắt người đi đường, tiết kiệm diện tích.", h: "Các chuỗi siêu thị như Lotte Mart luôn ưu tiên cấu trúc này để kích thích mua sắm." },
+            { q: "Học viện Âm nhạc Hoàng gia Anh thay đổi chữ 'a' 1 tầng thành 'a' 2 tầng nhằm mục đích gì?", a: "Để trung hòa lại cảm giác máy móc, khôi phục nét truyền thống, sự phức tạp và yếu tố lịch sử của học viện.", h: "Chữ 'a' 2 tầng đại diện cho sự thủ công và lịch sử lâu đời." },
+            { q: "Làm thế nào để phân biệt chữ 'O' chuẩn với một hình tròn toán học vô hồn?", a: "Nó là hình oval, phải áp dụng 'Overshoot' (nhô cao hơn một chút) để mắt người thấy nó bằng với chữ vuông (như H).", h: "Mắt người luôn đánh lừa toán học, O phải nhô cao để tạo cân bằng." },
+            { q: "Kỹ thuật 'Tapper' (Vát nét) giúp ích gì cho vòng đời của một font chữ?", a: "Giảm bớt độ nặng thị giác tại các điểm giao nhau, giúp chữ cân bằng, không bị dấp dính khi in ấn kích thước nhỏ.", h: "Sự mượt mà này giúp chữ đọc trơn tru và giữ được vẻ chuyên nghiệp lâu dài." },
+            { q: "Thương hiệu TopZone ứng dụng phong cách Typography nào?", a: "Xu hướng (Trend), tự do, nhiều hiệu ứng để đánh mạnh vào thị trường công nghệ giới trẻ.", h: "Đối lập hoàn toàn với tính Bền vững, bảo thủ." },
+            { q: "Chữ viết tay (Calligraphy) có quy tắc gì về nét thanh nét đậm ảnh hưởng tới Typography hiện đại?", a: "Nét hất từ dưới lên trên luôn mảnh (nhẹ lực) hơn nét kéo từ trên xuống (nặng lực).", h: "Áp dụng cho V, W, Y, A để duy trì tính tự nhiên và thanh lịch." },
+            { q: "Lỗi 'Trọng lực' ở chữ B, S, 8 là gì và xử lý thế nào?", a: "Nửa trên không bao giờ được to bằng hoặc hơn nửa dưới. Phải làm nửa trên nhỏ hơn để chữ không bị cảm giác 'đổ gục'.", h: "Cân bằng thị giác luôn ưu tiên phần chân đế vững vàng." },
+            { q: "Kerning (khoảng cách chữ) rộng mang lại cảm giác gì mà các hãng xa xỉ luôn áp dụng?", a: "Tạo ra sự tĩnh lặng, thư giãn, tinh tế và đắt tiền (hy sinh tính thực dụng, tiết kiệm không gian).", h: "Đó là đặc quyền của giới thượng lưu, tách biệt khỏi sự ồn ào của hàng chợ." }
+        ];
+
+        const container = document.querySelector('.grid-cols-1.md\\:grid-cols-2');
+        
+        flashcardsData.forEach((card, index) => {
+            const el = document.createElement('div');
+            el.className = 'bg-white rounded-xl p-6 border-t-4 border-evergreen-700 shadow-md hover:shadow-xl transition-shadow flex flex-col relative overflow-hidden group';
+            
+            // Decorative background icon
+            el.innerHTML = `
+                <i class="fa-solid fa-quote-right absolute -top-4 -right-4 text-6xl text-slate-50 opacity-50 transform rotate-12 transition-transform group-hover:rotate-0 group-hover:scale-110"></i>
+                
+                <div class="mb-4 relative z-10">
+                    <span class="inline-block bg-slate-100 text-slate-500 text-xs font-bold px-2 py-1 rounded uppercase tracking-wider mb-3">Thẻ ${index + 1}</span>
+                    <h3 class="font-bold text-slate-800 text-lg leading-snug">${card.q}</h3>
+                </div>
+                
+                <div class="mt-auto pt-4 border-t border-dashed border-slate-200 relative z-10">
+                    <p class="text-slate-600 text-sm mb-4 leading-relaxed">${card.a}</p>
+                    <div class="bg-trend-50 text-trend-700 p-3 rounded text-xs italic flex items-start gap-2 border border-trend-100">
+                        <i class="fa-solid fa-lightbulb mt-0.5 text-trend-500"></i>
+                        <span><strong>Gợi ý:</strong> ${card.h}</span>
+                    </div>
+                </div>
+            `;
+            container.appendChild(el);
+        });
+    </script>
+</body>
+</html>
