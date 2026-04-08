@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tư Duy Thiết Kế Chữ - Bí Mật Typography</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    colors: {
+                        premium: '#1a1a1a',
+                        gold: '#d4af37',
+                        accent: '#ff3366',
+                        sale: '#ffe600'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom CSS Abstract Art for Visuals */
+        .art-hero {
+            background: radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 20% 80%, rgba(255, 51, 102, 0.1) 0%, transparent 40%);
+        }
+        .art-premium {
+            background: #000;
+            background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        .hairline-art {
+            position: absolute;
+            width: 1px;
+            height: 150%;
+            background: linear-gradient(to bottom, transparent, rgba(212, 175, 55, 0.8), transparent);
+            transform: rotate(15deg);
+        }
+        .blob-sale {
+            animation: pulse 4s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800 antialiased selection:bg-gold selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <div class="w-8 h-8 bg-premium text-white flex items-center justify-center font-serif font-bold text-xl rounded">A</div>
+                    <span class="font-bold text-xl tracking-tight">Typo<span class="text-gold">Logic</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#vande" class="text-gray-600 hover:text-premium font-medium transition">Vấn đề</a>
+                    <a href="#giaiphap" class="text-gray-600 hover:text-premium font-medium transition">Nội dung Sách</a>
+                    <a href="#quatang" class="text-gray-600 hover:text-premium font-medium transition">Quà tặng (Lead Magnet)</a>
+                </div>
+                <div>
+                    <a href="#muahang" class="bg-premium text-white px-6 py-2.5 rounded-full font-semibold hover:bg-gray-800 transition shadow-lg shadow-gray-900/20">Sở Hữu Ngay</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-premium text-white overflow-hidden art-hero">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-gold rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 mb-8 backdrop-blur-sm">
+                    <span class="flex h-2 w-2 rounded-full bg-gold"></span>
+                    <span class="text-sm font-medium text-gray-200">Dành cho Designer, Marketer & Chủ Doanh Nghiệp</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight">
+                    AI & Canva cho bạn <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-orange-400">Tốc Độ.</span><br>
+                    Cuốn sách này cho bạn <span class="font-serif italic font-normal text-gold">Logic.</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-10 leading-relaxed font-light">
+                    Hàng ngàn phương án thiết kế được tạo ra trong 1 giây, nhưng chỉ người nắm vững <strong class="text-white font-semibold">Tâm Lý Học Thị Giác</strong> & <strong class="text-white font-semibold">Cấu Tạo Chữ</strong> mới biết chọn phương án nào để <span class="border-b-2 border-gold">Bán Được Hàng</span>.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#muahang" class="px-8 py-4 text-lg font-bold bg-gold text-premium rounded-full hover:bg-yellow-400 transition-transform hover:-translate-y-1 shadow-xl shadow-gold/20">
+                        Sở hữu Bí Quyết Ngay
+                    </a>
+                    <a href="#vande" class="px-8 py-4 text-lg font-medium border border-gray-500 text-white rounded-full hover:bg-white/10 transition">
+                        Khám phá nội dung
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Problem (Optical Balance & Template Trap) -->
+    <section id="vande" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <h2 class="text-sm font-bold tracking-widest text-accent uppercase mb-3">Lỗi Sai Phổ Biến</h2>
+                <h3 class="text-3xl md:text-5xl font-bold text-premium mb-6">Tại sao dùng đúng Template,<br>thiết kế trông vẫn "Phèn"?</h3>
+                <p class="text-lg text-gray-600">Bạn đã bao giờ thắc mắc tại sao mình dùng cùng một font chữ, cùng một phần mềm, nhưng sản phẩm cuối cùng lại thiếu đi sự tinh tế và đắt tiền của các thương hiệu lớn?</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Abstract Art: Overshoot/Optical Balance -->
+                <div class="relative h-96 bg-gray-100 rounded-3xl overflow-hidden p-8 flex items-center justify-center border border-gray-200 shadow-inner group">
+                    <div class="absolute inset-0 bg-grid-gray-200/50 bg-[length:20px_20px]"></div>
+                    <!-- Mathematical align vs Optical Align -->
+                    <div class="relative z-10 flex gap-4 items-end">
+                        <div class="flex flex-col items-center">
+                            <div class="text-sm text-gray-400 mb-2">Canva/Toán học</div>
+                            <div class="flex items-end border-y border-red-400/50 py-0">
+                                <div class="w-16 h-16 bg-gray-800"></div> <!-- H -->
+                                <div class="w-16 h-16 rounded-full bg-gray-800"></div> <!-- O -->
+                                <div class="w-16 h-16 bg-gray-800" style="clip-path: polygon(50% 0%, 0% 100%, 100% 100%);"></div> <!-- A -->
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-center group-hover:scale-105 transition duration-500">
+                            <div class="text-sm font-bold text-accent mb-2">Chuyên gia (Overshoot)</div>
+                            <div class="flex items-end border-y border-green-500/50 relative py-0">
+                                <div class="w-16 h-16 bg-premium"></div>
+                                <div class="w-[68px] h-[68px] rounded-full bg-premium -mb-[2px] -mt-[2px]"></div> <!-- O nhô lên/xuống -->
+                                <div class="w-[70px] h-[70px] bg-premium -mb-[2px] -mt-[2px]" style="clip-path: polygon(50% 0%, 0% 100%, 100% 100%);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="space-y-8">
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent font-bold text-xl">1</div>
+                            <div>
+                                <h4 class="text-xl font-bold text-premium mb-2">Mắt người đánh lừa toán học</h4>
+                                <p class="text-gray-600">Chữ O và chữ A không thể cao bằng chữ H. Bạn phải học cách dùng "Overshoot" (kéo nhô đỉnh) để cân bằng thị giác (Optical Balance).</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent font-bold text-xl">2</div>
+                            <div>
+                                <h4 class="text-xl font-bold text-premium mb-2">Cái bẫy của sự "Thân Thiện"</h4>
+                                <p class="text-gray-600">Dùng font bo tròn (Rounded) cho ngành tài chính, công nghệ cao sẽ khiến định vị thương hiệu bị "rẻ tiền hóa", biến tập đoàn thành tiệm tạp hóa.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent font-bold text-xl">3</div>
+                            <div>
+                                <h4 class="text-xl font-bold text-premium mb-2">Font Quảng Cáo vs Font Văn Bản</h4>
+                                <p class="text-gray-600">Đem Font Văn Bản đi chạy Ads sẽ tốn diện tích và kém nổi bật. Đem Font Marketing đi viết văn bản dài sẽ khiến khách hàng mỏi mắt, bỏ đi.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Split Screen Psychology (Premium vs Sale) -->
+    <section class="py-0 flex flex-col md:flex-row min-h-[80vh]">
+        <!-- Premium Side -->
+        <div class="w-full md:w-1/2 art-premium relative p-12 lg:p-24 flex flex-col justify-center text-white overflow-hidden group">
+            <div class="hairline-art left-1/4 group-hover:translate-x-4 transition duration-1000"></div>
+            <div class="hairline-art right-1/3 group-hover:-translate-x-4 transition duration-1000"></div>
+            
+            <div class="relative z-10">
+                <p class="text-gold tracking-[0.3em] text-sm font-semibold uppercase mb-4">Chiến Lược Định Giá</p>
+                <h2 class="font-serif text-5xl lg:text-7xl mb-6 font-light leading-tight">Sang trọng <br>& Xa xỉ</h2>
+                <div class="h-px w-24 bg-gradient-to-r from-gold to-transparent mb-8"></div>
+                <ul class="space-y-4 font-light text-lg text-gray-300">
+                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Tương phản nét cực gắt (Hairline)</li>
+                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Kerning siêu rộng tạo không gian</li>
+                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Trục chữ thẳng tắp, kỷ luật</li>
+                </ul>
+                <div class="mt-12 font-serif text-6xl text-white/90 tracking-[0.2em] font-light">
+                    M E R C E D E S
+                </div>
+            </div>
+        </div>
+
+        <!-- Sale/Marketing Side -->
+        <div class="w-full md:w-1/2 bg-sale relative p-12 lg:p-24 flex flex-col justify-center text-premium overflow-hidden group">
+            <div class="absolute -right-20 -top-20 w-96 h-96 bg-yellow-300 rounded-full mix-blend-multiply opacity-50 blob-sale"></div>
+            
+            <div class="relative z-10">
+                <p class="text-premium/60 font-bold tracking-widest text-sm uppercase mb-4">Chiến Lược Thực Dụng</p>
+                <h2 class="font-sans font-extrabold text-5xl lg:text-7xl mb-6 uppercase tracking-tighter leading-none">Bắt mắt <br>& Bán hàng</h2>
+                <div class="h-2 w-24 bg-premium mb-8"></div>
+                <ul class="space-y-4 font-bold text-lg text-premium/80">
+                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-premium transform rotate-45"></span> Nét siêu dày, không tương phản</li>
+                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-premium transform rotate-45"></span> Kerning ép chặt tạo khối đồ họa</li>
+                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-premium transform rotate-45"></span> X-height cao tối ưu diện tích</li>
+                </ul>
+                <div class="mt-12 font-sans text-8xl font-black text-premium tracking-tighter leading-none">
+                    SALE<br>50%
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content / Logic 3 Steps -->
+    <section id="giaiphap" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <h2 class="text-sm font-bold tracking-widest text-premium uppercase mb-3">Lộ trình Tư Duy</h2>
+                <h3 class="text-3xl md:text-5xl font-bold text-premium mb-6">Công thức 3 Bước Chọn Font<br>như Chuyên Gia</h3>
+                <p class="text-lg text-gray-600">Đừng cuộn chuột tìm font theo cảm tính nữa. Đây là công thức toán học giúp bạn bảo vệ thiết kế trước mọi khách hàng khó tính nhất.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:-translate-y-2 transition duration-300">
+                    <div class="w-14 h-14 bg-gray-100 rounded-xl flex items-center justify-center text-2xl font-bold text-premium mb-6">01</div>
+                    <h4 class="text-xl font-bold text-premium mb-4">Xác định Tính cách</h4>
+                    <p class="text-gray-600">Phân tích trải nghiệm thương hiệu mang lại. Là Trẻ trung, Năng động hay Chững chạc, Tin cậy? Xa xỉ hay Đại chúng bình dân?</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:-translate-y-2 transition duration-300 relative">
+                    <div class="absolute top-1/2 -right-6 w-12 h-12 bg-white rounded-full border border-gray-100 hidden md:flex items-center justify-center z-10 shadow-sm"><svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
+                    <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center text-2xl font-bold text-accent mb-6">02</div>
+                    <h4 class="text-xl font-bold text-premium mb-4">Dịch ra Thông số Kỹ thuật</h4>
+                    <p class="text-gray-600">Đây là kỹ năng "Ăn tiền". Chuyển cảm xúc thành Toán học: Muốn tin cậy -> Dùng chân vuông (Slab), x-height thấp. Muốn Marketing -> In hoa, nét dày, kerning hẹp.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gold hover:-translate-y-2 transition duration-300 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-gold text-premium text-xs font-bold px-3 py-1 rounded-bl-lg">Thực chiến</div>
+                    <div class="w-14 h-14 bg-gold/20 rounded-xl flex items-center justify-center text-2xl font-bold text-gold mb-6">03</div>
+                    <h4 class="text-xl font-bold text-premium mb-4">Chọn Dòng Font</h4>
+                    <p class="text-gray-600">Khi đã có bản "thiết kế kỹ thuật" trong đầu, việc áp dụng vào 6 Dòng Font Cốt Lõi (Serif, Geometric Sans, Mono...) chỉ tốn của bạn chưa đến 1 phút.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Magnets / Bonuses -->
+    <section id="quatang" class="py-24 bg-premium text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-white/5 skew-x-12 transform origin-top"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row items-center justify-between mb-16 gap-8">
+                <div class="max-w-2xl">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-4">Bộ 5 Cẩm Nang Đặc Quyền</h2>
+                    <p class="text-gray-400 text-lg">Được trích xuất từ giáo trình FPT Arena. Bộ tài liệu (Lead Magnets) giúp bạn thấu hiểu thuật toán cấu tạo nét và chiến lược định giá thương hiệu.</p>
+                </div>
+                <div class="bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/20 text-center">
+                    <p class="text-sm text-gray-300 uppercase tracking-widest mb-1">Tổng trị giá quà tặng</p>
+                    <p class="text-4xl font-black text-gold">2.500.000đ</p>
+                    <p class="text-sm mt-1">MIỄN PHÍ KHI MUA SÁCH</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- LM 1 -->
+                <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 hover:border-gold transition group">
+                    <div class="text-gold mb-4"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg></div>
+                    <h4 class="text-lg font-bold mb-2">Bảng tra cứu Tính Cách Thương Hiệu</h4>
+                    <p class="text-sm text-gray-400">Mapping 6 dòng font với 50 đặc điểm tính cách. Nhìn là biết dùng cho nhãn hàng nào.</p>
+                </div>
+                <!-- LM 2 -->
+                <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 hover:border-gold transition group">
+                    <div class="text-accent mb-4"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg></div>
+                    <h4 class="text-lg font-bold mb-2">Báo cáo Giải mã Rebranding</h4>
+                    <p class="text-sm text-gray-400">Vì sao Vietcombank, Agribank, Mercedes đồng loạt đổi font? Phân tích chiến lược Tech-shift & Authority-shift.</p>
+                </div>
+                <!-- LM 3 -->
+                <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 hover:border-gold transition group">
+                    <div class="text-green-400 mb-4"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                    <h4 class="text-lg font-bold mb-2">Bí kíp Thiết kế Định giá</h4>
+                    <p class="text-sm text-gray-400">Điều chỉnh Kerning, Contrast, X-height để thao túng cảm giác Sang trọng xa xỉ hay Bình dân đại chúng.</p>
+                </div>
+                <!-- LM 4 -->
+                <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 hover:border-gold transition group">
+                    <div class="text-blue-400 mb-4"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></div>
+                    <h4 class="text-lg font-bold mb-2">Thuật toán Cấu tạo Nét</h4>
+                    <p class="text-sm text-gray-400">Soi kính lúp vào 5 tiểu tiết thao túng tâm lý: Terminal cắt chéo, Aperture mở rộng, Inktrap thô sơ.</p>
+                </div>
+                <!-- LM 5 -->
+                <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 hover:border-gold transition group">
+                    <div class="text-red-500 mb-4"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg></div>
+                    <h4 class="text-lg font-bold mb-2">Cái bẫy của sự Thân Thiện</h4>
+                    <p class="text-sm text-gray-400">Khi nào font bo tròn (Rounded) khiến thiết kế của bạn biến thành "rẻ tiền, thiếu chiều sâu"?</p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-gold to-yellow-600 rounded-2xl p-6 flex items-center justify-center text-center">
+                    <h4 class="text-xl font-bold text-premium">+ Tặng kèm 50 Prompts AI Midjourney tạo Mockup Font Thực chiến.</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing / CTA -->
+    <section id="muahang" class="py-24 bg-white relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-premium mb-6">Trang bị "Bộ Não" cho Công cụ AI của bạn ngay hôm nay.</h2>
+            <p class="text-xl text-gray-600 mb-12">Cuốn sách đúc kết hàng ngàn giờ nghiên cứu lịch sử Typography và hàng trăm Case Study phân tích cấu tạo chữ. Đừng thiết kế mù quáng nữa!</p>
+            
+            <div class="bg-white border-2 border-premium rounded-3xl p-8 md:p-12 shadow-2xl relative">
+                <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-accent text-white font-bold px-6 py-2 rounded-full uppercase tracking-wider text-sm">
+                    Ưu đãi ra mắt
+                </div>
+                <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div class="text-left">
+                        <h3 class="text-2xl font-bold text-premium mb-2">Cuốn Sách: Tư Duy Logic Typography</h3>
+                        <p class="text-gray-500 mb-4">+ Trọn bộ 5 Cẩm nang (Lead Magnet) & Prompts AI</p>
+                        <div class="flex items-baseline gap-3">
+                            <span class="text-5xl font-black text-premium">499.000đ</span>
+                            <span class="text-xl text-gray-400 line-through">1.200.000đ</span>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-auto">
+                        <button class="w-full md:w-auto px-10 py-5 bg-premium text-white text-xl font-bold rounded-xl hover:bg-gray-800 transition transform hover:scale-105 shadow-xl">
+                            Đặt Mua Ngay
+                        </button>
+                        <p class="text-sm text-gray-400 mt-3 text-center">Bảo hành nội dung 100% | Thanh toán an toàn</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 py-12 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex justify-center items-center gap-2 mb-4">
+                <div class="w-6 h-6 bg-premium text-white flex items-center justify-center font-serif font-bold text-xs rounded">A</div>
+                <span class="font-bold text-lg tracking-tight text-premium">Typo<span class="text-gold">Logic</span></span>
+            </div>
+            <p class="text-gray-500">Thiết kế nền tảng với logic thiết kế chữ. Ứng dụng thực chiến & Marketing nội tại.</p>
+            <p class="text-gray-400 text-sm mt-8">© 2026 TypoLogic & FPT Arena Concept. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
