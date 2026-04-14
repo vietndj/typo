@@ -568,5 +568,35 @@
         <p class="text-gray-600 text-sm">&copy; 2026 Micro-Typography Dictionary. All rights reserved.</p>
     </footer>
 
+
+
+<script id="cms-pin-widget">
+  if(localStorage.getItem('cms_auth') === 'granted') {
+    const path = window.location.pathname.split('/').filter(Boolean);
+    let repo = 'vietndj.github.io', file = 'index.html';
+    if (path.length > 1) { repo = path[0]; file = path.pop(); }
+    else if (path.length === 1) { if (path[0].endsWith('.html')) file = path[0]; else repo = path[0]; }
+    const fileKey = repo + '/' + decodeURIComponent(file);
+    let isPinned = false;
+    try { const dbStr = localStorage.getItem('cms_repo_data'); if(dbStr){ const db = JSON.parse(dbStr); if(Array.isArray(db.pinnedDataCache) && db.pinnedDataCache.includes(fileKey)) isPinned = true; } } catch(e){}
+    const btn = document.createElement('a');
+    btn.href = 'https://vietndj.github.io/?' + (isPinned ? 'unpin=' : 'pin=') + encodeURIComponent(fileKey);
+    btn.innerHTML = isPinned ? '❌ Bỏ ghim' : '📌 Ghim bài';
+    btn.style.cssText = 'position:fixed;top:15px;right:15px;background:' + (isPinned ? '#FF3B30' : '#FF9500') + ';color:white;padding:8px 16px;border-radius:20px;font-weight:bold;font-size:12px;z-index:99999;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,0.15);transition:all 0.2s ease;cursor:pointer;';
+    btn.onmouseover = () => btn.style.transform = 'scale(1.05)';
+    btn.onmouseout = () => btn.style.transform = 'scale(1)';
+    btn.onclick = function(e) {
+      e.preventDefault();
+      window.open(this.href, '_blank');
+      isPinned = !isPinned;
+      this.innerHTML = isPinned ? '❌ Bỏ ghim' : '📌 Ghim bài';
+      this.style.background = isPinned ? '#FF3B30' : '#FF9500';
+      this.href = 'https://vietndj.github.io/?' + (isPinned ? 'unpin=' : 'pin=') + encodeURIComponent(fileKey);
+    };
+    document.body.appendChild(btn);
+  }
+</script>
+
+
 </body>
 </html>
