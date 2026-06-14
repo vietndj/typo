@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KHOA HỌC KHÔNG GIAN - CÔNG THỨC TOÁN HỌC ĐẰNG SAU SPACING & KERNING</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        space: {
+                            950: '#060814',
+                            900: '#0b0f19',
+                            800: '#111827',
+                            700: '#1f2937',
+                        },
+                        neon: {
+                            orange: '#ff5a1f',
+                            cyan: '#00f0ff',
+                            emerald: '#10b981',
+                            rose: '#f43f5e',
+                        }
+                    },
+                    fontFamily: {
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #060814;
+            color: #f3f4f6;
+        }
+        .mono-text {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        /* Hiệu ứng lưới tọa độ toán học nền */
+        .math-grid {
+            background-image: radial-gradient(rgba(255, 90, 31, 0.15) 1px, transparent 1px), 
+                              linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 20px 20px, 40px 40px, 40px 40px;
+        }
+        .glow-orange {
+            box-shadow: 0 0 25px rgba(255, 90, 31, 0.25);
+        }
+        .glow-cyan {
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.25);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden min-h-screen">
+
+    <!-- Math grid overlay background -->
+    <div class="fixed inset-0 math-grid pointer-events-none z-0"></div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-4 py-12 md:py-24">
+        <!-- HEADER / BRANDING -->
+        <header class="text-center mb-20 border-b border-space-700 pb-12">
+            <div class="inline-block px-3 py-1 mb-4 border border-neon-orange/40 rounded-full bg-neon-orange/10 text-neon-orange text-xs uppercase tracking-widest mono-text">
+                LEAD MAGNET // TYPOGRAPHIC SCIENCE
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight uppercase leading-none text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-slate-400 mb-6">
+                KHOA HỌC KHÔNG GIAN
+            </h1>
+            <p class="text-neon-cyan font-mono text-sm md:text-lg tracking-widest uppercase mb-4">
+                — CÔNG THỨC TOÁN HỌC ĐẰNG SAU SPACING & KERNING —
+            </p>
+            <div class="max-w-2xl mx-auto text-slate-400 text-sm md:text-base leading-relaxed">
+                Bài viết mang tính hàn lâm, sử dụng nhiều thuật ngữ chuyên ngành (Counter, Aperture, Ink trap, Kerning). Giọng văn phân tích sắc lạnh, bóc tách vấn đề bằng hình học và thị giác để chứng minh: Typography là một bộ môn khoa học chính xác.
+            </div>
+        </header>
+
+        <!-- MAIN LAYOUT FOR BLOCKS -->
+        <main class="space-y-32">
+
+            <!-- BLOCK 1 -->
+            <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border-l-2 border-neon-orange pl-6 md:pl-10">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="flex items-center space-x-3 text-neon-orange font-mono text-xs uppercase tracking-widest">
+                        <span>BLOCK 01 // OVERVIEW SYSTEM</span>
+                        <span class="h-[1px] w-12 bg-neon-orange/50"></span>
+                    </div>
+                    <h2 class="text-2xl md:text-4xl font-extrabold tracking-tight text-white leading-snug">
+                        Junior thiết kế phần Đen (Chữ). Senior thiết kế phần Trắng (Không gian).
+                    </h2>
+                    
+                    <!-- VERBATIM TEXT BLOCK 1 -->
+                    <div class="text-slate-300 space-y-4 text-sm md:text-base leading-relaxed bg-space-900/60 p-6 rounded-lg border border-space-700">
+                        <p class="font-bold text-white uppercase text-xs tracking-wider border-b border-space-700 pb-2 mb-3">Nội dung chi tiết:</p>
+                        Sai lầm lớn nhất của người mới học Typography là chỉ nhìn vào các nét mực đen. Sự thật là, các Typeface Designer hàng đầu thế giới dành 80% thời gian để thiết kế "khoảng trắng". Khoảng trắng (White space) không phải là phần giấy thừa ra. Nó là hệ thống kết cấu nâng đỡ toàn bộ khả năng đọc của con người. Nếu bạn vẫn đang căn chỉnh khoảng cách chữ (Kerning) và khoảng cách dòng (Leading) bằng "cảm giác", thiết kế của bạn sẽ vĩnh viễn kẹt ở mức nghiệp dư.
+                    </div>
+                </div>
+
+                <!-- CSS ART BLOCK 1: CLICK VS DICK ACCIDENTAL LIGATURE / COLLISION -->
+                <div class="lg:col-span-5 flex flex-col justify-center items-center bg-space-950 p-6 rounded-xl border border-neon-rose/30 relative overflow-hidden h-[340px] glow-orange">
+                    <!-- Art backdrop coordinates -->
+                    <div class="absolute inset-0 opacity-10 flex flex-col justify-between p-4 pointer-events-none font-mono text-[9px] text-white">
+                        <div class="flex justify-between"><span>X: 0.00</span><span>Y: 1.00</span></div>
+                        <div class="flex justify-between"><span>X: 1.00</span><span>Y: 0.00</span></div>
+                    </div>
+                    
+                    <div class="text-center w-full space-y-8">
+                        <!-- Bad Spacing -->
+                        <div>
+                            <div class="text-xs uppercase text-neon-rose font-mono mb-2">LỖI KERNING (CLICK TRÔNG NHƯ DICK)</div>
+                            <div class="bg-space-900 border border-neon-rose/40 py-4 px-6 rounded inline-flex items-center justify-center relative">
+                                <span class="text-3xl md:text-4xl font-extrabold tracking-[-0.23em] text-white select-none">CL<span class="text-neon-rose">I</span>CK</span>
+                                <!-- Collision bracket -->
+                                <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+                                    <span class="text-[9px] text-neon-rose font-mono">DANGEROUS COLLISION ZONE</span>
+                                    <span class="w-16 h-1 bg-neon-rose mt-1"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Perfect Spacing -->
+                        <div>
+                            <div class="text-xs uppercase text-neon-emerald font-mono mb-2">KERNING QUANG HỌC HOÀN HẢO</div>
+                            <div class="bg-space-900 border border-neon-emerald/40 py-4 px-6 rounded inline-flex items-center justify-center relative">
+                                <span class="text-3xl md:text-4xl font-extrabold tracking-[0.12em] text-white select-none">C L I C K</span>
+                                <!-- Correct measurement line -->
+                                <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+                                    <span class="text-[9px] text-neon-emerald font-mono">EQUILIBRATED GAP (T = 1.15)</span>
+                                    <span class="w-32 h-1 bg-neon-emerald mt-1"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- BLOCK 2 -->
+            <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border-l-2 border-neon-cyan pl-6 md:pl-10">
+                <div class="lg:col-span-7 space-y-6 lg:order-2">
+                    <div class="flex items-center space-x-3 text-neon-cyan font-mono text-xs uppercase tracking-widest">
+                        <span>BLOCK 02 // MATHEMATICAL MODEL</span>
+                        <span class="h-[1px] w-12 bg-neon-cyan/50"></span>
+                    </div>
+                    <h2 class="text-2xl md:text-4xl font-extrabold tracking-tight text-white leading-snug">
+                        Phương trình không gian: Diện tích Counter = Khoảng trắng an toàn.
+                    </h2>
+                    
+                    <!-- VERBATIM TEXT BLOCK 2 -->
+                    <div class="text-slate-300 space-y-4 text-sm md:text-base leading-relaxed bg-space-900/60 p-6 rounded-lg border border-space-700">
+                        <p class="font-bold text-white uppercase text-xs tracking-wider border-b border-space-700 pb-2 mb-3">Nội dung chi tiết:</p>
+                        Bạn có biết công thức bí mật để xác định khoảng cách giữa 2 chữ cái (Spacing) chưa? Nó bắt nguồn từ chính lòng trong của chữ cái đó - được gọi là Counter (phần không gian khép kín hoặc bán khép kín của chữ p, g, o, n). Thuật toán cơ bản nhất của Typeface: Thể tích không gian của Counter phải tương đương với thể tích không gian giữa các chữ cái. Một font chữ có Counter lớn và Độ mở (Aperture) rộng sẽ buộc phải nới lỏng Kerning để duy trì nhịp điệu. Toán học không biết nói dối.
+                    </div>
+                </div>
+
+                <!-- CSS ART BLOCK 2: COUNTER SPACE EQUATION SENSORS -->
+                <div class="lg:col-span-5 flex flex-col justify-center items-center bg-space-950 p-6 rounded-xl border border-neon-cyan/30 relative h-[340px] glow-cyan lg:order-1 overflow-hidden">
+                    <!-- Graph coordinate -->
+                    <div class="absolute inset-x-0 top-6 border-t border-dashed border-space-700 flex justify-between px-4"><span class="font-mono text-[9px] text-slate-500">LIMIT LINE</span><span class="font-mono text-[9px] text-slate-500">y = k(x)</span></div>
+                    
+                    <!-- Letter counter rendering -->
+                    <div class="flex items-center space-x-12 relative z-10">
+                        <!-- 'o' counter -->
+                        <div class="relative flex flex-col items-center">
+                            <div class="w-24 h-24 rounded-full border-8 border-white flex items-center justify-center relative">
+                                <!-- Counter inner space highlighter -->
+                                <div class="absolute w-14 h-14 rounded-full bg-neon-orange/40 animate-pulse flex items-center justify-center">
+                                    <span class="text-[10px] font-mono text-white font-bold">Counter</span>
+                                </div>
+                            </div>
+                            <span class="text-xs font-mono text-neon-orange mt-2">Area [C1]</span>
+                        </div>
+
+                        <!-- '=' Sign -->
+                        <div class="text-2xl font-bold font-mono text-neon-cyan">=</div>
+
+                        <!-- Spacing vector -->
+                        <div class="relative flex flex-col items-center">
+                            <div class="w-24 h-24 border border-dashed border-neon-cyan/50 rounded flex flex-col items-center justify-center bg-space-900 relative">
+                                <div class="w-16 h-16 bg-neon-cyan/30 flex items-center justify-center">
+                                    <span class="text-[10px] font-mono text-neon-cyan font-bold">Gap Space</span>
+                                </div>
+                                <!-- Arrow measuring -->
+                                <div class="absolute inset-x-2 bottom-2 flex justify-between items-center text-neon-cyan font-mono text-[8px]">
+                                    <span>&larr;</span><span>Spacing</span><span>&rarr;</span>
+                                </div>
+                            </div>
+                            <span class="text-xs font-mono text-neon-cyan mt-2">Area [S1]</span>
+                        </div>
+                    </div>
+
+                    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 font-mono text-[10px] text-slate-400">
+                        THUẬT TOÁN: <span class="text-neon-cyan">[C1] &cong; [S1]</span> (Tolerance: 2%)
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- BLOCK 3 -->
+            <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border-l-2 border-neon-rose pl-6 md:pl-10">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="flex items-center space-x-3 text-neon-rose font-mono text-xs uppercase tracking-widest">
+                        <span>BLOCK 03 // OPTICAL WEIGHT ALGORITHM</span>
+                        <span class="h-[1px] w-12 bg-neon-rose/50"></span>
+                    </div>
+                    <h2 class="text-2xl md:text-4xl font-extrabold tracking-tight text-white leading-snug">
+                        Thuật toán thị giác: Tại sao "VA" luôn là cơn ác mộng của phần mềm?
+                    </h2>
+                    
+                    <!-- VERBATIM TEXT BLOCK 3 -->
+                    <div class="text-slate-300 space-y-4 text-sm md:text-base leading-relaxed bg-space-900/60 p-6 rounded-lg border border-space-700">
+                        <p class="font-bold text-white uppercase text-xs tracking-wider border-b border-space-700 pb-2 mb-3">Nội dung chi tiết:</p>
+                        Hãy thử gõ cặp chữ "VA" hoặc "WA". Bạn sẽ thấy nếu để máy tính tự chia khoảng cách, chúng trông như bị tách rời khỏi từ. Lý do? Hình khối khác nhau sẽ "ngậm" không gian khác nhau. Hai nét thẳng (H, N) cần nhiều khoảng trắng ở giữa nhất. Một thẳng một tròn (H, O) cần ít hơn. Và hai nét chéo ngược chiều (V, A) gần như phải "trượt" lên nhau để tạo ra sự kết nối. Đo lường bằng pixel là vô nghĩa, bạn phải đo lường bằng khối lượng quang học.
+                    </div>
+                </div>
+
+                <!-- CSS ART BLOCK 3: PAIR ANALYSIS COMPARISON -->
+                <div class="lg:col-span-5 bg-space-950 p-6 rounded-xl border border-space-700 relative flex flex-col justify-between h-[340px] overflow-hidden">
+                    <div class="text-xs uppercase text-slate-400 font-mono mb-2 border-b border-space-800 pb-1 flex justify-between">
+                        <span>OPTICAL WEIGHT MATRIX</span>
+                        <span class="text-neon-rose">INTER-PAIR RELATION</span>
+                    </div>
+
+                    <!-- Comparison Grid -->
+                    <div class="space-y-4 my-auto">
+                        <!-- Straight Pair H-H (wide mathematical gap) -->
+                        <div class="flex justify-between items-center text-sm font-mono">
+                            <span class="text-slate-400 w-16">1. [H — H]</span>
+                            <div class="flex-1 mx-4 bg-space-900 border border-space-800 h-10 rounded flex items-center justify-center relative overflow-hidden">
+                                <span class="absolute left-4 font-bold">H</span>
+                                <div class="w-16 h-full bg-neon-cyan/20 flex items-center justify-center"><span class="text-[9px] text-neon-cyan">MAX SPAN</span></div>
+                                <span class="absolute right-4 font-bold">H</span>
+                            </div>
+                        </div>
+
+                        <!-- Straight-Round H-O (medium gap) -->
+                        <div class="flex justify-between items-center text-sm font-mono">
+                            <span class="text-slate-400 w-16">2. [H — O]</span>
+                            <div class="flex-1 mx-4 bg-space-900 border border-space-800 h-10 rounded flex items-center justify-center relative overflow-hidden">
+                                <span class="absolute left-4 font-bold">H</span>
+                                <div class="w-10 h-full bg-neon-orange/20 flex items-center justify-center"><span class="text-[9px] text-neon-orange">MID SPAN</span></div>
+                                <span class="absolute right-4 font-bold">O</span>
+                            </div>
+                        </div>
+
+                        <!-- Diagonal V-A (Interlocking slide) -->
+                        <div class="flex justify-between items-center text-sm font-mono">
+                            <span class="text-slate-400 w-16">3. [V — A]</span>
+                            <div class="flex-1 mx-4 bg-space-900 border border-neon-rose/40 h-10 rounded flex items-center justify-center relative overflow-hidden">
+                                <span class="absolute left-4 font-bold text-neon-rose">V</span>
+                                <!-- Negative interlocking intersection representing sliding space -->
+                                <div class="w-4 h-full bg-neon-rose/30 flex items-center justify-center"><span class="text-[8px] text-neon-rose">SLIDE</span></div>
+                                <span class="absolute right-4 font-bold text-neon-rose">A</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-[10px] text-slate-500 font-mono text-center">
+                        *Lưu ý: Đo lường cơ học (máy tính) &ne; Đo lường võng mạc (mắt người).
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- BLOCK 4 -->
+            <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border-l-2 border-neon-cyan pl-6 md:pl-10">
+                <div class="lg:col-span-7 space-y-6 lg:order-2">
+                    <div class="flex items-center space-x-3 text-neon-cyan font-mono text-xs uppercase tracking-widest">
+                        <span>BLOCK 04 // MONOSPACE CASE STUDY</span>
+                        <span class="h-[1px] w-12 bg-neon-cyan/50"></span>
+                    </div>
+                    <h2 class="text-2xl md:text-4xl font-extrabold tracking-tight text-white leading-snug">
+                        Bài học từ Monospace: Khi sự chính xác toán học giết chết khả năng đọc.
+                    </h2>
+                    
+                    <!-- VERBATIM TEXT BLOCK 4 -->
+                    <div class="text-slate-300 space-y-4 text-sm md:text-base leading-relaxed bg-space-900/60 p-6 rounded-lg border border-space-700">
+                        <p class="font-bold text-white uppercase text-xs tracking-wider border-b border-space-700 pb-2 mb-3">Nội dung chi tiết:</p>
+                        Để chứng minh sự cần thiết của Kerning quang học, hãy nhìn vào Monospace - dòng font bắt nguồn từ máy đánh chữ, nơi mọi kí tự (từ chữ 'i' mỏng manh đến chữ 'm' bè ngang) đều bị ép phải chiếm một khoảng cách cơ khí chính xác bằng nhau. Kết quả? Nó mang lại cảm giác công nghệ, tương lai, máy móc, nhưng lại tạo ra những "lỗ hổng" không gian tồi tệ khiến mắt bạn cực kỳ mệt mỏi nếu đọc đoạn văn dài. Sự chính xác cơ học tuyệt đối đôi khi lại là kẻ thù của thị giác con người.
+                    </div>
+                </div>
+
+                <!-- CSS ART BLOCK 4: MONOSPACE MECHANICAL COUPLING GRID -->
+                <div class="lg:col-span-5 bg-space-950 p-6 rounded-xl border border-neon-cyan/30 relative flex flex-col justify-center h-[340px] overflow-hidden">
+                    <div class="text-xs uppercase text-slate-400 font-mono mb-4 border-b border-space-800 pb-1">
+                        SỰ THẤT BẠI CỦA KHUNG CƠ KHÍ (MONOSPACE)
+                    </div>
+
+                    <!-- Monospace Grid Visualization -->
+                    <div class="space-y-4 my-auto">
+                        <!-- MONOSPACE GRID -->
+                        <div class="space-y-1">
+                            <span class="text-[10px] font-mono text-neon-rose uppercase block">1. MONOSPACE (IBM Plex Mono - Fixed Width)</span>
+                            <div class="flex space-x-1">
+                                <div class="flex-1 bg-space-900 border border-neon-rose/40 h-14 flex items-center justify-center font-mono text-lg font-bold text-white relative">
+                                    i
+                                    <div class="absolute inset-y-0 left-0 w-2 bg-neon-rose/10 border-r border-dashed border-neon-rose/30"></div>
+                                    <div class="absolute inset-y-0 right-0 w-2 bg-neon-rose/10 border-l border-dashed border-neon-rose/30"></div>
+                                    <div class="absolute inset-x-2 bg-neon-rose/20 text-[8px] font-mono p-1 rounded text-center top-1">GAP HOLE</div>
+                                </div>
+                                <div class="flex-1 bg-space-900 border border-neon-rose/40 h-14 flex items-center justify-center font-mono text-lg font-bold text-white">
+                                    m
+                                </div>
+                                <div class="flex-1 bg-space-900 border border-neon-rose/40 h-14 flex items-center justify-center font-mono text-lg font-bold text-white relative">
+                                    i
+                                    <div class="absolute inset-x-2 bg-neon-rose/20 text-[8px] font-mono p-1 rounded text-center top-1">GAP HOLE</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PROPORTIONAL SANS-SERIF -->
+                        <div class="space-y-1">
+                            <span class="text-[10px] font-mono text-neon-emerald uppercase block">2. PROPORTIONAL (Helvetica - Fluid Width)</span>
+                            <div class="flex items-center space-x-1 bg-space-900 border border-neon-emerald/40 h-14 p-2 rounded">
+                                <div class="bg-space-950 border border-space-800 h-10 w-6 flex items-center justify-center font-bold text-white text-lg">i</div>
+                                <div class="bg-space-950 border border-space-800 h-10 w-16 flex items-center justify-center font-bold text-white text-lg">m</div>
+                                <div class="bg-space-950 border border-space-800 h-10 w-6 flex items-center justify-center font-bold text-white text-lg">i</div>
+                                <div class="flex-1 text-[10px] font-mono text-neon-emerald text-right">Fluid dynamic fit</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-[9px] text-slate-500 font-mono mt-4">
+                        Cơ chế Monospace ép mọi ký tự chiếm một lượng pixel bằng nhau dẫu kích thước vật lý khác xa.
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- BLOCK 5 -->
+            <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border-l-2 border-neon-orange pl-6 md:pl-10">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="flex items-center space-x-3 text-neon-orange font-mono text-xs uppercase tracking-widest">
+                        <span>BLOCK 05 // MICRO ANATOMY OF SPACE</span>
+                        <span class="h-[1px] w-12 bg-neon-orange/50"></span>
+                    </div>
+                    <h2 class="text-2xl md:text-4xl font-extrabold tracking-tight text-white leading-snug">
+                        Không gian vi mô: Tại sao Helvetica "chết" ở kích thước 8pt?
+                    </h2>
+                    
+                    <!-- VERBATIM TEXT BLOCK 5 -->
+                    <div class="text-slate-300 space-y-4 text-sm md:text-base leading-relaxed bg-space-900/60 p-6 rounded-lg border border-space-700">
+                        <p class="font-bold text-white uppercase text-xs tracking-wider border-b border-space-700 pb-2 mb-3">Nội dung chi tiết:</p>
+                        Kiến trúc không gian không chỉ nằm giữa các chữ, mà nằm sâu bên trong từng nét cắt. Ở kích thước 8pt, Helvetica lộ rõ nhược điểm chết người: Khả năng nhận diện kém vì Độ mở (Aperture) quá đóng, các nét dính vào nhau. Các Typeface Designer lão luyện giải quyết bài toán này bằng Aperture mở lớn và Ink Trap (Bẫy mực) - chủ động khoét bỏ phần giao nhau của 2 nét chữ để mở rộng không gian, giúp chữ không bị "tịt" khi in ấn hoặc hiển thị trên màn hình nhỏ.
+                    </div>
+                </div>
+
+                <!-- CSS ART BLOCK 5: APERTURE & INK TRAP MICRO-ZOOM -->
+                <div class="lg:col-span-5 bg-space-950 p-6 rounded-xl border border-neon-orange/30 relative flex flex-col justify-between h-[340px] overflow-hidden">
+                    <div class="text-xs uppercase text-slate-400 font-mono border-b border-space-800 pb-1">
+                        SƠ ĐỒ MICRO APERTURE & INK TRAP
+                    </div>
+
+                    <!-- Micro Anatomy Drawing using geometric vectors -->
+                    <div class="relative w-full h-48 bg-space-900 rounded border border-space-800 flex items-center justify-center overflow-hidden">
+                        <!-- Abstract Ink Trap representation of a character joint -->
+                        <svg viewBox="0 0 100 100" class="w-36 h-36">
+                            <!-- Left stroke of the stem -->
+                            <path d="M20,90 L20,10 L35,10 L50,45 L65,10 L80,10 L80,90 L65,90 L65,35 L50,70 L35,35 L35,90 Z" fill="#ffffff" />
+                            <!-- INK TRAP cutout overlays in neon-orange -->
+                            <circle cx="50" cy="70" r="6" fill="#ff5a1f" opacity="0.8" />
+                            <circle cx="35" cy="35" r="4" fill="#ff5a1f" opacity="0.8" />
+                            <circle cx="65" cy="35" r="4" fill="#ff5a1f" opacity="0.8" />
+                            <!-- Zoom target lines -->
+                            <line x1="50" y1="70" x2="10" y2="20" stroke="#00f0ff" stroke-width="0.5" stroke-dasharray="2,2" />
+                        </svg>
+
+                        <!-- Callout labels -->
+                        <div class="absolute left-2 top-2 bg-space-950 px-2 py-1 border border-space-700 rounded text-[9px] font-mono">
+                            Stem Boundary
+                        </div>
+                        <div class="absolute right-2 top-2 bg-neon-orange/20 text-neon-orange px-2 py-1 border border-neon-orange/30 rounded text-[9px] font-mono animate-pulse">
+                            [!] INK TRAP (Bẫy Mực)
+                        </div>
+                        <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-neon-cyan/20 text-neon-cyan px-2 py-1 border border-neon-cyan/30 rounded text-[9px] font-mono">
+                            Aperture: Open (Độ mở rộng)
+                        </div>
+                    </div>
+
+                    <div class="text-[9px] text-slate-500 font-mono text-center">
+                        Ở size siêu nhỏ (8pt), Ink Trap chủ động triệt tiêu lượng mực nở loang để giữ lại ranh giới quang học sạch sẽ.
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- BLOCK 6 -->
+            <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border-l-2 border-neon-cyan pl-6 md:pl-10">
+                <div class="lg:col-span-7 space-y-6 lg:order-2">
+                    <div class="flex items-center space-x-3 text-neon-cyan font-mono text-xs uppercase tracking-widest">
+                        <span>BLOCK 06 // REAL-WORLD CASE STUDY</span>
+                        <span class="h-[1px] w-12 bg-neon-cyan/50"></span>
+                    </div>
+                    <h2 class="text-2xl md:text-4xl font-extrabold tracking-tight text-white leading-snug">
+                        Royal Academy of Music: Nghệ thuật của sự "Bất đối xứng có kỷ luật".
+                    </h2>
+                    
+                    <!-- VERBATIM TEXT BLOCK 6 -->
+                    <div class="text-slate-300 space-y-4 text-sm md:text-base leading-relaxed bg-space-900/60 p-6 rounded-lg border border-space-700">
+                        <p class="font-bold text-white uppercase text-xs tracking-wider border-b border-space-700 pb-2 mb-3">Nội dung chi tiết:</p>
+                        Hãy nhìn vào logo của Học viện Âm nhạc Hoàng gia Anh (Royal Academy of Music). Họ sử dụng font Geometric Sans Serif hướng đến tính hiện đại. Nhưng nếu chỉ gõ text ra, nó sẽ rất ngô nghê. Các nhà thiết kế đã can thiệp sâu vào không gian: Phá vỡ căn chỉnh toán học, xử lý cân bằng thị giác kỹ lưỡng bằng cách để chữ O lệch, chữ M lệch. Kết hợp với Aperture lớn và khoảng trắng tinh tế, họ đã tạo ra một tổng thể nghiêm túc, kỷ luật, trí tuệ mà máy móc không thể tự động sinh ra.
+                    </div>
+                </div>
+
+                <!-- CSS ART BLOCK 6: ROYAL ACADEMY ASYMMETRY ALIGNMENT -->
+                <div class="lg:col-span-5 bg-space-950 p-6 rounded-xl border border-neon-cyan/30 relative flex flex-col justify-between h-[340px] overflow-hidden lg:order-1">
+                    <div class="text-xs uppercase text-slate-400 font-mono border-b border-space-800 pb-1">
+                        PHÂN TÍCH LOGO // ASYMMETRY DESIGN
+                    </div>
+
+                    <!-- Optical offset illustration -->
+                    <div class="relative w-full h-48 bg-space-900 rounded border border-space-800 flex flex-col justify-center items-center">
+                        <div class="text-center">
+                            <!-- Simulated Geometric Logo with custom spacing adjustments -->
+                            <div class="text-2xl font-extrabold tracking-[0.2em] uppercase select-none text-white font-serif relative">
+                                R<span class="text-neon-cyan opacity-80 relative">O</span>YAL <span class="text-neon-orange relative">A</span>CADEMY
+                                <!-- Geometric guide lines -->
+                                <div class="absolute inset-x-0 top-1/2 border-t border-neon-rose/40 pointer-events-none"></div>
+                                <!-- Vertical offset indicators -->
+                                <div class="absolute left-[28%] top-0 bottom-0 border-l border-dashed border-neon-cyan/50"></div>
+                                <div class="absolute right-[33%] top-0 bottom-0 border-l border-dashed border-neon-orange/50"></div>
+                            </div>
+                            <p class="text-[9px] font-mono text-slate-400 mt-4 tracking-[0.3em]">OF MUSIC</p>
+                        </div>
+
+                        <!-- Data badges overlay -->
+                        <div class="absolute top-2 left-2 text-[8px] font-mono bg-space-950 border border-space-700 p-1 text-slate-500 rounded">
+                            OPTICAL AXIS: -1.45% OFFSET
+                        </div>
+                        <div class="absolute bottom-2 right-2 text-[8px] font-mono bg-space-950 border border-space-700 p-1 text-neon-cyan rounded">
+                            UNBIASED GEOMETRIC SANS
+                        </div>
+                    </div>
+
+                    <div class="text-[9px] text-slate-500 font-mono text-center">
+                        Các đường cân chỉnh dóng trục (màu cam/cyan) cố tình bẻ cong lưới vật lý để phục vụ sự cân bằng võng mạc tối thượng.
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- BLOCK 7 (CTA) -->
+            <section class="border border-neon-orange/30 bg-gradient-to-br from-space-900 via-space-950 to-space-900 rounded-2xl p-8 md:p-12 relative overflow-hidden text-center glow-orange">
+                <!-- Abstract 3D Grid Blueprint background -->
+                <div class="absolute inset-0 math-grid opacity-20 pointer-events-none z-0"></div>
+
+                <div class="relative z-10 space-y-6 max-w-3xl mx-auto">
+                    <div class="inline-block px-3 py-1 border border-neon-orange/40 rounded bg-neon-orange/10 text-neon-orange text-xs uppercase tracking-widest font-mono">
+                        CONVERT TO EXPERT DESIGNER NOW
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white uppercase leading-tight">
+                        Đừng Kerning bằng linh cảm. Hãy làm chủ thuật toán không gian!
+                    </h2>
+                    
+                    <!-- VERBATIM TEXT BLOCK 7 -->
+                    <div class="text-slate-300 text-sm md:text-base leading-relaxed space-y-4 bg-space-950/80 p-6 rounded-xl border border-space-800">
+                        <p class="font-bold text-white uppercase text-xs tracking-wider border-b border-space-700 pb-2 mb-3">Nội dung chi tiết:</p>
+                        Mắt thẩm mỹ có thể là thiên bẩm, nhưng Typography là một môn khoa học có thể học được bằng công thức. Tracking, Kerning, Leading, Aperture, Ink Trap... không phải là những thuật ngữ để làm màu. Chúng là công cụ để bạn thao túng thị giác người xem.
+                        <br/><br/>
+                        Tải ngay ấn phẩm "Từ Điển Typography Cốt Lõi: Giải Mã Thuật Toán & Không Gian Chữ" để làm chủ hoàn toàn các rập khuôn quang học, nâng tầm thiết kế của bạn từ "vừa mắt" lên chuẩn "Pixel-Perfect".
+                    </div>
+
+                    <!-- LARGE CTA BUTTON -->
+                    <div class="pt-6">
+                        <a href="#register" class="inline-block w-full sm:w-auto bg-gradient-to-r from-neon-orange to-red-600 hover:from-red-600 hover:to-neon-orange text-white font-extrabold uppercase tracking-widest text-sm py-4 px-10 rounded-full transition-all transform hover:scale-105 shadow-lg shadow-neon-orange/30">
+                            NHẬN TRỌN BỘ BÍ KÍP SPACING & KERNING TẠI ĐÂY!
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+
+        <!-- BLOCK COMPLEMENTARY: 25 FLASHCARDS REVIEW QUESTIONS & ANSWERS -->
+        <section class="mt-40 border-t border-space-700 pt-20">
+            <div class="text-center mb-12">
+                <div class="inline-block px-3 py-1 mb-4 border border-neon-cyan/40 rounded-full bg-neon-cyan/10 text-neon-cyan text-xs uppercase tracking-widest font-mono">
+                    MICRO-ASSESSMENT ENGINE
+                </div>
+                <h3 class="text-3xl font-extrabold uppercase text-white tracking-tight">
+                    HỆ THỐNG FLASHCARD ÔN TẬP // 25 CÂU HỎI CỐT LÕI
+                </h3>
+                <p class="text-slate-400 text-sm max-w-xl mx-auto mt-2">
+                    Xác nhận và mổ xẻ tường tận các lý thuyết cấu trúc, hình học không gian, và thuật toán thị giác của Typography. (Hiển thị song hành Câu hỏi & Trả lời để tối ưu hóa quá trình lưu trữ thông tin).
+                </p>
+            </div>
+
+            <!-- Flashcard Grid Layout (25 Cards) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Card 1 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-orange/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-orange text-xs mb-3">#01 // DEFINITION</div>
+                        <h4 class="text-sm font-bold text-white mb-3">Khái niệm "Counter" trong thiết kế Typeface là gì?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Là phần không gian rỗng khép kín hoặc bán khép kín nằm sâu bên trong cấu trúc của một chữ cái (ví dụ: phần bên trong của các chữ o, p, d, q, n, u).
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-orange/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-orange text-xs mb-3">#02 // DEFINITION</div>
+                        <h4 class="text-sm font-bold text-white mb-3">"Aperture" (Độ mở) có vai trò gì trong việc thiết kế chữ?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Độ mở là ranh giới không gian hở dẫn tới Counter của các ký tự (ví dụ: chữ c, e, a). Độ mở rộng giúp nhận diện tốt ở kích thước hiển thị micro.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-orange/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-orange text-xs mb-3">#03 // FUNCTION</div>
+                        <h4 class="text-sm font-bold text-white mb-3">"Ink Trap" (Bẫy mực) được áp dụng nhằm khắc phục vấn đề gì?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Ngăn chặn hiện tượng mực tự nhiên loang rộng tụ lại gây lem hay bít đặc các góc nhọn của chữ khi in ấn hoặc hiển thị ở kích thước cực nhỏ.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-cyan/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-cyan text-xs mb-3">#04 // DIFFERENCE</div>
+                        <h4 class="text-sm font-bold text-white mb-3">Kerning khác Spacing (độ dãn mặc định) như thế nào?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Spacing là khoảng cách chuẩn được lập trình mặc định cho từng chữ cái; còn Kerning là sự tinh chỉnh khoảng cách cho từng cặp chữ cái cá biệt (như VA, WA).
+                    </p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-cyan/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-cyan text-xs mb-3">#05 // MECHANICS</div>
+                        <h4 class="text-sm font-bold text-white mb-3">Tại sao cặp chữ "VA" hay "WA" là "cơn ác mộng" của thuật toán cơ khí?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Vì cấu trúc vạt chéo của hai ký tự đứng kề nhau tạo ra khoảng trống cơ học khổng lồ ở giữa, đòi hỏi thuật toán quang học phải đẩy chúng "gối chồng" lên nhau.
+                    </p>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-cyan/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-cyan text-xs mb-3">#06 // MATH RULE</div>
+                        <h4 class="text-sm font-bold text-white mb-3">Công thức toán học cơ bản nhất để kiểm soát Spacing là gì?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Thể tích không gian rỗng nội tại của một chữ (Counter) phải tương quan cân bằng với thể tích của khoảng cách trắng bao phủ bên ngoài của nó.
+                    </p>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-orange/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-orange text-xs mb-3">#07 // MONOSPACE</div>
+                        <h4 class="text-sm font-bold text-white mb-3">Tại sao Monospace lại phản tác dụng trong việc đọc các văn bản dài?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Do việc ép buộc các ký tự hẹp (i, l) và rộng (m, w) có chung một chiều rộng cơ khí, tạo ra các lỗ rỗng lớn cục bộ, khiến nhịp điệu đọc bị đứt gãy.
+                    </p>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-orange/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-orange text-xs mb-3">#08 // HELVETICA STUDY</div>
+                        <h4 class="text-sm font-bold text-white mb-3">Tại sao Helvetica có xu hướng bị nhòe mờ ở size 8pt?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Vì Helvetica sở hữu Aperture (độ mở) cực kỳ đóng, các đường cong khép lại quá hẹp làm dính các nét mực, làm mất khả năng phân biệt hình thể chữ.
+                    </p>
+                </div>
+
+                <!-- Card 9 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-orange/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-orange text-xs mb-3">#09 // ANATOMY</div>
+                        <h4 class="text-sm font-bold text-white mb-3">Làm thế nào để bẫy mực (Ink trap) hoạt động tốt trên bản in?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Bằng việc chủ động vát sâu hoặc khoét bỏ phần giao nhau của nét chữ. Khi in, dòng mực loang ra sẽ lấp kín lỗ khoét này và hiển thị sắc nét.
+                    </p>
+                </div>
+
+                <!-- Card 10 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-cyan/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-cyan text-xs mb-3">#10 // GEOMETRY</div>
+                        <h4 class="text-sm font-bold text-white mb-3">Triết lý thiết kế "Bất đối xứng có kỷ luật" là gì?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Là việc cố tình phá vỡ hệ thống đo đạc lưới toán học cứng nhắc, dịch chuyển lệch các ký tự để tạo ra một trạng thái thăng bằng tối ưu bằng thị giác.
+                    </p>
+                </div>
+
+                <!-- Card 11 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-cyan/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-cyan text-xs mb-3">#11 // CASE STUDY</div>
+                        <h4 class="text-sm font-bold text-white mb-3">Ý nghĩa việc chỉnh chữ O và M lệch trong logo Royal Academy?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Vì nếu xếp thẳng hàng cơ học, trọng tâm thị giác của O và M sẽ khiến logo trông méo và đổ lệch. Căn chỉnh bất đối xứng bù đắp sai số quang học này.
+                    </p>
+                </div>
+
+                <!-- Card 12 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-cyan/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-cyan text-xs mb-3">#12 // TYPOGRAPHY LAW</div>
+                        <h4 class="text-sm font-bold text-white mb-3">Sự khác biệt giữa đo lường Pixel vật lý và "Khối lượng quang học"?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Pixel đo lường bằng thông số số học phẳng tuyệt đối. Khối lượng quang học phản ánh mức độ nặng nhẹ thị giác dựa trên cách ánh sáng và khoảng trắng va chạm.
+                    </p>
+                </div>
+
+                <!-- Card 13 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-orange/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-orange text-xs mb-3">#13 // GAP RATIO</div>
+                        <h4 class="text-sm font-bold text-white mb-3">Cặp nét thẳng (H-H) cần xử lý khoảng trống như thế nào?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Cần khoảng cách toán học xa nhất (rộng nhất), vì các đường thẳng đứng đứng song song phản chiếu tối đa không gian và dễ tạo ra xung đột thị giác.
+                    </p>
+                </div>
+
+                <!-- Card 14 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-orange/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-orange text-xs mb-3">#14 // GAP RATIO</div>
+                        <h4 class="text-sm font-bold text-white mb-3">Tại sao cặp nét tròn (O-O) lại cần khoảng cách hẹp nhất?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Bởi vì độ cong của hai chữ cái O tự giải phóng không gian âm ở góc trên và dưới, cho phép hai ký tự tiếp cận nhau sát hơn mà không bị ngột ngạt.
+                    </p>
+                </div>
+
+                <!-- Card 15 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-orange/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-orange text-xs mb-3">#15 // TRACKING</div>
+                        <h4 class="text-sm font-bold text-white mb-3">Định nghĩa kỹ thuật của "Tracking" và nó khác gì Kerning?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Tracking là tăng/giảm đồng loạt khoảng cách của tất cả các chữ cái trong một dòng text. Kerning chỉ can thiệp vào khoảng hẹp giữa 2 ký tự liên kề.
+                    </p>
+                </div>
+
+                <!-- Card 16 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-cyan/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-cyan text-xs mb-3">#16 // SPACE THEORY</div>
+                        <h4 class="text-sm font-bold text-white mb-3">"Kiến trúc vô hình" trong typography đóng vai trò gì?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Nó chính là "phần trắng" định hướng đường dẫn của ánh mắt, giúp bộ não phân biệt ranh giới từ vựng nhanh nhất mà không gặp phải nhiễu loạn thị giác.
+                    </p>
+                </div>
+
+                <!-- Card 17 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-cyan/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-cyan text-xs mb-3">#17 // EYE-FLOW</div>
+                        <h4 class="text-sm font-bold text-white mb-3">Mối liên hệ giữa Leading (khoảng cách dòng) và Kerning?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Khi thiết kế có khoảng cách chữ (Kerning) hẹp, Leading bắt buộc phải giãn ra tương xứng để luồng thị giác đọc được cân đối, không bị kẹt dính.
+                    </p>
+                </div>
+
+                <!-- Card 18 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-cyan/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-cyan text-xs mb-3">#18 // GEOMETRIC SANS</div>
+                        <h4 class="text-sm font-bold text-white mb-3">Geometric Sans Serif có nhược điểm mặc định nào?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Dựa quá nhiều vào các hình hình học thuần khiết (hình tròn, hình tam giác) dẫn tới Spacing tự động rất mất cân đối nếu thiếu đi tinh chỉnh thủ công.
+                    </p>
+                </div>
+
+                <!-- Card 19 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-orange/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-orange text-xs mb-3">#19 // SENSE VS SCIENCE</div>
+                        <h4 class="text-sm font-bold text-white mb-3">Căn chỉnh bằng "Cảm giác" có đủ cho Typography cao cấp?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Không. "Cảm giác" thực chất là sự tích lũy của vô thức về nhịp điệu toán học. Để đạt pixel-perfect, nhà thiết kế phải thấu hiểu các thuật toán không gian.
+                    </p>
+                </div>
+
+                <!-- Card 20 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-orange/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-orange text-xs mb-3">#20 // DIGITAL DESIGN</div>
+                        <h4 class="text-sm font-bold text-white mb-3">Vấn đề lớn nhất khi hiển thị Typography trên màn hình võng mạc (Retina)?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Hiện tượng "nhiễu tán xạ ánh sáng" ở các cạnh ký tự khiến các ranh giới khoảng trắng bị thu nhỏ lại, gây ra hiện tượng mắt mỏi mệt khi đọc lâu.
+                    </p>
+                </div>
+
+                <!-- Card 21 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-orange/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-orange text-xs mb-3">#21 // DESIGN PROCEDURE</div>
+                        <h4 class="text-sm font-bold text-white mb-3">Vì sao Typeface Designer dành 80% thời gian thiết kế khoảng trắng?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Nét đen (chữ) định hình hình thức, nhưng khoảng trắng quyết định nhịp điệu đọc. Nếu không có cấu trúc trắng tốt, chữ sẽ sụp đổ về khả năng đọc.
+                    </p>
+                </div>
+
+                <!-- Card 22 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-cyan/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-cyan text-xs mb-3">#22 // OPTICAL COMPENSATION</div>
+                        <h4 class="text-sm font-bold text-white mb-3">"Optical Compensation" (Bù trừ quang học) là gì?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Sự can thiệp thủ công làm sai lệch nhẹ cấu trúc hình học thực tế để đánh lừa bộ não, giúp mắt nhận diện vật thể trông có vẻ cân đối và hoàn chỉnh.
+                    </p>
+                </div>
+
+                <!-- Card 23 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-cyan/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-cyan text-xs mb-3">#23 // STEM ALIGNMENT</div>
+                        <h4 class="text-sm font-bold text-white mb-3">Độ mở (Aperture) hẹp gây ra điều gì cho chữ "e" và "a"?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Biến chữ "e" thành hình thể giống chữ "o" và "a" giống chữ "o" khi nhìn từ xa hoặc phóng cực kỳ nhỏ, do mất đi khe hở không gian âm dẫn dòng mắt.
+                    </p>
+                </div>
+
+                <!-- Card 24 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-cyan/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-cyan text-xs mb-3">#24 // SPATIAL VOLUME</div>
+                        <h4 class="text-sm font-bold text-white mb-3">Chữ cái có góc chéo (A, V, W) có diện tích không gian âm thế nào?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Có diện tích không gian âm cực lớn tỏa rộng từ đáy hoặc đỉnh chữ, đòi hỏi thu hẹp khoảng cách toán học để nén chặt lượng khoảng trắng dư thừa này.
+                    </p>
+                </div>
+
+                <!-- Card 25 -->
+                <div class="bg-space-900 border border-space-800 p-6 rounded-xl hover:border-neon-orange/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="font-mono text-neon-orange text-xs mb-3">#25 // TARGET ARCHITECTURE</div>
+                        <h4 class="text-sm font-bold text-white mb-3">Typography "Pixel-Perfect" thực sự có nghĩa là gì?</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 border-t border-space-800 pt-3">
+                        Sự đồng nhất hoàn hảo giữa tính quy luật toán học kỹ thuật số và trải nghiệm tiếp nhận võng mạc tự nhiên vô cùng êm ái của thị giác con người.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- FOOTER AS SPECIFIED (Small, 128px high, with specific links & social icons) -->
+    <footer class="mt-32 w-full h-32 border-t border-space-700 bg-space-950/90 relative z-10 flex items-center">
+        <div class="max-w-6xl mx-auto w-full px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+            <!-- Left Brand description -->
+            <div class="text-slate-400 text-center md:text-left max-w-lg leading-relaxed">
+                <p class="font-semibold text-white mb-1">Cập nhật kiến thức thực chiến nhất</p>
+                về Kỹ năng Quay Dựng, Xây kênh Niche và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.
+            </div>
+
+            <!-- Right Social Links with icons -->
+            <div class="flex items-center space-x-6">
+                <!-- Youtube -->
+                <a href="https://youtube.com/@vietndonline" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-slate-300 hover:text-red-500 transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    <span class="hidden sm:inline font-mono">YouTube</span>
+                </a>
+                
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-slate-300 hover:text-cyan-400 transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.74-3.94-1.74-.22-.21-.42-.45-.61-.7-.02 3.68-.01 7.36-.02 11.04-.1 2.44-1.14 4.86-3.14 6.3-2.13 1.57-5.06 2.05-7.58 1.25-2.88-.9-5.18-3.48-5.74-6.47-.64-3.32.74-6.93 3.54-8.79 1.84-1.24 4.15-1.63 6.3-.13.01 1.49 0 2.98.01 4.47-1.39-.77-3.16-.62-4.4.42-1.11.91-1.57 2.49-1.11 3.87.41 1.34 1.73 2.37 3.13 2.43 1.48.09 2.94-.85 3.42-2.25.13-.39.18-.8.18-1.21V.02z"/>
+                    </svg>
+                    <span class="hidden sm:inline font-mono">TikTok</span>
+                </a>
+
+                <!-- Facebook -->
+                <a href="https://web.facebook.com/profile.php?id=61580450902746" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-slate-300 hover:text-blue-500 transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                    <span class="hidden sm:inline font-mono">Facebook</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
