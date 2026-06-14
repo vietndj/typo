@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGENCY-GRADE TYPO LAB 2022 | Nâng Tầm Khối Brand Identity</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Playfair Display for luxurious serifs & Plus Jakarta Sans for tech typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        darkBg: '#09090B',
+                        darkCard: '#131316',
+                        darkBorder: '#27272A',
+                        camChay: {
+                            DEFAULT: '#FF5C00',
+                            glow: 'rgba(255, 92, 0, 0.45)',
+                            light: '#FFA366'
+                        }
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 2s infinite alternate',
+                        'shake-cta': 'shakeCTA 3s infinite',
+                        'float': 'floatAnim 6s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%': { boxShadow: '0 0 5px rgba(255, 92, 0, 0.2)' },
+                            '100%': { boxShadow: '0 0 25px rgba(255, 92, 0, 0.65)' }
+                        },
+                        shakeCTA: {
+                            '0%, 100%': { transform: 'scale(1)' },
+                            '10%, 20%': { transform: 'scale(0.98) rotate(-1deg)' },
+                            '30%, 50%, 70%': { transform: 'scale(1.02) rotate(1deg)' },
+                            '40%, 60%, 80%': { transform: 'scale(1.02) rotate(-1deg)' },
+                            '90%': { transform: 'scale(1) rotate(0)' }
+                        },
+                        floatAnim: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-glow {
+            box-shadow: 0 0 15px rgba(255, 92, 0, 0.15);
+        }
+        .custom-glow-hover:hover {
+            box-shadow: 0 0 25px rgba(255, 92, 0, 0.5);
+            background-color: #FF5C00;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #09090B;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #27272A;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FF5C00;
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-zinc-100 font-sans selection:bg-camChay selection:text-white overflow-x-hidden">
+
+    <!-- Top Promo Bar -->
+    <div class="bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 border-b border-zinc-800 text-xs text-center py-2 px-4 flex justify-center items-center gap-2 relative z-50">
+        <span class="inline-flex h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
+        <span class="text-zinc-400">CHỈ CÒN DUY NHẤT HÔM NAY - GIẢM SÂU 60%</span>
+        <span class="font-bold text-camChay-light tracking-wider hidden sm:inline ml-2">HOTLINE KHẨN CẤP: 249K SỞ HỮU TRỌN ĐỜI</span>
+    </div>
+
+    <!-- MAIN WRAPPER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-24">
+
+        <!-- ========================================================== -->
+        <!-- BLOCK 1: HERO SECTION - TUYÊN NGÔN GIẢI PHÓNG THU NHẬP -->
+        <!-- ========================================================== -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-8 pb-16 items-center">
+            <!-- Hero Content -->
+            <div class="lg:col-span-7 space-y-8">
+                <span class="inline-block px-4 py-1.5 rounded-full border border-camChay/40 bg-camChay/10 text-camChay text-xs font-semibold uppercase tracking-widest">
+                    [Hộp công cụ Brand Identity dành cho Designer khao khát chạm ngưỡng Agency]
+                </span>
+                
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-black tracking-tight leading-none text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-100 to-zinc-500">
+                    TUYÊN NGÔN <br class="hidden md:inline">GIẢI PHÓNG <br>THU NHẬP
+                </h1>
+                
+                <p class="text-zinc-400 text-base md:text-lg font-medium leading-relaxed max-w-2xl border-l-2 border-camChay pl-4">
+                    Sự khác biệt giữa một Logo 1 triệu và một Brand Identity 20 triệu không nằm ở công cụ. Nó nằm ở các tinh chỉnh quang học vi mô: Nhịp điệu không gian chữ (Kerning), Bẫy mực (Ink Traps) và Bản đồ dịch mã thị giác 10 ngành hàng cốt lõi.
+                </p>
+                
+                <div class="pt-4">
+                    <a href="#purchase-section" class="inline-flex items-center gap-3 px-8 py-5 rounded-xl bg-gradient-to-r from-zinc-900 to-black border border-camChay hover:bg-camChay transition-all duration-300 custom-glow-hover animate-pulse-glow text-white text-sm md:text-base font-extrabold tracking-wide uppercase">
+                        <span>[NÂNG TẦM KHỐI BRAND IDENTITY NGAY CHỈ VỚI 249K]</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Visual Placeholder: [PLACEHOLDER_HERO_3D_VALI_KIP_SERIF] -->
+            <div class="lg:col-span-5 flex justify-center">
+                <div class="w-full max-w-md bg-darkCard border border-darkBorder rounded-2xl p-6 relative group overflow-hidden custom-glow">
+                    <!-- Tech overlay decoration -->
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-camChay/5 rounded-full filter blur-xl"></div>
+                    <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-camChay/10 rounded-full filter blur-xl"></div>
+                    
+                    <div class="flex justify-between items-center mb-4 pb-3 border-b border-zinc-800">
+                        <span class="text-xs text-zinc-500 font-mono">VISUAL: PLACEHOLDER_HERO_3D_VALI_KIP_SERIF</span>
+                        <div class="flex gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-red-500/60"></span>
+                            <span class="w-2 h-2 rounded-full bg-yellow-500/60"></span>
+                            <span class="w-2 h-2 rounded-full bg-green-500/60"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- CSS Abstract Art Content -->
+                    <div class="aspect-square w-full rounded-xl bg-gradient-to-b from-zinc-900 to-zinc-950 border border-zinc-800/80 relative flex flex-col justify-center items-center overflow-hidden">
+                        
+                        <!-- 3D Matte Box representation -->
+                        <div class="w-56 h-36 bg-gradient-to-br from-zinc-800 to-zinc-950 rounded-lg shadow-2xl border border-zinc-700/60 flex flex-col justify-between p-4 transform -rotate-12 translate-y-[-15px] group-hover:scale-105 transition-all duration-500 relative z-10 select-none">
+                            <div class="w-full flex justify-between items-center">
+                                <div class="w-4 h-4 rounded-full border border-zinc-700 bg-zinc-900"></div>
+                                <span class="text-[8px] font-mono text-zinc-600">3D HARD BOX MOCKUP v1.0</span>
+                            </div>
+                            <div class="text-center py-2">
+                                <div class="text-[9px] uppercase tracking-[0.25em] text-zinc-400 font-semibold mb-1">LAB SERIES</div>
+                                <h3 class="text-xs font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-zinc-300 via-white to-zinc-400 tracking-wider uppercase border-y border-zinc-800 py-1">
+                                    AGENCY-GRADE TYPO LAB 2022
+                                </h3>
+                            </div>
+                            <div class="w-full flex justify-between items-center text-[7px] text-zinc-500 font-mono">
+                                <span>LIMITED EDITION</span>
+                                <span>100% VECTOR</span>
+                            </div>
+                            <!-- Silver foil gleam element -->
+                            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
+                        </div>
+
+                        <!-- Mini iPad representing Zara & Anessa Stem grid -->
+                        <div class="absolute bottom-4 right-4 w-44 h-32 bg-zinc-950 border-2 border-zinc-800 rounded-lg shadow-xl p-2 transform rotate-6 z-20 group-hover:rotate-3 transition-transform duration-500 flex flex-col justify-between">
+                            <div class="flex justify-between items-center border-b border-zinc-900 pb-1">
+                                <span class="text-[6px] text-zinc-400 font-mono flex items-center gap-1">
+                                    <i class="fa-solid fa-tablet-screen-button text-camChay"></i> IPAD ANALYZER
+                                </span>
+                                <span class="w-1 h-1 rounded-full bg-camChay"></span>
+                            </div>
+                            <!-- Stem dissection visual -->
+                            <div class="flex-1 flex flex-col justify-center items-center relative overflow-hidden">
+                                <div class="w-full h-full bg-[radial-gradient(#1c1c1f_1px,transparent_1px)] [background-size:8px_8px] flex items-center justify-around px-1">
+                                    <!-- Zara style letter R grid -->
+                                    <div class="text-center">
+                                        <div class="text-[20px] font-serif font-black text-white leading-none relative">
+                                            R
+                                            <!-- Highlight Stem -->
+                                            <span class="absolute left-0 top-0 w-1.5 h-full bg-camChay/40 border border-camChay animate-pulse"></span>
+                                        </div>
+                                        <span class="text-[5px] block font-mono text-zinc-500 mt-1">ZARA Stem-Gọt gót</span>
+                                    </div>
+                                    <div class="w-[1px] h-8 bg-zinc-800"></div>
+                                    <!-- Anessa Style Letter space -->
+                                    <div class="text-center">
+                                        <div class="text-[12px] font-serif font-extrabold text-white tracking-[0.3em] leading-none">
+                                            ANESSA
+                                        </div>
+                                        <span class="text-[5px] block font-mono text-zinc-500 mt-1">Kerning bù trừ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================== -->
+        <!-- BLOCK 2: KHAI THÁC NỖI ĐAU - BỨC TRẦN THU NHẬP VÀ PORTFOLIO "LOÃNG" -->
+        <!-- ========================================================== -->
+        <section class="space-y-12">
+            <div class="text-center max-w-4xl mx-auto space-y-4">
+                <span class="text-xs font-mono text-zinc-500 tracking-widest uppercase">// KHAI THÁC NỖI ĐAU THỰC TẾ</span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-white leading-tight">
+                    TẠI SAO PORTFOLIO CỦA BẠN TRÔNG RẤT ĐỒ ĐỘ SẮC NÉT... NHƯNG KHÁCH VIP NHÌN VÀO VẪN THẤY "RẺ TIỀN"?
+                </h2>
+                <div class="h-1 w-20 bg-camChay mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Pain Points List -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="p-5 rounded-xl border border-dashed border-red-500/30 bg-red-950/10 flex items-start gap-4">
+                        <span class="text-red-500 font-mono font-bold flex-shrink-0 mt-1">[X]</span>
+                        <div>
+                            <h4 class="font-bold text-zinc-200 mb-1">Layout loãng và yếu phân cấp thông tin</h4>
+                            <p class="text-zinc-400 text-sm leading-relaxed">
+                                Các khối chữ xếp sát nhau tạo độ nặng thị giác thô thiển, hoặc kéo giãn vô tội vạ khiến tổng thể thương hiệu bị rời rạc, thiếu tính kỉ luật.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="p-5 rounded-xl border border-dashed border-red-500/30 bg-red-950/10 flex items-start gap-4">
+                        <span class="text-red-500 font-mono font-bold flex-shrink-0 mt-1">[X]</span>
+                        <div>
+                            <h4 class="font-bold text-zinc-200 mb-1">Bất lực trước bài toán "Custom chữ" cho Logo</h4>
+                            <p class="text-zinc-400 text-sm leading-relaxed">
+                                Chỉ biết gõ Text từ Google Fonts có sẵn rồi gửi cho khách. Khách hàng VIP không trả tiền cho thứ họ có thể tự gõ trên Microsoft Word.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="p-5 rounded-xl border border-dashed border-red-500/30 bg-red-950/10 flex items-start gap-4">
+                        <span class="text-red-500 font-mono font-bold flex-shrink-0 mt-1">[X]</span>
+                        <div>
+                            <h4 class="font-bold text-zinc-200 mb-1">Mù tịt về công năng in ấn & hiển thị</h4>
+                            <p class="text-zinc-400 text-sm leading-relaxed">
+                                Thiết kế xong mang đi thêu trên áo thun hoặc in lên bao bì thì chữ bị tịt nét, mất bẫy mực (ink traps), biến thương hiệu thành một đống lem luốc vô hồn.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="p-5 rounded-xl border border-dashed border-red-500/30 bg-red-950/10 flex items-start gap-4">
+                        <span class="text-red-500 font-mono font-bold flex-shrink-0 mt-1">[X]</span>
+                        <div>
+                            <h4 class="font-bold text-zinc-200 mb-1">Luôn bị khách hàng ép sửa đến bản v20</h4>
+                            <p class="text-zinc-400 text-sm leading-relaxed">
+                                Vì bạn chọn font dựa vào "linh cảm", không thể dùng thuật ngữ khoa học để chứng minh nhịp điệu của nét chữ.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Comparison: [PLACEHOLDER_A_B_TESTING_LOA_BRAND_PORTFOLIO] -->
+                <div class="lg:col-span-6">
+                    <div class="bg-darkCard border border-darkBorder rounded-2xl p-6 relative group overflow-hidden">
+                        <div class="flex justify-between items-center mb-4 pb-3 border-b border-zinc-800">
+                            <span class="text-xs text-zinc-500 font-mono">COMPARE: PLACEHOLDER_A_B_TESTING_LOA_BRAND_PORTFOLIO</span>
+                            <span class="text-xs px-2 py-0.5 rounded bg-zinc-800 text-camChay font-mono">A/B TESTING</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Version A -->
+                            <div class="bg-zinc-950 border border-zinc-800/80 rounded-xl p-4 flex flex-col justify-between relative overflow-hidden">
+                                <div class="absolute top-0 right-0 px-2 py-0.5 bg-red-950 border-b border-l border-red-800 text-red-500 font-mono text-[9px] rounded-bl">
+                                    BẢN A (JUNIOR 500K)
+                                </div>
+                                <div class="flex-1 flex flex-col items-center justify-center py-8">
+                                    <!-- Visual depiction of flawed junctions -->
+                                    <div class="relative py-4 select-none">
+                                        <span class="text-5xl font-serif text-zinc-600 font-normal tracking-wide">Join</span>
+                                        <!-- Error highlighting rings -->
+                                        <div class="absolute top-4 left-6 w-5 h-5 border-2 border-dashed border-red-500 rounded-full animate-ping"></div>
+                                        <div class="absolute top-4 left-6 w-5 h-5 border border-red-500 rounded-full flex items-center justify-center bg-red-500/10">
+                                            <span class="text-[6px] text-red-500 font-mono">lỗi</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-[11px] text-zinc-500 text-center mt-3">
+                                        Dùng font gõ sẵn bị lỗi dấp dính ở điểm nối nét (join).
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Version B -->
+                            <div class="bg-zinc-950 border-2 border-camChay/40 rounded-xl p-4 flex flex-col justify-between relative overflow-hidden">
+                                <div class="absolute top-0 right-0 px-2 py-0.5 bg-camChay/10 border-b border-l border-camChay text-camChay font-mono text-[9px] rounded-bl">
+                                    BẢN B (AGENCY VÒM)
+                                </div>
+                                <div class="flex-1 flex flex-col items-center justify-center py-8">
+                                    <!-- Visual depiction of clean junctions -->
+                                    <div class="relative py-4 select-none">
+                                        <span class="text-5xl font-serif text-white font-bold tracking-wide">Jo<span class="text-camChay">i</span>n</span>
+                                        <!-- Clean intersection mesh -->
+                                        <div class="absolute top-7 left-[26px] w-4 h-4 border border-emerald-500 rounded-full flex items-center justify-center bg-emerald-500/10">
+                                            <span class="text-[6px] text-emerald-500 font-mono">✓</span>
+                                        </div>
+                                        <!-- Axis guide lines -->
+                                        <div class="absolute left-3 top-0 bottom-0 w-[1px] bg-dashed border-r border-camChay/40"></div>
+                                        <div class="absolute left-9 top-0 bottom-0 w-[1px] bg-dashed border-r border-camChay/40"></div>
+                                    </div>
+                                    <p class="text-[11px] text-zinc-300 text-center mt-3">
+                                        Sử dụng kỹ thuật xử lý khớp nối dứt khoát, trục chữ thẳng cân bằng giúp nhận diện thương hiệu đắt giá, chuyên nghiệp.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================== -->
+        <!-- BLOCK 3: ĐÒN BẨY SƯ PHẠM - CON MẮT "CÚ VỌ" RÀ PHIÊN BẢN LỖI -->
+        <!-- ========================================================== -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <!-- Visual Placeholder: [PLACEHOLDER_MENTOR_DESK_RED_PEN] -->
+            <div class="lg:col-span-5 order-2 lg:order-1">
+                <div class="bg-darkCard border border-darkBorder rounded-2xl p-6 relative group overflow-hidden">
+                    <div class="flex justify-between items-center mb-4 pb-3 border-b border-zinc-800">
+                        <span class="text-xs text-zinc-500 font-mono">STUDIO: PLACEHOLDER_MENTOR_DESK_RED_PEN</span>
+                        <i class="fa-solid fa-bezier-curve text-camChay"></i>
+                    </div>
+                    
+                    <!-- CSS Abstract Art Content -->
+                    <div class="aspect-video w-full rounded-xl bg-gradient-to-tr from-zinc-950 via-zinc-900 to-zinc-950 border border-zinc-800 relative flex justify-center items-center overflow-hidden py-12">
+                        <!-- Grid background representation -->
+                        <div class="absolute inset-0 bg-[linear-gradient(to_right,#1f1f23_1px,transparent_1px),linear-gradient(to_bottom,#1f1f23_1px,transparent_1px)] bg-[size:16px_16px] opacity-40"></div>
+                        
+                        <!-- Drawing circle compass / grid mathematically -->
+                        <div class="relative z-10 w-24 h-24 border border-zinc-700 rounded-full flex items-center justify-center bg-zinc-900/40">
+                            <!-- Old Style Serif 'M' blueprint -->
+                            <span class="text-7xl font-serif text-camChay/85 font-medium italic relative">
+                                M
+                                <span class="absolute -top-1 -left-1 w-2 h-2 rounded-full bg-red-500 border border-white"></span>
+                                <span class="absolute -bottom-1 -right-1 w-2 h-2 rounded-full bg-red-500 border border-white"></span>
+                            </span>
+                            <!-- Overlay grid circles -->
+                            <div class="absolute inset-0 border-2 border-dashed border-camChay/20 rounded-full transform scale-125"></div>
+                        </div>
+
+                        <!-- Stylized sketch pencil/red pen overlay -->
+                        <div class="absolute right-8 top-4 w-1 bg-gradient-to-b from-red-600 via-orange-500 to-yellow-400 h-32 transform -rotate-45 shadow-lg group-hover:-translate-y-2 group-hover:translate-x-2 transition-transform duration-500 rounded-full">
+                            <span class="absolute -bottom-1 left-[-2px] w-2 h-2 rounded-full bg-red-600 border border-white"></span>
+                        </div>
+                        
+                        <!-- Mathematical vectors & measurement labels -->
+                        <div class="absolute bottom-3 left-4 text-[9px] font-mono text-zinc-500 space-y-0.5">
+                            <div>x-height: 480px</div>
+                            <div>Cap: 720px</div>
+                            <div>Maison Margiela Old Style grid</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mentor Content -->
+            <div class="lg:col-span-7 space-y-6 order-1 lg:order-2">
+                <span class="text-xs font-mono text-zinc-500 tracking-widest uppercase">// ĐÒN BẨY SƯ PHẠM THỰC CHIẾN</span>
+                <h3 class="text-3xl md:text-4xl font-serif font-bold text-white leading-tight">
+                    TÔI ĐÃ DÀNH 15 NĂM ĐỂ "NHẶT SẠT" CHO HÀNG NGHÌN PORTFOLIO TẠI FPT ARENA.
+                </h3>
+                
+                <p class="text-zinc-300 text-base leading-relaxed italic bg-zinc-950 p-6 rounded-xl border border-zinc-850">
+                    "Trong 15 năm làm mentor, tôi đã chứng kiến vô số designer tài năng bị sụp đổ lòng tự trọng nghề nghiệp chỉ vì không vượt qua được bài kiểm duyệt của sếp hoặc khách hàng doanh nghiệp VIP. Họ không hiểu rằng, một Art Director lão luyện chỉ mất 3 giây để nhìn ra gót chữ của bạn có được xử lý sắc cạnh () hay không. Cuốn sách này là một phòng Lab rà lỗi thực tế giúp bạn mài bén con mắt thẩm mỹ bản năng thành tư duy kỹ trị của một Art Director thực thụ."
+                </p>
+                
+                <div class="flex items-center gap-4 pt-2">
+                    <div class="w-10 h-10 rounded-full bg-camChay/10 border border-camChay/40 flex items-center justify-center">
+                        <i class="fa-solid fa-graduation-cap text-camChay"></i>
+                    </div>
+                    <span class="text-xs font-mono text-zinc-400 uppercase tracking-wider">Tối Ưu Bản Lĩnh Nghề & Sửa Sai Lập Tức</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================== -->
+        <!-- BLOCK 4: CHƯƠNG 1 - 2: SERIF CHUYÊN SÂU - SỨC MẠNH CỦA SỰ UY QUYỀN VÀ XA XỈ -->
+        <!-- ========================================================== -->
+        <section class="space-y-12 bg-zinc-950 p-8 sm:p-12 rounded-3xl border border-zinc-900">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Content -->
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="inline-block px-3 py-1 rounded bg-zinc-900 border border-zinc-800 text-xs font-mono text-camChay">
+                        CHƯƠNG 1 - 2: SERIF CHUYÊN SÂU
+                    </span>
+                    <h3 class="text-3xl md:text-4xl font-serif font-bold text-white">
+                        GIẢI PHẪU SERIF: BÍ MẬT ĐẰNG SAU NHỮNG THƯƠNG HIỆU DOANH NHÂN TRĂM TUỔI
+                    </h3>
+                    
+                    <div class="space-y-4 text-zinc-300 text-sm leading-relaxed">
+                        <p class="font-medium text-zinc-400 border-l border-camChay pl-3">
+                            Serif không chỉ là phông chữ cổ điển. Chân chữ (serif) được thiết kế ra để điều khiển cảm xúc sang trọng và uy quyền của con người:
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-2.5">
+                                <span class="text-camChay mt-1">•</span>
+                                <div>
+                                    <strong class="text-zinc-100">Kỹ thuật bo tròn gót cổ điển (Oldstyle Serif):</strong> Thấy rõ ở thương hiệu Maison Margiela – nơi các chân chữ được bo tròn nhẹ nhàng, không có sự can thiệp cứng nhắc của máy móc, mang lại cảm giác may đo thủ công, cá nhân hóa sâu sắc.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <span class="text-camChay mt-1">•</span>
+                                <div>
+                                    <strong class="text-zinc-100">Sự kiêu hãnh của Modern Serif:</strong> Nhìn vào Rolex, Mercedes-Benz hay Zara. Trục chữ thẳng cân bằng, độ tương phản thanh mảnh cực mạnh kết hợp chân chữ dạng hairline tinh tế tạo ra không gian chắc chắn, tin cậy tuyệt đối nhưng đầy xa xỉ.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <span class="text-camChay mt-1">•</span>
+                                <div>
+                                    <strong class="text-zinc-100">Quy luật khoảng trắng xa hoa:</strong> Cách Anessa viết hoa nghiêm túc toàn bộ ký tự, giữ nét dày ít tương phản kết hợp kéo rộng kerning để giải phóng khoảng trắng, tạo cảm giác tinh tế cao cấp vô hạn.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Visual Placeholder: [PLACEHOLDER_SERIF_CASE_STUDIES_ZARA_ROLEX] -->
+                <div class="lg:col-span-5">
+                    <div class="bg-darkCard border border-darkBorder rounded-2xl p-6 relative overflow-hidden group">
+                        <div class="flex justify-between items-center mb-4 pb-3 border-b border-zinc-800">
+                            <span class="text-xs text-zinc-500 font-mono">DIAGRAM: PLACEHOLDER_SERIF_CASE_STUDIES_ZARA_ROLEX</span>
+                            <span class="text-xs text-zinc-400 font-mono">SERIF ANATOMY</span>
+                        </div>
+                        
+                        <!-- CSS Abstract Art Content -->
+                        <div class="aspect-square w-full rounded-xl bg-zinc-950 border border-zinc-850 relative flex flex-col justify-around p-4 overflow-hidden">
+                            <!-- Zara curves dissection -->
+                            <div class="border-b border-zinc-900 pb-3">
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-[10px] font-mono text-zinc-500">ZARA Style: Curvy R Joint</span>
+                                    <span class="text-[9px] text-camChay font-mono">Zoom 300%</span>
+                                </div>
+                                <div class="h-20 flex items-center justify-center bg-zinc-900/60 rounded-lg relative overflow-hidden">
+                                    <div class="absolute inset-0 bg-[radial-gradient(#27272a_1px,transparent_1px)] [background-size:12px_12px] opacity-40"></div>
+                                    <div class="text-5xl font-serif text-white tracking-widest relative">
+                                        Za<span class="text-camChay font-bold italic relative">R</span>a
+                                        <!-- Curvy path markup overlay -->
+                                        <div class="absolute right-[56px] top-4 w-4 h-4 rounded-full border border-camChay bg-camChay/20 animate-pulse"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Rolex tilted axial O dissection -->
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-[10px] font-mono text-zinc-500">ROLEX Style: Tilted Axis O</span>
+                                    <span class="text-[9px] text-zinc-400 font-mono">Axis nghiêng - viết tay</span>
+                                </div>
+                                <div class="h-20 flex items-center justify-center bg-zinc-900/60 rounded-lg relative">
+                                    <div class="absolute inset-0 bg-[radial-gradient(#27272a_1px,transparent_1px)] [background-size:12px_12px] opacity-40"></div>
+                                    <div class="relative w-12 h-12 rounded-full border-4 border-zinc-200 flex items-center justify-center transform rotate-12">
+                                        <!-- Tilted Axis bar -->
+                                        <div class="absolute w-[2px] h-16 bg-dashed border-l border-red-500"></div>
+                                        <span class="text-[8px] bg-red-950 border border-red-800 text-red-500 font-mono px-1 rounded absolute -top-4">12° Axis</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================== -->
+        <!-- BLOCK 5: CHƯƠNG 3 - 4: SANS-SERIF KỶ NGUYÊN MỚI - SIẾT CHẶT KHOẢNG CÁCH THƯƠNG MẠI -->
+        <!-- ========================================================== -->
+        <section class="space-y-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Visual Placeholder: [PLACEHOLDER_SANS_SERIF_SHARP_ALTAN] -->
+                <div class="lg:col-span-5 order-2 lg:order-1">
+                    <div class="bg-darkCard border border-darkBorder rounded-2xl p-6 relative overflow-hidden group">
+                        <div class="flex justify-between items-center mb-4 pb-3 border-b border-zinc-800">
+                            <span class="text-xs text-zinc-500 font-mono">STRUCTURE: PLACEHOLDER_SANS_SERIF_SHARP_ALTAN</span>
+                            <span class="text-xs text-camChay font-mono">SANS & GEOMETRIC</span>
+                        </div>
+                        
+                        <!-- CSS Abstract Art Content -->
+                        <div class="aspect-square w-full rounded-xl bg-zinc-950 border border-zinc-850 p-4 flex flex-col justify-around overflow-hidden">
+                            
+                            <!-- Sharp geometric terminal analysis -->
+                            <div class="border-b border-zinc-900 pb-3">
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-[10px] font-mono text-zinc-500">SHARP Style: Sharp Terminals</span>
+                                    <span class="text-[9px] text-zinc-400 font-mono">Cắt góc vuông dứt khoát</span>
+                                </div>
+                                <div class="h-20 flex items-center justify-center bg-zinc-900/60 rounded-lg relative">
+                                    <div class="absolute inset-0 bg-[linear-gradient(to_right,#18181b_1px,transparent_1px)] bg-[size:8px] opacity-30"></div>
+                                    <span class="text-3xl font-sans font-black tracking-wide text-white uppercase relative">
+                                        SHARP
+                                        <!-- Highlight angle -->
+                                        <span class="absolute right-[8px] top-[6px] w-2.5 h-2.5 bg-camChay border border-white rounded-sm"></span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Altan tight kerning analysis -->
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-[10px] font-mono text-zinc-500">ALTAN.DK Style: Tight Neo-Grotesque</span>
+                                    <span class="text-[9px] text-camChay font-mono">Siết Kerning Cực Độ</span>
+                                </div>
+                                <div class="h-20 flex items-center justify-center bg-zinc-900/60 rounded-lg relative">
+                                    <div class="absolute inset-0 bg-[linear-gradient(to_right,#18181b_1px,transparent_1px)] bg-[size:8px] opacity-30"></div>
+                                    <div class="text-3xl font-sans font-extrabold tracking-[-0.08em] text-zinc-400 bg-zinc-950 px-4 py-1 border border-zinc-800 rounded">
+                                        ALTAN<span class="text-camChay">.dk</span>
+                                    </div>
+                                    <!-- Tracking indicators -->
+                                    <div class="absolute left-[33%] top-1/2 -translate-y-1/2 text-camChay font-mono text-lg font-bold">↔</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="lg:col-span-7 space-y-6 order-1 lg:order-2">
+                    <span class="inline-block px-3 py-1 rounded bg-zinc-950 border border-zinc-900 text-xs font-mono text-camChay">
+                        CHƯƠNG 3 - 4: SANS-SERIF KỶ NGUYÊN MỚI
+                    </span>
+                    <h3 class="text-3xl md:text-4xl font-serif font-bold text-white">
+                        SANS-SERIF & NEO-GROTESQUE: NGHỆ THUẬT TẠO KHỐI BẮT MẮT TRUYỀN THÔNG
+                    </h3>
+                    
+                    <div class="space-y-4 text-zinc-300 text-sm leading-relaxed">
+                        <p class="font-medium text-zinc-400 border-l border-camChay pl-3">
+                            Làm thế nào để các thương hiệu công nghệ hoặc dịch vụ tiêu dùng nhanh tạo ra sự bùng nổ về mặt thị giác?
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-2.5">
+                                <span class="text-camChay mt-1">•</span>
+                                <div>
+                                    <strong class="text-zinc-100">Neo-Grotesque & Tính thực dụng tối đa:</strong> Sử dụng nét dày, aperture (độ mở) đóng, chữ viết dạng thường kết hợp siết chặt khoảng cách chữ (Tight Kerning) giống như case study của Altan.dk. Kỹ thuật này tạo ra khối diện tích dương bản lớn, mang độ nặng thị giác cực cao, hút mắt người xem tức thì và cực dễ triển khai marketing.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <span class="text-camChay mt-1">•</span>
+                                <div>
+                                    <strong class="text-zinc-100">Geometric Sans & Sự thanh lịch công nghệ:</strong> Phân tích logo Sharp – nét dày mở rộng ngang tạo cấu trúc vững chãi, tin tưởng; kết hợp các nét cắt đầu đuôi ký tự (terminal) vuông sắc như máy móc để nhấn mạnh tính công nghệ, chuyên nghiệp.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <span class="text-camChay mt-1">•</span>
+                                <div>
+                                    <strong class="text-zinc-100">Sức nặng của Slab Serif:</strong> Dòng chân dày cơ bắp của Volvo mới hay Honda – ít tương phản, độ nặng thị giác khổng lồ, là lựa chọn tối ưu để khẳng định công năng nổi bật và độ bền bỉ cơ học.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================== -->
+        <!-- BLOCK 6: CHƯƠNG 5 - 6: BẢN ĐỒ NGÀNH HÀNG - CHỌN FONT CHUẨN ĐỊNH VỊ THƯƠNG HIỆU -->
+        <!-- ========================================================== -->
+        <section class="space-y-12 bg-zinc-950 p-8 sm:p-12 rounded-3xl border border-zinc-900">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Content -->
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="inline-block px-3 py-1 rounded bg-zinc-900 border border-zinc-800 text-xs font-mono text-camChay">
+                        CHƯƠNG 5 - 6: BẢN ĐỒ NGÀNH HÀNG
+                    </span>
+                    <h3 class="text-3xl md:text-4xl font-serif font-bold text-white">
+                        ĐỒNG BỘ ĐỊNH VỊ: ĐỪNG ĐỂ THIẾT KẾ CỦA BẠN LỆCH PHA VỚI TÚI TIỀN CỦA KHÁCH HÀNG
+                    </h3>
+                    
+                    <div class="space-y-4 text-zinc-300 text-sm leading-relaxed">
+                        <p class="font-medium text-zinc-400 border-l border-camChay pl-3">
+                            Cuốn sách cung cấp cho bạn một bản đồ tư duy chuẩn xác về ngôn ngữ ký tự của từng nhóm ngành, giúp bạn dõng dạc phản biện trước mọi cuộc họp dự án:
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-2.5">
+                                <span class="text-camChay mt-1">•</span>
+                                <div>
+                                    <strong class="text-zinc-100">Ngành Giáo dục & Trí tuệ danh giá:</strong> Phân tích case Royal Academy of Music – lột xác hoàn toàn nhờ chuyển đổi sang font không chân tối giản, nét mỏng, khoảng trắng rộng thoáng tạo cảm giác tinh tế, kỉ luật, trí tuệ chuẩn mực của tổ chức hoàng gia.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <span class="text-camChay mt-1">•</span>
+                                <div>
+                                    <strong class="text-zinc-100">Ngành Công nghiệp nặng & AI:</strong> Tại sao Fort Robotics bắt buộc phải dùng font không chân dứt khoát, góc vuông không bo góc kèm các nét nối (ligature) liên kết chặt chẽ để mô tả hình ảnh robot vận hành vững vàng? Hoặc như Science Museum London dùng font Monospace dạng module lặp lại dứt khoát để phát đi tín hiệu của sự chính xác khoa học?
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Visual Placeholder: [PLACEHOLDER_INDUSTRIES_GRID_MAP] -->
+                <div class="lg:col-span-5">
+                    <div class="bg-darkCard border border-darkBorder rounded-2xl p-6 relative overflow-hidden group">
+                        <div class="flex justify-between items-center mb-4 pb-3 border-b border-zinc-800">
+                            <span class="text-xs text-zinc-500 font-mono">INFOGRAPHIC: PLACEHOLDER_INDUSTRIES_GRID_MAP</span>
+                            <span class="text-xs text-zinc-400 font-mono">SEGMENTS</span>
+                        </div>
+                        
+                        <!-- CSS Abstract Art Content -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <!-- Segment 1: Mercedes-Benz -->
+                            <div class="bg-zinc-900/80 border border-zinc-800 rounded-lg p-3 text-center flex flex-col justify-between h-28 relative overflow-hidden">
+                                <span class="text-[7px] text-zinc-500 font-mono block tracking-wider uppercase">DOANH NHÂN</span>
+                                <div class="text-xs font-serif font-bold text-white tracking-widest my-1">
+                                    MERCEDES-BENZ
+                                </div>
+                                <span class="text-[8px] text-camChay font-mono block">Uỷ Quyền & Xa Xỉ</span>
+                            </div>
+
+                            <!-- Segment 2: Royal Academy -->
+                            <div class="bg-zinc-900/80 border border-zinc-800 rounded-lg p-3 text-center flex flex-col justify-between h-28 relative overflow-hidden">
+                                <span class="text-[7px] text-zinc-500 font-mono block tracking-wider uppercase">TRI THỨC</span>
+                                <div class="text-[10px] font-sans font-light text-zinc-100 tracking-[0.2em] my-1 uppercase">
+                                    ROYAL ACADEMY
+                                </div>
+                                <span class="text-[8px] text-camChay font-mono block">Kỷ Luật Tinh Khiết</span>
+                            </div>
+
+                            <!-- Segment 3: Fort -->
+                            <div class="bg-zinc-900/80 border border-zinc-800 rounded-lg p-3 text-center flex flex-col justify-between h-28 relative overflow-hidden">
+                                <span class="text-[7px] text-zinc-500 font-mono block tracking-wider uppercase">CÔNG NGHỆ ROBOT</span>
+                                <div class="text-[11px] font-sans font-black text-zinc-300 tracking-wider my-1 uppercase border border-zinc-800 p-1">
+                                    FORT ROBOTICS
+                                </div>
+                                <span class="text-[8px] text-camChay font-mono block">Vững Vàng Cơ Khí</span>
+                            </div>
+
+                            <!-- Segment 4: Science Museum -->
+                            <div class="bg-zinc-900/80 border border-zinc-800 rounded-lg p-3 text-center flex flex-col justify-between h-28 relative overflow-hidden">
+                                <span class="text-[7px] text-zinc-500 font-mono block tracking-wider uppercase">KHOA HỌC</span>
+                                <div class="text-xs font-mono text-zinc-400 my-1 tracking-tighter">
+                                    [SCI-MUSEUM]
+                                </div>
+                                <span class="text-[8px] text-camChay font-mono block">Module Chính Xác</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================== -->
+        <!-- BLOCK 7: CHƯƠNG 7 - 8: LOGO SCRIPT TÙY BIẾN ĐỘC BẢN - CHÌA KHÓA BÁN THIẾT KẾ GIÁ NGHÌN ĐÔ -->
+        <!-- ========================================================== -->
+        <section class="space-y-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Visual Placeholder: [PLACEHOLDER_SCRIPT_EVOLUTION_SLIDER] -->
+                <div class="lg:col-span-5 order-2 lg:order-1">
+                    <div class="bg-darkCard border border-darkBorder rounded-2xl p-6 relative overflow-hidden group">
+                        <div class="flex justify-between items-center mb-4 pb-3 border-b border-zinc-800">
+                            <span class="text-xs text-zinc-500 font-mono">INTERACTIVE: PLACEHOLDER_SCRIPT_EVOLUTION_SLIDER</span>
+                            <span class="text-xs text-camChay font-mono">VẼ TAY → VECTOR</span>
+                        </div>
+                        
+                        <!-- Interactive CSS / JS Slider Simulator -->
+                        <div class="w-full rounded-xl bg-zinc-950 border border-zinc-850 p-4 relative overflow-hidden flex flex-col justify-between">
+                            <div class="text-[9px] text-zinc-500 font-mono mb-2">Trượt để xem quá trình số hoá logo Stuart O'Grady</div>
+                            
+                            <div class="relative h-44 bg-zinc-900/70 rounded-lg overflow-hidden flex items-center justify-center">
+                                <!-- Background grid -->
+                                <div class="absolute inset-0 bg-[linear-gradient(to_right,#27272a_1px,transparent_1px),linear-gradient(to_bottom,#27272a_1px,transparent_1px)] bg-[size:10px] opacity-25"></div>
+                                
+                                <!-- Sketch Panel (Left Half) -->
+                                <div id="sketch-view" class="absolute inset-y-0 left-0 w-1/2 bg-amber-950/20 border-r-2 border-camChay overflow-hidden flex items-center justify-end pr-1 transition-all duration-300">
+                                    <div class="text-center w-80 pr-12 select-none">
+                                        <div class="text-2xl font-serif text-amber-600/70 line-through tracking-wider italic font-light">
+                                            Stuart O'Grady
+                                        </div>
+                                        <span class="text-[7px] text-amber-500 font-mono">PHÁC THẢO GIẤY GRID</span>
+                                    </div>
+                                </div>
+
+                                <!-- Vector Panel (Right Half) -->
+                                <div class="absolute inset-y-0 right-0 w-1/2 overflow-hidden flex items-center justify-start pl-1">
+                                    <div class="text-center w-80 pl-4 select-none">
+                                        <div class="text-2xl font-serif text-white font-semibold tracking-wider italic">
+                                            Stuart O'Grady
+                                        </div>
+                                        <span class="text-[7px] text-emerald-500 font-mono">VECTOR AGENCY SẮC CẠNH</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Control Slider -->
+                            <div class="mt-4 flex items-center gap-2">
+                                <span class="text-[8px] font-mono text-zinc-500">Mộc mạc</span>
+                                <input type="range" id="split-slider" min="0" max="100" value="50" class="flex-1 accent-camChay bg-zinc-800 h-1 rounded-lg cursor-pointer">
+                                <span class="text-[8px] font-mono text-zinc-500">Chuẩn xác</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="lg:col-span-7 space-y-6 order-1 lg:order-2">
+                    <span class="inline-block px-3 py-1 rounded bg-zinc-950 border border-zinc-900 text-xs font-mono text-camChay">
+                        CHƯƠNG 7 - 8: LOGO SCRIPT TÙY BIẾN ĐỘC BẢN
+                    </span>
+                    <h3 class="text-3xl md:text-4xl font-serif font-bold text-white">
+                        SỨC MẠNH CỦA CHỮ VIẾT TAY: NGHỆ THUẬT PHÁC THẢO THỦ CÔNG
+                    </h3>
+                    
+                    <div class="space-y-4 text-zinc-300 text-sm leading-relaxed">
+                        <p class="font-medium text-zinc-400 border-l border-camChay pl-3">
+                            Script không phải là việc gõ text từ một font tải sẵn trên mạng. Script tại các Agency cao cấp là quá trình tùy biến thủ công nghiêm ngặt để tạo dấu ấn độc bản:
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-2.5">
+                                <span class="text-camChay mt-1">•</span>
+                                <div>
+                                    <strong class="text-zinc-100">Quy trình logic hóa chữ viết tay:</strong> Trình bày rõ từng công đoạn phác thảo, giải thích logic tại sao dùng loại nét này mà không dùng loại nét kia, tính toán độ cân bằng thị giác kỹ lưỡng.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <span class="text-camChay mt-1">•</span>
+                                <div>
+                                    <strong class="text-zinc-100">Sự mềm mại của nhân tính:</strong> Phân tích case study của Empathy – tùy chỉnh trục của chữ a, nét nối chữ t, nét cong chữ y, độ cong chữ P viết tay để mô tả sự thấu cảm, kết nối tự nhiên, gần gũi với con người.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <span class="text-camChay mt-1">•</span>
+                                <div>
+                                    <strong class="text-zinc-100">Sự kỉ luật trong phóng khoáng:</strong> Học cách Stuart O'Grady khống chế đuôi nét chữ (terminal) dừng lại gọn gàng để tạo ra nhịp điệu vững vàng, chuyên nghiệp thay vì bay lượn vô tội vạ của dân nghiệp dư.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================== -->
+        <!-- BLOCK 8: VALUE STACK - ĐỀ NGHỊ KHÔNG THỂ TỪ CHỐT CHO DESIGNER VIP -->
+        <!-- ========================================================== -->
+        <section class="space-y-12 bg-gradient-to-b from-zinc-900 to-black p-8 sm:p-12 rounded-3xl border border-camChay/30 custom-glow">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span class="text-xs font-mono text-camChay tracking-widest uppercase">// VALUE STACK HOÀN HẢO</span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-black text-white">
+                    NHẬN NGAY BỘ "VŨ KHÍ THƯƠNG HIỆU" AGENCY-GRADE TRỊ GIÁ 1.500.000Đ
+                </h2>
+                <div class="h-1 w-20 bg-camChay mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Stack Details List -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="flex gap-4 p-5 rounded-2xl bg-zinc-950 border border-zinc-850 hover:border-camChay/40 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-camChay/10 flex items-center justify-center text-camChay flex-shrink-0 text-xl font-bold">
+                            01
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white mb-1">Món quà 1 (Tài nguyên đỉnh cao)</h4>
+                            <p class="text-zinc-400 text-sm leading-relaxed">
+                                Thư viện 500+ Font chữ Premium được chọn lọc và phân loại logic theo đúng 10 phân khúc ngành hàng. Không bao giờ loãng, không lo lỗi hiển thị.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 p-5 rounded-2xl bg-zinc-950 border border-zinc-850 hover:border-camChay/40 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-camChay/10 flex items-center justify-center text-camChay flex-shrink-0 text-xl font-bold">
+                            02
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white mb-1">Món quà 2 (Checklist tối mật)</h4>
+                            <p class="text-zinc-400 text-sm leading-relaxed">
+                                Bản checklist 12 lỗi quang học khiến thiết kế trông "rẻ tiền" của Mentor 15 năm kinh nghiệm chấm bài.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 p-5 rounded-2xl bg-zinc-950 border border-camChay/40 hover:border-camChay transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-camChay flex items-center justify-center text-white flex-shrink-0 text-xl font-bold">
+                            ★
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-camChay-light mb-1">Sách cốt lõi (Ebook Typo Analysis)</h4>
+                            <p class="text-zinc-300 text-sm leading-relaxed">
+                                Ebook "Typo Analysis: Bóc tách logic của những thương hiệu tỷ đô" dài hơn 100 trang với hình ảnh phân tích cực kỳ sắc nét.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Placeholder: [PLACEHOLDER_STACK_3D_BUNDLE_PREMIUM] -->
+                <div class="lg:col-span-5">
+                    <div class="bg-darkCard border border-darkBorder rounded-2xl p-6 relative overflow-hidden group">
+                        <div class="flex justify-between items-center mb-4 pb-3 border-b border-zinc-800">
+                            <span class="text-xs text-zinc-500 font-mono">MOCKUP: PLACEHOLDER_STACK_3D_BUNDLE_PREMIUM</span>
+                            <span class="text-xs text-zinc-400 font-mono">COMPLETE BUNDLE</span>
+                        </div>
+                        
+                        <!-- CSS Abstract Art Content -->
+                        <div class="aspect-square w-full rounded-xl bg-gradient-to-tr from-zinc-950 via-zinc-900 to-zinc-950 border border-zinc-850 relative flex items-center justify-center overflow-hidden">
+                            <!-- Glowing backdrops -->
+                            <div class="absolute w-44 h-44 bg-camChay/10 rounded-full filter blur-2xl animate-pulse"></div>
+                            
+                            <!-- 3D Stacks Wireframes -->
+                            <div class="relative space-y-4 w-60">
+                                <!-- Book layer -->
+                                <div class="bg-gradient-to-r from-zinc-900 to-zinc-950 border border-zinc-700/80 rounded-lg p-4 shadow-xl transform group-hover:-translate-y-2 transition-transform duration-300">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="text-[7px] text-camChay font-mono uppercase tracking-widest">100+ TRANG EBOOK</span>
+                                        <span class="text-[7px] text-zinc-500 font-mono">PDF v1.0</span>
+                                    </div>
+                                    <h4 class="text-xs font-serif font-black text-white uppercase tracking-wider">
+                                        TYPO ANALYSIS
+                                    </h4>
+                                    <p class="text-[8px] text-zinc-400">Bóc tách logic thương hiệu tỷ đô</p>
+                                </div>
+                                
+                                <!-- Tool/iPad Layer -->
+                                <div class="bg-gradient-to-r from-zinc-900 to-zinc-950 border border-zinc-700/80 rounded-lg p-3 shadow-xl transform translate-x-4 group-hover:-translate-y-1 transition-transform duration-300">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-[7px] text-zinc-400 font-mono">CHECKLIST TỐI MẬT</span>
+                                        <span class="text-[7px] text-emerald-500 font-mono font-bold">CO KÈM</span>
+                                    </div>
+                                    <h5 class="text-[10px] font-bold text-white uppercase">12 LỖI QUANG HỌC VI MÔ</h5>
+                                </div>
+
+                                <!-- Metal Grid Scale simulation -->
+                                <div class="bg-gradient-to-r from-zinc-800 to-zinc-900 border border-zinc-600/70 rounded-lg p-2 shadow-xl transform -translate-x-4 flex items-center justify-between text-zinc-400">
+                                    <div class="flex items-center gap-1.5">
+                                        <i class="fa-solid fa-compass-drafting text-camChay text-xs"></i>
+                                        <span class="text-[8px] font-mono text-zinc-300 uppercase">500+ PREMIUM FONT BUNDLE</span>
+                                    </div>
+                                    <span class="text-[7px] bg-camChay/20 text-camChay px-1.5 py-0.5 rounded">FREE</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================== -->
+        <!-- BLOCK 9: CHỐT SALE & PHÁ VỠ PHÒNG THU (CRO FOMO) -->
+        <!-- ========================================================== -->
+        <section id="purchase-section" class="bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 p-8 sm:p-16 rounded-3xl border-2 border-camChay text-center space-y-8 relative overflow-hidden custom-glow">
+            <!-- Diagonal structural stripes -->
+            <div class="absolute inset-0 bg-grid opacity-5 pointer-events-none"></div>
+            
+            <div class="max-w-3xl mx-auto space-y-4 relative z-10">
+                <span class="text-xs font-mono text-camChay tracking-widest uppercase">// HÃY HÀNH ĐỘNG NGAY</span>
+                <h2 class="text-3xl md:text-5xl lg:text-6xl font-serif font-black text-white leading-tight">
+                    NGỪNG LÀM VIỆC THEO BẢN NĂNG.<br> HÃY KIẾM TIỀN BẰNG KHOA HỌC THỊ GIÁC!
+                </h2>
+                <div class="h-1.5 w-24 bg-camChay mx-auto"></div>
+            </div>
+
+            <!-- Pricing matrix -->
+            <div class="max-w-sm mx-auto bg-black/60 border border-zinc-800 p-8 rounded-2xl relative z-10 space-y-6">
+                <div>
+                    <span class="text-zinc-500 text-sm line-through block">Giá gốc: 650.000đ</span>
+                    <span class="text-4xl md:text-5xl font-black text-white tracking-tight block mt-1">
+                        249.000đ
+                    </span>
+                    <span class="text-xs text-camChay-light font-bold uppercase tracking-wider block mt-1">
+                        Tiết kiệm ngay 60%
+                    </span>
+                </div>
+
+                <!-- Ticking Countdown Timer -->
+                <div class="border-y border-zinc-850 py-4 space-y-2">
+                    <span class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block">ƯU ĐÃI SẼ KẾT THÚC SAU:</span>
+                    <div class="flex justify-center items-center gap-3">
+                        <div class="bg-zinc-900 px-3 py-2 rounded-lg border border-zinc-800">
+                            <span id="countdown-hour" class="text-lg font-mono font-bold text-white">00</span>
+                            <span class="text-[8px] text-zinc-500 font-mono block">Giờ</span>
+                        </div>
+                        <span class="text-camChay font-bold">:</span>
+                        <div class="bg-zinc-900 px-3 py-2 rounded-lg border border-zinc-800">
+                            <span id="countdown-minute" class="text-lg font-mono font-bold text-white">15</span>
+                            <span class="text-[8px] text-zinc-500 font-mono block">Phút</span>
+                        </div>
+                        <span class="text-camChay font-bold">:</span>
+                        <div class="bg-zinc-900 px-3 py-2 rounded-lg border border-zinc-800">
+                            <span id="countdown-second" class="text-lg font-mono font-bold text-white">45</span>
+                            <span class="text-[8px] text-zinc-500 font-mono block">Giây</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main shake Call-To-Action -->
+                <div>
+                    <button onclick="triggerPaymentModal()" class="w-full py-4 rounded-xl bg-camChay text-white font-extrabold text-sm uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-300 animate-shake-cta transform active:scale-95 shadow-xl shadow-camChay/20">
+                        [TẢI TRỌN BỘ EBOOK & VŨ KHÍ THIẾT KẾ NGAY]
+                    </button>
+                </div>
+            </div>
+
+            <!-- Trust Badge Visual: [PLACEHOLDER_PAYMENT_TRUST_BADGES] -->
+            <div class="pt-6 relative z-10 max-w-md mx-auto space-y-4">
+                <span class="text-xs text-zinc-500 font-mono block">BẢO MẬT & THANH TOÁN TỰ ĐỘNG</span>
+                
+                <!-- Payment Badges representation -->
+                <div class="flex justify-center items-center gap-6">
+                    <!-- VietQR simulated badge -->
+                    <div class="bg-white/5 border border-zinc-800 px-4 py-2 rounded-lg flex items-center gap-2 filter hover:brightness-125 transition cursor-pointer" onclick="triggerPaymentModal()">
+                        <div class="w-8 h-8 rounded bg-gradient-to-r from-blue-600 to-red-500 flex items-center justify-center text-[8px] font-black text-white">
+                            VietQR
+                        </div>
+                        <div class="text-left">
+                            <span class="text-[9px] font-bold block text-zinc-300">VietQR Quét Mã</span>
+                            <span class="text-[7px] text-zinc-500 block">Kích hoạt tức thì</span>
+                        </div>
+                    </div>
+
+                    <!-- MoMo simulated badge -->
+                    <div class="bg-white/5 border border-zinc-800 px-4 py-2 rounded-lg flex items-center gap-2 filter hover:brightness-125 transition cursor-pointer" onclick="triggerPaymentModal()">
+                        <div class="w-8 h-8 rounded bg-pink-600 flex items-center justify-center text-xs font-bold text-white">
+                            MoMo
+                        </div>
+                        <div class="text-left">
+                            <span class="text-[9px] font-bold block text-zinc-300">Ví MoMo nhanh</span>
+                            <span class="text-[7px] text-zinc-500 block">Tự động duyệt 24/7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================== -->
+        <!-- REVISION BLOCK: 25 TYPOGRAPHY FLASHCARDS -->
+        <!-- ========================================================== -->
+        <section class="space-y-12">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span class="text-xs font-mono text-zinc-500 tracking-widest uppercase">// KHỐI FLASHCARD ÔN TẬP TOÀN DIỆN</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-white">
+                    25 CÂU HỎI ÔN TẬP KỸ TRỊ DÀNH CHO ART DIRECTOR THỰC THỤ
+                </h2>
+                <div class="h-1 w-20 bg-camChay mx-auto"></div>
+            </div>
+
+            <!-- Flashcard Grid (Visible immediately without interaction, designed beautiful like physical study cards) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 01/25</span>
+                    <h4 class="font-bold text-white text-sm">Kerning là gì?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Nhịp điệu không gian giữa hai chữ cái cụ thể giúp phân bổ trọng lực thị giác hoàn hảo, khắc phục các khoảng trống lỗi khi hiển thị.
+                    </p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 02/25</span>
+                    <h4 class="font-bold text-white text-sm">Ink Trap (Bẫy mực) là gì?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Góc khuyết sâu tại các khớp nối chữ giúp mực in phun không bị loang tràn và mất chi tiết khi in trên các chất liệu giấy xốp hoặc thêu dệt.
+                    </p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 03/25</span>
+                    <h4 class="font-bold text-white text-sm">Sự khác biệt lớn nhất giữa logo 1 triệu và 20 triệu?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Nhịp điệu không gian chữ chỉnh tay tinh xảo, bẫy mực, bản đồ dịch mã thị giác chuẩn ngành hàng cùng tri thức kỹ trị hỗ trợ lập luận thực tế.
+                    </p>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 04/25</span>
+                    <h4 class="font-bold text-white text-sm">Trọng lượng thị giác (Visual Weight) ảnh hưởng thế nào đến bố cục?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Định hướng mắt người xem di chuyển tuần tự qua các cấp độ thông tin từ lớn đến nhỏ dựa trên độ đậm nhạt và kích thước khối ký tự.
+                    </p>
+                </div>
+                <!-- Card 5 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 05/25</span>
+                    <h4 class="font-bold text-white text-sm">Oldstyle Serif có đặc trưng cốt lõi gì?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Chân chữ bo tròn mềm mại, không sắc nét cứng nhắc của máy móc, trục nghiêng mô phỏng nét viết tay mang cảm giác may đo thủ công.
+                    </p>
+                </div>
+                <!-- Card 6 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 06/25</span>
+                    <h4 class="font-bold text-white text-sm">Modern Serif khác Oldstyle Serif thế nào?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Trục đứng thẳng tuyệt đối, tương phản thanh đậm cực lớn kết hợp chân chữ hairline siêu mỏng tạo sự uy quyền và cực kỳ xa xỉ.
+                    </p>
+                </div>
+                <!-- Card 7 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 07/25</span>
+                    <h4 class="font-bold text-white text-sm">Tại sao Zara mang lại cảm giác thời trang xa xỉ?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Nhờ cấu trúc Modern Serif, gọt gót chữ Stem uốn lượn tinh tế cùng việc kiểm soát khoảng trắng dồn dập, tạo khối kiêu sa đặc thù.
+                    </p>
+                </div>
+                <!-- Card 8 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 08/25</span>
+                    <h4 class="font-bold text-white text-sm">Aperture trong Typography là gì?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Độ mở hay khoảng không gian bán khép kín bên trong các ký tự tròn như 'c', 'e', 'a', ảnh hưởng lớn tới khả năng nhận diện chữ.
+                    </p>
+                </div>
+                <!-- Card 9 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 09/25</span>
+                    <h4 class="font-bold text-white text-sm">Khi nào dùng Neo-Grotesque Sans-Serif?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Khi thiết kế truyền thông thương mại, FMCG hoặc công nghệ cần khối diện tích dương bản lớn, siết chặt khoảng cách hút mắt tối đa.
+                    </p>
+                </div>
+                <!-- Card 10 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 10/25</span>
+                    <h4 class="font-bold text-white text-sm">Terminal của một chữ cái là gì?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Phần kết thúc của nét chữ không có gót hay chân serif (ví dụ: điểm cuối của chữ 'c' hoặc 'r' trong Sans-serif).
+                    </p>
+                </div>
+                <!-- Card 11 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 11/25</span>
+                    <h4 class="font-bold text-white text-sm">Tại sao Rolex thiết kế chữ O nghiêng?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Để lưu giữ trục chữ truyền thống mô phỏng chữ viết tay cổ điển, khẳng định sự kiêu hãnh của thương hiệu doanh nhân trăm tuổi.
+                    </p>
+                </div>
+                <!-- Card 12 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 12/25</span>
+                    <h4 class="font-bold text-white text-sm">Kerning và Tracking khác biệt ra sao?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Kerning tinh chỉnh khoảng trống giữa 2 ký tự cụ thể. Tracking điều chỉnh khoảng rộng của cả dòng chữ/khối văn bản.
+                    </p>
+                </div>
+                <!-- Card 13 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 13/25</span>
+                    <h4 class="font-bold text-white text-sm">Tại sao Anessa kéo kerning cực rộng?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Nhằm giải phóng không gian khoảng trắng xa hoa, mang lại cảm giác mỏng thoáng, thư thái vô hạn của mỹ phẩm cao cấp.
+                    </p>
+                </div>
+                <!-- Card 14 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 14/25</span>
+                    <h4 class="font-bold text-white text-sm">Geometric Sans có đặc trưng kỹ trị gì?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Cấu trúc hoàn toàn dựa trên các dạng hình học cơ bản như hình tròn hoàn hảo, hình vuông sắc nét để biểu đạt tính công nghệ.
+                    </p>
+                </div>
+                <!-- Card 15 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 15/25</span>
+                    <h4 class="font-bold text-white text-sm">Khi nào nên dùng Slab Serif?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Phù hợp cho các thương hiệu cơ khí, công nghiệp nặng như Volvo hay Honda nhờ độ tương phản thấp, chân dày cơ bắp, tin cậy.
+                    </p>
+                </div>
+                <!-- Card 16 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 16/25</span>
+                    <h4 class="font-bold text-white text-sm">Tại sao Logo Script tại Agency luôn vẽ tay?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Để tạo dấu ấn độc bản tuyệt đối. Font Script tải sẵn trên mạng thường loãng, thiếu nhịp điệu và không bảo hộ được thương hiệu.
+                    </p>
+                </div>
+                <!-- Card 17 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 17/25</span>
+                    <h4 class="font-bold text-white text-sm">Ligature (Nét nối) có tác dụng gì?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Khâu liên kết chặt chẽ các ký tự dấp dính thành một khối thống nhất giúp nâng tầm nhịp điệu và cải thiện tính dễ đọc của logo.
+                    </p>
+                </div>
+                <!-- Card 18 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 18/25</span>
+                    <h4 class="font-bold text-white text-sm">Tại sao Fort Robotics sử dụng góc vuông không bo?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Để phát đi tín hiệu của sự chính xác cơ khí, vận hành tự động vững vàng, mạnh mẽ và kiên quyết của trí tuệ nhân tạo AI.
+                    </p>
+                </div>
+                <!-- Card 19 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 19/25</span>
+                    <h4 class="font-bold text-white text-sm">Font Monospace mang lại cảm xúc thế nào?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Gợi ý sự nghiêm túc của mã nguồn máy tính, tính mô đun hóa hoàn hảo, tính lặp lại dứt khoát của khoa học phân tích số liệu.
+                    </p>
+                </div>
+                <!-- Card 20 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 20/25</span>
+                    <h4 class="font-bold text-white text-sm">Làm sao khắc phục lỗi dấp dính tại các khớp chữ?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Sử dụng kỹ thuật bù trừ quang học bằng cách gọt mỏng gốc cột chữ hoặc bo góc vi mô dứt khoát tại các giao điểm.
+                    </p>
+                </div>
+                <!-- Card 21 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 21/25</span>
+                    <h4 class="font-bold text-white text-sm">Tại sao font không chân mỏng lại thể hiện trí tuệ chuẩn mực?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Như trường hợp Royal Academy of Music, sự tối giản cực hạn mang lại chiều sâu kỉ luật, học thuật hoàng gia tinh tế.
+                    </p>
+                </div>
+                <!-- Card 22 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 22/25</span>
+                    <h4 class="font-bold text-white text-sm">Bù trừ thị giác của stem chữ là gì?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Điều chỉnh độ dày của các thanh đứng và thanh ngang khác nhau để dưới mắt thường của con người chữ không bị méo lệch.
+                    </p>
+                </div>
+                <!-- Card 23 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 23/25</span>
+                    <h4 class="font-bold text-white text-sm">Tại sao chọn font theo linh cảm hay bị sửa v20?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Vì thiếu cơ sở khoa học thị giác và thuật ngữ chuyên sâu để giải thích giá trị nhịp điệu nét chữ của dự án cho khách hàng.
+                    </p>
+                </div>
+                <!-- Card 24 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 24/25</span>
+                    <h4 class="font-bold text-white text-sm">Kỹ thuật "gót chữ sắc cạnh" là gì?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Kỹ thuật mài dũa độ uốn của gốc chân cột chữ sắc nét tối đa giúp đảm bảo độ rõ ràng khi hiển thị ở kích thước phóng lớn.
+                    </p>
+                </div>
+                <!-- Card 25 -->
+                <div class="bg-darkCard border border-darkBorder rounded-xl p-6 space-y-3 hover:border-camChay/40 transition-colors">
+                    <span class="text-xs font-mono text-camChay font-bold">CARD 25/25</span>
+                    <h4 class="font-bold text-white text-sm">Quy luật dương bản lớn trong Neo-Grotesque là gì?</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Kỹ thuật siết chữ chặt tạo nên mảng đặc khổng lồ hút mắt người xem, chiếm trọn bảng hiệu truyền thông ngoài trời tốt nhất.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================================== -->
+    <!-- PAYMENT SIMULATOR MODAL (NO ALERT GUARDRAIL) -->
+    <!-- ========================================================== -->
+    <div id="payment-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 z-[9999] hidden">
+        <div class="bg-darkCard border border-zinc-800 rounded-2xl w-full max-w-md p-6 space-y-6 relative">
+            <button onclick="closePaymentModal()" class="absolute top-4 right-4 text-zinc-400 hover:text-white transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            
+            <div class="text-center space-y-2">
+                <span class="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                <h3 class="text-lg font-bold text-white uppercase tracking-wider">HỆ THỐNG THANH TOÁN TỰ ĐỘNG</h3>
+                <p class="text-xs text-zinc-400">Quét mã QR dưới đây bằng ứng dụng ngân hàng hoặc MoMo để sở hữu trọn bộ tức thì</p>
+            </div>
+
+            <!-- Fake QR Code Simulation -->
+            <div class="relative w-48 h-48 mx-auto bg-white rounded-xl p-2 flex items-center justify-center shadow-xl">
+                <!-- Abstract Styled CSS QR Grid -->
+                <div class="w-full h-full bg-zinc-900 border border-zinc-800 rounded flex flex-col justify-between p-3 relative overflow-hidden">
+                    <div class="flex justify-between w-full">
+                        <div class="w-8 h-8 border-4 border-camChay rounded-sm bg-white"></div>
+                        <div class="w-8 h-8 border-4 border-camChay rounded-sm bg-white"></div>
+                    </div>
+                    <!-- Intermediary lines imitating QR codes -->
+                    <div class="flex-1 my-2 flex flex-col gap-1 justify-center">
+                        <div class="w-full h-1 bg-camChay/40"></div>
+                        <div class="w-3/4 h-1 bg-zinc-400/30"></div>
+                        <div class="w-full h-1 bg-camChay"></div>
+                        <div class="w-5/6 h-1 bg-zinc-400/30"></div>
+                    </div>
+                    <div class="flex justify-between w-full">
+                        <div class="w-8 h-8 border-4 border-camChay rounded-sm bg-white"></div>
+                        <div class="w-8 h-8 bg-camChay rounded-sm flex items-center justify-center text-[8px] font-bold text-white">★</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-zinc-950 p-4 rounded-xl border border-zinc-850 space-y-2 text-xs">
+                <div class="flex justify-between text-zinc-400">
+                    <span>Sản phẩm:</span>
+                    <strong class="text-zinc-200">Typo Analysis Ebook + Quà Tặng VIP</strong>
+                </div>
+                <div class="flex justify-between text-zinc-400">
+                    <span>Số tiền cần chuyển:</span>
+                    <strong class="text-camChay">249.000đ</strong>
+                </div>
+                <div class="flex justify-between text-zinc-400">
+                    <span>Nội dung chuyển khoản:</span>
+                    <strong class="text-zinc-200 font-mono">TYPOLAB VIP [SĐT]</strong>
+                </div>
+            </div>
+
+            <button onclick="simulatePaymentSuccess()" class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm rounded-lg uppercase tracking-wider transition">
+                Xác Nhận Đã Thanh Toán (Thử Nghiệm)
+            </button>
+        </div>
+    </div>
+
+    <!-- Success Feedback Panel -->
+    <div id="success-panel" class="fixed bottom-6 right-6 bg-emerald-950 border border-emerald-500 rounded-xl p-4 shadow-2xl z-[10000] hidden max-w-sm space-y-2 animate-bounce">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold">
+                ✓
+            </div>
+            <div>
+                <h4 class="font-bold text-white text-sm">GIAO DỊCH THÀNH CÔNG!</h4>
+                <p class="text-[11px] text-zinc-300">Hệ thống đang chuẩn bị gói tài liệu cho bạn gửi qua email.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================== -->
+    <!-- FOOTER: STRICTLY HEIGHT 128PX (WITH CHANNELS & ICONS) -->
+    <!-- ========================================================== -->
+    <footer class="h-[128px] bg-zinc-950 border-t border-zinc-900 flex items-center relative z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col md:flex-row justify-between items-center gap-4">
+            
+            <!-- Description copy strictly kept from user -->
+            <div class="text-center md:text-left">
+                <p class="text-[10px] md:text-xs text-zinc-400 leading-relaxed max-w-xl">
+                    Cập nhật kiến thức thực chiến nhất về Kỹ năng Quay Dựng, Xây kênh Niche và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.
+                </p>
+                <span class="text-[9px] text-zinc-600 font-mono mt-1 block">© 2026 VIETND. ALL RIGHTS RESERVED</span>
+            </div>
+
+            <!-- Social Links with Icons -->
+            <div class="flex items-center gap-4">
+                <!-- YouTube -->
+                <a href="https://youtube.com/@vietndonline" target="_blank" class="w-8 h-8 rounded-full bg-zinc-900 hover:bg-red-600 hover:text-white border border-zinc-800 flex items-center justify-center text-zinc-400 transition" title="Kênh YouTube">
+                    <i class="fa-brands fa-youtube text-sm"></i>
+                </a>
+
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" class="w-8 h-8 rounded-full bg-zinc-900 hover:bg-black hover:text-white hover:border-zinc-500 border border-zinc-800 flex items-center justify-center text-zinc-400 transition" title="Kênh TikTok">
+                    <i class="fa-brands fa-tiktok text-sm"></i>
+                </a>
+
+                <!-- Facebook Page -->
+                <a href="https://web.facebook.com/profile.php?id=61580450902746" target="_blank" class="w-8 h-8 rounded-full bg-zinc-900 hover:bg-blue-600 hover:text-white border border-zinc-800 flex items-center justify-center text-zinc-400 transition" title="Facebook Page">
+                    <i class="fa-brands fa-facebook-f text-sm"></i>
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT FUNCTIONS -->
+    <script>
+        // Interactive Slider Logic for Block 7
+        const splitSlider = document.getElementById('split-slider');
+        const sketchView = document.getElementById('sketch-view');
+        if (splitSlider && sketchView) {
+            splitSlider.addEventListener('input', (e) => {
+                const value = e.target.value;
+                sketchView.style.width = `${value}%`;
+            });
+        }
+
+        // Ticking Countdown Timer Logic (e.g. 15 minutes 45 seconds loop for CRO FOMO)
+        let totalSeconds = (15 * 60) + 45; 
+        const hourElem = document.getElementById('countdown-hour');
+        const minElem = document.getElementById('countdown-minute');
+        const secElem = document.getElementById('countdown-second');
+
+        function updateCountdown() {
+            if (totalSeconds <= 0) {
+                totalSeconds = (15 * 60) + 45; // loop timer to keep dynamic urgency without crashing
+            }
+            
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+
+            hourElem.textContent = String(hours).padStart(2, '0');
+            minElem.textContent = String(minutes).padStart(2, '0');
+            secElem.textContent = String(seconds).padStart(2, '0');
+
+            totalSeconds--;
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Payment Modal Management (Avoiding prompt alerts)
+        function triggerPaymentModal() {
+            document.getElementById('payment-modal').classList.remove('hidden');
+        }
+
+        function closePaymentModal() {
+            document.getElementById('payment-modal').classList.add('hidden');
+        }
+
+        function simulatePaymentSuccess() {
+            closePaymentModal();
+            const panel = document.getElementById('success-panel');
+            panel.classList.remove('hidden');
+            setTimeout(() => {
+                panel.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
