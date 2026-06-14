@@ -1,0 +1,152 @@
+/* =========================================================
+   1. GLOBAL STYLES (Khung xương dùng chung cho 9 Module)
+   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,700&display=swap');
+
+:root {
+    --bg-matte: #121212;
+    --text-main: #FFFFFF;
+    --text-muted: #A0A0A5;
+    --cyan-neon: #00F0FF;
+    --orange-glow: #FF5A00;
+    
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-matte);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Khối giữ chỗ (Placeholder) cho Hình ảnh/Video dùng chung */
+.media-placeholder {
+    width: 100%;
+    min-height: 450px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 2px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    text-align: center;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+.media-placeholder:hover { border-color: var(--cyan-neon); color: var(--cyan-neon); }
+.placeholder-icon { font-size: 2.5rem; margin-bottom: 15px; }
+
+/* =========================================================
+   2. MODULE 1: HERO SECTION CSS
+   ========================================================= */
+.hero-section {
+    padding: 80px 0 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+/* Ánh sáng mờ ảo phía sau */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 500px;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
+    z-index: -1;
+}
+
+.hero-tagline {
+    display: inline-block;
+    border: 1px solid rgba(0, 240, 255, 0.4);
+    background: rgba(0, 240, 255, 0.05);
+    color: var(--cyan-neon);
+    padding: 8px 24px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 30px;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
+}
+
+.hero-headline {
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 4vw, 3.5rem); /* Co giãn theo màn hình */
+    line-height: 1.25;
+    margin-bottom: 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.hero-headline .highlight { color: var(--text-muted); font-style: italic; display: block; font-size: 0.8em; margin-top: 10px;}
+
+.hero-subheadline {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 800px;
+    margin: 0 auto 40px;
+    font-weight: 300;
+}
+
+.hero-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto 50px;
+    text-align: left; /* Chữ căn trái để dễ đọc */
+}
+
+.bullet-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 20px 24px;
+    border-radius: 12px;
+    border-left: 2px solid var(--orange-glow);
+}
+
+.bullet-icon { font-size: 1.8rem; line-height: 1; }
+.bullet-text strong { display: block; color: var(--text-main); font-size: 1.1rem; margin-bottom: 6px; }
+.bullet-text p { color: var(--text-muted); font-size: 0.95rem; margin: 0; }
+
+.hero-cta-wrapper { display: flex; flex-direction: column; align-items: center; margin-bottom: 60px; }
+
+.btn-cta {
+    background-color: var(--orange-glow);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 20px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(255, 90, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 40px rgba(255, 90, 0, 0.7);
+    background-color: #ff6a1a;
+}
+
+.micro-copy { margin-top: 12px; font-size: 0.85rem; color: var(--text-muted); font-style: italic; }
+.hero-media-wrapper { width: 100%; max-width: 1000px; margin: 0 auto; }
