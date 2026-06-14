@@ -3,257 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design System Studio — Typography Masterclass</title>
+    <title>Design System Studio — Studio Quản trị</title>
     <link rel="stylesheet" href="style.css">
-    
     <style>
-        /* =========================================================
-           PREMIUM DESIGN SYSTEM STUDIO INTERFACE (APPLE/MATERIAL DESIGN HYBRID)
-           ========================================================= */
-        :root {
-            --md-bg: #0B0B0C;
-            --md-surface: #161617;
-            --md-surface-variant: #222224;
-            --md-border: rgba(255, 255, 255, 0.08);
-            --md-border-focus: var(--cyan-neon);
-            --font-mono: 'Space Grotesk', 'Courier New', monospace;
-        }
-
-        body {
-            background-color: var(--md-bg);
-            color: var(--text-main);
-            font-family: var(--font-body);
-            padding: 0;
-            margin: 0;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Layout cấu trúc Dashboard */
-        .ds-layout {
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            min-height: 100vh;
-        }
-
-        /* Sidebar điều khiển - Cố định bên trái */
-        .ds-sidebar {
-            background-color: var(--md-surface);
-            border-right: 1px solid var(--md-border);
-            padding: 40px 24px;
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            box-sizing: border-box;
-        }
-
-        .sidebar-brand h1 {
-            font-size: 16px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: var(--text-main);
-            margin-bottom: 8px;
-        }
-
-        .sidebar-brand p {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin: 0 0 40px 0;
-        }
-
-        /* Main Content Workspace - Cuộn bên phải */
-        .ds-workspace {
-            padding: 60px 80px;
-            max-width: 1000px;
-            box-sizing: border-box;
-        }
-
-        .ds-block {
-            margin-bottom: 60px;
-        }
-
-        .ds-block-title {
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--cyan-neon);
-            margin-bottom: 24px;
-            border-bottom: 1px solid var(--md-border);
-            padding-bottom: 8px;
-        }
-
-        /* Form Controls chuẩn Material Outlined */
-        .control-group {
-            position: relative;
-            margin-bottom: 24px;
-        }
-
-        .control-group label {
-            display: block;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .control-group select {
-            width: 100%;
-            background-color: var(--md-bg);
-            color: var(--text-main);
-            border: 1px solid var(--md-border);
-            padding: 14px 16px;
-            border-radius: 8px;
-            font-family: var(--font-body);
-            font-size: 13px;
-            appearance: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .control-group select:focus {
-            outline: none;
-            border-color: var(--cyan-neon);
-            box-shadow: 0 0 0 1px var(--cyan-neon);
-        }
-
-        /* Bảng Spec hiển thị Type Scale */
-        .type-scale-row {
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            padding: 24px 0;
-            border-bottom: 1px solid var(--md-border);
-            align-items: flex-start;
-            gap: 30px;
-        }
-
-        .type-meta {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--text-muted);
-            line-height: 1.8;
-        }
-
-        .type-meta span {
-            color: var(--cyan-neon);
-            display: block;
-            font-weight: 600;
-            font-size: 12px;
-            margin-bottom: 4px;
-        }
-
-        /* Showcase lưới thành phần UI */
-        .ui-showcase-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
-        .ui-card {
-            background-color: var(--md-surface);
-            border: 1px solid var(--md-border);
-            border-radius: 12px;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            align-items: flex-start;
-        }
-
-        .ui-card-info {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--text-muted);
-            width: 100%;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
-            padding-bottom: 10px;
-        }
-
-        /* Lưới Icon tối giản */
-        .icon-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-            gap: 16px;
-        }
-
-        .icon-box {
-            background-color: var(--md-surface);
-            border: 1px solid var(--md-border);
-            border-radius: 8px;
-            aspect-ratio: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-size: 10px;
-            color: var(--text-muted);
-            font-family: var(--font-mono);
-        }
-
-        .icon-box svg {
-            width: 20px;
-            height: 20px;
-            stroke: var(--text-main);
-            stroke-width: 1.5;
-            fill: none;
-        }
-
-        /* Nút hành động chính của hệ thống */
-        .btn-sync-system {
-            background-color: var(--text-main);
-            color: var(--md-bg);
-            font-weight: 600;
-            font-size: 13px;
-            border: none;
-            padding: 16px 24px;
-            border-radius: 8px;
-            cursor: pointer;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            letter-spacing: 0.5px;
-            transition: all 0.2s ease;
-        }
-
-        .btn-sync-system:hover {
-            background-color: var(--cyan-neon);
-            transform: translateY(-1px);
-        }
-
-        .btn-sync-system svg {
-            width: 16px;
-            height: 16px;
-            stroke: currentColor;
-            stroke-width: 2;
-            fill: none;
-        }
-
-        /* Thẻ Chip tùy biến */
-        .ds-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-size: 12px;
-            font-weight: 500;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid var(--md-border);
-            color: var(--text-main);
-        }
-        .ds-chip.cyan { background: rgba(0, 240, 255, 0.05); border-color: rgba(0, 240, 255, 0.2); color: var(--cyan-neon); }
-        .ds-chip.orange { background: rgba(255, 90, 0, 0.05); border-color: rgba(255, 90, 0, 0.2); color: var(--orange-glow); }
+        body { padding: 0; background-color: #0B0B0C; margin: 0; }
+        .ds-layout { display: grid; grid-template-columns: 340px 1fr; min-height: 100vh; }
+        .ds-sidebar { background-color: #161617; border-right: 1px solid rgba(255,255,255,0.08); padding: 35px 24px; position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; overflow-y: auto; }
+        .sidebar-brand h1 { font-size: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+        .sidebar-brand p { font-size: 12px; color: var(--text-muted); margin: 0 0 30px 0; }
+        .ds-workspace { padding: 60px 80px; max-width: 1000px; box-sizing: border-box; }
+        .ds-block { margin-bottom: 50px; }
+        .ds-block-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--cyan-neon); margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 8px; }
+        
+        /* Outlined Inputs & Panels */
+        .panel-title { font-size: 12px; text-transform: uppercase; color: #fff; margin: 20px 0 10px; font-weight: 600; letter-spacing: 0.5px; border-left: 2px solid var(--cyan-neon); padding-left: 8px;}
+        .control-group { margin-bottom: 16px; }
+        .control-group label { display: block; font-size: 11px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+        .control-group select, .control-group input { width: 100%; background-color: #0B0B0C; color: #fff; border: 1px solid rgba(255,255,255,0.08); padding: 12px; border-radius: 8px; font-size: 13px; font-family: var(--font-body); }
+        .control-group select:focus, .control-group input:focus { outline: none; border-color: var(--cyan-neon); }
+        
+        .type-scale-row { display: grid; grid-template-columns: 180px 1fr; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.06); gap: 20px; }
+        .type-meta { font-size: 11px; color: var(--text-muted); font-family: monospace; }
+        .type-meta span { color: var(--cyan-neon); display: block; font-weight: 600; margin-bottom: 2px; }
+        
+        .btn-sync-system { background-color: #fff; color: #000; font-weight: 600; font-size: 13px; border: none; padding: 16px; border-radius: 8px; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 20px; transition: all 0.2s; }
+        .btn-sync-system:hover { background-color: var(--cyan-neon); }
+        .icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 12px; }
+        .icon-box { background-color: #161617; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; aspect-ratio: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; font-size: 10px; color: var(--text-muted); }
     </style>
 </head>
 <body>
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <g id="icon-anatomy"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></g>
+        <g id="icon-premium"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></g>
+        <g id="icon-map"><path d="M3 5v14l6-3 6 3 6-3V3l-6 3-6-3-6 3zm6-3v14m6-3V3"/></g>
+        <g id="icon-arrow"><path d="M5 12h14M12 5l7 7-7 7"/></g>
+    </svg>
 
     <div class="ds-layout">
         
@@ -261,198 +47,117 @@
             <div class="sidebar-top">
                 <div class="sidebar-brand">
                     <h1>Design System Studio</h1>
-                    <p>Engine Quản trị trực quan v2.0</p>
+                    <p>Engine Điều Hướng Trực Quan</p>
                 </div>
 
-                <div class="ds-controls">
-                    <div class="control-group">
-                        <label>Font Tiêu Đề (Headings)</label>
-                        <select id="heading-font-select">
-                            <option value="GT-Sectra-LCGV-Display-Bold.otf">GT Sectra Display Bold</option>
-                            <option value="GT-Sectra-LCGV-Display-Light.otf">GT Sectra Display Light</option>
-                            <option value="GT-Sectra-LCGV-Fine-Black.otf">GT Sectra Fine Black</option>
-                            <option value="GT-Sectra-LCGV-Fine-Bold.otf">GT Sectra Fine Bold</option>
-                            <option value="SVN-NoeDisplay-Black.ttf">SVN Noe Display Black</option>
-                            <option value="SVN-NoeDisplay-Bold.ttf" selected>SVN Noe Display Bold</option>
-                            <option value="SVN-NoeDisplay-Regular.ttf">SVN Noe Display Regular</option>
-                        </select>
-                    </div>
+                <div class="panel-title">Cấu hình kết nối API</div>
+                <div class="control-group">
+                    <label>GitHub Personal Token</label>
+                    <input type="password" id="ui-gh-token" placeholder="ghp_xxxxxxxxxxxx">
+                </div>
+                <div class="control-group">
+                    <label>Repository (user/repo)</label>
+                    <input type="text" id="ui-gh-repo" placeholder="nguyen/typography-landing">
+                </div>
 
-                    <div class="control-group">
-                        <label>Font Văn Bản (Body Text)</label>
-                        <select id="body-font-select">
-                            <option value="SVN-AEONIK-REGULAR.TTF" selected>SVN Aeonik Regular</option>
-                            <option value="SVN-Aeonik-Air.ttf">SVN Aeonik Air</option>
-                            <option value="SVN-AEONIK-LIGHT.TTF">SVN Aeonik Light</option>
-                            <option value="SVN-AEONIK-MEDIUM.TTF">SVN Aeonik Medium</option>
-                            <option value="GT-Sectra-LCGV-Fine-Book.otf">GT Sectra Fine Book</option>
-                        </select>
-                    </div>
+                <div class="panel-title">Cấu hình Font chữ</div>
+                <div class="control-group">
+                    <label>Font Tiêu Đề</label>
+                    <select id="heading-font-select">
+                        <option value="SVN-NoeDisplay-Bold.ttf" selected>SVN Noe Display Bold</option>
+                        <option value="GT-Sectra-LCGV-Display-Bold.otf">GT Sectra Display Bold</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>Font Nội dung & Nút</label>
+                    <select id="body-font-select">
+                        <option value="SVN-AEONIK-REGULAR.TTF" selected>SVN Aeonik Regular</option>
+                        <option value="SVN-AEONIK-LIGHT.TTF">SVN Aeonik Light</option>
+                    </select>
                 </div>
             </div>
 
             <div class="sidebar-bottom">
                 <button id="sync-theme-btn" class="btn-sync-system">
-                    <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 21v-5h5"/></svg>
                     ĐỒNG BỘ DESIGN SYSTEM
                 </button>
             </div>
         </aside>
 
         <main class="ds-workspace">
-            
             <section class="ds-block">
-                <div class="ds-block-title">1. Typography Type Scale</div>
-                
+                <div class="ds-block-title">1. Typography Scale Mặc định</div>
                 <div class="type-scale-row">
-                    <div class="type-meta">
-                        <span>ds-display</span>
-                        Size: 3.5rem (56px)<br>Weight: 900 / Bold<br>Tracking: Normal
-                    </div>
-                    <div class="ds-display">TYPOGRAPHY KHÔNG PHẢI LÀ NGHỆ THUẬT CẢM TÍNH.</div>
+                    <div class="type-meta"><span>ds-display</span>56px / HeadingFont</div>
+                    <div class="ds-display">TYPOGRAPHY LÀ TOÁN HỌC THỊ GIÁC.</div>
                 </div>
-
                 <div class="type-scale-row">
-                    <div class="type-meta">
-                        <span>ds-headline</span>
-                        Size: 2.6rem (41px)<br>Weight: 700 / Bold<br>Tracking: Normal
-                    </div>
-                    <div class="ds-headline">SỰ KHÁC BIỆT GIỮA THIẾT KẾ BẢN NĂNG VÀ SẢN PHẨM CHUẨN AGENCY</div>
-                </div>
-
-                <div class="type-scale-row">
-                    <div class="type-meta">
-                        <span>ds-subheadline</span>
-                        Size: 1.1rem (18px)<br>Weight: 300 / Light<br>Line-height: 1.6
-                    </div>
-                    <div class="ds-subheadline">Cầm trên tay hệ thống "Dịch mã thị giác" - vũ khí tối thượng giúp bạn thoát mác làm việc bản năng. Cung cấp bộ lý luận chuyên môn sắc bén.</div>
-                </div>
-
-                <div class="type-scale-row">
-                    <div class="type-meta">
-                        <span>ds-body</span>
-                        Size: 0.95rem (15px)<br>Weight: 400 / Regular<br>Line-height: 1.6
-                    </div>
-                    <div class="ds-body">Bóc tách giải phẫu chữ (Anatomy) để hiểu thông điệp ngầm của từng nét cắt. Biến Typography thành vũ khí phản biện khiến khách hàng "tâm phục khẩu phục" thay vì bắt bẻ cảm tính.</div>
-                </div>
-
-                <div class="type-scale-row">
-                    <div class="type-meta">
-                        <span>ds-tagline</span>
-                        Size: 0.85rem (13px)<br>Weight: 500 / Medium<br>Letter-spacing: 1px
-                    </div>
-                    <div class="ds-tagline">&gt; Đúc kết từ 15 năm rà lỗi đồ án thiết kế & Tư duy logic của Kỹ sư hệ thống</div>
+                    <div class="type-meta"><span>ds-body</span>15px / BodyFont</div>
+                    <div class="ds-body">Nội dung và hệ thống nút bấm sử dụng font Aeonik tinh tế.</div>
                 </div>
             </section>
 
             <section class="ds-block">
-                <div class="ds-block-title">2. UI Components & Elements</div>
-                <div class="ui-showcase-grid">
-                    
-                    <div class="ui-card">
-                        <div class="ui-card-info">Component: Primary CTA Button (Glow Effect)</div>
-                        <a href="#" class="btn-cta" style="margin: 0; display: inline-block;">[ TRANG BỊ VŨ KHÍ THIẾT KẾ NGAY ]</a>
-                    </div>
-
-                    <div class="ui-card">
-                        <div class="ui-card-info">Component: Interactive Chips / Badges</div>
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                            <div class="ds-chip"><svg style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> 249K Trọn đời</div>
-                            <div class="ds-chip cyan">🔬 Kính hiển vi</div>
-                            <div class="ds-chip orange">💎 Premium Asset</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="ds-block">
-                <div class="ds-block-title">3. Synchronized Iconography System (SVG Line)</div>
+                <div class="ds-block-title">2. Thừa Kế Hệ Thống Biểu Tượng (Icon System)</div>
                 <div class="icon-grid">
-                    <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>USD</div>
-                    <div class="icon-box"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>Info</div>
-                    <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Anatomy</div>
-                    <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34M12 5b6 9H6l6-9z"/></svg>Master</div>
-                    <div class="icon-box"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Lock</div>
-                    <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>Media</div>
+                    <div class="icon-box"><svg class="sys-icon"><use href="#icon-anatomy"/></svg>anatomy</div>
+                    <div class="icon-box"><svg class="sys-icon"><use href="#icon-premium"/></svg>premium</div>
+                    <div class="icon-box"><svg class="sys-icon"><use href="#icon-map"/></svg>map</div>
+                    <div class="icon-box"><svg class="sys-icon"><use href="#icon-arrow"/></svg>arrow</div>
                 </div>
             </section>
-
         </main>
     </div>
 
     <script>
-        // =========================================================
-        // GITHUB HARDCODED CONFIGURATION (Vui lòng điền thông số trước khi chạy)
-        // Lưu ý: Đảm bảo Repository của bạn đang đặt ở trạng thái PRIVATE
-        // =========================================================
-        const GH_CONFIG = {
-            TOKEN: 'ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', // Dán Token PAT của bạn vào đây
-            REPO: 'username/repository-name',               // Thay bằng cụm: tài khoản/tên-kho-lưu-trữ
-            BRANCH: 'main'
-        };
+        // Tự động tải lại cấu hình cũ từ bộ nhớ máy tính lên giao diện
+        ['ui-gh-token', 'ui-gh-repo'].forEach(id => {
+            if(localStorage.getItem(id)) document.getElementById(id).value = localStorage.getItem(id);
+        });
 
         document.getElementById('sync-theme-btn').addEventListener('click', async () => {
+            const token = document.getElementById('ui-gh-token').value.trim();
+            const repo = document.getElementById('ui-gh-repo').value.trim();
             const hFont = document.getElementById('heading-font-select').value;
             const bFont = document.getElementById('body-font-select').value;
             const btn = document.getElementById('sync-theme-btn');
-            
-            btn.innerHTML = `<svg style="animation: spin 1s linear infinite;" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg> ĐANG ĐỒNG BỘ...`;
-            btn.style.opacity = '0.7';
 
-            // Tạo style quay tròn css động cho icon loading
-            if(!document.getElementById('spin-effect')) {
-                const style = document.createElement('style');
-                style.id = 'spin-effect';
-                style.textContent = '@keyframes spin { 100% { transform: rotate(360deg); } }';
-                document.head.appendChild(style);
-            }
+            if(!token || !repo) { alert('Vui lòng điền đầy đủ Token và tên Repo trên giao diện!'); return; }
+            
+            // Lưu lại cho phiên làm việc tiếp theo
+            localStorage.setItem('ui-gh-token', token);
+            localStorage.setItem('ui-gh-repo', repo);
+
+            btn.textContent = '⏳ ĐANG ĐỒNG BỘ...';
+            btn.disabled = true;
 
             try {
-                if(GH_CONFIG.TOKEN.includes('xxxx')) {
-                    throw new Error("Vui lòng thay đổi Token và Repo thật của bạn trong thẻ script.");
-                }
-
-                // 1. Gửi lệnh API lấy nội dung file style.css hiện tại trên Git
-                const url = `https://api.github.com/repos/${GH_CONFIG.REPO}/contents/style.css?ref=${GH_CONFIG.BRANCH}`;
-                const resGet = await fetch(url, {
-                    headers: { 'Authorization': `token ${GH_CONFIG.TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
-                });
+                const url = `https://api.github.com/repos/${repo}/contents/style.css?ref=main`;
+                const resGet = await fetch(url, { headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' } });
                 
-                if (!resGet.ok) throw new Error("Không tìm thấy file style.css trên Github của bạn");
+                if (!resGet.ok) throw new Error("Không thể tìm thấy file style.css trên kho lưu trữ.");
                 const dataGet = await resGet.json();
                 const currentCss = decodeURIComponent(escape(atob(dataGet.content)));
                 
-                // 2. Tạo lập khối CSS Token mới dựa trên font được chọn qua dropdown
-                const newThemeBlock = `/* --- THEME START --- */\n@font-face { font-family: 'HeadingFont'; src: url('fonts/${hFont}'); font-display: swap; }\n@font-face { font-family: 'BodyFont'; src: url('fonts/${bFont}'); font-display: swap; }\n:root {\n    --font-heading: 'HeadingFont', serif;\n    --font-body: 'BodyFont', sans-serif;\n    --bg-matte: #121212;\n    --surface-1: #1E1E1E;\n    --surface-2: #2A2A2A;\n    --text-main: #FFFFFF;\n    --text-muted: #A0A0A5;\n    --cyan-neon: #00F0FF;\n    --orange-glow: #FF5A00;\n}\n/* --- THEME END --- */`;
+                const newThemeBlock = `/* --- THEME START --- */\n@font-face { font-family: 'HeadingFont'; src: url('fonts/${hFont}'); font-display: swap; }\n@font-face { font-family: 'BodyFont'; src: url('fonts/${bFont}'); font-display: swap; }\n:root {\n    --font-heading: 'HeadingFont', serif;\n    --font-body: 'BodyFont', sans-serif;\n    --bg-matte: #121212;\n    --surface-1: #1A1A1A;\n    --surface-2: #242424;\n    --text-main: #FFFFFF;\n    --text-muted: #A0A0A5;\n    --cyan-neon: #00F0FF;\n    --orange-glow: #FF5A00;\n}\n/* --- THEME END --- */`;
 
-                // 3. Sử dụng Regex cắt và thay thế vùng dữ liệu Theme lõi trong CSS
                 const updatedCss = currentCss.replace(/\/\* --- THEME START --- \*\/[\s\S]*?\/\* --- THEME END --- \*\//, newThemeBlock);
                 const base64Content = btoa(unescape(encodeURIComponent(updatedCss)));
 
-                // 4. PUT ghi đè phiên bản mới lên Repo hệ thống
                 const resPut = await fetch(url, {
                     method: 'PUT',
-                    headers: { 'Authorization': `token ${GH_CONFIG.TOKEN}`, 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        message: `Design System Synced: Heading[${hFont}] Body[${bFont}]`,
-                        content: base64Content,
-                        sha: dataGet.sha,
-                        branch: GH_CONFIG.BRANCH
-                    })
+                    headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: 'Update Design System Global Tokens', content: base64Content, sha: dataGet.sha, branch: 'main' })
                 });
 
-                if (resPut.ok) {
-                    alert('✨ ĐỒNG BỘ HOÀN TẤT: Cấu hình Font mới đã được đẩy lên Github và đang biên dịch trực tiếp trên Vercel!');
-                } else {
-                    alert('❌ Gặp lỗi trong quá trình Put dữ liệu lên API GitHub.');
-                }
+                if (resPut.ok) alert('✨ ĐỒNG BỘ THÀNH CÔNG: Toàn bộ cài đặt font đã được áp dụng sang index.html thông qua Vercel!');
+                else alert('❌ Thất bại khi ghi đè dữ liệu API GitHub.');
 
             } catch (error) {
-                console.error(error);
-                alert("Hệ thống báo lỗi: " + error.message);
+                alert("Lỗi: " + error.message);
             } finally {
-                btn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 21v-5h5"/></svg> ĐỒNG BỘ DESIGN SYSTEM`;
-                btn.style.opacity = '1';
+                btn.textContent = 'ĐỒNG BỘ DESIGN SYSTEM';
+                btn.disabled = false;
             }
         });
     </script>

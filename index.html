@@ -3,61 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Typography Masterclass - Lột xác tư duy thiết kế</title>
+    <title>Typography Masterclass - Sản phẩm cao cấp</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS tích hợp cho bảng quản trị độc lập trên Index */
+        #editor-ui { position: fixed; top: 20px; right: 20px; z-index: 99999; font-family: sans-serif; display: flex; gap: 10px; align-items: center; }
+        .editor-panel-box { background: #161617; border: 1px solid rgba(255,255,255,0.08); padding: 15px; border-radius: 12px; display: flex; gap: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .editor-panel-box input { background: #0B0B0C; border: 1px solid rgba(255,255,255,0.08); color: #fff; padding: 8px 12px; border-radius: 6px; font-size: 12px; width: 160px; }
+        .editor-panel-box input:focus { outline: none; border-color: var(--cyan-neon); }
+        .btn-action-panel { background: #238636; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 12px; }
+        .btn-action-panel:hover { background: #2ea043; }
+        .hidden { display: none !important; }
+        .editable { transition: all 0.2s; }
+        .editable:hover { outline: 1px dashed var(--cyan-neon); cursor: text; }
+    </style>
 </head>
 <body>
 
     <div id="editor-ui" data-exclude="true">
-        <button id="toggle-config-btn" title="Cấu hình GitHub & Font">⚙️</button>
-        
-        <div id="config-panel" class="hidden">
-            <h4>GitHub API Configuration</h4>
-            <input type="password" id="gh-token" placeholder="GitHub Personal Access Token (PAT)">
-            <input type="text" id="gh-repo" placeholder="username/repository-name">
-            <input type="text" id="gh-branch" placeholder="branch (e.g., main)" value="main">
-            <input type="text" id="gh-path" placeholder="file path (e.g., index.html)" value="index.html">
-            <button id="save-config-btn">Lưu cấu hình cấu hình</button>
+        <div class="editor-panel-box">
+            <input type="password" id="idx-gh-token" placeholder="GitHub Token">
+            <input type="text" id="idx-gh-repo" placeholder="username/repo-name">
+            <button id="github-save-btn" class="btn-action-panel">⚡ LƯU LÊN GITHUB</button>
         </div>
-
-        <div id="inline-toolbar" class="hidden">
-            <select id="style-selector">
-                <option value="">— Chọn Kiểu Chữ (Design System) —</option>
+        <div id="inline-toolbar" class="hidden" style="position: absolute; background: #222; padding: 6px; border-radius: 6px; border: 1px solid #444;">
+            <select id="style-selector" style="background:#333; color:#white; border:none; padding:4px; color:#fff; font-size:12px;">
+                <option value="">— Đổi Khối Kiểu Chữ —</option>
                 <option value="ds-tagline">Tagline Neon</option>
                 <option value="ds-display">Display khổng lồ</option>
                 <option value="ds-headline">Headline khối</option>
-                <option value="ds-subheadline">Sub-headline mô tả</option>
-                <option value="ds-body">Body text tiêu chuẩn</option>
+                <option value="ds-subheadline">Sub-headline</option>
+                <option value="ds-body">Body tiêu chuẩn</option>
             </select>
-            <select id="font-selector">
-                <option value="">— Đổi Font Chữ —</option>
-                </select>
         </div>
-
-        <button id="github-save-btn">⚡ TẢI LÊN GITHUB</button>
     </div>
 
     <section class="hero-section" id="hero">
         <div class="container">
-            
             <div class="hero-tagline editable ds-tagline">
                 &gt; Đúc kết từ 15 năm rà lỗi đồ án thiết kế & Tư duy logic của Kỹ sư hệ thống
             </div>
-
             <h1 class="hero-headline editable ds-display">
                 TYPOGRAPHY KHÔNG PHẢI LÀ NGHỆ THUẬT CẢM TÍNH.
+                <span class="highlight editable">ĐÓ LÀ TOÁN HỌC & TÂM LÝ HỌC THỊ GIÁC.</span>
             </h1>
-
             <p class="hero-subheadline editable ds-subheadline">
-                Cầm trên tay hệ thống "Dịch mã thị giác" - vũ khí tối thượng giúp bạn thoát mác làm việc bản năng. Cung cấp bộ lý luận chuyên môn sắc bén để bạn tự tin bảo vệ phương án và khiến khách hàng gật đầu duyệt ngay từ vòng đầu tiên.
+                Cầm trên tay hệ thống "Dịch mã thị giác" - vũ khí tối thượng giúp bạn thoát mác làm việc bản năng. Cung cấp bộ lý luận chuyên môn sắc bén.
             </p>
 
             <div class="hero-bullets">
                 <div class="bullet-item">
-                    <div class="bullet-icon">🔬</div>
+                    <svg class="sys-icon"><use href="ds.html#icon-anatomy"/></svg>
                     <div class="bullet-text">
                         <strong class="editable">"Lý luận thép" dập tắt mọi yêu cầu sửa vặt:</strong>
-                        <p class="editable ds-body">Bóc tách giải phẫu chữ (Anatomy) để hiểu thông điệp ngầm của từng nét cắt. Biến Typography thành vũ khí phản biện khiến khách hàng "tâm phục khẩu phục" thay vì bắt bẻ cảm tính.</p>
+                        <p class="editable ds-body">Bóc tách giải phẫu chữ (Anatomy) để hiểu thông điệp ngầm của từng nét cắt.</p>
+                    </div>
+                </div>
+                <div class="bullet-item">
+                    <svg class="sys-icon"><use href="ds.html#icon-premium"/></svg>
+                    <div class="bullet-text">
+                        <strong class="editable">Xóa mác "bình dân", tự tin nâng giá hợp đồng:</strong>
+                        <p class="editable ds-body">Nâng cấp ấn phẩm lên chuẩn Agency chỉ bằng các thủ thuật vi chỉnh Kerning.</p>
+                    </div>
+                </div>
+                <div class="bullet-item">
+                    <svg class="sys-icon"><use href="ds.html#icon-map"/></svg>
+                    <div class="bullet-text">
+                        <strong class="editable">Lối tắt chọn Font cho 10 ngành hàng cốt lõi:</strong>
+                        <p class="editable ds-body">Sở hữu bộ "Cheat-sheet" ghép cặp font bất bại, giúp chốt phương án hình ảnh kỷ luật.</p>
                     </div>
                 </div>
             </div>
@@ -66,14 +79,9 @@
                 <a href="#checkout" class="btn-cta editable">[ TRANG BỊ VŨ KHÍ THIẾT KẾ NGAY - CHỈ VỚI 249K ]</a>
                 <p class="micro-copy editable">🔒 Hỗ trợ định dạng Ebook chất lượng cao. Đọc trực tuyến tức thì trên mọi thiết bị.</p>
             </div>
-
             <div class="hero-media-wrapper">
-                <div class="media-placeholder">
-                    <div class="placeholder-icon">🎥</div>
-                    <p>[ KHU VỰC CHÈN VIDEO AUTO-PLAY HOẶC HÌNH ẢNH 3D TẠI ĐÂY ]</p>
-                </div>
+                <div class="media-placeholder"><p>[ KHU VỰC CHÈN VIDEO AUTO-PLAY HOẶC HÌNH ẢNH 3D ]</p></div>
             </div>
-
         </div>
     </section>
 
@@ -81,9 +89,15 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-headline editable ds-headline">SỰ KHÁC BIỆT GIỮA THIẾT KẾ "BẢN NĂNG" VÀ SẢN PHẨM CHUẨN AGENCY</h2>
-                <p class="section-subheadline editable ds-subheadline">
-                    Một logo 1 triệu và 10 triệu đôi khi chỉ khác nhau ở độ mở của một con chữ hay khoảng cách Kerning.
-                </p>
+                <p class="section-subheadline editable ds-subheadline">Một logo 1 triệu và 10 triệu đôi khi chỉ khác nhau ở độ mở của một con chữ hay khoảng cách Kerning.</p>
+            </div>
+            <div class="empathy-grid">
+                <div class="empathy-column">
+                    <h3 class="column-title editable">Hệ thống hóa tư duy</h3>
+                    <ul class="empathy-list">
+                        <li><svg class="sys-icon"><use href="ds.html#icon-arrow"/></svg><strong class="editable">Xóa bỏ "tâm linh":</strong> <span class="editable">Dừng việc lướt Google Fonts vô định. Chọn typeface dựa trên cơ sở khoa học.</span></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
