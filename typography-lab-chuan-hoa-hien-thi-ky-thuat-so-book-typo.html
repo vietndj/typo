@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typography Lab: Chuẩn Hóa Hiển Thị Kỹ Thuật Số</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        matteBlack: '#121212',
+                        appleGray: '#F5F5F7',
+                        neonCyan: '#00F0FF',
+                        darkGray: '#1A1A1A',
+                        mediumGray: '#2D2D2D',
+                        borderGray: '#333333'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace']
+                    },
+                    boxShadow: {
+                        cyanGlow: '0 0 20px rgba(0, 240, 255, 0.25)',
+                        cyanGlowIntense: '0 0 35px rgba(0, 240, 255, 0.55)',
+                        cardGlow: '0 10px 30px rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212;
+            color: #F5F5F7;
+            overflow-x: hidden;
+        }
+        /* Custom neon scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2D2D2D;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00F0FF;
+        }
+        /* 3D Glassmorphism effect */
+        .glass-card {
+            background: rgba(26, 26, 26, 0.65);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .neon-border {
+            position: relative;
+        }
+        .neon-border::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(90deg, transparent, #00F0FF, transparent);
+            z-index: -1;
+            border-radius: inherit;
+            pointer-events: none;
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
+        }
+        .neon-border:hover::after {
+            opacity: 1;
+        }
+        /* Grid background */
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        }
+        .bg-cyan-grid {
+            background-size: 20px 20px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 240, 255, 0.06) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 240, 255, 0.06) 1px, transparent 1px);
+        }
+        /* Keyframe animations */
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        .animate-pulse-glow {
+            animation: pulseGlow 4s infinite ease-in-out;
+        }
+        /* 3D phone transformation */
+        .phone-3d {
+            transform: rotateX(25deg) rotateY(-15deg) rotateZ(5deg);
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .phone-3d:hover {
+            transform: rotateX(15deg) rotateY(-8deg) rotateZ(2deg);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-appleGray">
+
+    <!-- TOP HEADER -->
+    <header class="w-full border-b border-borderGray bg-matteBlack/80 backdrop-blur-md sticky top-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded bg-darkGray border border-neonCyan flex items-center justify-center shadow-cyanGlow">
+                    <span class="font-mono font-bold text-neonCyan text-xl">TL</span>
+                </div>
+                <div>
+                    <p class="font-mono text-xs text-neonCyan tracking-widest font-bold">TYPOGRAPHY LAB</p>
+                    <p class="text-[10px] text-gray-500 uppercase">Ver 3.0 Mobile Optimization</p>
+                </div>
+            </div>
+            <a href="#purchase" class="px-5 py-2.5 rounded border border-neonCyan/30 text-neonCyan text-xs tracking-wider font-mono hover:bg-neonCyan hover:text-matteBlack shadow-cyanGlow hover:shadow-cyanGlowIntense transition-all duration-300">
+                [SỞ HỮU NGAY - 249K]
+            </a>
+        </div>
+    </header>
+
+    <!-- BLOCK 1: HERO SECTION - BẮT THỚP "ẢO TƯỞNG FIGMA" -->
+    <section class="relative min-h-[90vh] flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 bg-grid-pattern overflow-hidden">
+        <!-- Accent Glow elements -->
+        <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-neonCyan/5 blur-[120px] pointer-events-none animate-pulse-glow"></div>
+        
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            <!-- Left Copy Area -->
+            <div class="lg:col-span-7 flex flex-col justify-center space-y-8 text-left">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-neonCyan/10 border border-neonCyan/30 font-mono text-xs text-neonCyan tracking-wider max-w-max">
+                    [Typography Lab: Chuẩn hóa hiển thị kỹ thuật số dành cho UI/UX Designer & Product Owner]
+                </span>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1] uppercase">
+                    Tiêu đề chính (Sans-Serif Geometric nét dày dặn, dứt khoát, kỉ luật):<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-appleGray to-neonCyan">BẮT THỚP "ẢO TƯỞNG FIGMA"</span>
+                </h1>
+                
+                <p class="text-base md:text-lg text-gray-400 leading-relaxed font-light">
+                    Đừng để độ phân giải cao của màn hình Retina đánh lừa đôi mắt bạn. Làm chủ các quy luật bù trừ quang học số hóa: Chiều cao chữ thường (x-height), Độ mở (Aperture), và Kỹ thuật Hinting để cứu sống khả năng đọc của người dùng trên mọi thiết bị di động.
+                </p>
+                
+                <div class="pt-4">
+                    <a href="#purchase" class="inline-flex items-center justify-center px-8 py-5 rounded-lg bg-neonCyan text-matteBlack font-bold text-sm tracking-widest uppercase transition-all duration-300 transform hover:scale-[1.03] shadow-cyanGlow hover:shadow-cyanGlowIntense hover:bg-white">
+                        [TỐI ƯU HÓA HIỂN THỊ DI ĐỘNG NGAY]
+                        <svg class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Right CSS Abstract Art: [PLACEHOLDER_HERO_3D_MOBILE_GRID] -->
+            <div class="lg:col-span-5 w-full flex items-center justify-center relative min-h-[450px]">
+                <div class="absolute -inset-4 bg-neonCyan/5 rounded-3xl filter blur-xl opacity-30"></div>
+                <!-- 3D Perspective Box -->
+                <div class="relative w-[320px] h-[550px] phone-3d bg-matteBlack border-2 border-borderGray rounded-[40px] shadow-2xl p-6 overflow-hidden flex flex-col justify-between">
+                    <!-- Glass Screen & Speaker Notch -->
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-40 h-8 bg-matteBlack rounded-b-2xl border-x border-b border-borderGray z-30 flex items-center justify-center">
+                        <div class="w-12 h-1 bg-neutral-800 rounded-full"></div>
+                    </div>
+                    
+                    <!-- Inside Screen Vector Grid -->
+                    <div class="absolute inset-0 bg-cyan-grid opacity-80 z-10"></div>
+                    
+                    <!-- Measuring Guidelines Overlay -->
+                    <div class="absolute inset-x-0 top-[28%] border-t border-dashed border-red-500/70 z-20">
+                        <span class="absolute -top-5 right-4 font-mono text-[9px] text-red-500">Cap Height</span>
+                    </div>
+                    <div class="absolute inset-x-0 top-[40%] border-t border-dashed border-neonCyan/70 z-20">
+                        <span class="absolute -top-5 right-4 font-mono text-[9px] text-neonCyan">Mean Line (x-height)</span>
+                    </div>
+                    <div class="absolute inset-x-0 top-[68%] border-t border-dashed border-red-500/70 z-20">
+                        <span class="absolute -top-5 right-4 font-mono text-[9px] text-red-500">Baseline</span>
+                    </div>
+
+                    <!-- Giant Letter 'a' Vector -->
+                    <div class="absolute inset-0 flex items-center justify-center z-15">
+                        <svg class="w-48 h-48 text-appleGray/90 opacity-90 drop-shadow-[0_0_15px_rgba(0,240,255,0.2)]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Avenir Next Pro 'a' representation -->
+                            <!-- Bowl path -->
+                            <path d="M50 40C40 40 35 48 35 55C35 62 40 70 50 70C55 70 60 66 62 62" stroke="#F5F5F7" stroke-width="5" stroke-linecap="round"/>
+                            <!-- Stem and Tail -->
+                            <path d="M62 40V70C62 72 63 74 66 74" stroke="#00F0FF" stroke-width="5" stroke-linecap="round"/>
+                            <!-- Upper arch -->
+                            <path d="M58 40C58 35 52 30 45 30C36 30 33 36 33 36" stroke="#F5F5F7" stroke-width="5" stroke-linecap="round"/>
+                            <!-- Highlight dots -->
+                            <circle cx="50" cy="40" r="2.5" fill="#00F0FF"/>
+                            <circle cx="35" cy="55" r="2.5" fill="#FF0055"/>
+                            <circle cx="62" cy="62" r="2.5" fill="#00F0FF"/>
+                            <!-- Text tags on nodes -->
+                            <path d="M35 55 L20 48" stroke="#FF0055" stroke-width="0.5"/>
+                            <path d="M62 62 L75 58" stroke="#00F0FF" stroke-width="0.5"/>
+                        </svg>
+                    </div>
+
+                    <div class="absolute bottom-16 left-6 z-20">
+                        <p class="font-mono text-[9px] text-neonCyan tracking-widest uppercase">Visual Reference</p>
+                        <p class="text-[11px] text-gray-400 font-mono mt-0.5">[PLACEHOLDER_HERO_3D_MOBILE_GRID]</p>
+                    </div>
+
+                    <!-- Bottom Screen Bar -->
+                    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-white/30 z-30 rounded-full"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOCK 2: KHAI THÁC NỖI ĐAU -->
+    <section class="py-24 border-t border-borderGray bg-matteBlack relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="font-mono text-xs text-neonCyan tracking-widest uppercase">[THE COGNITIVE GAP]</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white mt-3 uppercase leading-snug">
+                    SỰ BẤT LỰC CỦA DESIGNER KHI THIẾT KẾ KỸ THUẬT SỐ BẰNG "CẢM GIÁC"
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Pain Points List -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="p-6 rounded-xl bg-darkGray border-l-4 border-neonCyan border-y border-r border-white/5 shadow-cardGlow transition-all duration-300 hover:border-l-neonCyan hover:bg-neutral-900">
+                        <h4 class="font-bold text-lg text-white mb-2 flex items-start gap-3">
+                            <span class="text-neonCyan font-mono shrink-0">[X]</span>
+                            Ảo ảnh Figma 100% Zoom:
+                        </h4>
+                        <p class="text-gray-400 text-sm ml-8 leading-relaxed">
+                            Chữ hiển thị cực kỳ điệu đà, thoáng đãng trên màn hình iMac của bạn, nhưng biến thành một khối dấp dính, mỏi mắt khi người dùng cuộn chuột trên màn hình di động thực tế.
+                        </p>
+                    </div>
+                    
+                    <div class="p-6 rounded-xl bg-darkGray border-l-4 border-neonCyan border-y border-r border-white/5 shadow-cardGlow transition-all duration-300 hover:border-l-neonCyan hover:bg-neutral-900">
+                        <h4 class="font-bold text-lg text-white mb-2 flex items-start gap-3">
+                            <span class="text-neonCyan font-mono shrink-0">[X]</span>
+                            Sự sụp đổ của "Aperture đóng" ở kích thước nhỏ:
+                        </h4>
+                        <p class="text-gray-400 text-sm ml-8 leading-relaxed">
+                            Chọn các font chữ có độ mở (Aperture) hẹp khiến các ký tự như e, a, o bị dính tịt vào nhau ở kích thước dưới 10px, trực tiếp giết chết trải nghiệm đọc của khách hàng.
+                        </p>
+                    </div>
+                    
+                    <div class="p-6 rounded-xl bg-darkGray border-l-4 border-neonCyan border-y border-r border-white/5 shadow-cardGlow transition-all duration-300 hover:border-l-neonCyan hover:bg-neutral-900">
+                        <h4 class="font-bold text-lg text-white mb-2 flex items-start gap-3">
+                            <span class="text-neonCyan font-mono shrink-0">[X]</span>
+                            Cuộc chiến vô tận với Frontend Developer:
+                        </h4>
+                        <p class="text-gray-400 text-sm ml-8 leading-relaxed">
+                            Designer vẽ một đường Leading (khoảng cách dòng) tuyệt đẹp bằng tay, nhưng lập trình viên không thể code lại được vì font chữ thiếu cấu trúc hướng dẫn hiển thị (Hinting).
+                        </p>
+                    </div>
+                    
+                    <div class="p-6 rounded-xl bg-darkGray border-l-4 border-neonCyan border-y border-r border-white/5 shadow-cardGlow transition-all duration-300 hover:border-l-neonCyan hover:bg-neutral-900">
+                        <h4 class="font-bold text-lg text-white mb-2 flex items-start gap-3">
+                            <span class="text-neonCyan font-mono shrink-0">[X]</span>
+                            Sự tê liệt quy trình duyệt file (Workflow Friction):
+                        </h4>
+                        <p class="text-gray-400 text-sm ml-8 leading-relaxed">
+                            Không có một tiêu chuẩn kỹ thuật số để phản biện với sếp hoặc đối tác, buộc phải sửa đi sửa lại hệ thống font chữ theo ý kiến cảm tính của người duyệt.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Right Dynamic UI Art: [PLACEHOLDER_A_B_TESTING_MOBILE_READABILITY] -->
+                <div class="lg:col-span-5 flex flex-col justify-center items-center">
+                    <div class="w-full max-w-md glass-card rounded-3xl p-6 border border-borderGray relative">
+                        <div class="absolute -top-3 left-6 px-3 py-1 bg-neonCyan text-matteBlack text-[10px] font-mono tracking-widest uppercase font-bold rounded">
+                            AB TEST EXPERIMENT
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4 mt-4">
+                            <!-- Screen A: Failure -->
+                            <div class="border border-red-500/30 rounded-2xl p-4 bg-black/40 flex flex-col justify-between h-[360px]">
+                                <div>
+                                    <span class="inline-block px-2 py-0.5 rounded bg-red-950 border border-red-500/50 text-red-500 font-mono text-[9px] font-bold">MÀN HÌNH A</span>
+                                    <h5 class="text-xs font-bold text-white mt-2 leading-tight font-serif">Helvetica Compressed</h5>
+                                    <!-- Bad text blocks simulated with tight vertical space -->
+                                    <div class="mt-3 space-y-1.5 opacity-60">
+                                        <div class="text-[10px] text-gray-400 leading-[1.0] select-none font-serif">
+                                            The quick brown fox jumps over the lazy dog. Aperture is closed, letters look choked.
+                                        </div>
+                                        <div class="h-2 bg-neutral-800 rounded w-11/12"></div>
+                                        <div class="h-2 bg-neutral-800 rounded w-full"></div>
+                                        <div class="h-2 bg-neutral-800 rounded w-9/12"></div>
+                                    </div>
+                                    <div class="mt-4 p-2 bg-red-950/20 border border-red-900/30 rounded-lg flex items-center justify-center gap-1.5">
+                                        <div class="w-3 h-3 rounded-full bg-red-600 flex items-center justify-center text-[8px] text-white font-bold">X</div>
+                                        <span class="text-[8px] text-red-400 font-medium">x-height thấp, aperture hẹp</span>
+                                    </div>
+                                </div>
+                                <div class="border-t border-red-950/50 pt-2 text-center">
+                                    <p class="text-[10px] text-red-500 font-bold uppercase tracking-wider">[X] THẤT BẠI</p>
+                                    <p class="text-[9px] text-gray-500">"Người dùng thoát trang sau 3 giây vì mỏi mắt".</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Screen B: Superior -->
+                            <div class="border border-neonCyan/40 rounded-2xl p-4 bg-black/40 flex flex-col justify-between h-[360px] shadow-cyanGlow">
+                                <div>
+                                    <span class="inline-block px-2 py-0.5 rounded bg-neonCyan/10 border border-neonCyan/50 text-neonCyan font-mono text-[9px] font-bold">MÀN HÌNH B</span>
+                                    <h5 class="text-xs font-bold text-white mt-2 leading-tight">Avenir Next Pro</h5>
+                                    <!-- Beautifully optimized text lines -->
+                                    <div class="mt-3 space-y-2">
+                                        <div class="text-[10px] text-neonCyan font-semibold leading-relaxed">
+                                            The quick brown fox jumps over the lazy dog. Wide aperture. High readability!
+                                        </div>
+                                        <div class="h-2 bg-neonCyan/40 rounded w-11/12"></div>
+                                        <div class="h-2 bg-neonCyan/20 rounded w-full"></div>
+                                        <div class="h-2 bg-neonCyan/30 rounded w-10/12"></div>
+                                    </div>
+                                    <div class="mt-4 p-2 bg-neonCyan/10 border border-neonCyan/20 rounded-lg flex items-center justify-center gap-1.5">
+                                        <div class="w-3 h-3 rounded-full bg-neonCyan flex items-center justify-center text-[8px] text-matteBlack font-bold">✓</div>
+                                        <span class="text-[8px] text-neonCyan font-medium">x-height cao, aperture cởi mở</span>
+                                    </div>
+                                </div>
+                                <div class="border-t border-neonCyan/20 pt-2 text-center">
+                                    <p class="text-[10px] text-neonCyan font-bold uppercase tracking-wider">[V] VƯỢT TRỘI</p>
+                                    <p class="text-[9px] text-gray-300">"Readability tăng 200% - Trải nghiệm đọc mượt mà tuyệt đối".</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <span class="text-[10px] font-mono text-gray-500">[PLACEHOLDER_A_B_TESTING_MOBILE_READABILITY]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOCK 3: ĐÒN BẨY SƯ PHẠM - NGƯỜI RÀ LỖI FE-DESIGN TỪ PHÒNG THÍ NGHIỆM 15 NĂM -->
+    <section class="py-24 border-t border-borderGray bg-darkGray relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left CSS Abstract Art: [PLACEHOLDER_MENTOR_PIXEL_CRITIQUE] -->
+                <div class="lg:col-span-5 flex justify-center order-2 lg:order-1">
+                    <div class="w-full max-w-md glass-card rounded-2xl p-6 border border-borderGray relative overflow-hidden">
+                        <div class="absolute inset-0 bg-cyan-grid opacity-20"></div>
+                        <h4 class="font-mono text-xs text-neonCyan mb-4">[ANTI-ALIASING DIAGRAM]</h4>
+                        
+                        <div class="relative w-full h-64 bg-matteBlack/90 rounded-xl border border-white/5 flex items-center justify-center overflow-hidden">
+                            <!-- Background Font Vector Grid -->
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <svg class="w-48 h-48 text-white/5" viewBox="0 0 100 100">
+                                    <text x="15" y="75" font-family="serif" font-size="70" fill="currentColor">g</text>
+                                </svg>
+                            </div>
+
+                            <!-- Left Side: Jagged Pixelation (No Hinting) -->
+                            <div class="absolute left-0 top-0 bottom-0 w-1/2 border-r border-dashed border-red-500/50 p-2 flex flex-col justify-between">
+                                <span class="text-[9px] font-mono text-red-500">[NO HINTING / RAGGED PIXELS]</span>
+                                <div class="flex items-center justify-center h-full">
+                                    <!-- Simulated pixel blocks -->
+                                    <div class="grid grid-cols-6 gap-[1px] w-20 h-20 bg-neutral-900 p-1 rounded border border-red-500/20">
+                                        <div class="bg-red-500/90 w-full h-full"></div>
+                                        <div class="bg-red-500/90 w-full h-full"></div>
+                                        <div class="bg-transparent w-full h-full"></div>
+                                        <div class="bg-transparent w-full h-full"></div>
+                                        <div class="bg-red-500/90 w-full h-full"></div>
+                                        <div class="bg-red-500/90 w-full h-full"></div>
+                                        
+                                        <div class="bg-red-500/90 w-full h-full"></div>
+                                        <div class="bg-red-500/20 w-full h-full"></div>
+                                        <div class="bg-transparent w-full h-full"></div>
+                                        <div class="bg-transparent w-full h-full"></div>
+                                        <div class="bg-red-500/20 w-full h-full"></div>
+                                        <div class="bg-red-500/90 w-full h-full"></div>
+                                        
+                                        <div class="bg-red-500/90 w-full h-full"></div>
+                                        <div class="bg-transparent w-full h-full"></div>
+                                        <div class="bg-red-500/90 w-full h-full"></div>
+                                        <div class="bg-red-500/90 w-full h-full"></div>
+                                        <div class="bg-transparent w-full h-full"></div>
+                                        <div class="bg-red-500/90 w-full h-full"></div>
+                                        
+                                        <div class="bg-red-500/90 w-full h-full"></div>
+                                        <div class="bg-red-500/90 w-full h-full"></div>
+                                        <div class="bg-red-500/90 w-full h-full"></div>
+                                        <div class="bg-red-500/90 w-full h-full"></div>
+                                        <div class="bg-red-500/90 w-full h-full"></div>
+                                        <div class="bg-red-500/90 w-full h-full"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right Side: Clean Anti-Aliasing Vector with Subpixel Glow -->
+                            <div class="absolute right-0 top-0 bottom-0 w-1/2 p-2 flex flex-col justify-between">
+                                <span class="text-[9px] font-mono text-neonCyan text-right">[ANTI-ALIASED VECTOR]</span>
+                                <div class="flex items-center justify-center h-full">
+                                    <div class="relative w-20 h-20 bg-neutral-900 p-1 rounded border border-neonCyan/30 flex items-center justify-center">
+                                        <svg class="w-16 h-16 text-neonCyan filter drop-shadow-[0_0_4px_rgba(0,240,255,0.6)]" viewBox="0 0 100 100" fill="none">
+                                            <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="12"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Digital Magnifying Glass Effect Center -->
+                            <div class="absolute top-[40%] left-[45%] w-16 h-16 rounded-full border-2 border-neonCyan bg-matteBlack/70 flex items-center justify-center z-20 shadow-cyanGlow shadow-lg">
+                                <svg class="w-6 h-6 text-neonCyan animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 text-center">
+                            <span class="text-[10px] font-mono text-gray-500">[PLACEHOLDER_MENTOR_PIXEL_CRITIQUE]</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Copy Content -->
+                <div class="lg:col-span-7 space-y-8 order-1 lg:order-2">
+                    <span class="font-mono text-xs text-neonCyan tracking-widest uppercase">[15-YEAR EXPERT CASE STUDY]</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white uppercase leading-snug">
+                        TÔI ĐÃ CHỨNG KIẾN HÀNG NGHÌN ĐỒ ÁN UI/UX BỊ CHÊ "CẨU THẢ" CHỈ VÌ THIẾU LOGIC HÌNH HỌC HIỂN THỊ.
+                    </h2>
+                    
+                    <div class="relative border-l-2 border-neonCyan pl-6 space-y-6">
+                        <p class="text-base md:text-lg text-gray-300 italic font-light leading-relaxed">
+                            "Trong suốt 15 năm đào tạo tại FPT Arena, tôi đã chứng kiến rất nhiều học viên có gu thẩm mỹ tốt nhưng đồ án vẫn bị đánh giá thấp. Lý do? Họ thiết kế cho màn hình di động như thể thiết kế một bản in. Họ hoàn toàn mù tịt về cách pixel được hiển thị thông qua cơ chế Anti-aliasing hay cách các nhà thiết kế kiểu chữ hàng đầu xử lý 'Bẫy mực' () để chữ sắc nét ở kích thước siêu nhỏ. Cuốn Ebook này là chiếc cầu nối kỹ thuật giúp bạn chấm dứt sự mơ hồ bản năng để thiết kế bằng tư duy của một kỹ sư Frontend Typography thực thụ."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOCK 4: CHƯƠNG 3 - 4: TRẬN CHIẾN SANS-SERIF - NEO-GROTESQUE VS GEOMETRIC SANS -->
+    <section class="py-24 border-t border-borderGray bg-matteBlack relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="font-mono text-xs text-neonCyan tracking-widest uppercase">[CHAPTER 03 - 04]</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-3 uppercase leading-snug">
+                    KHÔNG PHẢI FONT KHÔNG CHÂN NÀO CŨNG GIỐNG NHAU: BẢN CHẤT CỦA SỰ THÂN THIỆN SỐ
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Typography Deep-dive content -->
+                <div class="lg:col-span-7 space-y-8">
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Rất nhiều designer trẻ lạm dụng dòng phông hình học (Geometric Sans) cho các đoạn văn bản dài vì thấy nó "đẹp". Đây là một sai lầm chết người:
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-1.5 h-12 bg-neonCyan shrink-0 mt-1"></div>
+                            <div>
+                                <h4 class="font-bold text-lg text-white">Geometric Sans (Futura, Montserrat) - Vẻ đẹp cơ khí lạnh lùng:</h4>
+                                <p class="text-gray-400 text-sm mt-1 leading-relaxed">
+                                    Dựa trên các dạng thức hình học hoàn hảo, tròn xoe. Tuy bắt mắt khi làm quảng cáo, nhưng vì nét đều chằn chặn không tương phản và cấu trúc quá máy móc, chúng gây mỏi mắt cực độ nếu bắt người dùng đọc liên tục.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-1.5 h-12 bg-neonCyan shrink-0 mt-1"></div>
+                            <div>
+                                <h4 class="font-bold text-lg text-white">Neo-Grotesque (Helvetica, Univers, Graphik) - Pháo đài tối ưu hóa:</h4>
+                                <p class="text-gray-400 text-sm mt-1 leading-relaxed">
+                                    Được thiết kế ra để sửa chữa nhược điểm của dòng hình học. Với tỷ lệ ký tự thân thiện hơn với tự nhiên (chữ o có hình "trứng gà", chữ a hai tầng mô phỏng viết tay), dòng phông này giúp mắt lướt mượt mà, ổn định tuyệt đối trên các khối văn bản dài.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-1.5 h-12 bg-red-500 shrink-0 mt-1"></div>
+                            <div>
+                                <h4 class="font-bold text-lg text-white text-red-400">Chí mạng ở kích thước 8px:</h4>
+                                <p class="text-gray-400 text-sm mt-1 leading-relaxed">
+                                    Tại sao phông chữ huyền thoại Helvetica lại bị "chết" ở kích thước 8px? Vì độ mở Aperture của nó quá bé, cấu trúc khép kín làm các khoảng trống bên trong ký tự bị dính chặt vào nhau, khiến mắt người không thể phân biệt nổi chữ "e" và chữ "o".
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Left CSS Abstract Art: [PLACEHOLDER_GEOMETRIC_VS_NEOGROTESQUE_ZOOM] -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="w-full max-w-md glass-card rounded-2xl p-6 border border-borderGray relative">
+                        <h4 class="font-mono text-xs text-neonCyan mb-4">[OPTICAL PERFORMANCE COMPARISON]</h4>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <!-- Geometric 'o' -->
+                            <div class="border border-white/5 bg-black/40 rounded-xl p-4 flex flex-col items-center justify-between h-56">
+                                <span class="font-mono text-[9px] text-gray-500 uppercase">Montserrat (Geometric)</span>
+                                
+                                <div class="relative w-24 h-24 flex items-center justify-center">
+                                    <!-- Perfect circle vector -->
+                                    <svg class="w-20 h-20 text-red-500/80" viewBox="0 0 100 100" fill="none">
+                                        <!-- Geometric guidelines -->
+                                        <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="8" />
+                                        <!-- Axis indicators -->
+                                        <line x1="50" y1="5" x2="50" y2="95" stroke="rgba(255, 255, 255, 0.15)" stroke-dasharray="2 2"/>
+                                        <line x1="5" y1="50" x2="95" y2="50" stroke="rgba(255, 255, 255, 0.15)" stroke-dasharray="2 2"/>
+                                    </svg>
+                                    <span class="absolute text-[10px] font-mono text-red-400 bottom-1">Mechanical Circle</span>
+                                </div>
+                                <span class="text-[9px] text-red-400 bg-red-950/40 px-2 py-0.5 rounded border border-red-500/30">Mỏi mắt khi đọc dài</span>
+                            </div>
+
+                            <!-- Neo-Grotesque 'o' -->
+                            <div class="border border-neonCyan/20 bg-black/40 rounded-xl p-4 flex flex-col items-center justify-between h-56 shadow-cyanGlow">
+                                <span class="font-mono text-[9px] text-neonCyan uppercase">Helvetica (Neo-Grotesque)</span>
+                                
+                                <div class="relative w-24 h-24 flex items-center justify-center">
+                                    <!-- Egg shape oval vector -->
+                                    <svg class="w-20 h-20 text-neonCyan" viewBox="0 0 100 100" fill="none">
+                                        <!-- Egg-shaped path -->
+                                        <path d="M 50 12 C 26 12 28 88 50 88 C 72 88 74 12 50 12 Z" stroke="currentColor" stroke-width="8" />
+                                        <!-- Organic axis indicators -->
+                                        <line x1="50" y1="5" x2="50" y2="95" stroke="rgba(0, 240, 255, 0.15)" stroke-dasharray="2 2"/>
+                                        <line x1="5" y1="50" x2="95" y2="50" stroke="rgba(0, 240, 255, 0.15)" stroke-dasharray="2 2"/>
+                                    </svg>
+                                    <span class="absolute text-[10px] font-mono text-neonCyan bottom-1">Organic "Egg-shape"</span>
+                                </div>
+                                <span class="text-[9px] text-neonCyan bg-neonCyan/10 px-2 py-0.5 rounded border border-neonCyan/30">Mắt lướt mượt mà</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 text-center">
+                            <span class="text-[10px] font-mono text-gray-500">[PLACEHOLDER_GEOMETRIC_VS_NEOGROTESQUE_ZOOM]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOCK 5: CASE STUDY KINH ĐIỂN -->
+    <section class="py-24 border-t border-borderGray bg-darkGray relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="font-mono text-xs text-neonCyan tracking-widest uppercase">[CASE STUDY ANALYSIS]</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-3 uppercase leading-snug">
+                    HỌC CÁCH CÁC ĐẾ CHẾ KÉO DÀI X-HEIGHT VÀ GIẢI PHÓNG KHOẢNG TRẮNG ĐỂ CHIẾM LĨNH TRẢI NGHIỆM KHÁCH HÀNG
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left CSS Abstract Art: [PLACEHOLDER_BON_APPETIT_VIRGIN_SPLIT] -->
+                <div class="lg:col-span-5 flex justify-center order-2 lg:order-1">
+                    <div class="w-full max-w-md glass-card rounded-2xl p-6 border border-borderGray relative">
+                        <h4 class="font-mono text-xs text-neonCyan mb-4">[GLOBAL DESIGN AUDIT SPLIT]</h4>
+                        
+                        <div class="space-y-4">
+                            <!-- Bon Appetit Before After -->
+                            <div class="border border-white/5 bg-matteBlack/50 p-4 rounded-xl flex flex-col justify-between h-40">
+                                <span class="text-[9px] font-mono text-gray-400">BON APPÉTIT - X-HEIGHT SHIFT</span>
+                                <div class="flex items-center justify-around h-full">
+                                    <div class="text-center">
+                                        <p class="text-[9px] text-gray-500 uppercase font-mono">BEFORE</p>
+                                        <div class="text-2xl font-serif text-white/40 line-through">Ape</div>
+                                    </div>
+                                    <div class="text-neonCyan text-sm font-mono">➔</div>
+                                    <div class="text-center">
+                                        <p class="text-[9px] text-neonCyan uppercase font-mono">AFTER (Aperitif)</p>
+                                        <div class="text-2xl font-sans font-bold text-white relative">
+                                            Ape
+                                            <div class="absolute -bottom-1 -inset-x-2 border-t-2 border-neonCyan animate-pulse"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="text-[9px] text-gray-500 text-center">Nâng trục chữ thường (x-height) tối ưu hóa màn hình dọc</span>
+                            </div>
+
+                            <!-- Virgin Atlantic Luxury -->
+                            <div class="border border-white/5 bg-matteBlack/50 p-4 rounded-xl flex flex-col justify-between h-40">
+                                <span class="text-[9px] font-mono text-gray-400">VIRGIN ATLANTIC - PREMIUM SPACING</span>
+                                <div class="flex flex-col items-center justify-center h-full space-y-2">
+                                    <p class="text-[10px] uppercase tracking-[0.4em] font-sans text-neonCyan">V I R G I N</p>
+                                    <p class="text-[9px] font-mono text-gray-500 mt-1">Hạt nét chữ cực mảnh (hairline) + Cực rộng</p>
+                                    <div class="h-1 w-full bg-gradient-to-r from-transparent via-neonCyan/30 to-transparent"></div>
+                                </div>
+                                <span class="text-[9px] text-gray-500 text-center">Giải phóng khoảng trắng cho khách hàng VIP thương gia</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 text-center">
+                            <span class="text-[10px] font-mono text-gray-500">[PLACEHOLDER_BON_APPETIT_VIRGIN_SPLIT]</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Copy Content -->
+                <div class="lg:col-span-7 space-y-8 order-1 lg:order-2">
+                    <div class="space-y-6">
+                        <div class="p-6 rounded-xl bg-matteBlack/50 border border-white/5">
+                            <h4 class="font-bold text-xl text-white flex items-center gap-2">
+                                <span class="text-neonCyan">01.</span> Bon Appétit - Tăng x-height để tối ưu hóa di động:
+                            </h4>
+                            <p class="text-gray-400 text-sm mt-2 leading-relaxed">
+                                Tạp chí giải trí và ẩm thực hàng đầu của Mỹ đã âm thầm nâng cấp toàn bộ hệ thống phông chữ của họ. Kiểu chữ mới Aperitif được Jerrmy Mickel thiết kế riêng với đặc trưng: chiều cao chữ thường (x-height) được kéo cao vượt trội. Sự thay đổi này cho hiệu suất hiển thị sắc nét và mượt mà tuyệt đối trên màn hình điện thoại. Dù counter chữ "a" và "e" được thu hẹp nhẹ để tạo nét điệu đà, căng đầy thủ công của ẩm thực di sản, cấu trúc hẹp ngang vẫn giúp xếp được nhiều chữ hơn trên một dòng.
+                            </p>
+                        </div>
+                        
+                        <div class="p-6 rounded-xl bg-matteBlack/50 border border-white/5">
+                            <h4 class="font-bold text-xl text-white flex items-center gap-2">
+                                <span class="text-neonCyan">02.</span> Virgin Atlantic - Sự tinh tế ở phân khúc thương gia:
+                            </h4>
+                            <p class="text-gray-400 text-sm mt-2 leading-relaxed">
+                                Từ bỏ hoàn toàn phông Serif cổ điển để chuyển sang Sans Geometric mượt mà. Ở phân khúc thương gia cao cấp, hãng chủ ý tăng độ mảnh của nét chữ (hairline) và nới rộng khoảng trắng tinh tế. Sự hy sinh tính nổi bật của marketing để đổi lấy không gian thư giãn tuyệt đối cho khách hàng VIP chính là đỉnh cao của tư duy dịch mã thị giác.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOCK 6: CHƯƠNG 5 - 6: BẢN ĐỒ NGÀNH HÀNG KỸ THUẬT SỐ -->
+    <section class="py-24 border-t border-borderGray bg-matteBlack relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="font-mono text-xs text-neonCyan tracking-widest uppercase">[CHAPTER 05 - 06]</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-3 uppercase leading-snug">
+                    BẢN ĐỒ DỊCH MÃ THỊ GIÁC: CHỌN FONT THEO THUẬT TOÁN NGÀNH HÀNG
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left Copy Content -->
+                <div class="lg:col-span-7 space-y-8">
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Mỗi ngành nghề kỹ thuật số đều có một tần số sóng thị giác riêng biệt. Đừng bao giờ chọn sai tần số của khách hàng:
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="p-6 rounded-xl bg-darkGray border border-white/5 hover:border-neonCyan/30 transition-all duration-300">
+                            <h4 class="font-bold text-lg text-white">Ngành AI, Tech, Vũ trụ (SpaceX, Tesla, Neko Health):</h4>
+                            <p class="text-gray-400 text-sm mt-2 leading-relaxed">
+                                Bắt buộc phải sử dụng dòng phông dứt khoát, lặp nhịp đều đặn giống như Monospace hoặc Sans-serif công nghệ. Nét chữ dày dặn, góc cắt sắc sảo, cấu trúc dạng module cơ khí để mô tả chính xác tuyệt đối dữ liệu lập trình, trí tuệ nhân tạo và công nghệ tương lai.
+                            </p>
+                        </div>
+
+                        <div class="p-6 rounded-xl bg-darkGray border border-white/5 hover:border-neonCyan/30 transition-all duration-300">
+                            <h4 class="font-bold text-lg text-neonCyan">Dòng phông Avenir Next Pro - Cứu tinh của Web/App hiện đại:</h4>
+                            <p class="text-gray-400 text-sm mt-2 leading-relaxed">
+                                Nếu bạn cần sự tinh tế, sang trọng nhưng vẫn cực kỳ dễ đọc, hãy nhìn vào cách Avenir Next Pro hoạt động. Với x-height cao vượt trội, chữ "a" hai tầng thân thiện từ nét viết tay tự nhiên giúp mắt đọc nhanh hơn, kết hợp góc cắt đầu nét kết thúc chéo cởi mở giúp chữ không bị "dính" mắt khi hiển thị ở kích thước nhỏ trên thiết bị di động.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right CSS Abstract Art: [PLACEHOLDER_TECH_VS_LUXURY_FONT_COMPARISON] -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="w-full max-w-md glass-card rounded-2xl p-6 border border-borderGray relative">
+                        <h4 class="font-mono text-xs text-neonCyan mb-4">[TECH VS LUXURY TYPO SPECTRUM]</h4>
+                        
+                        <div class="space-y-4">
+                            <!-- SpaceX Monospace style -->
+                            <div class="border border-white/5 bg-matteBlack/90 p-4 rounded-xl flex flex-col justify-between h-36">
+                                <span class="text-[9px] font-mono text-gray-500 uppercase">SPACE TECH MONOSPACE</span>
+                                <div class="flex flex-col items-start font-mono text-lg text-white space-y-1">
+                                    <div class="text-neonCyan text-xs">[SYS_LOG: 98%]</div>
+                                    <div class="tracking-wide">NEO_ALGORITHM_09</div>
+                                </div>
+                                <span class="text-[9px] text-gray-500">Cơ khí, dứt khoát, module dữ liệu chính xác</span>
+                            </div>
+
+                            <!-- Virgin Airline Luxury style -->
+                            <div class="border border-white/5 bg-matteBlack/90 p-4 rounded-xl flex flex-col justify-between h-36">
+                                <span class="text-[9px] font-mono text-gray-500 uppercase">PREMIUM VIP HAIRLINE</span>
+                                <div class="flex flex-col items-end font-light text-2xl tracking-[0.25em] text-white space-y-1">
+                                    <div class="font-sans italic font-light text-right">ELEGANT</div>
+                                </div>
+                                <span class="text-[9px] text-gray-500 text-right">Thư giãn, siêu mảnh, không gian thoáng đãng</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 text-center">
+                            <span class="text-[10px] font-mono text-gray-500">[PLACEHOLDER_TECH_VS_LUXURY_FONT_COMPARISON]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOCK 7: CHƯƠNG 7 - 8: KỸ NGHỆ HIỂN THỊ VI MÔ -->
+    <section class="py-24 border-t border-borderGray bg-darkGray relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="font-mono text-xs text-neonCyan tracking-widest uppercase">[CHAPTER 07 - 08]</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-3 uppercase leading-snug">
+                    TỐI ƯU HÓA HIỂN THỊ: BIẾN BẢN VẼ PHẦN MỀM THÀNH SẢN PHẨM HOÀN MỸ
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left CSS Abstract Art: [PLACEHOLDER_HINTING_ENGINEERING_DIAGRAM] -->
+                <div class="lg:col-span-5 flex justify-center order-2 lg:order-1">
+                    <div class="w-full max-w-md glass-card rounded-2xl p-6 border border-borderGray relative">
+                        <h4 class="font-mono text-xs text-neonCyan mb-4">[MICRO-PIXEL BLUEPRINT]</h4>
+                        
+                        <div class="w-full h-72 bg-matteBlack border border-white/5 rounded-xl p-4 flex flex-col justify-between relative overflow-hidden">
+                            <!-- Background Grid -->
+                            <div class="absolute inset-0 bg-cyan-grid opacity-30"></div>
+                            
+                            <!-- Pixel Alignment Representation -->
+                            <div class="relative z-10 flex items-center justify-around h-full">
+                                <!-- Ink Trap demo -->
+                                <div class="text-center">
+                                    <span class="font-mono text-[9px] text-gray-400 block mb-2">[INK TRAP TECH]</span>
+                                    <svg class="w-24 h-24 text-neonCyan mx-auto" viewBox="0 0 100 100" fill="none">
+                                        <!-- Normal junction -->
+                                        <path d="M 10 90 L 50 10 L 90 90" stroke="currentColor" stroke-width="8" />
+                                        <!-- Ink Trap cutout indicator -->
+                                        <circle cx="50" cy="25" r="7" fill="#121212" stroke="#FF0055" stroke-width="2"/>
+                                        <path d="M 46 25 Q 50 30 54 25" stroke="#FF0055" stroke-width="2"/>
+                                    </svg>
+                                    <p class="text-[9px] text-red-400 font-mono mt-1">Khoét rỗng giao điểm</p>
+                                </div>
+                                
+                                <!-- Hinting Alignment -->
+                                <div class="text-center">
+                                    <span class="font-mono text-[9px] text-gray-400 block mb-2">[HINTING ALIGNED]</span>
+                                    <div class="w-20 h-20 bg-neutral-900 border border-neonCyan rounded p-1 grid grid-cols-5 gap-[1px]">
+                                        <!-- Clean Aligned blocks -->
+                                        <div class="bg-neonCyan/80"></div><div class="bg-neonCyan/80"></div><div class="bg-neonCyan/80"></div><div class="bg-transparent"></div><div class="bg-transparent"></div>
+                                        <div class="bg-transparent"></div><div class="bg-neonCyan/80"></div><div class="bg-transparent"></div><div class="bg-transparent"></div><div class="bg-transparent"></div>
+                                        <div class="bg-transparent"></div><div class="bg-neonCyan/80"></div><div class="bg-transparent"></div><div class="bg-transparent"></div><div class="bg-transparent"></div>
+                                        <div class="bg-transparent"></div><div class="bg-neonCyan/80"></div><div class="bg-transparent"></div><div class="bg-transparent"></div><div class="bg-transparent"></div>
+                                        <div class="bg-neonCyan/80"></div><div class="bg-neonCyan/80"></div><div class="bg-neonCyan/80"></div><div class="bg-transparent"></div><div class="bg-transparent"></div>
+                                    </div>
+                                    <p class="text-[9px] text-neonCyan font-mono mt-1">Nén khít vào lưới pixel</p>
+                                </div>
+                            </div>
+                            
+                            <span class="text-[9px] text-gray-500 text-center relative z-10 block mt-2">Đường gióng quang học tối ưu mật độ pixel ảo</span>
+                        </div>
+
+                        <div class="mt-4 text-center">
+                            <span class="text-[10px] font-mono text-gray-500">[PLACEHOLDER_HINTING_ENGINEERING_DIAGRAM]</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Copy Content -->
+                <div class="lg:col-span-7 space-y-8 order-1 lg:order-2">
+                    <p class="text-gray-400 text-sm leading-relaxed font-light">
+                        Một sản phẩm chuẩn Agency không chỉ dừng lại ở tính thẩm mỹ trên Figma. Bạn sẽ làm chủ toàn bộ kỹ nghệ hiển thị vi mô để tối ưu hóa workflow bàn giao cho Frontend:
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="p-5 rounded-xl border border-white/5 bg-matteBlack/40">
+                            <h4 class="font-bold text-white text-lg flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-neonCyan"></span>
+                                Làm chủ cơ chế Hinting:
+                            </h4>
+                            <p class="text-gray-400 text-sm mt-1 leading-relaxed">
+                                Hiểu cách nén và định hình các pixel ảo để ký tự hiển thị sắc nét nhất trên các màn hình có mật độ điểm ảnh thấp.
+                            </p>
+                        </div>
+                        
+                        <div class="p-5 rounded-xl border border-white/5 bg-matteBlack/40">
+                            <h4 class="font-bold text-white text-lg flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-neonCyan"></span>
+                                Quy luật khoảng trắng thị giác:
+                            </h4>
+                            <p class="text-gray-400 text-sm mt-1 leading-relaxed">
+                                Cách tính toán tỷ lệ tương phản giữa nét chữ dày (weight) và khoảng cách dòng (leading) tùy theo môi trường hiển thị để duy trì hiệu suất đọc cao nhất.
+                            </p>
+                        </div>
+                        
+                        <div class="p-5 rounded-xl border border-white/5 bg-matteBlack/40">
+                            <h4 class="font-bold text-white text-lg flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-neonCyan"></span>
+                                Bẫy mực (Ink trap) kỹ thuật số:
+                            </h4>
+                            <p class="text-gray-400 text-sm mt-1 leading-relaxed">
+                                Ứng dụng kỹ thuật bẫy mực – chủ động khoét rỗng phần giao nhau của các nét chữ để khi chữ hiển thị ở kích thước nhỏ hoặc in ấn bị lem mực, nó sẽ tự lấp đầy hoàn hảo mà không bị nặng nề về thị giác.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOCK 8: VALUE STACK -->
+    <section id="value-stack" class="py-24 border-t border-borderGray bg-matteBlack bg-grid-pattern relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-4xl mx-auto mb-16">
+                <span class="font-mono text-xs text-neonCyan tracking-widest uppercase">[EXCLUSIVE AGENCY BUNDLE]</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-4 uppercase leading-snug">
+                    SỞ HỮU BỘ "VŨ KHÍ TỐI ƯU HÓA MOBILE" TRỊ GIÁ 1.500.000Đ NGAY HÔM NAY!
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Gift Stack Content -->
+                <div class="lg:col-span-7 space-y-6">
+                    <!-- Gift 1 -->
+                    <div class="p-6 rounded-2xl glass-card border border-neonCyan/20 flex gap-4 items-start shadow-cyanGlow transition-all duration-300 hover:border-neonCyan">
+                        <div class="w-12 h-12 rounded bg-neonCyan/10 border border-neonCyan flex items-center justify-center shrink-0">
+                            <svg class="w-6 h-6 text-neonCyan" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-extrabold text-lg text-white">Món quà 1 (Thư viện độc quyền):</h4>
+                            <p class="text-gray-400 text-sm mt-1 leading-relaxed">
+                                Thư viện 500+ Font chữ Digital Sans & Neo-Grotesque cao cấp đã được lọc sẵn và kiểm tra kỹ lưỡng về cơ chế Hinting hiển thị sắc nét trên Mobile.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Gift 2 -->
+                    <div class="p-6 rounded-2xl glass-card border border-neonCyan/20 flex gap-4 items-start shadow-cyanGlow transition-all duration-300 hover:border-neonCyan">
+                        <div class="w-12 h-12 rounded bg-neonCyan/10 border border-neonCyan flex items-center justify-center shrink-0">
+                            <svg class="w-6 h-6 text-neonCyan" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-extrabold text-lg text-white">Món quà 2 (Checklist chuẩn hóa):</h4>
+                            <p class="text-gray-400 text-sm mt-1 leading-relaxed">
+                                Checklist 10 bước chuẩn hóa file Typography trước khi bàn giao cho lập trình viên Frontend, triệt tiêu hoàn toàn lỗi vỡ layout.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Gift 3 -->
+                    <div class="p-6 rounded-2xl glass-card border border-neonCyan/20 flex gap-4 items-start shadow-cyanGlow transition-all duration-300 hover:border-neonCyan">
+                        <div class="w-12 h-12 rounded bg-neonCyan/10 border border-neonCyan flex items-center justify-center shrink-0">
+                            <svg class="w-6 h-6 text-neonCyan" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-extrabold text-lg text-neonCyan">Sách cốt lõi:</h4>
+                            <p class="text-gray-300 text-sm mt-1 leading-relaxed font-semibold">
+                                Ebook "Typo Analysis: Hệ thống hóa tư duy dịch mã thị giác" - 100+ trang phân tích sâu các case study toàn cầu (Bon Appétit, Virgin, Royal Academy, Helvetica).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right CSS Abstract Art: [PLACEHOLDER_3D_MOBILE_BUNDLE_OFFER] -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md h-[450px] bg-darkGray border-2 border-borderGray rounded-[32px] p-8 overflow-hidden flex flex-col justify-between shadow-2xl">
+                        <!-- Neon Glowing Effect Backdrop -->
+                        <div class="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-neonCyan/20 filter blur-3xl"></div>
+                        <div class="absolute inset-0 bg-cyan-grid opacity-10"></div>
+                        
+                        <!-- Bundle Isometric Presentation -->
+                        <div class="relative h-64 flex items-center justify-center">
+                            <!-- Premium Isometric Gift Box Artwork -->
+                            <div class="relative w-44 h-44 transform rotate-12 transition-transform duration-500 hover:rotate-6">
+                                <!-- Base Face -->
+                                <div class="absolute inset-0 bg-gradient-to-br from-matteBlack to-neutral-800 border-2 border-neonCyan rounded-3xl shadow-cyanGlow"></div>
+                                <!-- Glowing Core -->
+                                <div class="absolute -inset-2 bg-neonCyan/10 rounded-[36px] filter blur animate-pulse"></div>
+                                <!-- Typography Design Element Front -->
+                                <div class="absolute inset-4 border border-white/5 rounded-2xl p-4 flex flex-col justify-between">
+                                    <div class="font-mono text-[9px] text-neonCyan">[AGENCY_GRADE]</div>
+                                    <div class="text-3xl font-extrabold text-appleGray leading-none">TA</div>
+                                    <div class="font-mono text-[8px] text-gray-500">SYSTEM ANALYSIS</div>
+                                </div>
+                                <!-- Glowing Ribbon Cyan -->
+                                <div class="absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2 w-4 bg-neonCyan/40 border-x border-neonCyan z-20"></div>
+                                <div class="absolute left-0 right-0 top-1/2 transform -translate-y-1/2 h-4 bg-neonCyan/40 border-y border-neonCyan z-20"></div>
+                            </div>
+                            
+                            <!-- Small Floating Folders / Resource Cards -->
+                            <div class="absolute -left-4 top-1/3 w-24 h-16 bg-neutral-900/90 border border-white/10 rounded-lg shadow-lg p-2 transform -rotate-12 z-30">
+                                <span class="font-mono text-[8px] text-neonCyan">500+ FONTS</span>
+                                <div class="h-1.5 w-11 bg-neonCyan/30 rounded mt-1"></div>
+                            </div>
+                            <div class="absolute -right-4 bottom-1/4 w-24 h-16 bg-neutral-900/90 border border-white/10 rounded-lg shadow-lg p-2 transform rotate-12 z-30">
+                                <span class="font-mono text-[8px] text-neonCyan">CHECKLISTS</span>
+                                <div class="h-1.5 w-11 bg-neonCyan/30 rounded mt-1"></div>
+                            </div>
+                        </div>
+
+                        <!-- Info tag at the bottom -->
+                        <div class="border-t border-borderGray pt-4 text-center relative z-20">
+                            <span class="font-mono text-[10px] text-neonCyan block tracking-widest uppercase">[PREMIUM RESOURCE BOX]</span>
+                            <span class="text-[11px] text-gray-400 font-mono">[PLACEHOLDER_3D_MOBILE_BUNDLE_OFFER]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOCK 9: CHỐT SALE & PHÁ VỠ PHÒNG THỦ (CRO FOMO) -->
+    <section id="purchase" class="py-24 border-t border-borderGray bg-darkGray relative overflow-hidden">
+        <!-- Floating Ambient Background lights -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-neonCyan/5 blur-[150px] pointer-events-none"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <span class="font-mono text-xs text-neonCyan tracking-widest uppercase">[CRO ULTIMATUM]</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-4 uppercase leading-snug">
+                CHẤM DỨT SỰ MƠ HỒ TRONG WORKFLOW. NÂNG TẦM SẢN PHẨM CHUẨN KỸ THUẬT NGAY!
+            </h2>
+            
+            <!-- Pricing Plan Box -->
+            <div class="mt-12 glass-card rounded-3xl p-8 md:p-12 border-2 border-neonCyan/30 relative max-w-xl mx-auto shadow-cyanGlow">
+                <!-- Highlight Indicator -->
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 px-6 py-1 bg-neonCyan text-matteBlack font-mono text-xs font-extrabold uppercase rounded-full">
+                    Ưu Đãi Độc Quyền Dành Cho Lớp Mobile UX
+                </div>
+                
+                <div class="flex flex-col space-y-6">
+                    <div class="flex justify-center items-baseline gap-4">
+                        <span class="text-gray-500 line-through text-lg">Giá gốc: 650.000đ</span>
+                        <span class="text-4xl md:text-5xl font-black text-neonCyan">249.000đ</span>
+                    </div>
+                    <span class="text-xs text-gray-300 font-mono">(Tiết kiệm ngay 60%)</span>
+                    
+                    <!-- Real-time Countdown Timer -->
+                    <div class="bg-matteBlack/80 rounded-xl p-4 border border-white/5 flex flex-col items-center">
+                        <p class="text-[10px] font-mono text-gray-400 uppercase tracking-widest">Thời gian ưu đãi còn lại</p>
+                        <div class="flex gap-4 mt-2 justify-center">
+                            <div class="text-center">
+                                <span id="hours" class="text-2xl md:text-3xl font-mono font-bold text-neonCyan">00</span>
+                                <p class="text-[9px] font-mono text-gray-500 uppercase">Giờ</p>
+                            </div>
+                            <span class="text-2xl font-bold text-neonCyan">:</span>
+                            <div class="text-center">
+                                <span id="minutes" class="text-2xl md:text-3xl font-mono font-bold text-neonCyan">15</span>
+                                <p class="text-[9px] font-mono text-gray-500 uppercase">Phút</p>
+                            </div>
+                            <span class="text-2xl font-bold text-neonCyan">:</span>
+                            <div class="text-center">
+                                <span id="seconds" class="text-2xl md:text-3xl font-mono font-bold text-neonCyan">45</span>
+                                <p class="text-[9px] font-mono text-gray-500 uppercase">Giây</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Action CTA Button -->
+                    <div class="pt-4">
+                        <button onclick="triggerPurchaseSuccess()" class="w-full py-5 rounded-xl bg-neonCyan text-matteBlack font-black tracking-widest text-base uppercase shadow-cyanGlow hover:shadow-cyanGlowIntense hover:bg-white transition-all duration-300 transform active:scale-95">
+                            [TẢI TRỌN BỘ EBOOK & TOÀN BỘ CÔNG CỤ HIỂN THỊ NGAY]
+                        </button>
+                    </div>
+                    
+                    <!-- Pay gate visual / Trust badge: [PLACEHOLDER_TRUST_BADGES_MOBILE] -->
+                    <div class="pt-6 border-t border-white/5 flex flex-col items-center">
+                        <span class="text-[10px] font-mono text-gray-500 uppercase block mb-3">[PLACEHOLDER_TRUST_BADGES_MOBILE]</span>
+                        
+                        <div class="flex flex-wrap justify-center gap-4 items-center">
+                            <!-- MoMo Badge -->
+                            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#A50064]/20 border border-[#A50064]/40 text-[#A50064] text-[10px] font-bold">
+                                <span class="w-2 h-2 rounded-full bg-[#A50064] animate-pulse"></span>
+                                Momo Secured
+                            </div>
+                            <!-- VietQR Badge -->
+                            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neonCyan/10 border border-neonCyan/30 text-neonCyan text-[10px] font-bold">
+                                <span class="w-2 h-2 rounded-full bg-neonCyan animate-pulse"></span>
+                                VietQR FastPay
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOCK 10: FLASHCARD - 25 CÂU HỎI ÔN TẬP -->
+    <section class="py-24 border-t border-borderGray bg-matteBlack relative bg-grid-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="font-mono text-xs text-neonCyan tracking-widest uppercase">[REVISION MODULE]</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-3 uppercase leading-snug">
+                    HỆ THỐNG 25 CÂU HỎI ÔN TẬP TOÀN DIỆN TYPOGRAPHY KỸ THUẬT SỐ
+                </h2>
+                <p class="text-gray-400 text-sm mt-3 font-light">Tự ôn tập trực diện, ghi nhớ vĩnh viễn quy luật dịch mã thị giác mà không cần tương tác bật mở.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Flashcard 1 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 01:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Chiều cao chữ thường (x-height) ảnh hưởng thế nào đến độ dễ đọc (readability) trên mobile?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        x-height cao giúp phóng đại khoảng trống bên trong ký tự, ngăn cản các nét dính tịt vào nhau khi người dùng đọc lướt trên màn hình có kích thước nhỏ.
+                    </p>
+                </div>
+                <!-- Flashcard 2 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 02:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Độ mở (Aperture) là gì và tại sao Aperture hẹp là cơn ác mộng khi hiển thị ở kích thước chữ nhỏ?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        Aperture là phần không gian mở của lòng chữ. Aperture hẹp khiến khoảng trống bị dính chặt ở kích thước nhỏ (dưới 10px), biến ký tự e, o, a thành những vết mờ đen.
+                    </p>
+                </div>
+                <!-- Flashcard 3 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 03:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Kỹ thuật Hinting hoạt động thế nào trong hiển thị kỹ thuật số?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        Hinting nén và định vị các vector chữ vào lưới pixel thực tế để chữ không bị nhòe mờ hay lệch gióng trên màn hình có mật độ điểm ảnh thấp.
+                    </p>
+                </div>
+                <!-- Flashcard 4 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 04:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Cơ chế khử răng cưa (Anti-aliasing) giải quyết vấn đề hiển thị gì?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        Nó sử dụng các dải màu trung gian để làm mịn các đường cong, tránh tình trạng răng cưa thô thiển khi phóng to hoặc ở độ phân giải pixel giới hạn.
+                    </p>
+                </div>
+                <!-- Flashcard 5 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 05:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Bẫy mực (Ink trap) kỹ thuật số được thiết kế nhằm mục đích gì?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        Chủ động khoét sâu, làm rỗng các điểm giao nét nhằm bù trừ quang học cho sự phình to nét chữ do cơ chế kết xuất pixel trên di động hoặc loang mực trong in ấn.
+                    </p>
+                </div>
+                <!-- Flashcard 6 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 06:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Tại sao không nên dùng dòng phông Geometric Sans cho văn bản dài (body text)?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        Do nét chữ quá đều chằn chặn và tỷ lệ vòng tròn máy móc hoàn hảo gây ra mỏi mắt mệt mỏi, mắt thiếu điểm dừng quang học để chuyển động tự nhiên.
+                    </p>
+                </div>
+                <!-- Flashcard 7 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 07:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Phông Neo-Grotesque sửa chữa nhược điểm của Geometric Sans như thế nào?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        Nó áp dụng các kết cấu hữu cơ gần gũi thực tế hơn như lòng chữ o hình quả trứng, nét có độ tương phản nhỏ giúp định vị mắt đọc dài thư thả hơn.
+                    </p>
+                </div>
+                <!-- Flashcard 8 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 08:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Tại sao Helvetica lại dễ bị dính chữ ("chết") ở kích thước 8px?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        Vì độ mở (Aperture) của Helvetica quá khép kín và hẹp, khiến cấu trúc trống nội bộ biến mất hoàn toàn khi kích thước thu hẹp dưới ngưỡng pixel cần thiết.
+                    </p>
+                </div>
+                <!-- Flashcard 9 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 09:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Mô tả cuộc cách mạng nâng cấp phông chữ Aperitif của Bon Appétit?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        Kiểu chữ mới Aperitif được thiết kế riêng kéo cao chiều cao x-height vượt trội để tối ưu hiển thị lướt nhanh trên các dòng điện thoại di động đứng.
+                    </p>
+                </div>
+                <!-- Flashcard 10 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 10:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Triết lý thiết kế Typography của Virgin Atlantic cho khoang thương gia là gì?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        Từ bỏ Serif truyền thống, sử dụng Sans Geometric mỏng mảnh (hairline) kết hợp việc nới rộng khoảng cách chữ tối đa để tạo cảm giác sang trọng, thư giãn.
+                    </p>
+                </div>
+                <!-- Flashcard 11 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 11:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Nhóm ngành AI, Tech, Vũ trụ yêu cầu định hướng thiết kế font thế nào?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        Nét dày dặn, kết cấu module vững chãi cơ học như phông Monospace hoặc góc chéo sắc bén để phát đi tín hiệu chính xác số và trí tuệ nhân tạo.
+                    </p>
+                </div>
+                <!-- Flashcard 12 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 12:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Vì sao Avenir Next Pro là cứu tinh của thiết kế giao diện Web/App?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        Kết hợp hoàn mỹ giữa x-height cao, chữ "a" hai tầng viết tay thân thuộc cùng các nét cắt chéo thoáng mở chống dấp dính thị giác cực tốt.
+                    </p>
+                </div>
+                <!-- Flashcard 13 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 13:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Ảo ảnh Figma 100% Zoom bắt nguồn từ đâu?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        Chữ hiển thị sắc nét lộng lẫy trên màn hình iMac lớn khi thiết kế Figma, nhưng bị thu nhỏ nén nghẹt khi hiển thị trên môi trường di động thật.
+                    </p>
+                </div>
+                <!-- Flashcard 14 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 14:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Làm sao khắc phục lỗi vỡ Leading trong quá trình bàn giao cho lập trình viên?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        Sử dụng phông chữ có cấu trúc Hinting đầy đủ và thiết lập line-height quy chuẩn bằng các thông số cụ thể thay vì vẽ kéo thủ công bằng tay.
+                    </p>
+                </div>
+                <!-- Flashcard 15 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 15:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Sự khác nhau cơ bản giữa Readability và Legibility là gì?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        Legibility là độ dễ nhận biết giữa các ký tự đơn lẻ. Readability là sự thoải mái quang học tổng thể khi đọc toàn bộ đoạn văn bản dài liền mạch.
+                    </p>
+                </div>
+                <!-- Flashcard 16 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 16:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Yếu tố nào quy định khoảng trắng thị giác tối ưu?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        Sự tương phản quang học nhịp nhàng giữa độ dày của nét chữ (font-weight) và tỷ lệ khoảng trống giãn dòng (leading / line-height).
+                    </p>
+                </div>
+                <!-- Flashcard 17 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 17:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Counter của phông chữ là gì và tại sao nó quan trọng?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        Counter là phần khoảng trắng bao quanh đóng trong lòng chữ. Lòng chữ rộng cho ánh sáng chiếu vào cân đối hơn giúp tăng nhanh độ nhận diện.
+                    </p>
+                </div>
+                <!-- Flashcard 18 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 18:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Sự khác biệt quang học của chữ "o" trong Montserrat và Helvetica là gì?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        Montserrat dùng chữ "o" là vòng tròn hình học hoàn mỹ tĩnh lặng, còn Helvetica dùng chữ "o" hình trứng gà tự nhiên chuyển động.
+                    </p>
+                </div>
+                <!-- Flashcard 19 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 19:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Tại sao sếp hay đối tác thường bắt sửa font dựa trên cảm tính?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        Do thiếu hệ thống tiêu chuẩn đo lường kỹ thuật số khách quan về hiệu năng thị giác để phản biện một cách thuyết phục khoa học.
+                    </p>
+                </div>
+                <!-- Flashcard 20 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 20:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Ký tự "a" hai tầng hỗ trợ phản xạ đọc tự nhiên thế nào?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        Nó mô phỏng lại dạng viết tay nguyên thủy mà hệ thần kinh con người đã thích nghi sâu trong hàng trăm năm tiếp xúc sách báo in ấn.
+                    </p>
+                </div>
+                <!-- Flashcard 21 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 21:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Tỷ lệ line-height khuyên dùng tối thiểu cho Mobile UI là bao nhiêu?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        Nên tối thiểu đạt từ 1.4 đến 1.6 lần kích thước phông để đảm bảo khoảng trống cho các nét chữ không dẫm đạp chéo nhau khi cuộn lướt.
+                    </p>
+                </div>
+                <!-- Flashcard 22 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 22:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Làm thế nào định hình các pixel ảo chuẩn hóa quy trình bàn giao?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        Bằng cách tuân thủ checklist rà soát kỹ thuật liên kết lưới, đồng bộ hóa sang đơn vị responsive tương đối như em, rem hoặc px chuẩn.
+                    </p>
+                </div>
+                <!-- Flashcard 23 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 23:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Mật độ điểm ảnh siêu cao (Retina, OLED) có cứu được phông kém?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        Không. Dù màn hình nét đến đâu, mắt người vẫn phản ứng tiêu cực trước sự mất cân đối quang học hay sự dập dính lỗi hiển thị cơ bản.
+                    </p>
+                </div>
+                <!-- Flashcard 24 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 24:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Tác hại của việc lạm dụng nét quá mảnh (Hairline) cho text quảng cáo?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        Gây ra hiện tượng "biến mất ảo" dưới cường độ sáng mạnh ngoài trời, ảnh hưởng nghiêm trọng tới khả năng tiếp cận tiếp thị của cộng đồng.
+                    </p>
+                </div>
+                <!-- Flashcard 25 -->
+                <div class="p-6 rounded-2xl bg-darkGray border border-white/5 shadow-cardGlow hover:border-neonCyan/30 transition-all duration-300">
+                    <span class="font-mono text-xs text-neonCyan">Câu hỏi 25:</span>
+                    <h4 class="font-bold text-white text-sm mt-1 mb-3">Mục tiêu tối thượng của cuốn Ebook Typo Analysis là gì?</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-3">
+                        Giúp triệt tiêu sự mơ hồ, cảm tính bản năng để xây dựng tư duy vững chắc của một kỹ sư Frontend Typography chuyên sâu thực thụ.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER: HIGHLY DETAILED & COMPACT -->
+    <footer class="w-full bg-matteBlack border-t border-borderGray flex items-center justify-center py-6" style="height: 128px;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+            <!-- Left Info Area -->
+            <div class="max-w-xl">
+                <p class="text-[10px] text-gray-400 leading-normal">
+                    Cập nhật kiến thức thực chiến nhất về Kỹ năng Quay Dựng, Xây kênh Niche và Tư duy phân tích Thuật toán Mạng xã hội kỷ nguyên mới.
+                </p>
+                <p class="text-[9px] text-gray-600 mt-1">© 2026 Typo Lab. All Rights Reserved.</p>
+            </div>
+            
+            <!-- Right Social Channels Grid -->
+            <div class="flex items-center gap-6">
+                <!-- YouTube Link -->
+                <a href="https://youtube.com/@vietndonline" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-1.5 text-gray-500 hover:text-red-500 transition-colors duration-300" title="Kênh Youtube">
+                    <svg class="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24" width="18" height="18">
+                        <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    <span class="text-[10px] font-mono hidden sm:inline">YouTube</span>
+                </a>
+
+                <!-- TikTok Link -->
+                <a href="https://www.tiktok.com/@nguyenducviet.viral" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-1.5 text-gray-500 hover:text-white transition-colors duration-300" title="Kênh TikTok">
+                    <svg class="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24" width="18" height="18">
+                        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.62 4.17 1.22 1.34 2.92 2.12 4.74 2.27v3.9c-1.6-.04-3.15-.55-4.47-1.46-.38-.26-.73-.56-1.04-.9V14c0 1.94-.48 3.82-1.42 5.43-1.41 2.45-3.93 4.1-6.74 4.46-2.92.38-5.94-.54-8.08-2.61-2.28-2.2-3.32-5.54-2.73-8.68.56-2.98 2.5-5.57 5.25-6.85C6.18 5.22 7.55 4.88 9 4.88c.39 0 .78.02 1.17.07v4c-.7-.2-1.45-.23-2.18-.08-1.56.32-2.9 1.4-3.48 2.89-.57 1.48-.41 3.2.43 4.54.83 1.32 2.33 2.14 3.88 2.06 1.48-.07 2.83-.93 3.48-2.25.43-.87.52-1.87.5-2.83V.02z"/>
+                    </svg>
+                    <span class="text-[10px] font-mono hidden sm:inline">TikTok</span>
+                </a>
+
+                <!-- Facebook Link -->
+                <a href="https://web.facebook.com/profile.php?id=61580450902746" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-1.5 text-gray-500 hover:text-blue-500 transition-colors duration-300" title="Facebook Page">
+                    <svg class="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24" width="18" height="18">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                    <span class="text-[10px] font-mono hidden sm:inline">Facebook</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SLICK FLOATING PURCHASE SUCCESS NOTIFICATION BOX (Anti-Alert System) -->
+    <div id="toast-success" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-500 max-w-sm w-full">
+        <div class="glass-card border border-neonCyan p-5 rounded-2xl shadow-cyanGlow flex items-start gap-4">
+            <div class="w-8 h-8 rounded-full bg-neonCyan flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-matteBlack" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+            <div>
+                <h5 class="font-bold text-white text-sm">Giao dịch khởi tạo thành công!</h5>
+                <p class="text-xs text-gray-400 mt-1 leading-normal">Hệ thống đang chuẩn bị gói tài liệu Typo Analysis và phân quyền truy cập. Bạn sẽ nhận được email hướng dẫn ngay tức khắc.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS LOGIC CODE -->
+    <script>
+        // Real-time dynamic FOMO countdown mechanism (Keeps resetting from 15:45 min to create organic urgency)
+        function startTimer() {
+            let initialMinutes = 15;
+            let initialSeconds = 45;
+            
+            // Check if there is already a running session timer to prevent jumps on reload
+            let storedTime = sessionStorage.getItem('timeLeft');
+            let totalSeconds;
+            
+            if (storedTime) {
+                totalSeconds = parseInt(storedTime, 10);
+            } else {
+                totalSeconds = (initialMinutes * 60) + initialSeconds;
+            }
+
+            const interval = setInterval(() => {
+                let minutesLeft = Math.floor(totalSeconds / 60);
+                let secondsLeft = totalSeconds % 60;
+
+                // Formatter padding
+                document.getElementById('hours').innerText = "00";
+                document.getElementById('minutes').innerText = String(minutesLeft).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(secondsLeft).padStart(2, '0');
+
+                if (totalSeconds <= 0) {
+                    // Instantly reset back to 15m 45s for infinite conversion pressure loop
+                    totalSeconds = (initialMinutes * 60) + initialSeconds;
+                } else {
+                    totalSeconds--;
+                }
+                
+                sessionStorage.setItem('timeLeft', totalSeconds);
+            }, 1000);
+        }
+
+        // Custom checkout interaction logic to eliminate browser alerts
+        function triggerPurchaseSuccess() {
+            const toast = document.getElementById('toast-success');
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            
+            // Automatically close notice after 8 seconds
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 8000);
+        }
+
+        // Initialize script on DOM Ready
+        window.addEventListener('DOMContentLoaded', () => {
+            startTimer();
+        });
+    </script>
+</body>
+</html>
