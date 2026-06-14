@@ -108,58 +108,13 @@
             </section>
         </main>
     </div>
+<script>
+        const getUiVal = id => document.getElementById(id)?.value?.trim();
+        window.addEventListener('DOMContentLoaded', () => { ['ui-gh-token', 'ui-gh-repo'].forEach(id => { if(localStorage.getItem(id)) document.getElementById(id).value = localStorage.getItem(id); }); });
 
-    <script>
-        // Tự động tải lại cấu hình cũ từ bộ nhớ máy tính lên giao diện
-        ['ui-gh-token', 'ui-gh-repo'].forEach(id => {
-            if(localStorage.getItem(id)) document.getElementById(id).value = localStorage.getItem(id);
-        });
+        const syncDesignSystem = async (token, repo, hFont, bFont) => { const btn = document.getElementById('sync-theme-btn'); btn.textContent = '⏳ ĐANG ĐỒNG BỘ...'; btn.disabled = true; try { const url = `https://api.github.com/repos/${repo}/contents/style.css?ref=main`; const resGet = await fetch(url, { headers: { 'Authorization': `token ${token}` } }); if(!resGet.ok) throw new Error("Không thể kết nối hoặc tìm thấy file style.css"); const data = await resGet.json(); let css = decodeURIComponent(escape(atob(data.content))); const block = `/* --- THEME START --- */\n@font-face { font-family: 'HeadingFont'; src: url('fonts/${hFont}'); font-display: swap; }\n@font-face { font-family: 'BodyFont'; src: url('fonts/${bFont}'); font-display: swap; }\n:root {\n    --font-heading: 'HeadingFont', serif;\n    --font-body: 'BodyFont', sans-serif;\n    --bg-matte: #121212;\n    --surface-1: #1A1A1A;\n    --surface-2: #242424;\n    --text-main: #FFFFFF;\n    --text-muted: #A0A0A5;\n    --cyan-neon: #00F0FF;\n    --orange-glow: #FF5A00;\n}\n/* --- THEME END --- */`; if(css.includes('/* --- THEME START --- */')) { css = css.replace(/\/\* --- THEME START --- \*\/[\s\S]*?\/\* --- THEME END --- \*\//, block); } else { css = block + '\n' + css; } const resPut = await fetch(url, { method: 'PUT', headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ message: 'Sync Design System Tokens', content: btoa(unescape(encodeURIComponent(css))), sha: data.sha, branch: 'main' }) }); alert(resPut.ok ? '✨ Đồng bộ Design System sang style.css hoàn tất!' : '❌ Thất bại khi ghi đè tệp tin.'); } catch(e) { alert('❌ Lỗi: ' + e.message); } finally { btn.textContent = 'ĐỒNG BỘ DESIGN SYSTEM'; btn.disabled = false; } };
 
-        document.getElementById('sync-theme-btn').addEventListener('click', async () => {
-            const token = document.getElementById('ui-gh-token').value.trim();
-            const repo = document.getElementById('ui-gh-repo').value.trim();
-            const hFont = document.getElementById('heading-font-select').value;
-            const bFont = document.getElementById('body-font-select').value;
-            const btn = document.getElementById('sync-theme-btn');
-
-            if(!token || !repo) { alert('Vui lòng điền đầy đủ Token và tên Repo trên giao diện!'); return; }
-            
-            // Lưu lại cho phiên làm việc tiếp theo
-            localStorage.setItem('ui-gh-token', token);
-            localStorage.setItem('ui-gh-repo', repo);
-
-            btn.textContent = '⏳ ĐANG ĐỒNG BỘ...';
-            btn.disabled = true;
-
-            try {
-                const url = `https://api.github.com/repos/${repo}/contents/style.css?ref=main`;
-                const resGet = await fetch(url, { headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' } });
-                
-                if (!resGet.ok) throw new Error("Không thể tìm thấy file style.css trên kho lưu trữ.");
-                const dataGet = await resGet.json();
-                const currentCss = decodeURIComponent(escape(atob(dataGet.content)));
-                
-                const newThemeBlock = `/* --- THEME START --- */\n@font-face { font-family: 'HeadingFont'; src: url('fonts/${hFont}'); font-display: swap; }\n@font-face { font-family: 'BodyFont'; src: url('fonts/${bFont}'); font-display: swap; }\n:root {\n    --font-heading: 'HeadingFont', serif;\n    --font-body: 'BodyFont', sans-serif;\n    --bg-matte: #121212;\n    --surface-1: #1A1A1A;\n    --surface-2: #242424;\n    --text-main: #FFFFFF;\n    --text-muted: #A0A0A5;\n    --cyan-neon: #00F0FF;\n    --orange-glow: #FF5A00;\n}\n/* --- THEME END --- */`;
-
-                const updatedCss = currentCss.replace(/\/\* --- THEME START --- \*\/[\s\S]*?\/\* --- THEME END --- \*\//, newThemeBlock);
-                const base64Content = btoa(unescape(encodeURIComponent(updatedCss)));
-
-                const resPut = await fetch(url, {
-                    method: 'PUT',
-                    headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: 'Update Design System Global Tokens', content: base64Content, sha: dataGet.sha, branch: 'main' })
-                });
-
-                if (resPut.ok) alert('✨ ĐỒNG BỘ THÀNH CÔNG: Toàn bộ cài đặt font đã được áp dụng sang index.html thông qua Vercel!');
-                else alert('❌ Thất bại khi ghi đè dữ liệu API GitHub.');
-
-            } catch (error) {
-                alert("Lỗi: " + error.message);
-            } finally {
-                btn.textContent = 'ĐỒNG BỘ DESIGN SYSTEM';
-                btn.disabled = false;
-            }
-        });
+        document.getElementById('sync-theme-btn').onclick = () => { const tk = getUiVal('ui-gh-token'), rp = getUiVal('ui-gh-repo'), hf = document.getElementById('heading-font-select').value, bf = document.getElementById('body-font-select').value; if(!tk || !rp) return alert('Vui lòng điền đủ Token và Repo!'); localStorage.setItem('ui-gh-token', tk); localStorage.setItem('ui-gh-repo', rp); syncDesignSystem(tk, rp, hf, bf); };
     </script>
 </body>
 </html>
