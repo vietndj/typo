@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Cáo: Cuộc Đại Phẫu Rebranding - Tech-Shift</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Styling */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- CSS ABSTRACT ART --- */
+        
+        /* 1. Hero Art: The "Cưa Chân" (Cutting the Serif) */
+        .art-hero {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #e0e7ff 0%, #ede9fe 100%);
+            border-radius: 24px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .art-hero-stem {
+            width: 80px;
+            height: 200px;
+            background-color: #1e1b4b;
+            position: relative;
+        }
+        .art-hero-serif {
+            position: absolute;
+            bottom: 0;
+            left: -30px;
+            width: 140px;
+            height: 30px;
+            background-color: #ef4444;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+            transform: translateY(40px) rotate(-15deg);
+            opacity: 0.8;
+            transition: all 0.5s ease;
+        }
+        .art-hero-cut-line {
+            position: absolute;
+            width: 120%;
+            height: 4px;
+            background: #ef4444;
+            bottom: 30px;
+            left: -10%;
+            transform: rotate(-15deg);
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+        }
+
+        /* 2. Hook Art: Mobile Frame Cramped vs Clean */
+        .art-hook {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        .phone-frame {
+            width: 140px;
+            height: 280px;
+            border: 8px solid #cbd5e1;
+            border-radius: 24px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .phone-frame::before { /* Notch */
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 50px;
+            height: 12px;
+            background: #cbd5e1;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+        .messy-serif {
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            line-height: 1;
+            font-weight: 700;
+            letter-spacing: -15px;
+            color: #94a3b8;
+            filter: blur(1px);
+        }
+        .clean-sans {
+            font-family: 'Inter', sans-serif;
+            font-size: 6rem;
+            font-weight: 900;
+            color: #2563eb;
+            letter-spacing: -2px;
+        }
+
+        /* 3. Case Study Arts */
+        .art-case {
+            height: 160px;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* VCB: Green Geometric Transition */
+        .art-vcb { background: #f0fdf4; }
+        .vcb-shape-1 { width: 50px; height: 50px; border: 4px solid #16a34a; transform: skewX(-20deg); margin-right: -10px;}
+        .vcb-shape-2 { width: 60px; height: 60px; background: #16a34a; border-radius: 4px;}
+        
+        /* Matas: Thick Minimal Lines */
+        .art-matas { background: #f1f5f9; flex-direction: column; gap: 8px;}
+        .matas-line-1 { width: 80px; height: 16px; background: #0f172a; border-radius: 8px;}
+        .matas-line-2 { width: 40px; height: 16px; background: #0f172a; border-radius: 8px;}
+        
+        /* Cake: Neon Pink Boldness */
+        .art-cake { background: #fff1f2; }
+        .cake-shape { 
+            width: 100px; 
+            height: 100px; 
+            background: #e11d48; 
+            border-radius: 40px; 
+            font-size: 4rem; 
+            color: white; 
+            font-weight: 900; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            transform: scale(1.2);
+        }
+
+        /* 4. Feature Art: Optical Balance & Aperture */
+        .art-feature {
+            width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;
+        }
+        .art-aperture { background: #eff6ff; }
+        .shape-aperture { width: 30px; height: 30px; border: 6px solid #3b82f6; border-right-color: transparent; border-radius: 50%; transform: rotate(-45deg);}
+        
+        .art-balance { background: #fdf4ff; }
+        .shape-balance { position: relative; width: 30px; height: 30px; }
+        .shape-balance::before { content:''; position: absolute; left: 10px; width: 10px; height: 30px; background: #d946ef;} /* Vertical thick */
+        .shape-balance::after { content:''; position: absolute; top: 12px; width: 30px; height: 6px; background: #d946ef;} /* Horizontal thin */
+
+        /* Flashcard Masonry Layout */
+        .flashcard-columns {
+            column-count: 1;
+            column-gap: 1.5rem;
+        }
+        @media (min-width: 640px) { .flashcard-columns { column-count: 2; } }
+        @media (min-width: 1024px) { .flashcard-columns { column-count: 3; } }
+        @media (min-width: 1280px) { .flashcard-columns { column-count: 4; } }
+        
+        .flashcard-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .flashcard-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .fc-tag {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: #f1f5f9;
+            color: #475569;
+            padding: 2px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- ==========================================
+         MÀN HÌNH 1: HERO SECTION
+    =========================================== -->
+    <header class="bg-white border-b border-slate-200 pt-16 pb-20 px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="order-2 lg:order-1">
+                <p class="text-blue-600 font-bold tracking-wider text-sm uppercase mb-4">Báo Cáo Phân Tích Xu Hướng Thương Hiệu Toàn Cầu (Tech-Shift)</p>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight mb-6 text-slate-900">
+                    CUỘC ĐẠI PHẪU REBRANDING:<br>
+                    <span class="text-slate-500 font-serif italic font-normal text-3xl sm:text-4xl lg:text-5xl block mt-2">Tại Sao Các Ông Lớn Đồng Loạt</span>
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500">"Cưa Chân" Chữ Để Sinh Tồn?</span>
+                </h1>
+                <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                    Trong vòng 5 năm qua, hàng loạt tập đoàn toàn cầu đã vứt bỏ những logo có chân (Serif) cầu kỳ, lịch sử trăm năm để đổi lấy những dòng chữ không chân (Sans-serif) phẳng lỳ, trơn tuột. Đó là sự "xuống cấp về thẩm mỹ" hay là một chiến lược <strong>"Dịch chuyển công nghệ"</strong> sinh tử? Khám phá ngay lý do các ông lớn chấp nhận tiêu tốn hàng triệu Đô-la cho một lần thay font chữ!
+                </p>
+                <a href="#download-form" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-blue-600 rounded-full hover:bg-blue-700 transition shadow-lg hover:shadow-blue-500/30 w-full sm:w-auto">
+                    👉 TẢI XUỐNG CASE STUDY PHÂN TÍCH (MIỄN PHÍ)
+                </a>
+            </div>
+            
+            <div class="order-1 lg:order-2">
+                <!-- Abstract Art Hero -->
+                <div class="art-hero shadow-2xl">
+                    <div class="art-hero-stem"></div>
+                    <div class="art-hero-cut-line"></div>
+                    <div class="art-hero-serif"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         MÀN HÌNH 2: THE HOOK
+    =========================================== -->
+    <section class="py-20 bg-slate-50 px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-6">Sự Cổ Điển Rườm Rà Đang Bị Trục Xuất Khỏi Màn Hình Điện Thoại!</h2>
+            
+            <!-- Abstract Art Hook -->
+            <div class="art-hook">
+                <div class="phone-frame shadow-md">
+                    <div class="messy-serif">Tf</div>
+                </div>
+                <div class="flex items-center text-slate-400 font-black text-2xl">👉</div>
+                <div class="phone-frame shadow-xl ring-4 ring-blue-500/20">
+                    <div class="clean-sans">Tf</div>
+                </div>
+            </div>
+
+            <p class="text-lg text-slate-600 mb-6 leading-relaxed text-justify sm:text-center mt-8">
+                Những đường nét thanh đậm, những chiếc chân uốn lượn (Serif) vốn là biểu tượng bất diệt của sự sang trọng, quyền lực, và lịch sử. Thế nhưng, khi đặt những logo này vào không gian chật hẹp của màn hình Smartwatch hay App ngân hàng trên Mobile, chúng lập tức trở thành thảm họa: <strong>Dấp dính, mờ nhạt và cực kỳ khó đọc.</strong>
+            </p>
+            <p class="text-lg text-slate-600 leading-relaxed text-justify sm:text-center">
+                Để sinh tồn trong kỷ nguyên số và tiếp cận thế hệ Gen Z, các thương hiệu buộc phải thực hiện cuộc đại phẫu "Cưa chân" chữ (chuyển sang Sans-serif). Sự tối giản, nét dầy dặn và độ mở lớn của các dòng chữ hình học hiện đại giúp logo hiển thị sắc nét tuyệt đối trên mọi độ phân giải. Đây không phải là sự thụt lùi về nghệ thuật, mà là <strong>Sự nâng cấp về mặt công năng!</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         MÀN HÌNH 3: CASE STUDY MỔ XẺ
+    =========================================== -->
+    <section class="py-20 bg-white px-6 lg:px-8 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-extrabold text-center text-slate-900 mb-16">MỔ XẺ TỪ THỊ TRƯỜNG THỰC TẾ</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Case 1: VCB -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-slate-100 hover:shadow-xl transition">
+                    <div class="art-case art-vcb">
+                        <div class="vcb-shape-1"></div>
+                        <div class="vcb-shape-2"></div>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
+                        <span class="text-green-600">📌</span> Ngân hàng Quốc dân
+                    </h3>
+                    <div class="text-sm text-slate-600 space-y-3">
+                        <p><strong>Trước đây:</strong> Sử dụng font Serif (có chân) in nghiêng, nhiều chi tiết cầu kỳ nhưng lại mang cảm giác hơi bình dân, các đường nét trộn lẫn không rõ ràng tính cách.</p>
+                        <p><strong>Sau Rebranding:</strong> "Cưa" bỏ hoàn toàn chân chữ, chuyển sang font Sans-serif thẳng đứng, nét đều đặn. Lột xác hình ảnh thành một ngân hàng số vững chắc, hiện đại, uy tín và tối ưu công năng hiển thị trên App.</p>
+                    </div>
+                </div>
+
+                <!-- Case 2: Matas -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-slate-100 hover:shadow-xl transition">
+                    <div class="art-case art-matas">
+                        <div class="matas-line-1"></div>
+                        <div class="matas-line-2"></div>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
+                        <span class="text-slate-800">📌</span> Đế chế bán lẻ Matas
+                    </h3>
+                    <div class="text-sm text-slate-600 space-y-3">
+                        <p><strong>Chiến lược:</strong> Chuỗi bán lẻ Đan Mạch (từ 1926) nhận ra logo cổ điển của họ không còn hợp thời.</p>
+                        <p><strong>Thực thi:</strong> Họ bỏ đi các nét nối rườm rà cổ điển, chuyển sang font chữ nét dầy, gọn gàng. Kết quả mang lại tính hiện đại, sắc nét và khả năng hiển thị xuất sắc, phù hợp với định hướng nguồn nguyên liệu bền vững.</p>
+                    </div>
+                </div>
+
+                <!-- Case 3: Cake -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-slate-100 hover:shadow-xl transition">
+                    <div class="art-case art-cake">
+                        <div class="cake-shape">C</div>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
+                        <span class="text-pink-600">📌</span> Tân binh Cake by VPBank
+                    </h3>
+                    <div class="text-sm text-slate-600 space-y-3">
+                        <p><strong>Chiến lược:</strong> Không mang gánh nặng lịch sử, Cake lựa chọn con đường "bùng nổ" để thu hút tệp khách hàng Gen Z.</p>
+                        <p><strong>Thực thi:</strong> Dùng font Sans-serif siêu dày, viết in hoa, ép chặt kerning và bo tròn trơn tuột mọi góc cạnh. Hy sinh sự nghiêm túc của ngành tài chính để lấy sự thân thiện, đập thẳng vào mắt người dùng.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         MÀN HÌNH 4: LEAD MAGNET FORM
+    =========================================== -->
+    <section id="download-form" class="py-20 bg-slate-900 text-white px-6 lg:px-8 relative overflow-hidden">
+        <!-- Abstract Background Shapes -->
+        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-blue-600 rounded-full blur-3xl opacity-20"></div>
+        <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-pink-600 rounded-full blur-3xl opacity-20"></div>
+
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
+            <div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-6">Bạn Sẽ Tìm Thấy Gì Trong Báo Cáo Này?</h2>
+                <p class="text-lg text-slate-300 mb-8">Đừng tự tay giết chết UX/UI của doanh nghiệp bằng một font chữ sai mục đích. Báo cáo này sẽ giúp bạn:</p>
+                
+                <ul class="space-y-6">
+                    <li class="flex items-start gap-4">
+                        <div class="art-feature art-aperture mt-1 shrink-0"><div class="shape-aperture"></div></div>
+                        <div>
+                            <strong class="block text-xl text-blue-400 mb-1">Khung đánh giá Tech-Shift</strong>
+                            <span class="text-slate-400">Biết chính xác khi nào thương hiệu của bạn cần rũ bỏ sự cổ điển để chuyển mình lên không gian số.</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <div class="art-feature art-aperture mt-1 shrink-0" style="background:#fefce8;"><div class="shape-aperture" style="border-color:#eab308; transform: rotate(45deg);"></div></div>
+                        <div>
+                            <strong class="block text-xl text-yellow-400 mb-1">Quy tắc Aperture (Độ mở)</strong>
+                            <span class="text-slate-400">Tại sao chữ 'c' và 'e' phải mở rộng tối đa để chống dính nét trên màn hình điện thoại.</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <div class="art-feature art-balance mt-1 shrink-0"><div class="shape-balance"></div></div>
+                        <div>
+                            <strong class="block text-xl text-fuchsia-400 mb-1">Optical Balance (Cân bằng thị giác)</strong>
+                            <span class="text-slate-400">Bí quyết tinh chỉnh độ dầy của chữ không chân để chúng trông cứng cáp như kim loại thay vì lỏng lẻo như một bản nháp.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- The Form -->
+            <div class="bg-white rounded-3xl p-8 sm:p-10 shadow-2xl text-slate-900">
+                <h3 class="text-2xl font-black mb-2">Tải Case Study Ngay!</h3>
+                <p class="text-slate-600 mb-8 font-medium">Giao diện có thể thay đổi, nhưng khả năng nhận diện phải là tuyệt đối!</p>
+                
+                <form onsubmit="event.preventDefault(); alert('Cảm ơn bạn! Tài liệu đã được gửi qua Email.');" class="space-y-5">
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-1">Họ và Tên</label>
+                        <input type="text" placeholder="Nhập tên của bạn" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none transition bg-slate-50">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-1">Email Nhận Báo Cáo</label>
+                        <input type="email" placeholder="ví dụ: design@congty.com" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none transition bg-slate-50">
+                    </div>
+                    <button type="submit" class="w-full py-4 px-6 text-white font-bold text-lg bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg hover:from-blue-700 hover:to-blue-900 transition shadow-lg mt-4">
+                        👉 NHẬN CASE STUDY MIỄN PHÍ
+                    </button>
+                    <p class="text-xs text-center text-slate-400 mt-4">* Chúng tôi cam kết không gửi thư rác (spam).</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         MÀN HÌNH 5: FLASHCARDS (KHỐI ÔN TẬP)
+    =========================================== -->
+    <section class="py-20 bg-slate-100 px-6 lg:px-8 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-4 flex items-center justify-center gap-3">
+                    <span class="text-4xl">🃏</span> KHỐI ÔN TẬP NHANH
+                </h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">20 Flashcard tóm tắt quy tắc Cân bằng thị giác & Rebranding.<br>Sử dụng để ghi nhớ hoặc đào tạo nhân sự thiết kế.</p>
+            </div>
+
+            <!-- Masonry Grid for Flashcards -->
+            <div class="flashcard-columns">
+                <!-- Data injected via HTML statically as requested -->
+                
+                <div class="flashcard-item">
+                    <span class="fc-tag">Thẻ 1</span>
+                    <h4 class="font-bold text-slate-900 mb-2 leading-snug">Tại sao dòng font Serif (có chân) lại tạo ra cảm giác truyền thống, uy quyền và hoành tráng?</h4>
+                    <p class="text-sm text-blue-700 font-medium mb-3">Đáp án: Vì nó lấy cảm hứng từ những đường nét điêu khắc trên đá, kim loại ở các đền thờ La Mã cổ đại.</p>
+                    <div class="bg-slate-50 p-2 rounded text-xs text-slate-500 border-l-2 border-slate-300">💡 Gợi ý: Hãy nghĩ đến font Trajan trên các poster phim sử thi hay logo Vincom.</div>
+                </div>
+
+                <div class="flashcard-item">
+                    <span class="fc-tag">Thẻ 2</span>
+                    <h4 class="font-bold text-slate-900 mb-2 leading-snug">Điểm yếu lớn nhất của font Serif (chữ có chân) trong thời đại công nghệ số là gì?</h4>
+                    <p class="text-sm text-blue-700 font-medium mb-3">Đáp án: Các chi tiết chân chữ (serif) gây rườm rà, tốn diện tích, dễ bị dấp dính và khó đọc khi hiển thị ở kích thước rất nhỏ trên màn hình điện thoại.</p>
+                    <div class="bg-slate-50 p-2 rounded text-xs text-slate-500 border-l-2 border-slate-300">💡 Gợi ý: Nó đi ngược lại tính thực dụng và công năng đọc của UI/UX.</div>
+                </div>
+
+                <div class="flashcard-item">
+                    <span class="fc-tag">Thẻ 3</span>
+                    <h4 class="font-bold text-slate-900 mb-2 leading-snug">Ngân hàng Vietcombank đã thay đổi tính cách gì khi đổi từ logo font Serif in nghiêng sang Sans-serif nét đều?</h4>
+                    <p class="text-sm text-blue-700 font-medium mb-3">Đáp án: Rũ bỏ sự rườm rà, cầu kỳ nhưng bình dân để định vị sự vững chắc, hiện đại, uy tín và chuẩn mực của một ngân hàng số.</p>
+                    <div class="bg-slate-50 p-2 rounded text-xs text-slate-500 border-l-2 border-slate-300">💡 Gợi ý: Chữ in thẳng bao giờ cũng tạo sự tin cậy hơn chữ in nghiêng.</div>
+                </div>
+
+                <div class="flashcard-item">
+                    <span class="fc-tag">Thẻ 4</span>
+                    <h4 class="font-bold text-slate-900 mb-2 leading-snug">Nguyên tắc sống còn về độ dày của nét ngang và nét dọc trong một font chữ (Optical Balance) là gì?</h4>
+                    <p class="text-sm text-blue-700 font-medium mb-3">Đáp án: Nét ngang bao giờ cũng phải được thiết kế mỏng hơn nét dọc.</p>
+                    <div class="bg-slate-50 p-2 rounded text-xs text-slate-500 border-l-2 border-slate-300">💡 Gợi ý: Mắt người có dạng "widescreen", nhìn chiều ngang dễ hơn, nếu vẽ bằng nhau nét ngang sẽ có cảm giác nặng nề.</div>
+                </div>
+
+                <div class="flashcard-item">
+                    <span class="fc-tag">Thẻ 5</span>
+                    <h4 class="font-bold text-slate-900 mb-2 leading-snug">"Overshoot" là gì và tại sao chữ 'O' không bao giờ được phép cao bằng chữ 'H'?</h4>
+                    <p class="text-sm text-blue-700 font-medium mb-3">Đáp án: Kỹ thuật làm cho chữ tròn (O) hoặc tam giác (A) nhô cao và sâu hơn một chút so với chữ vuông (H) để mắt thấy chúng cao bằng nhau.</p>
+                    <div class="bg-slate-50 p-2 rounded text-xs text-slate-500 border-l-2 border-slate-300">💡 Gợi ý: Nếu vẽ cao bằng nhau về mặt toán học, chữ O và A sẽ có cảm giác bị lọt thỏm.</div>
+                </div>
+
+                <div class="flashcard-item">
+                    <span class="fc-tag">Thẻ 6</span>
+                    <h4 class="font-bold text-slate-900 mb-2 leading-snug">Kỹ thuật "Tapper" giải quyết vấn đề gì khi 2 nét chữ đâm chéo vào nhau (ví dụ chữ X, N)?</h4>
+                    <p class="text-sm text-blue-700 font-medium mb-3">Đáp án: Vát nhỏ đầu nét tại điểm giao nhau để giảm bớt độ nặng thị giác (tránh tạo ra cục đen), giúp chữ cân bằng.</p>
+                    <div class="bg-slate-50 p-2 rounded text-xs text-slate-500 border-l-2 border-slate-300">💡 Gợi ý: Mọi tiếp điểm giao nhau đều hút trọng lượng thị giác lớn nhất.</div>
+                </div>
+
+                <div class="flashcard-item">
+                    <span class="fc-tag">Thẻ 7</span>
+                    <h4 class="font-bold text-slate-900 mb-2 leading-snug">Trong dòng font Sans-serif, nhóm "Geometric" (Hình học) mang lại cảm giác gì cho thương hiệu?</h4>
+                    <p class="text-sm text-blue-700 font-medium mb-3">Đáp án: Sự lạnh lùng, máy móc, toán học, công nghệ và tính chính xác tuyệt đối.</p>
+                    <div class="bg-slate-50 p-2 rounded text-xs text-slate-500 border-l-2 border-slate-300">💡 Gợi ý: Tạo hình dựa trên thước kẻ và compa (O tròn, A tam giác).</div>
+                </div>
+
+                <div class="flashcard-item">
+                    <span class="fc-tag">Thẻ 8</span>
+                    <h4 class="font-bold text-slate-900 mb-2 leading-snug">Trái ngược với Geometric, nhóm "Humanist Sans" lại mang đến cảm xúc gì?</h4>
+                    <p class="text-sm text-blue-700 font-medium mb-3">Đáp án: Sự thân thiện, thanh lịch, cá nhân hóa và "có tính người" nhờ mô phỏng lại trục nghiêng của nét bút viết tay.</p>
+                    <div class="bg-slate-50 p-2 rounded text-xs text-slate-500 border-l-2 border-slate-300">💡 Gợi ý: Rất được ưa chuộng bởi các thương hiệu nghệ thuật, mỹ phẩm (như Sulwhasoo).</div>
+                </div>
+
+                <div class="flashcard-item">
+                    <span class="fc-tag">Thẻ 9</span>
+                    <h4 class="font-bold text-slate-900 mb-2 leading-snug">Khi một chữ in thường như 'a', 'c', 'e' có Aperture (Độ mở) rất lớn, nó đang ngầm nói lên điều gì?</h4>
+                    <p class="text-sm text-blue-700 font-medium mb-3">Đáp án: Công năng đọc ở kích thước nhỏ cực kỳ xuất sắc. Tạo sự cởi mở, hướng ngoại, hiện đại.</p>
+                    <div class="bg-slate-50 p-2 rounded text-xs text-slate-500 border-l-2 border-slate-300">💡 Gợi ý: Chữ có độ mở lớn chống dính nét rất tốt trên nền tảng Digital.</div>
+                </div>
+
+                <div class="flashcard-item">
+                    <span class="fc-tag">Thẻ 10</span>
+                    <h4 class="font-bold text-slate-900 mb-2 leading-snug">Kerning (khoảng cách chữ) ép chặt kết hợp với nét siêu dày là công thức vàng cho loại hình thiết kế nào?</h4>
+                    <p class="text-sm text-blue-700 font-medium mb-3">Đáp án: Các biển Sale, Marketing đại chúng, siêu thị, vì nó tạo thành khối đồ họa nặng, đập thẳng vào mắt.</p>
+                    <div class="bg-slate-50 p-2 rounded text-xs text-slate-500 border-l-2 border-slate-300">💡 Gợi ý: Nhìn vào các poster của Lotte Mart hay B's Mart.</div>
+                </div>
+
+                <div class="flashcard-item">
+                    <span class="fc-tag">Thẻ 11</span>
+                    <h4 class="font-bold text-slate-900 mb-2 leading-snug">Tại sao các thương hiệu xa xỉ (như Dior, Lancôme) lại sẵn sàng mở rộng Kerning thật thưa?</h4>
+                    <p class="text-sm text-blue-700 font-medium mb-3">Đáp án: Khoảng trắng tạo ra sự thư giãn, tĩnh lặng, mang lại cảm giác đắt tiền, tinh tế và cao cấp.</p>
+                    <div class="bg-slate-50 p-2 rounded text-xs text-slate-500 border-l-2 border-slate-300">💡 Gợi ý: Họ hy sinh không gian thực dụng để đổi lấy sự thanh lịch.</div>
+                </div>
+
+                <div class="flashcard-item">
+                    <span class="fc-tag">Thẻ 12</span>
+                    <h4 class="font-bold text-slate-900 mb-2 leading-snug">Inktrap (Bẫy mực) ngày nay được sử dụng để làm gì khi máy in không còn bị lem mực nữa?</h4>
+                    <p class="text-sm text-blue-700 font-medium mb-3">Đáp án: Thành thủ pháp thẩm mỹ, tạo nét mấp mô, thô mộc, góc cạnh, mang lại cá tính phá cách và cảm giác in ấn cổ điển.</p>
+                    <div class="bg-slate-50 p-2 rounded text-xs text-slate-500 border-l-2 border-slate-300">💡 Gợi ý: Bẫy mực cố tình khoét sâu vùng giao nhau của chữ.</div>
+                </div>
+
+                <div class="flashcard-item">
+                    <span class="fc-tag">Thẻ 13</span>
+                    <h4 class="font-bold text-slate-900 mb-2 leading-snug">Terminal (Nét kết thúc) của chữ 'e' nếu bị CẮT DỌC sắc lẹm sẽ sinh ra cảm xúc gì?</h4>
+                    <p class="text-sm text-blue-700 font-medium mb-3">Đáp án: Phản xạ mắt chú ý đến mũi nhọn, do đó nó tạo sự phá cách, nổi bật, sành điệu và bắt mắt mạnh mẽ.</p>
+                    <div class="bg-slate-50 p-2 rounded text-xs text-slate-500 border-l-2 border-slate-300">💡 Gợi ý: Khác với cắt ngang (tin tưởng, ổn định) hoặc cắt chéo (cởi mở).</div>
+                </div>
+
+                <div class="flashcard-item">
+                    <span class="fc-tag">Thẻ 14</span>
+                    <h4 class="font-bold text-slate-900 mb-2 leading-snug">Lỗi "Trọng lực" xảy ra như thế nào với các chữ B, S, hoặc số 8?</h4>
+                    <p class="text-sm text-blue-700 font-medium mb-3">Đáp án: Khi nửa trên được vẽ to bằng hoặc lớn hơn nửa dưới, khiến chữ trông bị mất thăng bằng và như sắp đổ.</p>
+                    <div class="bg-slate-50 p-2 rounded text-xs text-slate-500 border-l-2 border-slate-300">💡 Gợi ý: Vùng counter phần trên bắt buộc phải nhỏ hơn phần dưới để tạo chân đế.</div>
+                </div>
+
+                <div class="flashcard-item">
+                    <span class="fc-tag">Thẻ 15</span>
+                    <h4 class="font-bold text-slate-900 mb-2 leading-snug">Chữ 'a' in thường 1 tầng (một hình tròn + một nét thẳng) là biểu tượng của điều gì?</h4>
+                    <p class="text-sm text-blue-700 font-medium mb-3">Đáp án: Sự tối giản, công nghệ, hiện đại và tập trung hoàn toàn vào công năng.</p>
+                    <div class="bg-slate-50 p-2 rounded text-xs text-slate-500 border-l-2 border-slate-300">💡 Gợi ý: Ngược lại hoàn toàn với chữ 'a' 2 tầng đại diện cho sự phức tạp truyền thống.</div>
+                </div>
+
+                <div class="flashcard-item">
+                    <span class="fc-tag">Thẻ 16</span>
+                    <h4 class="font-bold text-slate-900 mb-2 leading-snug">Tại sao thanh ngang của chữ 't' và chữ 'f' luôn có nửa bên trái ngắn hơn nửa bên phải?</h4>
+                    <p class="text-sm text-blue-700 font-medium mb-3">Đáp án: Để điều hướng mắt người đọc tiến về phía trước (từ trái sang phải), tạo nhịp điệu trơn tru.</p>
+                    <div class="bg-slate-50 p-2 rounded text-xs text-slate-500 border-l-2 border-slate-300">💡 Gợi ý: Nếu 2 bên bằng nhau, mắt sẽ bị khựng lại, cản trở tốc độ đọc.</div>
+                </div>
+
+                <div class="flashcard-item">
+                    <span class="fc-tag">Thẻ 17</span>
+                    <h4 class="font-bold text-slate-900 mb-2 leading-snug">Việc lạm dụng chữ IN HOA cho một khối văn bản dài sẽ gây ra hậu quả gì?</h4>
+                    <p class="text-sm text-blue-700 font-medium mb-3">Đáp án: Làm mất đi các hình dáng nhấp nhô của từ (word shape), khiến mắt người nhanh mỏi và rất khó đọc.</p>
+                    <div class="bg-slate-50 p-2 rounded text-xs text-slate-500 border-l-2 border-slate-300">💡 Gợi ý: In hoa chỉ nên dùng cho logo hoặc tiêu đề ngắn cần sự uy quyền.</div>
+                </div>
+
+                <div class="flashcard-item">
+                    <span class="fc-tag">Thẻ 18</span>
+                    <h4 class="font-bold text-slate-900 mb-2 leading-snug">Khi nào ta nên áp dụng hiệu ứng xô nghiêng (Italic/Oblique)?</h4>
+                    <p class="text-sm text-blue-700 font-medium mb-3">Đáp án: Khi muốn mô phỏng sự chuyển động, tốc độ, tính thể thao, năng lượng trẻ trung hoặc ép buộc mắt người phải chú ý.</p>
+                    <div class="bg-slate-50 p-2 rounded text-xs text-slate-500 border-l-2 border-slate-300">💡 Gợi ý: Chữ nghiêng giống như người đang đổ gập về phía trước để chạy.</div>
+                </div>
+
+                <div class="flashcard-item">
+                    <span class="fc-tag">Thẻ 19</span>
+                    <h4 class="font-bold text-slate-900 mb-2 leading-snug">Chữ 'Q' in hoa được thiết kế với nét phụ (Annex) chĩa ngang hoàn toàn nhằm mục đích gì?</h4>
+                    <p class="text-sm text-blue-700 font-medium mb-3">Đáp án: Giúp công năng sắp xếp cực tốt, dòng chứa chữ Q không bị va chạm với dòng văn bản ngay bên dưới nó.</p>
+                    <div class="bg-slate-50 p-2 rounded text-xs text-slate-500 border-l-2 border-slate-300">💡 Gợi ý: Nét ngang tốn ít không gian dọc hơn các nét cuộn vòng xuống dưới.</div>
+                </div>
+
+                <div class="flashcard-item">
+                    <span class="fc-tag">Thẻ 20</span>
+                    <h4 class="font-bold text-slate-900 mb-2 leading-snug">"Poggendorff Illusion" (Ảo ảnh thị giác) xảy ra ở ký tự nào và cách khắc phục?</h4>
+                    <p class="text-sm text-blue-700 font-medium mb-3">Đáp án: Xảy ra ở chữ 'X'. Khắc phục bằng cách cố tình dịch chuyển vị trí tiếp xúc của đường chéo để mắt thấy nó liền mạch.</p>
+                    <div class="bg-slate-50 p-2 rounded text-xs text-slate-500 border-l-2 border-slate-300">💡 Gợi ý: Chứng minh thiết kế chữ là nghệ thuật đánh lừa thị giác người xem.</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center text-sm">
+        <p>&copy; 2024 Tech-Shift Rebranding Report. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
