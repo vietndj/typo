@@ -1,7 +1,7 @@
 /* =========================================================
-   1. GLOBAL STYLES (Khung xương dùng chung cho 9 Module)
+   1. CORE DESIGN SYSTEM (Các Class kiểu chữ tiêu chuẩn)
    ========================================================= */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700;900&display=swap');
 
 :root {
     --bg-matte: #121212;
@@ -9,144 +9,74 @@
     --text-muted: #A0A0A5;
     --cyan-neon: #00F0FF;
     --orange-glow: #FF5A00;
-    
-    --font-heading: 'Playfair Display', serif;
-    --font-body: 'Inter', sans-serif;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: var(--bg-matte); color: var(--text-main); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-body {
-    background-color: var(--bg-matte);
-    color: var(--text-main);
-    font-family: var(--font-body);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Khối giữ chỗ (Placeholder) cho Hình ảnh/Video dùng chung */
-.media-placeholder {
-    width: 100%;
-    min-height: 450px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 2px dashed rgba(255, 255, 255, 0.15);
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    text-align: center;
-    padding: 20px;
-    transition: all 0.3s ease;
-}
-.media-placeholder:hover { border-color: var(--cyan-neon); color: var(--cyan-neon); }
-.placeholder-icon { font-size: 2.5rem; margin-bottom: 15px; }
-
-/* =========================================================
-   2. MODULE 1: HERO SECTION CSS
-   ========================================================= */
-.hero-section {
-    padding: 80px 0 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    position: relative;
-}
-
-/* Ánh sáng mờ ảo phía sau */
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 50%; transform: translateX(-50%);
-    width: 800px; height: 500px;
-    background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
-    z-index: -1;
-}
-
-.hero-tagline {
-    display: inline-block;
-    border: 1px solid rgba(0, 240, 255, 0.4);
-    background: rgba(0, 240, 255, 0.05);
+/* Định nghĩa các Style Chữ trong Hệ thống thiết kế */
+.ds-tagline {
+    font-family: inherit;
     color: var(--cyan-neon);
-    padding: 8px 24px;
-    border-radius: 50px;
     font-size: 0.85rem;
     font-weight: 500;
-    margin-bottom: 30px;
-    box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
-
-.hero-headline {
-    font-family: var(--font-heading);
-    font-size: clamp(2.2rem, 4vw, 3.5rem); /* Co giãn theo màn hình */
+.ds-display {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
     line-height: 1.25;
-    margin-bottom: 24px;
     font-weight: 900;
     text-transform: uppercase;
 }
-
-.hero-headline .highlight { color: var(--text-muted); font-style: italic; display: block; font-size: 0.8em; margin-top: 10px;}
-
-.hero-subheadline {
+.ds-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1.3;
+    font-weight: 700;
+}
+.ds-subheadline {
+    font-family: 'Inter', sans-serif;
     font-size: 1.1rem;
     color: var(--text-muted);
-    max-width: 800px;
-    margin: 0 auto 40px;
     font-weight: 300;
+    line-height: 1.6;
+}
+.ds-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
 }
 
-.hero-bullets {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 800px;
-    margin: 0 auto 50px;
-    text-align: left; /* Chữ căn trái để dễ đọc */
-}
+/* Layout cơ bản Module 1 & 2 */
+.hero-section { padding: 80px 0; text-align: center; }
+.hero-tagline { display: inline-block; border: 1px solid rgba(0, 240, 255, 0.3); padding: 8px 24px; border-radius: 50px; margin-bottom: 30px; }
+.hero-headline { margin-bottom: 24px; }
+.hero-subheadline { max-width: 800px; margin: 0 auto 40px; }
+.hero-cta-wrapper { margin: 40px 0; }
+.btn-cta { background: var(--orange-glow); color: #fff; padding: 20px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block; box-shadow: 0 0 20px rgba(255,90,0,0.4); }
+.media-placeholder { width: 100%; min-height: 350px; background: rgba(255,255,255,0.02); border: 2px dashed rgba(255,255,255,0.1); border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); margin-top: 4px; }
+.empathy-section { padding: 80px 0; background: #161616; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
 
-.bullet-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    background: rgba(255, 255, 255, 0.02);
-    padding: 20px 24px;
-    border-radius: 12px;
-    border-left: 2px solid var(--orange-glow);
-}
+/* =========================================================
+   2. INTERACTIVE EDITOR ENGINE UI (Giao diện bộ quản trị - Tự ẩn khi deploy)
+   ========================================================= */
+#editor-ui { position: fixed; top: 20px; right: 20px; z-index: 99999; font-family: sans-serif; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+#toggle-config-btn { background: #222; border: 1px solid #444; width: 40px; height: 40px; border-radius: 50%; color: white; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; }
+#config-panel { background: #1e1e1e; border: 1px solid #333; padding: 20px; border-radius: 12px; width: 300px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); color: #fff; }
+#config-panel h4 { margin-bottom: 12px; font-size: 14px; color: var(--cyan-neon); }
+#config-panel input { width: 100%; background: #2d2d2d; border: 1px solid #444; color: white; padding: 8px 12px; border-radius: 6px; margin-bottom: 10px; font-size: 12px; }
+#config-panel button { background: #007acc; border: none; color: white; width: 100%; padding: 8px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+#inline-toolbar { position: absolute; background: #222; border: 1px solid #444; padding: 6px; border-radius: 8px; display: flex; gap: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); z-index: 100000; }
+#inline-toolbar select { background: #333; color: white; border: 1px solid #555; padding: 4px 8px; border-radius: 4px; font-size: 12px; cursor: pointer; }
+#github-save-btn { background: #238636; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 12px rgba(35,134,54,0.3); font-size: 13px; letter-spacing: 0.5px; }
+#github-save-btn:hover { background: #2ea043; }
+.hidden { display: none !important; }
 
-.bullet-icon { font-size: 1.8rem; line-height: 1; }
-.bullet-text strong { display: block; color: var(--text-main); font-size: 1.1rem; margin-bottom: 6px; }
-.bullet-text p { color: var(--text-muted); font-size: 0.95rem; margin: 0; }
-
-.hero-cta-wrapper { display: flex; flex-direction: column; align-items: center; margin-bottom: 60px; }
-
-.btn-cta {
-    background-color: var(--orange-glow);
-    color: #fff;
-    font-weight: 700;
-    font-size: 1.1rem;
-    padding: 20px 40px;
-    border-radius: 50px;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 20px rgba(255, 90, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.btn-cta:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 40px rgba(255, 90, 0, 0.7);
-    background-color: #ff6a1a;
-}
-
-.micro-copy { margin-top: 12px; font-size: 0.85rem; color: var(--text-muted); font-style: italic; }
-.hero-media-wrapper { width: 100%; max-width: 1000px; margin: 0 auto; }
+/* Trạng thái phần tử khi được kích hoạt Edit trên giao diện */
+.editable { transition: outline 0.2s ease; }
+.editable:hover { outline: 1px dashed rgba(0, 240, 255, 0.5); cursor: text; }
+.editable:focus { outline: 2px solid var(--cyan-neon); background: rgba(0,240,255,0.02); }
