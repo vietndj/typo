@@ -6,6 +6,7 @@
     <title>Typography Masterclass - Lột xác tư duy thiết kế</title>
     <link rel="stylesheet" href="style.css">
     <style data-exclude="true">
+        /* CSS nội bộ phục vụ bảng quản trị nổi ở góc phải màn hình */
         #editor-ui { position: fixed; top: 20px; right: 20px; z-index: 99999; font-family: sans-serif; display: flex; gap: 10px; align-items: center; }
         .editor-panel-box { background: #161617; border: 1px solid rgba(255,255,255,0.08); padding: 15px; border-radius: 12px; display: flex; gap: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .editor-panel-box input { background: #0B0B0C; border: 1px solid rgba(255,255,255,0.08); color: #fff; padding: 8px 12px; border-radius: 6px; font-size: 12px; width: 140px; }
@@ -45,19 +46,19 @@
             </select>
         </div>
     </div>
-<section class="hero-section" id="hero">
+
+
+    <section class="hero-section" id="hero">
         <div class="container">
             
             <div class="hero-text-wrapper">
                 <div class="hero-tagline editable ds-tagline">
                     &gt; Đúc kết từ 15 năm rà lỗi đồ án thiết kế & Tư duy logic của Kỹ sư hệ thống
                 </div>
-
                 <h1 class="hero-headline editable ds-display">
                     TYPOGRAPHY KHÔNG PHẢI LÀ NGHỆ THUẬT CẢM TÍNH.
                     <span class="highlight editable">ĐÓ LÀ TOÁN HỌC & TÂM LÝ HỌC THỊ GIÁC.</span>
                 </h1>
-
                 <p class="hero-subheadline editable ds-subheadline">
                     Cầm trên tay hệ thống "Dịch mã thị giác" - vũ khí tối thượng giúp bạn thoát mác làm việc bản năng. Cung cấp bộ lý luận chuyên môn sắc bén để bạn tự tin bảo vệ phương án và khiến khách hàng gật đầu duyệt ngay từ vòng đầu tiên.
                 </p>
@@ -65,7 +66,7 @@
 
             <div class="hero-bullets">
                 <div class="bullet-card">
-                    <div class="card-icon-box orange-box"><svg class="sys-icon orange-icon"><use href="#icon-anatomy"/></svg></div>
+                    <div class="card-icon-box"><svg class="sys-icon"><use href="#icon-anatomy"/></svg></div>
                     <div class="card-content">
                         <strong class="editable">"Lý luận thép" dập tắt mọi yêu cầu sửa vặt:</strong>
                         <p class="editable ds-body">Bóc tách giải phẫu chữ (Anatomy) để hiểu thông điệp ngầm của từng nét cắt. Biến Typography thành vũ khí phản biện khiến khách hàng "tâm phục khẩu phục" thay vì bắt bẻ cảm tính.</p>
@@ -73,7 +74,7 @@
                 </div>
 
                 <div class="bullet-card">
-                    <div class="card-icon-box cyan-box"><svg class="sys-icon cyan-icon"><use href="#icon-premium"/></svg></div>
+                    <div class="card-icon-box"><svg class="sys-icon"><use href="#icon-premium"/></svg></div>
                     <div class="card-content">
                         <strong class="editable">Xóa mác "bình dân", tự tin nâng giá hợp đồng:</strong>
                         <p class="editable ds-body">Nâng cấp ấn phẩm lên chuẩn Agency chỉ bằng các thủ thuật vi chỉnh Kerning, bẫy mực (Ink-traps) và tự tay phác thảo Logo Script độc bản.</p>
@@ -81,10 +82,10 @@
                 </div>
 
                 <div class="bullet-card">
-                    <div class="card-icon-box cyan-box"><svg class="sys-icon cyan-icon"><use href="#icon-map"/></svg></div>
+                    <div class="card-icon-box"><svg class="sys-icon"><use href="#icon-map"/></svg></div>
                     <div class="card-content">
                         <strong class="editable">Lối tắt chọn Font cho 10 ngành hàng cốt lõi:</strong>
-                        <p class="editable ds-body">Khép lại những đêm thức trắng lướt Google Fonts vô định. Sở hữu bộ "Cheat-sheet" ghép cặp font chuẩn xác và kỷ luật.</p>
+                        <p class="editable ds-body">Khép lại những đêm thức trắng lướt Google Fonts vô định. Sở hữu bộ "Cheat-sheet" ghép cặp font bất bại, giúp chốt phương án hình ảnh nhanh gọn và kỷ luật.</p>
                     </div>
                 </div>
             </div>
@@ -103,6 +104,7 @@
 
         </div>
     </section>
+
 
     <section class="empathy-section" id="empathy">
         <div class="container">
