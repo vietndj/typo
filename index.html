@@ -7,20 +7,21 @@
     
     <style>
         /* =========================================================
-           [GLOBAL DESIGN TOKENS] (Vùng này dành cho trang ds.html ghi đè)
+           [GLOBAL TOKENS & STYLE RESET] (Mỗi Selector viết trên đúng 1 dòng)
            ========================================================= */
         /* --- THEME START --- */
         @font-face { font-family: 'HeadingFont'; src: url('fonts/SVN-NoeDisplay-Bold.ttf'); font-display: swap; }
         @font-face { font-family: 'BodyFont'; src: url('fonts/SVN-AEONIK-REGULAR.TTF'); font-display: swap; }
         :root { --font-heading: 'HeadingFont', serif; --font-body: 'BodyFont', sans-serif; --bg-matte: #121212; --surface-1: #1A1A1A; --surface-2: #242424; --text-main: #FFFFFF; --text-muted: #A0A0A5; --cyan-neon: #00F0FF; --orange-glow: #FF5A00; }
         /* --- THEME END --- */
-
-        /* =========================================================
-           [GLOBAL & RESET LAYOUT CSS] (Mỗi selector gộp gọn trên 1 dòng)
-           ========================================================= */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background-color: var(--bg-matte); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; width: 100% !important; display: block !important; }
+        .section-header { text-align: center !important; max-width: 900px; margin: 0 auto 60px; display: flex !important; flex-direction: column !important; align-items: center !important; }
+        .media-placeholder { width: 100%; min-height: 380px; background: rgba(255, 255, 255, 0.02); border: 2px dashed rgba(255, 255, 255, 0.12); border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); padding: 20px; text-align: center; font-size: 13px; }
+        .sys-icon { width: 22px; height: 22px; stroke-width: 1.5; fill: none; display: block; flex-shrink: 0; }
+        
+        /* [DESIGN SYSTEM FONTS Scale] */
         .ds-tagline { font-family: var(--font-body); color: var(--cyan-neon); font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
         .ds-display { font-family: var(--font-heading); font-size: clamp(2.2rem, 4vw, 3.5rem); line-height: 1.25; font-weight: 900; text-transform: uppercase; }
         .ds-headline { font-family: var(--font-heading); font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.3; font-weight: 700; }
@@ -28,9 +29,9 @@
         .ds-body { font-family: var(--font-body); font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; text-align: left !important; }
 
         /* =========================================================
-           [MODULE 1 CSS] HERO SECTION (Mỗi selector gộp gọn trên 1 dòng)
+           [MODULE 1 CSS] HERO SECTION 
            ========================================================= */
-        .hero-section { padding: 80px 0 100px; position: relative; width: 100%; display: block !important; text-align: left !important; }
+        .hero-section { padding: 80px 0 100px; position: relative; width: 100%; display: block !important; }
         .hero-section::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 800px; height: 500px; background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%); z-index: -1; }
         .hero-text-wrapper { text-align: center !important; max-width: 900px; margin: 0 auto 50px; display: flex !important; flex-direction: column !important; align-items: center !important; width: 100% !important; }
         .hero-tagline { display: inline-block; border: 1px solid rgba(0, 240, 255, 0.4); background: rgba(0, 240, 255, 0.05); padding: 8px 24px; border-radius: 50px; margin-bottom: 30px; box-shadow: 0 0 15px rgba(0, 240, 255, 0.1); }
@@ -41,7 +42,7 @@
         .bullet-card { background: var(--surface-1) !important; border: 1px solid rgba(255, 255, 255, 0.05) !important; padding: 30px !important; border-radius: 16px !important; display: flex !important; flex-direction: row !important; gap: 20px !important; align-items: flex-start !important; text-align: left !important; justify-content: flex-start !important; width: 100% !important; box-sizing: border-box !important; }
         .bullet-card:hover { border-color: var(--cyan-neon) !important; background: rgba(255, 255, 255, 0.02) !important; transform: translateY(-4px) !important; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important; }
         .card-icon-box { width: 48px !important; height: 48px !important; flex-shrink: 0 !important; display: flex !important; align-items: center !important; justify-content: center !important; border-radius: 12px !important; background: rgba(255, 90, 0, 0.04) !important; border: 1px solid rgba(255, 90, 0, 0.15) !important; }
-        .sys-icon { width: 22px !important; height: 22px !important; stroke: var(--orange-glow) !important; stroke-width: 1.5 !important; fill: none !important; display: block !important; flex-shrink: 0 !important; }
+        .bullet-card:nth-child(1) .sys-icon { stroke: var(--orange-glow) !important; }
         .bullet-card:nth-child(n+2) .card-icon-box { background: rgba(0, 240, 255, 0.04) !important; border-color: rgba(0, 240, 255, 0.15) !important; }
         .bullet-card:nth-child(n+2) .sys-icon { stroke: var(--cyan-neon) !important; }
         .card-content { flex: 1 !important; display: flex !important; flex-direction: column !important; gap: 8px !important; text-align: left !important; align-items: flex-start !important; width: 100% !important; }
@@ -52,17 +53,14 @@
         .btn-cta:hover { transform: translateY(-3px); box-shadow: 0 0 40px rgba(255, 90, 0, 0.7); background-color: #ff6a1a; }
         .micro-copy { margin-top: 12px; font-size: 0.85rem; color: var(--text-muted); font-style: italic; }
         .hero-media-wrapper { width: 100%; max-width: 1000px; margin: 0 auto; }
-        .media-placeholder { width: 100%; min-height: 450px; background: rgba(255, 255, 255, 0.02); border: 2px dashed rgba(255, 255, 255, 0.15); border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); }
 
         /* =========================================================
            [MODULE 2 CSS] KHỐI ĐỒNG CẢM & BẰNG CHỨNG THỰC TẾ
            ========================================================= */
         .empathy-section { padding: 100px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); background-color: #161616; width: 100%; }
-        .section-header { text-align: center; max-width: 900px; margin: 0 auto 60px; }
-        .section-headline { margin-bottom: 20px; }
         .empathy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         .empathy-column { background: rgba(255, 255, 255, 0.01); border: 1px solid rgba(255, 255, 255, 0.03); padding: 35px 30px; border-radius: 16px; transition: all 0.3s ease; }
-        .empathy-column:hover { background: rgba(255, 255, 255, 0.02); border-color: rgba(0, 240, 255, 0.15); transform: translateY(-5px); }
+        .empathy-column:hover { border-color: rgba(0, 240, 255, 0.15); transform: translateY(-5px); }
         .column-title { font-family: var(--font-heading); font-size: 1.3rem; color: var(--text-main); margin-bottom: 25px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 12px; text-align: left; }
         .column-title span { display: block; font-family: var(--font-body); font-size: 0.85rem; color: var(--cyan-neon); font-weight: 400; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
         .empathy-list { list-style: none; display: flex; flex-direction: column; gap: 20px; text-align: left; }
@@ -71,12 +69,84 @@
         .empathy-list li strong { color: var(--text-main); display: inline; }
 
         /* =========================================================
-           [MODULE 3 ĐẾN 9 CSS WORKSPACE] (Mặt bằng trống cho các khối sau)
+           [MODULE 3 CSS] BẰNG CHỨNG THỰC CHIẾN (ẢNH + THUYẾT TRÌNH)
            ========================================================= */
+        .proof-section { padding: 100px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); width: 100%; }
+        .proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 40px; margin-top: 50px; }
+        .proof-card { display: flex; flex-direction: column; gap: 15px; }
+        .proof-caption { font-size: 0.9rem; color: var(--text-muted); font-style: italic; margin-top: 10px; text-align: center; width: 100%; }
+
+        /* =========================================================
+           [MODULE 4 CSS] KHỐI MỞ HỘP CÔNG CỤ (UNBOXING THE VALUE)
+           ========================================================= */
+        .unboxing-section { padding: 100px 0; background-color: #161616; border-top: 1px solid rgba(255, 255, 255, 0.05); width: 100%; }
+        .unboxing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; margin-top: 40px; }
+        @media (max-width: 768px) { .unboxing-grid { grid-template-columns: 1fr; } }
+        .unboxing-content { display: flex; flex-direction: column; gap: 24px; }
+        .unboxing-item { display: flex; gap: 16px; align-items: flex-start; text-align: left; }
+        .unboxing-icon { font-size: 24px; line-height: 1; }
+
+        /* =========================================================
+           [MODULE 5 CSS] BỘ CÂU HỎI TRIỆU ĐÔ
+           ========================================================= */
+        .questions-section { padding: 100px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); width: 100%; }
+        .questions-list { display: flex; flex-direction: column; gap: 20px; max-width: 900px; margin: 50px auto 0; }
+        .question-card { background: var(--surface-1); padding: 25px 30px; border-radius: 12px; border-left: 3px solid var(--cyan-neon); text-align: left; }
+        .question-card h4 { font-family: var(--font-heading); font-size: 1.2rem; color: var(--text-main); margin-bottom: 8px; }
+
+        /* =========================================================
+           [MODULE 6 CSS] BẢN ĐỒ 8 CHƯƠNG ZIGZAG
+           ========================================================= */
+        .map-section { padding: 100px 0; background-color: #161616; border-top: 1px solid rgba(255, 255, 255, 0.05); width: 100%; }
+        .zigzag-timeline { position: relative; max-width: 900px; margin: 60px auto 0; padding: 20px 0; }
+        .zigzag-timeline::before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: rgba(255,255,255,0.05); transform: translateX(-50%); }
+        @media (max-width: 768px) { .zigzag-timeline::before { left: 20px; } }
+        .zigzag-step { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 50px; position: relative; width: 100%; }
+        .zigzag-step:nth-child(even) { flex-direction: row-reverse; }
+        @media (max-width: 768px) { .zigzag-step, .zigzag-step:nth-child(even) { flex-direction: column; padding-left: 50px; } }
+        .step-pointer { position: absolute; left: 50%; top: 10px; transform: translateX(-50%); width: 12px; height: 12px; background: var(--cyan-neon); border-radius: 50%; box-shadow: 0 0 10px var(--cyan-neon); z-index: 2; }
+        @media (max-width: 768px) { .step-pointer { left: 20px; } }
+        .step-box { width: 45%; background: var(--surface-1); padding: 30px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.03); text-align: left; }
+        @media (max-width: 768px) { .step-box { width: 100%; } }
+        .step-box h4 { font-family: var(--font-body); font-size: 0.8rem; color: var(--cyan-neon); text-transform: uppercase; margin-bottom: 6px; letter-spacing: 1px; }
+        .step-box h3 { font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 12px; }
+        .step-box p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px; }
+
+        /* =========================================================
+           [MODULE 7 CSS] TRẢI NGHIỆM MASTERCLASS INTERACTIVE
+           ========================================================= */
+        .masterclass-section { padding: 100px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); width: 100%; }
+        .masterclass-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin: 50px 0; }
+        .masterclass-card { background: var(--surface-1); border: 1px solid rgba(255,255,255,0.03); padding: 35px 30px; border-radius: 16px; text-align: left; display: flex; flex-direction: column; gap: 15px; }
+        .masterclass-card h3 { font-family: var(--font-heading); font-size: 1.25rem; }
+
+        /* =========================================================
+           [MODULE 8 CSS] GIỚI THIỆU TÁC GIẢ EDITORIAL LAYOUT
+           ========================================================= */
+        .author-section { padding: 100px 0; background-color: #161616; border-top: 1px solid rgba(255, 255, 255, 0.05); width: 100%; }
+        .author-grid { display: grid; grid-template-columns: 4fr 5fr; gap: 60px; align-items: flex-start; margin-top: 50px; }
+        @media (max-width: 768px) { .author-grid { grid-template-columns: 1fr; gap: 40px; } }
+        .author-visual-wrapper { display: flex; flex-direction: column; gap: 20px; }
+        .author-content-box { text-align: left; display: flex; flex-direction: column; gap: 20px; }
+
+        /* =========================================================
+           [MODULE 9 CSS] KHỐI CHỐT SALE / PRICING CARD
+           ========================================================= */
+        .checkout-section { padding: 100px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); width: 100%; }
+        .pricing-card { max-width: 650px; background: var(--surface-1); border: 1px solid rgba(0, 240, 255, 0.2); padding: 50px 40px; border-radius: 24px; margin: 50px auto 0; text-align: center; box-shadow: 0 0 40px rgba(0, 240, 255, 0.03); }
+        .pricing-card h3 { font-family: var(--font-body); font-size: 0.9rem; color: var(--cyan-neon); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 25px; }
+        .pricing-list { list-style: none; text-align: left; display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+        .pricing-list li { font-size: 0.95rem; color: var(--text-muted); display: flex; gap: 12px; align-items: flex-start; }
+        .pricing-list li span { color: var(--cyan-neon); font-weight: bold; }
+        .price-box { margin-bottom: 30px; }
+        .price-old { text-decoration: line-through; color: var(--text-muted); font-size: 1.1rem; margin-right: 15px; }
+        .price-new { font-size: 2.5rem; font-weight: 900; color: #fff; font-family: var(--font-heading); }
+        .trust-badges { display: flex; justify-content: center; gap: 30px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; }
+        .badge-item { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
     </style>
 
     <style data-exclude="true">
-        /* CSS Panel quản trị góc phải */
+        /* CSS Panel quản trị CMS nổi */
         #editor-ui { position: fixed; top: 20px; right: 20px; z-index: 99999; font-family: sans-serif; display: flex; gap: 10px; align-items: center; }
         .editor-panel-box { background: #161617; border: 1px solid rgba(255,255,255,0.08); padding: 15px; border-radius: 12px; display: flex; gap: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .editor-panel-box input { background: #0B0B0C; border: 1px solid rgba(255,255,255,0.08); color: #fff; padding: 8px 12px; border-radius: 6px; font-size: 12px; width: 140px; }
@@ -96,23 +166,25 @@
         <symbol id="icon-premium" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></symbol>
         <symbol id="icon-map" viewBox="0 0 24 24"><path d="M3 5v14l6-3 6 3 6-3V3l-6 3-6-3-6 3zm6-3v14m6-3V3"/></symbol>
         <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+        <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+        <symbol id="icon-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></symbol>
     </svg>
 
     <div id="editor-ui" data-exclude="true">
         <div class="editor-panel-box">
-            <input type="password" id="idx-gh-token" placeholder="GitHub Token (PAT)">
-            <input type="text" id="idx-gh-repo" placeholder="username/repository-name">
+            <input type="password" id="idx-gh-token" placeholder="GitHub Token">
+            <input type="text" id="idx-gh-repo" placeholder="username/repo">
             <button id="github-save-btn" class="btn-action-panel">⚡ LƯU LÊN GITHUB</button>
-            <button id="clear-buf-btn" class="btn-action-panel" style="background: #8B0000;" title="Xóa đệm local để nhận code mới từ Server">❌ XÓA ĐỆM</button>
+            <button id="clear-buf-btn" class="btn-action-panel" style="background: #8B0000;">❌ XÓA ĐỆM</button>
         </div>
         <div id="inline-toolbar" class="hidden" style="position: absolute; background: #222; padding: 6px; border-radius: 6px; border: 1px solid #444; z-index: 100000;">
-            <select id="style-selector" style="background:#333; color:#fff; border:none; padding:4px 8px; font-size:12px; border-radius:4px; cursor:pointer;">
-                <option value="">— Gán Kiểu Kiểu Chữ —</option>
+            <select id="style-selector" style="background:#333; color:#fff; border:none; padding:4px 8px; font-size:12px; border-radius:4px;">
+                <option value="">— Đổi Style Chữ —</option>
                 <option value="ds-tagline">Tagline Neon</option>
-                <option value="ds-display">Display khổng lồ</option>
+                <option value="ds-display">Display lớn</option>
                 <option value="ds-headline">Headline khối</option>
                 <option value="ds-subheadline">Sub-headline</option>
-                <option value="ds-body">Body tiêu chuẩn</option>
+                <option value="ds-body">Body text</option>
             </select>
         </div>
     </div>
@@ -120,20 +192,11 @@
 
     <section class="hero-section" id="hero">
         <div class="container">
-            
             <div class="hero-text-wrapper">
-                <div class="hero-tagline editable ds-tagline">
-                    &gt; Đúc kết từ 15 năm rà lỗi đồ án thiết kế & Tư duy logic của Kỹ sư hệ thống
-                </div>
-                <h1 class="hero-headline editable ds-display">
-                    TYPOGRAPHY KHÔNG PHẢI LÀ NGHỆ THUẬT CẢM TÍNH.
-                    <span class="highlight editable">ĐÓ LÀ TOÁN HỌC & TÂM LÝ HỌC THỊ GIÁC.</span>
-                </h1>
-                <p class="hero-subheadline editable ds-subheadline">
-                    Cầm trên tay hệ thống "Dịch mã thị giác" - vũ khí tối thượng giúp bạn thoát mác làm việc bản năng. Cung cấp bộ lý luận chuyên môn sắc bén để bạn tự tin bảo vệ phương án và khiến khách hàng gật đầu duyệt ngay từ vòng đầu tiên.
-                </p>
+                <div class="hero-tagline editable ds-tagline">&gt; Đúc kết từ 15 năm rà lỗi đồ án thiết kế & Tư duy logic của Kỹ sư hệ thống</div>
+                <h1 class="hero-headline editable ds-display">TYPOGRAPHY KHÔNG PHẢI LÀ NGHỆ THUẬT CẢM TÍNH.<span class="highlight editable">ĐÓ LÀ TOÁN HỌC & TÂM LÝ HỌC THỊ GIÁC.</span></h1>
+                <p class="hero-subheadline editable ds-subheadline">Cầm trên tay hệ thống "Dịch mã thị giác" - vũ khí tối thượng giúp bạn thoát mác làm việc bản năng. Cung cấp bộ lý luận chuyên môn sắc bén để bạn tự tin bảo vệ phương án và khiến khách hàng gật đầu duyệt ngay từ vòng đầu tiên.</p>
             </div>
-
             <div class="hero-bullets">
                 <div class="bullet-card">
                     <div class="card-icon-box"><svg class="sys-icon"><use href="#icon-anatomy"/></svg></div>
@@ -142,7 +205,6 @@
                         <p class="editable ds-body">Bóc tách giải phẫu chữ (Anatomy) để hiểu thông điệp ngầm của từng nét cắt. Biến Typography thành vũ khí phản biện khiến khách hàng "tâm phục khẩu phục" thay vì bắt bẻ cảm tính.</p>
                     </div>
                 </div>
-
                 <div class="bullet-card">
                     <div class="card-icon-box"><svg class="sys-icon"><use href="#icon-premium"/></svg></div>
                     <div class="card-content">
@@ -150,7 +212,6 @@
                         <p class="editable ds-body">Nâng cấp ấn phẩm lên chuẩn Agency chỉ bằng các thủ thuật vi chỉnh Kerning, bẫy mực (Ink-traps) và tự tay phác thảo Logo Script độc bản.</p>
                     </div>
                 </div>
-
                 <div class="bullet-card">
                     <div class="card-icon-box"><svg class="sys-icon"><use href="#icon-map"/></svg></div>
                     <div class="card-content">
@@ -159,64 +220,257 @@
                     </div>
                 </div>
             </div>
-
             <div class="hero-cta-wrapper">
                 <a href="#checkout" class="btn-cta editable">[ TRANG BỊ VŨ KHÍ THIẾT KẾ NGAY - CHỈ VỚI 249K ]</a>
                 <p class="micro-copy editable">🔒 Hỗ trợ định dạng Ebook chất lượng cao. Đọc trực tuyến tức thì trên mọi thiết bị.</p>
             </div>
-
-            <div class="hero-media-wrapper">
-                <div class="media-placeholder">
-                    <div class="placeholder-icon">🎥</div>
-                    <p>[ KHU VỰC CHÈN VIDEO AUTO-PLAY HOẶC HÌNH ẢNH 3D TẠI ĐÂY ]</p>
-                </div>
-            </div>
-
+            <div class="hero-media-wrapper"><div class="media-placeholder">🎥 [ KHU VỰC CHÈN VIDEO AUTO-PLAY HOẶC HÌNH ẢNH 3D HERO ]</div></div>
         </div>
     </section>
 
 
     <section class="empathy-section" id="empathy">
         <div class="container">
-            
             <div class="section-header">
                 <h2 class="section-headline editable ds-headline">SỰ KHÁC BIỆT GIỮA THIẾT KẾ "BẢN NĂNG" VÀ SẢN PHẨM CHUẨN AGENCY</h2>
-                <p class="section-subheadline editable ds-subheadline">
-                    Một logo 1 triệu và 10 triệu đôi khi chỉ khác nhau ở độ mở của một con chữ hay khoảng cách Kerning. Được đúc kết từ 15 năm trực tiếp rà lỗi đồ án thiết kế, cuốn sách này cung cấp cho bạn "thuật toán" toán học và tâm lý học thị giác để tự tay nâng cấp chất lượng Portfolio.
-                </p>
+                <p class="section-subheadline editable ds-subheadline">Một logo 1 triệu và 10 triệu đôi khi chỉ khác nhau ở độ mở của một con chữ hay khoảng cách Kerning. Cuốn sách này cung cấp cho bạn "thuật toán" toán học để nâng cấp Portfolio.</p>
             </div>
-
             <div class="empathy-grid">
                 <div class="empathy-column">
-                    <h3 class="column-title editable">Hệ thống hóa tư duy <span>(Làm việc có tính toán)</span></h3>
+                    <h3 class="column-title editable">Hệ thống hóa tư duy <span>(Có tính toán)</span></h3>
                     <ul class="empathy-list">
-                        <li><svg class="sys-icon"><use href="#icon-arrow"/></svg><strong class="editable">Xóa bỏ "tâm linh":</strong> <span class="editable">Dừng việc lướt Google Fonts vô định. Chọn typeface dựa trên cơ sở khoa học và phân loại tính cách chữ.</span></li>
-                        <li><svg class="sys-icon"><use href="#icon-arrow"/></svg><strong class="editable">Quy trình lọc Font kỷ luật:</strong> <span class="editable">Sở hữu bộ nguyên tắc thu hẹp lựa chọn nhanh chóng, rút ngắn 80% thời gian tìm kiếm.</span></li>
-                        <li><svg class="sys-icon"><use href="#icon-arrow"/></svg><strong class="editable">Bắt mạch lỗi sơ đẳng:</strong> <span class="editable">Nhận diện ngay lập tức các sai lầm về tỷ lệ và không gian âm khiến thiết kế bị "rẻ tiền".</span></li>
+                        <li><svg class="sys-icon"><use href="#icon-arrow"/></svg><strong class="editable">Xóa bỏ "tâm linh":</strong> <span class="editable">Chọn typeface dựa trên cơ sở khoa học và tính cách chữ.</span></li>
+                        <li><svg class="sys-icon"><use href="#icon-arrow"/></svg><strong class="editable">Quy trình lọc Font:</strong> <span class="editable">Sở hữu bộ nguyên tắc thu hẹp lựa chọn nhanh chóng, rút ngắn 80% thời gian tìm kiếm.</span></li>
                     </ul>
                 </div>
-
                 <div class="empathy-column">
-                    <h3 class="column-title editable">Kỹ thuật vi mô <span>(Giải phẫu Anatomy)</span></h3>
+                    <h3 class="column-title editable">Kỹ thuật vi mô <span>(Anatomy chữ)</span></h3>
                     <ul class="empathy-list">
-                        <li><svg class="sys-icon"><use href="#icon-arrow"/></svg><strong class="editable">Làm chủ Kerning & Ink-traps:</strong> <span class="editable">Xử lý tinh tế bẫy mực và khoảng cách chữ để layout sắc nét, đắt giá ngay từ bản nháp.</span></li>
-                        <li><svg class="sys-icon"><use href="#icon-arrow"/></svg><strong class="editable">Bóc tách thông điệp ngầm:</strong> <span class="editable">Đọc vị chính xác ý đồ của Terminal (nét kết thúc), Aperture (độ mở) hay Stem (nét dọc).</span></li>
-                        <li><svg class="sys-icon"><use href="#icon-arrow"/></svg><strong class="editable">Tùy biến phá cách:</strong> <span class="editable">Không phụ thuộc font có sẵn, tự tay gọt giũa nét chữ hoặc phác thảo Script độc bản.</span></li>
+                        <li><svg class="sys-icon"><use href="#icon-arrow"/></svg><strong class="editable">Làm chủ không gian:</strong> <span class="editable">Xử lý tinh tế Kerning và Ink-traps giúp layout sắc nét từ bản nháp.</span></li>
+                        <li><svg class="sys-icon"><use href="#icon-arrow"/></svg><strong class="editable">Bóc tách thông điệp:</strong> <span class="editable">Đọc vị ý đồ của Terminal, Aperture, hay Stem.</span></li>
                     </ul>
                 </div>
-
                 <div class="empathy-column">
-                    <h3 class="column-title editable">Thực chiến thương hiệu <span>(Định vị & UI/UX)</span></h3>
+                    <h3 class="column-title editable">Thực chiến thương hiệu <span>(Định vị & UX)</span></h3>
                     <ul class="empathy-list">
-                        <li><svg class="sys-icon"><use href="#icon-arrow"/></svg><strong class="editable">Bản đồ 10 ngành hàng:</strong> <span class="editable">Khớp chính xác font chữ với ngành nghề (VD: Modern Serif cho xe sang, Monospace cho AI/Tech).</span></li>
-                        <li><svg class="sys-icon"><use href="#icon-arrow"/></svg><strong class="editable">Tối ưu hiển thị số:</strong> <span class="editable">Điều chỉnh x-height chuẩn xác để cứu sống trải nghiệm đọc UI/UX trên màn hình Mobile.</span></li>
-                        <li><svg class="sys-icon"><use href="#icon-arrow"/></svg><strong class="editable">Lý luận phản biến sắc bén:</strong> <span class="editable">Sở hữu kịch bản giải thích logic thị giác, bảo vệ phương án và chốt duyệt ngay vòng 1.</span></li>
+                        <li><svg class="sys-icon"><use href="#icon-arrow"/></svg><strong class="editable">Bản đồ ngành hàng:</strong> <span class="editable">Khớp chính xác font chữ với 10 ngành nghề cốt lõi.</span></li>
+                        <li><svg class="sys-icon"><use href="#icon-arrow"/></svg><strong class="editable">Tối ưu hiển thị số:</strong> <span class="editable">Điều chỉnh x-height để cứu sống trải nghiệm đọc UI/UX trên Mobile.</span></li>
                     </ul>
                 </div>
             </div>
-
         </div>
     </section>
+
+
+    <section class="proof-section" id="proof">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-headline editable ds-headline">ĐỪNG LÀM VIỆC NHƯ MỘT "CÁI MÁY". HÃY THIẾT KẾ VÀ BẢO VỆ PHƯƠNG ÁN NHƯ MỘT ART DIRECTOR.</h2>
+                <p class="section-subheadline editable ds-subheadline">Kết quả lớn nhất không chỉ là layout đẹp mắt. Đó là sự tự tin khi dõng dạc dùng ngôn ngữ thị giác để giải thích lý do phương án chính xác nhất.</p>
+            </div>
+            <div class="proof-grid">
+                <div class="proof-card">
+                    <div class="media-placeholder">📐 [ PLACEHOLDER: ẢNH BÀI TẬP BÓC TÁCH GRID, ANATOMY, X-HEIGHT - NÃO TRÁI LOGIC ]</div>
+                    <div class="proof-caption editable">Bóc tách kỹ thuật vi mô kích thích logic thị giác</div>
+                </div>
+                <div class="proof-card">
+                    <div class="media-placeholder">👨‍💼 [ PLACEHOLDER: ẢNH HỌC VIÊN ĐANG THUYẾT TRÌNH BẢO VỆ ĐỒ ÁN - NÃO PHẢI CẢM XÚC ]</div>
+                    <div class="proof-caption editable">Làm chủ cuộc chơi bằng luận điểm chuyên môn không thể chối cãi</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="unboxing-section" id="unboxing">
+        <div class="container">
+            <div class="section-header">
+                <div class="ds-tagline editable">[ Giải phẫu Typography từ cấp độ Vi mô đến Bản đồ Ngành hàng ]</div>
+                <h2 class="section-headline editable ds-headline" style="margin-top:15px;">TRẢI NGHIỆM ĐỌC NHƯ MỘT CUỐN TẠP CHÍ NGHỆ THUẬT, VỚI ĐỘ CHÍNH XÁC CỦA MỘT TÀI LIỆU KỸ THUẬT.</h2>
+            </div>
+            <div class="unboxing-grid">
+                <div class="unboxing-content">
+                    <div class="unboxing-item">
+                        <div class="unboxing-icon">📘</div>
+                        <div>
+                            <strong class="editable ds-headline" style="font-size:1.2rem; display:block; margin-bottom:6px;">8 CHƯƠNG GIẢI PHẪU THỰC CHIẾN:</strong>
+                            <p class="editable ds-body">Đi thẳng vào bóc tách Case Study tỷ đô: Sự cởi mở của Royal Academy of Music, tính uy quyền của Mercedes, hay nét bo tròn tâm lý học của Duolingo.</p>
+                        </div>
+                    </div>
+                    <div class="unboxing-item">
+                        <div class="unboxing-icon">⚙️</div>
+                        <div>
+                            <strong class="editable ds-headline" style="font-size:1.2rem; display:block; margin-bottom:6px;">HỆ THỐNG "CHEAT-SHEET" BẤT BẠI:</strong>
+                            <p class="editable ds-body">Bản đồ ghép cặp font chuẩn xác cho 10 ngành hàng cốt lõi. Giúp bạn ra quyết định nhanh chóng trong 5 phút thay vì mò mẫm vô định.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="unboxing-media">
+                    <div class="media-placeholder" style="min-height:300px;">🎬 [ EMBED VIDEO AUTO-PLAY LẬT SÁCH TRỰC QUAN TẠI ĐÂY ]</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="questions-section" id="questions">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-headline editable ds-headline">NHỮNG BÍ MẬT THỊ GIÁC CHƯA TỪNG ĐƯỢC TIẾT LỘ TRONG BẤT KỲ TRƯỜNG LỚP NÀO.</h2>
+            </div>
+            <div class="questions-list">
+                <div class="question-card"><h4 class="editable">Tại sao logo Built Robotics lại bẻ góc chữ R và cắt gọt chữ B?</h4><p class="editable ds-body">Giải mã kỹ thuật can thiệp Anatomy biến font vô tri thành cỗ máy cơ khí vững chãi.</p></div>
+                <div class="question-card"><h4 class="editable">Tại sao giao diện Mobile của bạn luôn bị ngột ngạt?</h4><p class="editable ds-body">Bài toán tối ưu x-height và ranh giới sinh tử giữa dòng Geometric và Neo-Grotesque.</p></div>
+                <div class="question-card"><h4 class="editable">Vì sao Tesla và SpaceX bắt buộc phải dùng font Monospace?</h4><p class="editable ds-body">Nắm trọn bản đồ tính cách thương hiệu để không bao giờ chọn sai vibe ngành hàng.</p></div>
+                <div class="question-card"><h4 class="editable">Làm sao để thao túng cảm giác "thủ công, cao cấp" của người dùng?</h4><p class="editable ds-body">Giải mã kỹ thuật phác thảo Script độc bản giúp Portfolio thoát mác bình dân để x10 giá trị.</p></div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="map-section" id="map">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-headline editable ds-headline">HỆ THỐNG KIẾN THỨC TỪ ĐẠI CƯƠNG ĐẾN THỰC CHIẾN</h2>
+            </div>
+            <div class="zigzag-timeline">
+                <div class="zigzag-step">
+                    <div class="step-pointer"></div>
+                    <div class="step-box">
+                        <h4 class="editable">📍 CHẶNG 1: NẮM GIỮ CỘI NGUỒN</h4>
+                        <h3 class="editable">Nền tảng vững chắc (Chương 1-4)</h3>
+                        <p class="editable">Bóc tách trọn vẹn 4 dòng typeface huyết mạch. Hiểu rõ sự uy quyền của Serif, tính công năng của Sans-Serif, sự chính xác của Monospace và nét độc bản của Script.</p>
+                        <div class="media-placeholder" style="min-height:150px;">[PLACEHOLDER_4_TYPEFACES]</div>
+                    </div>
+                </div>
+                <div class="zigzag-step">
+                    <div class="step-pointer"></div>
+                    <div class="step-box">
+                        <h4 class="editable">📍 CHẶNG 2: GIẢI MÃ BRIEF KHÁCH HÀNG</h4>
+                        <h3 class="editable">Lên khung tư duy (Chương 5 & 7)</h3>
+                        <p class="editable">Phân tích tính cách thương hiệu dựa trên lịch sử font chữ. Đảm bảo định hướng hình ảnh luôn đi đúng quỹ đạo logic sắc bén ngay khi đọc Brief.</p>
+                        <div class="media-placeholder" style="min-height:150px;">[PLACEHOLDER_HISTORY_VIBE]</div>
+                    </div>
+                </div>
+                <div class="zigzag-step">
+                    <div class="step-pointer"></div>
+                    <div class="step-box">
+                        <h4 class="editable">📍 CHẶNG 3: BẢN ĐỒ RA QUYẾT ĐỊNH</h4>
+                        <h3 class="editable">Xóa bỏ sự bế tắc (Chương 6 & 7)</h3>
+                        <p class="editable">Áp dụng bộ Cheat-sheet ghép cặp font ngành hàng. Thu hẹp lựa chọn từ 10.000 font xuống 3 phương án xuất sắc nhất kèm lý luận vững chắc.</p>
+                        <div class="media-placeholder" style="min-height:150px;">[PLACEHOLDER_CHEAT_SHEET]</div>
+                    </div>
+                </div>
+                <div class="zigzag-step">
+                    <div class="step-pointer"></div>
+                    <div class="step-box">
+                        <h4 class="editable">📍 CHẶNG 4: CỨU SỐNG TRẢI NGHIỆM ĐỌC</h4>
+                        <h3 class="editable">Dành cho UI/UX & Marketer (Chương 2,3,5)</h3>
+                        <p class="editable">Hiểu rõ nguyên nhân font chữ bị thảm họa hiển thị trên màn hình Mobile. Tối ưu hóa không gian âm để thúc đẩy tỷ lệ chuyển đổi số.</p>
+                        <div class="media-placeholder" style="min-height:150px;">[PLACEHOLDER_MOBILE_UI]</div>
+                    </div>
+                </div>
+                <div class="zigzag-step">
+                    <div class="step-pointer"></div>
+                    <div class="step-box">
+                        <h4 class="editable">📍 CHẶNG 5: CAN THIỆP VI MÔ</h4>
+                        <h3 class="editable">Giải phẫu cấu trúc (Chương 8)</h3>
+                        <p class="editable">Đi sâu vào cấu tạo giải phẫu chữ. Căn chỉnh chuẩn xác khoảng cách Kerning, xử lý tinh tế bẫy mực Ink-traps để thuyết phục khách hàng khó tính.</p>
+                        <div class="media-placeholder" style="min-height:150px;">[PLACEHOLDER_BUILT_ROBOTICS_ANATOMY]</div>
+                    </div>
+                </div>
+                <div class="zigzag-step">
+                    <div class="step-pointer"></div>
+                    <div class="step-box">
+                        <h4 class="editable">📍 CHẶNG 6: CẤP ĐỘ ART DIRECTOR</h4>
+                        <h3 class="editable">Nâng tầm giá trị Portfolio (Chương 1,4,8)</h3>
+                        <p class="editable">Phá vỡ giới hạn font có sẵn. Làm chủ khoảng trắng và tự tay gọt giũa nét chữ Script thủ công biến text vô tri thành nhận diện đắt giá.</p>
+                        <div class="media-placeholder" style="min-height:150px;">[PLACEHOLDER_SKETCH_TO_VECTOR]</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="masterclass-section" id="masterclass">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-headline editable ds-headline">KHÔNG CHỈ LÀ TRANG SÁCH.<span style="display:block;color:var(--cyan-neon);">ĐÂY LÀ TRẢI NGHIỆM ĐÀO TẠO "MASTERCLASS" CỦA RIÊNG BẠN.</span></h2>
+                <p class="section-subheadline editable ds-subheadline">Sự kết hợp hoàn mỹ giữa Lý luận thị giác sắc bén và Kỹ thuật vi chỉnh trực tiếp trên màn hình.</p>
+            </div>
+            <div class="masterclass-grid">
+                <div class="masterclass-card">
+                    <h3>📚 <span class="editable">Ebook Tương Tác Cấp Độ Cao</span></h3>
+                    <p class="editable ds-body">Hơn 100 trang bóc tách Tâm lý học & Toán học Typography. Dàn trang tỉ mỉ như tạp chí nghệ thuật cao cấp, tra cứu mượt mà trên mọi thiết bị.</p>
+                </div>
+                <div class="masterclass-card">
+                    <h3>💻 <span class="editable">Chuỗi Video "Over-The-Shoulder"</span></h3>
+                    <p class="editable ds-body">Lý thuyết vô nghĩa nếu không kéo chuột. Thao tác trực tiếp trên Illustrator/Figma, cận cảnh xử lý bẫy mực và uốn nắn điểm neo không giấu nghề.</p>
+                </div>
+                <div class="masterclass-card">
+                    <h3>🛡️ <span class="editable">Bảo Chứng Chốt Deal Hợp Đồng</span></h3>
+                    <p class="editable ds-body">Cung cấp kho tàng từ vựng chuyên môn đắt giá. Giúp nói chuyện và bảo vệ phương án như một Art Director thực thụ để khách hàng tự nguyện chi trả mức giá cao.</p>
+                </div>
+            </div>
+            <div class="hero-cta-wrapper">
+                <a href="#checkout" class="btn-cta editable">[ TRANG BỊ TOÀN BỘ HỆ SINH THÁI NÀY - CHỈ VỚI 249K ]</a>
+                <p class="micro-copy editable">✨ Truy cập tức thì hệ thống Ebook & Video chất lượng cao ngay sau khi hoàn tất. Xem trọn đời.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="author-section" id="author">
+        <div class="container">
+            <div class="author-grid">
+                <div class="author-visual-wrapper">
+                    <div class="media-placeholder" style="min-height:350px;">📸 [ PLACEHOLDER: ẢNH CHÂN DUNG ĐEN TRẮNG EDITORIAL ART ]</div>
+                    <div class="media-placeholder" style="min-height:120px;">🖼️ [ PLACEHOLDER: LƯỚI ẢNH PHOTO GRID GIẢNG DẠY TẠI FPT ARENA ]</div>
+                </div>
+                <div class="author-content-box">
+                    <div class="ds-tagline editable">&gt; Sự giao thoa giữa kỹ sư & nghệ thuật logic</div>
+                    <h2 class="section-headline editable ds-headline">ĐƯA NGHỆ THUẬT BAY BỔNG VÀO KHUÔN KHỔ CỦA LOGIC TOÁN HỌC.</h2>
+                    <p class="editable ds-body">Xin chào, tôi là Nguyễn Đức Việt. Xuất phát điểm là một Kỹ sư Công nghệ phần mềm tại Đại học Bách Khoa, nhưng tôi lại có 15 năm gắn bó với vai trò Giảng viên thiết kế tại FPT Arena. Sự giao thoa này định hình phong cách làm việc hoàn toàn khác biệt.</p>
+                    <p class="editable ds-body">Tôi không nhìn Typography dưới góc độ "đẹp xấu" mơ hồ. Tôi nhìn chữ nghĩa bằng Thông số, Tỷ lệ Grid, Kỹ thuật gỡ lỗi hiển thị (Debugging UI) và Cấu trúc vi mô dựa trên thuật toán thẩm mỹ.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="checkout-section" id="checkout">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-headline editable ds-headline">HOẢN ĐẦU TƯ RẺ NHẤT ĐỂ CHẤM DỨT VIỆC THIẾT KẾ THEO BẢN NĂNG</h2>
+                <p class="section-subheadline editable ds-subheadline">Thay vì mất 3 năm tự mò mẫm và bị ép giá, mở khóa ngay toàn bộ Hệ sinh thái để tự tin thiết kế độc bản.</p>
+            </div>
+            
+            <div class="pricing-card">
+                <h3>MỞ KHÓA ĐẶC QUYỀN MASTERCLASS</h3>
+                <ul class="pricing-list">
+                    <li><span>[✓]</span> Trọn bộ Ebook Giải phẫu Typography (100+ trang) chuẩn tạp chí nghệ thuật.</li>
+                    <li><span>[✓]</span> Chuỗi Video "Live Debugging" thực chiến gỡ lỗi Kerning, Ink-traps trên phần mềm.</li>
+                    <li><span>[✓]</span> Bảng Cheat-sheet Bản đồ Ngành hàng ghép cặp font bất bại trong vài phút.</li>
+                    <li><span>[✓]</span> Kịch bản Ngôn ngữ Thị giác giải thích logic phản biện để thuyết phục khách hàng.</li>
+                </ul>
+                <div class="price-box">
+                    <span class="price-old">1.500.000đ</span>
+                    <span class="price-new">249.000đ</span>
+                </div>
+                <a href="#" class="btn-cta editable">[ TRANG BỊ VŨ KHÍ THIẾT KẾ NGAY BÂY GIỜ ]</a>
+                <p class="micro-copy editable" style="margin-top:15px; color:var(--cyan-neon);">⚠️ Ưu đãi đặc quyền chỉ dành cho 50 người đăng ký sớm nhất trước khi đóng cổng.</p>
+                
+                <p class="editable" style="font-size:0.85rem; color:var(--text-muted); margin-top:30px; font-style:italic; line-height:1.5;">Bảo chứng chất lượng tuyệt đối: Nếu áp dụng hệ thống này mà ấn phẩm của bạn không lột xác trông đắt tiền hơn, hãy nhắn tin cho tôi. Tôi hoàn tiền 100% không cần hỏi lý do.</p>
+                
+                <div class="trust-badges">
+                    <div class="badge-item"><svg class="sys-icon" style="stroke:var(--text-muted); width:14px; height:14px;"><use href="#icon-shield"/></svg> Thanh toán bảo mật</div>
+                    <div class="badge-item"><svg class="sys-icon" style="stroke:var(--text-muted); width:14px; height:14px;"><use href="#icon-gear"/></svg> Sở hữu trọn đời</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <script>
         let currentTarget = null;
@@ -230,7 +484,7 @@
         const loadBuffer = () => document.querySelectorAll('.editable').forEach((el, i) => { if(localStorage.getItem('edit-buf-' + i)) el.innerHTML = localStorage.getItem('edit-buf-' + i); });
         const clearBuffer = () => { document.querySelectorAll('.editable').forEach((el, i) => localStorage.removeItem('edit-buf-' + i)); location.reload(); };
 
-        const saveToGitHub = async (tk, rp) => { const btn = getEl('github-save-btn'); btn.textContent = '⏳ ĐANG LƯU...'; btn.disabled = true; try { saveBuffer(); const clone = document.documentElement.cloneNode(true); clone.querySelector('#editor-ui')?.remove(); clone.querySelector('button[style*="position: fixed"]')?.remove(); clone.querySelectorAll('.editable').forEach(el => { el.removeAttribute('contenteditable'); el.removeAttribute('spellcheck'); }); const resGet = await fetch(`https://api.github.com/repos/${rp}/contents/index.html`, { headers: { 'Authorization': `token ${tk}` } }); let sha = resGet.ok ? (await resGet.json()).sha : null; const resPut = await fetch(`https://api.github.com/repos/${rp}/contents/index.html`, { method: 'PUT', headers: { 'Authorization': `token ${tk}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ message: 'CMS Unified Index Content Update', content: btoa(unescape(encodeURIComponent('<!DOCTYPE html>\n' + clone.outerHTML))), sha: sha, branch: 'main' }) }); alert(resPut.ok ? '🚀 Đã ghim thẳng mã nguồn sạch lên GitHub! Không còn lo độ trễ cache mạng.' : '❌ Lỗi API GitHub. Hãy kiểm tra lại phân quyền Token.'); } catch(e) { alert('❌ Lỗi kết nối: ' + e.message); } finally { btn.textContent = '⚡ LƯU LÊN GITHUB'; btn.disabled = false; } };
+        const saveToGitHub = async (tk, rp) => { const btn = getEl('github-save-btn'); btn.textContent = '⏳ ĐANG LƯU...'; btn.disabled = true; try { saveBuffer(); const clone = document.documentElement.cloneNode(true); clone.querySelector('#editor-ui')?.remove(); clone.querySelector('button[style*="position: fixed"]')?.remove(); clone.querySelectorAll('.editable').forEach(el => { el.removeAttribute('contenteditable'); el.removeAttribute('spellcheck'); }); const resGet = await fetch(`https://api.github.com/repos/${rp}/contents/index.html`, { headers: { 'Authorization': `token ${tk}` } }); let sha = resGet.ok ? (await resGet.json()).sha : null; const resPut = await fetch(`https://api.github.com/repos/${rp}/contents/index.html`, { method: 'PUT', headers: { 'Authorization': `token ${tk}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ message: 'CMS Unified Production Update Content', content: btoa(unescape(encodeURIComponent('<!DOCTYPE html>\n' + clone.outerHTML))), sha: sha, branch: 'main' }) }); alert(resPut.ok ? '🚀 Hoàn thành! Toàn bộ 9 khối nội dung sạch đã được đồng bộ đồng nhất lên GitHub.' : '❌ Lỗi API GitHub. Hãy kiểm tra lại cấu hình.'); } catch(e) { alert('❌ Lỗi kết nối: ' + e.message); } finally { btn.textContent = '⚡ LƯU LÊN GITHUB'; btn.disabled = false; } };
 
         window.addEventListener('DOMContentLoaded', () => { loadLocal('idx-gh-token'); loadLocal('idx-gh-repo'); loadBuffer(); const btnToggle = document.createElement('button'); btnToggle.innerHTML = 'Chế Độ Sửa: 🔴 TẮT'; btnToggle.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#222;color:#fff;border:1px solid #444;padding:12px 24px;border-radius:50px;cursor:pointer;z-index:100000;font-size:13px;font-weight:bold;transition:all 0.2s;'; document.body.appendChild(btnToggle); let isEdit = false; btnToggle.onclick = () => { window.getSelection().removeAllRanges(); isEdit = !isEdit; btnToggle.innerHTML = isEdit ? 'Chế Độ Sửa: 🟢 BẬT' : 'Chế Độ Sửa: 🔴 TẮT'; btnToggle.style.background = isEdit ? '#00F0FF' : '#222'; btnToggle.style.color = isEdit ? '#000' : '#fff'; btnToggle.style.borderColor = isEdit ? '#00F0FF' : '#444'; document.querySelectorAll('.editable').forEach(el => isEdit ? el.setAttribute('contenteditable', 'true') : el.removeAttribute('contenteditable')); if(!isEdit) getEl('inline-toolbar').classList.add('hidden'); }; document.body.addEventListener('click', (e) => { if(!isEdit) return; const el = e.target.closest('.editable'); if(el) { currentTarget = el; moveToolbar(currentTarget, getEl('inline-toolbar')); } else if(!e.target.closest('#inline-toolbar')) { getEl('inline-toolbar').classList.add('hidden'); } }); getEl('style-selector').onchange = (e) => { if(currentTarget && e.target.value) { cleanClasses(currentTarget); currentTarget.classList.add(e.target.value); } }; getEl('github-save-btn').onclick = () => { const tk = getVal('idx-gh-token'), rp = getVal('idx-gh-repo'); if(!tk || !rp) return alert('Vui lòng nhập đủ Token và Repository!'); setLocal('idx-gh-token', tk); setLocal('idx-gh-repo', rp); saveToGitHub(tk, rp); }; getEl('clear-buf-btn').onclick = () => clearBuffer(); });
     </script>
