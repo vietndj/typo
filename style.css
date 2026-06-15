@@ -24,30 +24,132 @@ body { background-color: var(--bg-matte); color: var(--text-main); font-family: 
 .ds-body { font-family: var(--font-body); font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
 
 /* =========================================================
-   [SECTION 3] MODULE 1: HERO SECTION CSS (Khối mở đầu)
+   [SECTION 3] MODULE 1: HERO SECTION CSS (Cấu trúc chống vỡ Layout)
    ========================================================= */
-.hero-section { padding: 80px 0 100px; display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; }
-.hero-section::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 800px; height: 500px; background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%); z-index: -1; }
+.hero-section {
+    padding: 80px 0 100px;
+    position: relative;
+    /* Xóa bỏ text-align: center và align-items: center ở đây */
+}
+
+/* Ánh sáng nền */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 500px;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
+    z-index: -1;
+}
+
+/* HỘP 1: CĂN GIỮA TEXT */
+.hero-text-wrapper {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto; /* Đẩy khối này ra giữa màn hình */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .hero-tagline { display: inline-block; border: 1px solid rgba(0, 240, 255, 0.4); background: rgba(0, 240, 255, 0.05); padding: 8px 24px; border-radius: 50px; margin-bottom: 30px; box-shadow: 0 0 15px rgba(0, 240, 255, 0.1); }
 .hero-headline { margin-bottom: 24px; }
 .hero-headline .highlight { color: var(--text-muted); font-style: italic; display: block; font-size: 0.8em; margin-top: 10px; text-transform: uppercase; font-family: var(--font-heading); }
-.hero-subheadline { max-width: 800px; margin: 0 auto 40px; }
-.hero-bullets { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; max-width: 1200px; margin: 50px auto; width: 100%; text-align: left; }
-.bullet-card { background: var(--surface-1); border: 1px solid rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 16px; display: flex; gap: 20px; align-items: flex-start; text-align: left; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); width: 100%; }
-.bullet-card:hover { border-color: var(--cyan-neon); background: rgba(255, 255, 255, 0.02); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); }
-.card-icon-box { background: rgba(0, 240, 255, 0.04); border: 1px solid rgba(0, 240, 255, 0.15); padding: 12px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.bullet-card:nth-child(1) .card-icon-box { background: rgba(255, 90, 0, 0.04); border-color: rgba(255, 90, 0, 0.15); }
-.sys-icon { width: 22px; height: 22px; stroke: var(--cyan-neon); stroke-width: 1.5; fill: none; display: block; }
-.bullet-card:nth-child(1) .sys-icon { stroke: var(--orange-glow); }
-.card-content { display: flex; flex-direction: column; gap: 8px; text-align: left; align-items: flex-start; }
-.card-content strong { font-family: var(--font-heading); font-size: 1.15rem; color: var(--text-main); line-height: 1.4; display: block; }
-.hero-cta-wrapper { display: flex; flex-direction: column; align-items: center; margin-bottom: 60px; }
+.hero-subheadline { margin-bottom: 40px; }
+
+
+/* HỘP 2: LƯỚI CARD CĂN TRÁI */
+.hero-bullets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    width: 100%; /* Ép rộng 100% để không bị co rụt */
+    margin-bottom: 60px;
+}
+
+/* THẺ CARD CHUẨN AGENCY */
+.bullet-card {
+    background: var(--surface-1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 16px;
+    display: flex; /* Dàn ngang Icon và Text */
+    flex-direction: row; 
+    align-items: flex-start; /* Ép dính lên mép trên */
+    text-align: left !important; /* Lệnh tối cao ép chữ căn trái */
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 100%;
+}
+
+.bullet-card:hover {
+    border-color: var(--cyan-neon);
+    background: rgba(255, 255, 255, 0.02);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* KHÓA CHẶT KÍCH THƯỚC ICON BOX */
+.card-icon-box {
+    width: 48px;  /* Cố định chiều rộng */
+    height: 48px; /* Cố định chiều cao */
+    flex-shrink: 0; /* Cấm không cho hình bị bóp méo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    margin-right: 20px; /* Tạo khoảng cách với chữ */
+}
+
+/* KHÓA CHẶT KÍCH THƯỚC SVG TRÁNH LỖI KHỔNG LỒ */
+.sys-icon {
+    width: 24px !important; 
+    height: 24px !important;
+    fill: none;
+    display: block;
+}
+
+/* Màu sắc Card Độc lập */
+.orange-box { background: rgba(255, 90, 0, 0.05); border: 1px solid rgba(255, 90, 0, 0.2); }
+.orange-icon { stroke: var(--orange-glow); stroke-width: 1.5; }
+.cyan-box { background: rgba(0, 240, 255, 0.05); border: 1px solid rgba(0, 240, 255, 0.2); }
+.cyan-icon { stroke: var(--cyan-neon); stroke-width: 1.5; }
+
+/* NỘI DUNG CHỮ TRONG CARD */
+.card-content {
+    flex: 1; /* Chiếm toàn bộ phần không gian còn lại */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left !important; /* Ép căn trái */
+}
+
+.card-content strong {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--text-main);
+    line-height: 1.4;
+    display: block;
+    text-align: left !important;
+}
+
+.card-content p {
+    text-align: left !important;
+    margin: 0;
+}
+
+/* KHỐI NÚT BẤM */
+.hero-cta-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Nút thì căn giữa */
+    margin-bottom: 60px;
+}
+
 .btn-cta { font-family: var(--font-body); background-color: var(--orange-glow); color: #fff; font-weight: 700; font-size: 1.1rem; padding: 20px 40px; border-radius: 50px; text-decoration: none; text-transform: uppercase; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(255, 90, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.1); }
 .btn-cta:hover { transform: translateY(-3px); box-shadow: 0 0 40px rgba(255, 90, 0, 0.7); background-color: #ff6a1a; }
 .micro-copy { margin-top: 12px; font-size: 0.85rem; color: var(--text-muted); font-style: italic; }
 .hero-media-wrapper { width: 100%; max-width: 1000px; margin: 0 auto; }
 .media-placeholder { width: 100%; min-height: 450px; background: rgba(255, 255, 255, 0.02); border: 2px dashed rgba(255, 255, 255, 0.15); border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); }
-
 /* =========================================================
    [SECTION 4] MODULE 2: KHỐI ĐỒNG CẢM & BẰNG CHỨNG THỰC TẾ
    ========================================================= */
