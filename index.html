@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="vi"><head>
+<html lang="vi">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Typography Masterclass - Lột xác tư duy thiết kế</title>
@@ -8,7 +9,7 @@
         /* CSS nội bộ phục vụ bảng quản trị nổi ở góc phải màn hình */
         #editor-ui { position: fixed; top: 20px; right: 20px; z-index: 99999; font-family: sans-serif; display: flex; gap: 10px; align-items: center; }
         .editor-panel-box { background: #161617; border: 1px solid rgba(255,255,255,0.08); padding: 15px; border-radius: 12px; display: flex; gap: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .editor-panel-box input { background: #0B0B0C; border: 1px solid rgba(255,255,255,0.08); color: #fff; padding: 8px 12px; border-radius: 6px; font-size: 12px; width: 160px; }
+        .editor-panel-box input { background: #0B0B0C; border: 1px solid rgba(255,255,255,0.08); color: #fff; padding: 8px 12px; border-radius: 6px; font-size: 12px; width: 140px; }
         .editor-panel-box input:focus { outline: none; border-color: var(--cyan-neon); }
         .btn-action-panel { background: #238636; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 12px; }
         .btn-action-panel:hover { background: #2ea043; }
@@ -17,38 +18,55 @@
         .editable[contenteditable="true"]:hover { outline: 1px dashed var(--cyan-neon); cursor: text; }
         .editable[contenteditable="true"]:focus { outline: 2px solid var(--cyan-neon); background: rgba(0,240,255,0.02); }
     </style>
-<style type="text/css">.embed-player>a[target="blank"] {  }</style></head>
+</head>
 <body>
 
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;" data-exclude="true">
-        <g id="icon-anatomy"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></g>
-        <g id="icon-premium"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></g>
-        <g id="icon-map"><path d="M3 5v14l6-3 6 3 6-3V3l-6 3-6-3-6 3zm6-3v14m6-3V3"></path></g>
-        <g id="icon-arrow"><path d="M5 12h14M12 5l7 7-7 7"></path></g>
+        <g id="icon-anatomy"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></g>
+        <g id="icon-premium"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></g>
+        <g id="icon-map"><path d="M3 5v14l6-3 6 3 6-3V3l-6 3-6-3-6 3zm6-3v14m6-3V3"/></g>
+        <g id="icon-arrow"><path d="M5 12h14M12 5l7 7-7 7"/></g>
     </svg>
 
-    
+    <div id="editor-ui" data-exclude="true">
+        <div class="editor-panel-box">
+            <input type="password" id="idx-gh-token" placeholder="GitHub Token (PAT)">
+            <input type="text" id="idx-gh-repo" placeholder="username/repository-name">
+            <button id="github-save-btn" class="btn-action-panel">⚡ LƯU LÊN GITHUB</button>
+            <button id="clear-buf-btn" class="btn-action-panel" style="background: #8B0000;" title="Xóa đệm local để nhận code mới từ Server">❌ XÓA ĐỆM</button>
+        </div>
+        <div id="inline-toolbar" class="hidden" style="position: absolute; background: #222; padding: 6px; border-radius: 6px; border: 1px solid #444; z-index: 100000;">
+            <select id="style-selector" style="background:#333; color:#fff; border:none; padding:4px 8px; font-size:12px; border-radius:4px; cursor:pointer;">
+                <option value="">— Gán Kiểu Kiểu Chữ —</option>
+                <option value="ds-tagline">Tagline Neon</option>
+                <option value="ds-display">Display khổng lồ</option>
+                <option value="ds-headline">Headline khối</option>
+                <option value="ds-subheadline">Sub-headline</option>
+                <option value="ds-body">Body tiêu chuẩn</option>
+            </select>
+        </div>
+    </div>
 
 
     <section class="hero-section" id="hero">
         <div class="container">
             
             <div class="hero-tagline editable ds-tagline">
-                &gt; Đúc kết từ 15 năm rà lỗi đồ án thiết kế &amp; Tư duy logic của Kỹ sư hệ thống
+                &gt; Đúc kết từ 15 năm rà lỗi đồ án thiết kế & Tư duy logic của Kỹ sư hệ thống
             </div>
 
             <h1 class="hero-headline editable ds-display">
                 TYPOGRAPHY KHÔNG PHẢI LÀ NGHỆ THUẬT CẢM TÍNH.
-                <span class="highlight editable">ĐÓ LÀ TOÁN HỌC &amp; TÂM LÝ HỌC THỊ GIÁC.</span>
+                <span class="highlight editable">ĐÓ LÀ TOÁN HỌC & TÂM LÝ HỌC THỊ GIÁC.</span>
             </h1>
 
             <p class="hero-subheadline editable ds-subheadline">
-                Cầm trên tay hệ thống "Dịch mã thị giác" - vũ khí tối thượng giúp bạn thoát mác làm việc bản năng. Cung cấp bộ lý luận chuyên môn sắc bén để bạn tự tin bảo vệ phương án và khiến khách hàng gật đầu duyệt ngay từ lần đầu tiên.
+                Cầm trên tay hệ thống "Dịch mã thị giác" - vũ khí tối thượng giúp bạn thoát mác làm việc bản năng. Cung cấp bộ lý luận chuyên môn sắc bén để bạn tự tin bảo vệ phương án và khiến khách hàng gật đầu duyệt ngay từ vòng đầu tiên.
             </p>
 
             <div class="hero-bullets">
                 <div class="bullet-card">
-                    <div class="card-icon-box"><svg class="sys-icon"><use href="#icon-anatomy"></use></svg></div>
+                    <div class="card-icon-box"><svg class="sys-icon"><use href="#icon-anatomy"/></svg></div>
                     <div class="card-content">
                         <strong class="editable">"Lý luận thép" dập tắt mọi yêu cầu sửa vặt:</strong>
                         <p class="editable ds-body">Bóc tách giải phẫu chữ (Anatomy) để hiểu thông điệp ngầm của từng nét cắt. Biến Typography thành vũ khí phản biện khiến khách hàng "tâm phục khẩu phục" thay vì bắt bẻ cảm tính.</p>
@@ -56,7 +74,7 @@
                 </div>
 
                 <div class="bullet-card">
-                    <div class="card-icon-box"><svg class="sys-icon"><use href="#icon-premium"></use></svg></div>
+                    <div class="card-icon-box"><svg class="sys-icon"><use href="#icon-premium"/></svg></div>
                     <div class="card-content">
                         <strong class="editable">Xóa mác "bình dân", tự tin nâng giá hợp đồng:</strong>
                         <p class="editable ds-body">Nâng cấp ấn phẩm lên chuẩn Agency chỉ bằng các thủ thuật vi chỉnh Kerning, bẫy mực (Ink-traps) và tự tay phác thảo Logo Script độc bản.</p>
@@ -64,7 +82,7 @@
                 </div>
 
                 <div class="bullet-card">
-                    <div class="card-icon-box"><svg class="sys-icon"><use href="#icon-map"></use></svg></div>
+                    <div class="card-icon-box"><svg class="sys-icon"><use href="#icon-map"/></svg></div>
                     <div class="card-content">
                         <strong class="editable">Lối tắt chọn Font cho 10 ngành hàng cốt lõi:</strong>
                         <p class="editable ds-body">Khép lại những đêm thức trắng lướt Google Fonts vô định. Sở hữu bộ "Cheat-sheet" ghép cặp font bất bại, giúp chốt phương án hình ảnh nhanh gọn và kỷ luật.</p>
@@ -102,34 +120,36 @@
                 <div class="empathy-column">
                     <h3 class="column-title editable">Hệ thống hóa tư duy <span>(Làm việc có tính toán)</span></h3>
                     <ul class="empathy-list">
-                        <li><svg class="sys-icon"><use href="#icon-arrow"></use></svg><strong class="editable">Xóa bỏ "tâm linh":</strong> <span class="editable">Dừng việc lướt Google Fonts vô định. Chọn typeface dựa trên cơ sở khoa học và phân loại tính cách chữ.</span></li>
-                        <li><svg class="sys-icon"><use href="#icon-arrow"></use></svg><strong class="editable">Quy trình lọc Font kỷ luật:</strong> <span class="editable">Sở hữu bộ nguyên tắc thu hẹp lựa chọn nhanh chóng, rút ngắn 80% thời gian tìm kiếm.</span></li>
-                        <li><svg class="sys-icon"><use href="#icon-arrow"></use></svg><strong class="editable">Bắt mạch lỗi sơ đẳng:</strong> <span class="editable">Nhận diện ngay lập tức các sai lầm về tỷ lệ và không gian âm khiến thiết kế bị "rẻ tiền".</span></li>
+                        <li><svg class="sys-icon"><use href="#icon-arrow"/></svg><strong class="editable">Xóa bỏ "tâm linh":</strong> <span class="editable">Dừng việc lướt Google Fonts vô định. Chọn typeface dựa trên cơ sở khoa học và phân loại tính cách chữ.</span></li>
+                        <li><svg class="sys-icon"><use href="#icon-arrow"/></svg><strong class="editable">Quy trình lọc Font kỷ luật:</strong> <span class="editable">Sở hữu bộ nguyên tắc thu hẹp lựa chọn nhanh chóng, rút ngắn 80% thời gian tìm kiếm.</span></li>
+                        <li><svg class="sys-icon"><use href="#icon-arrow"/></svg><strong class="editable">Bắt mạch lỗi sơ đẳng:</strong> <span class="editable">Nhận diện ngay lập tức các sai lầm về tỷ lệ và không gian âm khiến thiết kế bị "rẻ tiền".</span></li>
                     </ul>
                 </div>
 
                 <div class="empathy-column">
                     <h3 class="column-title editable">Kỹ thuật vi mô <span>(Giải phẫu Anatomy)</span></h3>
                     <ul class="empathy-list">
-                        <li><svg class="sys-icon"><use href="#icon-arrow"></use></svg><strong class="editable">Làm chủ Kerning &amp; Ink-traps:</strong> <span class="editable">Xử lý tinh tế bẫy mực và khoảng cách chữ để layout sắc nét, đắt giá ngay từ bản nháp.</span></li>
-                        <li><svg class="sys-icon"><use href="#icon-arrow"></use></svg><strong class="editable">Bóc tách thông điệp ngầm:</strong> <span class="editable">Đọc vị chính xác ý đồ của Terminal (nét kết thúc), Aperture (độ mở) hay Stem (nét dọc).</span></li>
-                        <li><svg class="sys-icon"><use href="#icon-arrow"></use></svg><strong class="editable">Tùy biến phá cách:</strong> <span class="editable">Không phụ thuộc font có sẵn, tự tay gọt giũa nét chữ hoặc phác thảo Script độc bản.</span></li>
+                        <li><svg class="sys-icon"><use href="#icon-arrow"/></svg><strong class="editable">Làm chủ Kerning & Ink-traps:</strong> <span class="editable">Xử lý tinh tế bẫy mực và khoảng cách chữ để layout sắc nét, đắt giá ngay từ bản nháp.</span></li>
+                        <li><svg class="sys-icon"><use href="#icon-arrow"/></svg><strong class="editable">Bóc tách thông điệp ngầm:</strong> <span class="editable">Đọc vị chính xác ý đồ của Terminal (nét kết thúc), Aperture (độ mở) hay Stem (nét dọc).</span></li>
+                        <li><svg class="sys-icon"><use href="#icon-arrow"/></svg><strong class="editable">Tùy biến phá cách:</strong> <span class="editable">Không phụ thuộc font có sẵn, tự tay gọt giũa nét chữ hoặc phác thảo Script độc bản.</span></li>
                     </ul>
                 </div>
 
                 <div class="empathy-column">
-                    <h3 class="column-title editable">Thực chiến thương hiệu <span>(Định vị &amp; UI/UX)</span></h3>
+                    <h3 class="column-title editable">Thực chiến thương hiệu <span>(Định vị & UI/UX)</span></h3>
                     <ul class="empathy-list">
-                        <li><svg class="sys-icon"><use href="#icon-arrow"></use></svg><strong class="editable">Bản đồ 10 ngành hàng:</strong> <span class="editable">Khớp chính xác font chữ với ngành nghề (VD: Modern Serif cho xe sang, Monospace cho AI/Tech).</span></li>
-                        <li><svg class="sys-icon"><use href="#icon-arrow"></use></svg><strong class="editable">Tối ưu hiển thị số:</strong> <span class="editable">Điều chỉnh x-height chuẩn xác để cứu sống trải nghiệm đọc UI/UX trên màn hình Mobile.</span></li>
-                        <li><svg class="sys-icon"><use href="#icon-arrow"></use></svg><strong class="editable">Lý luận phản biện sắc bén:</strong> <span class="editable">Sở hữu kịch bản giải thích logic thị giác, bảo vệ phương án và chốt duyệt ngay vòng 1.</span></li>
+                        <li><svg class="sys-icon"><use href="#icon-arrow"/></svg><strong class="editable">Bản đồ 10 ngành hàng:</strong> <span class="editable">Khớp chính xác font chữ với ngành nghề (VD: Modern Serif cho xe sang, Monospace cho AI/Tech).</span></li>
+                        <li><svg class="sys-icon"><use href="#icon-arrow"/></svg><strong class="editable">Tối ưu hiển thị số:</strong> <span class="editable">Điều chỉnh x-height chuẩn xác để cứu sống trải nghiệm đọc UI/UX trên màn hình Mobile.</span></li>
+                        <li><svg class="sys-icon"><use href="#icon-arrow"/></svg><strong class="editable">Lý luận phản biện sắc bén:</strong> <span class="editable">Sở hữu kịch bản giải thích logic thị giác, bảo vệ phương án và chốt duyệt ngay vòng 1.</span></li>
                     </ul>
                 </div>
             </div>
 
         </div>
     </section>
-<script>
+
+
+    <script>
         let currentTarget = null;
         const getEl = id => document.getElementById(id);
         const getVal = id => getEl(id)?.value?.trim();
@@ -137,11 +157,13 @@
         const loadLocal = id => { if(localStorage.getItem(id) && getEl(id)) getEl(id).value = localStorage.getItem(id); };
         const cleanClasses = el => ['ds-tagline', 'ds-display', 'ds-headline', 'ds-subheadline', 'ds-body'].forEach(c => el.classList.remove(c));
         const moveToolbar = (el, box) => { const r = el.getBoundingClientRect(); box.classList.remove('hidden'); box.style.top = `${r.top + window.scrollY - 42}px`; box.style.left = `${r.left + window.scrollX}px`; };
+        const saveBuffer = () => document.querySelectorAll('.editable').forEach((el, i) => localStorage.setItem('edit-buf-' + i, el.innerHTML));
+        const loadBuffer = () => document.querySelectorAll('.editable').forEach((el, i) => { if(localStorage.getItem('edit-buf-' + i)) el.innerHTML = localStorage.getItem('edit-buf-' + i); });
+        const clearBuffer = () => { document.querySelectorAll('.editable').forEach((el, i) => localStorage.removeItem('edit-buf-' + i)); location.reload(); };
 
-        const saveToGitHub = async (tk, rp) => { const btn = getEl('github-save-btn'); btn.textContent = '⏳ ĐANG LƯU...'; btn.disabled = true; try { const clone = document.documentElement.cloneNode(true); clone.querySelector('#editor-ui')?.remove(); clone.querySelector('button[style*="position: fixed"]')?.remove(); clone.querySelectorAll('.editable').forEach(el => { el.removeAttribute('contenteditable'); el.removeAttribute('spellcheck'); }); const resGet = await fetch(`https://api.github.com/repos/${rp}/contents/index.html`, { headers: { 'Authorization': `token ${tk}` } }); let sha = resGet.ok ? (await resGet.json()).sha : null; const resPut = await fetch(`https://api.github.com/repos/${rp}/contents/index.html`, { method: 'PUT', headers: { 'Authorization': `token ${tk}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ message: 'CMS Core Update Index Content', content: btoa(unescape(encodeURIComponent('<!DOCTYPE html>\n' + clone.outerHTML))), sha: sha, branch: 'main' }) }); alert(resPut.ok ? '🚀 Lưu nội dung và cập nhật Vercel thành công!' : '❌ Lỗi API GitHub. Kiểm tra lại phân quyền Token.'); } catch(e) { alert('❌ Lỗi kết nối: ' + e.message); } finally { btn.textContent = '⚡ LƯU LÊN GITHUB'; btn.disabled = false; } };
+        const saveToGitHub = async (tk, rp) => { const btn = getEl('github-save-btn'); btn.textContent = '⏳ ĐANG LƯU...'; btn.disabled = true; try { saveBuffer(); const clone = document.documentElement.cloneNode(true); clone.querySelector('#editor-ui')?.remove(); clone.querySelector('button[style*="position: fixed"]')?.remove(); clone.querySelectorAll('.editable').forEach(el => { el.removeAttribute('contenteditable'); el.removeAttribute('spellcheck'); }); const resGet = await fetch(`https://api.github.com/repos/${rp}/contents/index.html`, { headers: { 'Authorization': `token ${tk}` } }); let sha = resGet.ok ? (await resGet.json()).sha : null; const resPut = await fetch(`https://api.github.com/repos/${rp}/contents/index.html`, { method: 'PUT', headers: { 'Authorization': `token ${tk}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ message: 'CMS Core Update Index Content', content: btoa(unescape(encodeURIComponent('<!DOCTYPE html>\n' + clone.outerHTML))), sha: sha, branch: 'main' }) }); alert(resPut.ok ? '🚀 Đã lưu lên GitHub! Bản đệm Local đã kích hoạt, bạn có thể F5 thoải mái trong lúc chờ Vercel build.' : '❌ Lỗi API GitHub. Kiểm tra lại phân quyền Token.'); } catch(e) { alert('❌ Lỗi kết nối: ' + e.message); } finally { btn.textContent = '⚡ LƯU LÊN GITHUB'; btn.disabled = false; } };
 
-        window.addEventListener('DOMContentLoaded', () => { loadLocal('idx-gh-token'); loadLocal('idx-gh-repo'); const btnToggle = document.createElement('button'); btnToggle.innerHTML = 'Chế Độ Sửa: 🔴 TẮT'; btnToggle.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#222;color:#fff;border:1px solid #444;padding:12px 24px;border-radius:50px;cursor:pointer;z-index:100000;font-size:13px;font-weight:bold;transition:all 0.2s;'; document.body.appendChild(btnToggle); let isEdit = false; btnToggle.onclick = () => { window.getSelection().removeAllRanges(); isEdit = !isEdit; btnToggle.innerHTML = isEdit ? 'Chế Độ Sửa: 🟢 BẬT' : 'Chế Độ Sửa: 🔴 TẮT'; btnToggle.style.background = isEdit ? '#00F0FF' : '#222'; btnToggle.style.color = isEdit ? '#000' : '#fff'; btnToggle.style.borderColor = isEdit ? '#00F0FF' : '#444'; document.querySelectorAll('.editable').forEach(el => isEdit ? el.setAttribute('contenteditable', 'true') : el.removeAttribute('contenteditable')); if(!isEdit) getEl('inline-toolbar').classList.add('hidden'); }; document.body.addEventListener('click', (e) => { if(!isEdit) return; const el = e.target.closest('.editable'); if(el) { currentTarget = el; moveToolbar(currentTarget, getEl('inline-toolbar')); } else if(!e.target.closest('#inline-toolbar')) { getEl('inline-toolbar').classList.add('hidden'); } }); getEl('style-selector').onchange = (e) => { if(currentTarget && e.target.value) { cleanClasses(currentTarget); currentTarget.classList.add(e.target.value); } }; getEl('github-save-btn').onclick = () => { const tk = getVal('idx-gh-token'), rp = getVal('idx-gh-repo'); if(!tk || !rp) return alert('Vui lòng nhập đủ Token và Repository!'); setLocal('idx-gh-token', tk); setLocal('idx-gh-repo', rp); saveToGitHub(tk, rp); }; });
+        window.addEventListener('DOMContentLoaded', () => { loadLocal('idx-gh-token'); loadLocal('idx-gh-repo'); loadBuffer(); const btnToggle = document.createElement('button'); btnToggle.innerHTML = 'Chế Độ Sửa: 🔴 TẮT'; btnToggle.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#222;color:#fff;border:1px solid #444;padding:12px 24px;border-radius:50px;cursor:pointer;z-index:100000;font-size:13px;font-weight:bold;transition:all 0.2s;'; document.body.appendChild(btnToggle); let isEdit = false; btnToggle.onclick = () => { window.getSelection().removeAllRanges(); isEdit = !isEdit; btnToggle.innerHTML = isEdit ? 'Chế Độ Sửa: 🟢 BẬT' : 'Chế Độ Sửa: 🔴 TẮT'; btnToggle.style.background = isEdit ? '#00F0FF' : '#222'; btnToggle.style.color = isEdit ? '#000' : '#fff'; btnToggle.style.borderColor = isEdit ? '#00F0FF' : '#444'; document.querySelectorAll('.editable').forEach(el => isEdit ? el.setAttribute('contenteditable', 'true') : el.removeAttribute('contenteditable')); if(!isEdit) getEl('inline-toolbar').classList.add('hidden'); }; document.body.addEventListener('click', (e) => { if(!isEdit) return; const el = e.target.closest('.editable'); if(el) { currentTarget = el; moveToolbar(currentTarget, getEl('inline-toolbar')); } else if(!e.target.closest('#inline-toolbar')) { getEl('inline-toolbar').classList.add('hidden'); } }); getEl('style-selector').onchange = (e) => { if(currentTarget && e.target.value) { cleanClasses(currentTarget); currentTarget.classList.add(e.target.value); } }; getEl('github-save-btn').onclick = () => { const tk = getVal('idx-gh-token'), rp = getVal('idx-gh-repo'); if(!tk || !rp) return alert('Vui lòng nhập đủ Token và Repository!'); setLocal('idx-gh-token', tk); setLocal('idx-gh-repo', rp); saveToGitHub(tk, rp); }; getEl('clear-buf-btn').onclick = () => clearBuffer(); });
     </script>
-<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;c9445749bb8a4fb298b7b6a5043848a7&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
-
-</body></html>
+</body>
+</html>
