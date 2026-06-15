@@ -7,11 +7,11 @@
     
     <style>
         /* =========================================================
-           [GLOBAL TOKENS & STYLE RESET]
+           [GLOBAL TOKENS & STYLE RESET] (Đã nạp chính xác đuôi .otf và tên LCGV)
            ========================================================= */
         @font-face { font-family: 'HeadingFont'; src: url('fonts/SVN-NoeDisplay-Bold.ttf'); font-display: swap; }
-        @font-face { font-family: 'HeadingItalic'; src: url('fonts/GT-Sectra-Medium-Italic.ttf'); font-display: swap; }
-        @font-face { font-family: 'CardTitleFont'; src: url('fonts/GT-Sectra-Bold.ttf'); font-display: swap; }
+        @font-face { font-family: 'HeadingItalic'; src: url('fonts/GT-Sectra-LCGV-Display-Medium-Italic.otf'); font-display: swap; }
+        @font-face { font-family: 'CardTitleFont'; src: url('fonts/GT-Sectra-LCGV-Display-Bold.otf'); font-display: swap; }
         @font-face { font-family: 'BodyFont'; src: url('fonts/SVN-AEONIK-REGULAR.TTF'); font-display: swap; }
         
         :root { --font-heading: 'HeadingFont', serif; --font-italic: 'HeadingItalic', serif; --font-card-title: 'CardTitleFont', serif; --font-body: 'BodyFont', sans-serif; --bg-matte: #121212; --surface-1: #1A1A1A; --surface-2: #242424; --text-main: #FFFFFF; --text-muted: #B4B4B9; --cyan-neon: #00F0FF; --orange-glow: #FF5A00; }
@@ -163,9 +163,6 @@
 </head>
 <body>
 
-    <!-- =========================================================
-       [CORE DATA] SVG SPRITE SHEET
-       ========================================================= -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;" data-exclude="true">
         <symbol id="icon-anatomy" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></symbol>
         <symbol id="icon-premium" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></symbol>
@@ -175,9 +172,6 @@
         <symbol id="icon-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></symbol>
     </svg>
 
-    <!-- =========================================================
-       [MANAGEMENT] CMS CONTROL UI INTERFACE
-       ========================================================= -->
     <div id="editor-ui" data-exclude="true">
         <div class="editor-panel-box">
             <input type="password" id="idx-gh-token" placeholder="GitHub Token">
@@ -199,9 +193,6 @@
     </div>
 
 
-    <!-- =========================================================
-       [CONTENT] MODULE 1: HERO SECTION
-       ========================================================= -->
     <section class="hero-section" id="hero">
         <div class="container">
             <div class="hero-text-wrapper">
@@ -253,9 +244,6 @@
     </section>
 
 
-    <!-- =========================================================
-       [CONTENT] MODULE 2: KHỐI ĐỒNG CẢM & BẰNG CHỨNG THỰC TẾ
-       ========================================================= -->
     <section class="empathy-section" id="empathy">
         <div class="container">
             <div class="section-header">
@@ -288,9 +276,6 @@
         </div>
     </section>
 
-    <!-- =========================================================
-       [CONTENT] MODULE 3: BẰNG CHỨNG THỰC CHIẾN
-       ========================================================= -->
     <section class="proof-section" id="proof">
         <div class="container">
             <div class="section-header">
@@ -310,9 +295,6 @@
         </div>
     </section>
 
-    <!-- =========================================================
-       [CONTENT] MODULE 4: KHỐI MỞ HỘP CÔNG CỤ (UNBOXING)
-       ========================================================= -->
     <section class="unboxing-section" id="unboxing">
         <div class="container">
             <div class="section-header">
@@ -343,9 +325,6 @@
         </div>
     </section>
 
-    <!-- =========================================================
-       [CONTENT] MODULE 5: BỘ CÂU HỎI TRIỆU ĐÔ
-       ========================================================= -->
     <section class="questions-section" id="questions">
         <div class="container">
             <div class="section-header">
@@ -360,9 +339,6 @@
         </div>
     </section>
 
-    <!-- =========================================================
-       [CONTENT] MODULE 6: BẢN ĐỒ 8 CHƯƠNG ZIGZAG
-       ========================================================= -->
     <section class="map-section" id="map">
         <div class="container">
             <div class="section-header">
@@ -427,9 +403,6 @@
         </div>
     </section>
 
-    <!-- =========================================================
-       [CONTENT] MODULE 7: TRẢI NGHIỆM MASTERCLASS INTERACTIVE
-       ========================================================= -->
     <section class="masterclass-section" id="masterclass">
         <div class="container">
             <div class="section-header">
@@ -457,9 +430,6 @@
         </div>
     </section>
 
-    <!-- =========================================================
-       [CONTENT] MODULE 8: GIỚI THIỆU TÁC GIẢ EDITORIAL LAYOUT
-       ========================================================= -->
     <section class="author-section" id="author">
         <div class="container">
             <div class="author-grid">
@@ -477,9 +447,6 @@
         </div>
     </section>
 
-    <!-- =========================================================
-       [CONTENT] MODULE 9: KHỐI CHỐT SALE / THE ULTIMATE CHECKOUT
-       ========================================================= -->
     <section class="checkout-section" id="checkout">
         <div class="container">
             <div class="section-header">
@@ -516,9 +483,6 @@
         </div>
     </section>
 
-    <!-- =========================================================
-       [SYSTEM ENGINE] JAVASCRIPT CMS CORE ENGINE (1 Dòng/Hàm)
-       ========================================================= -->
     <script>
         let currentTarget = null;
         const getEl = id => document.getElementById(id);
@@ -531,7 +495,7 @@
         const loadBuffer = () => document.querySelectorAll('.editable').forEach((el, i) => { if(localStorage.getItem('edit-buf-' + i)) el.innerHTML = localStorage.getItem('edit-buf-' + i); });
         const clearBuffer = () => { document.querySelectorAll('.editable').forEach((el, i) => localStorage.removeItem('edit-buf-' + i)); location.reload(); };
 
-        const saveToGitHub = async (tk, rp) => { const btn = getEl('github-save-btn'); btn.textContent = '⏳ ĐANG LƯU...'; btn.disabled = true; try { saveBuffer(); const clone = document.documentElement.cloneNode(true); clone.querySelector('#editor-ui')?.remove(); clone.querySelector('button[style*="position: fixed"]')?.remove(); clone.querySelectorAll('.editable').forEach(el => { el.removeAttribute('contenteditable'); el.removeAttribute('spellcheck'); }); const resGet = await fetch(`https://api.github.com/repos/${rp}/contents/index.html`, { headers: { 'Authorization': `token ${tk}` } }); let sha = resGet.ok ? (await resGet.json()).sha : null; const resPut = await fetch(`https://api.github.com/repos/${rp}/contents/index.html`, { method: 'PUT', headers: { 'Authorization': `token ${tk}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ message: 'CMS Typography UI Update', content: btoa(unescape(encodeURIComponent('<!DOCTYPE html>\n' + clone.outerHTML))), sha: sha, branch: 'main' }) }); alert(resPut.ok ? '🚀 Hoàn thành! Giao diện chữ đã được tối ưu chuẩn xác.' : '❌ Lỗi API GitHub. Hãy kiểm tra lại cấu hình.'); } catch(e) { alert('❌ Lỗi kết nối: ' + e.message); } finally { btn.textContent = '⚡ LƯU LÊN GITHUB'; btn.disabled = false; } };
+        const saveToGitHub = async (tk, rp) => { const btn = getEl('github-save-btn'); btn.textContent = '⏳ ĐANG LƯU...'; btn.disabled = true; try { saveBuffer(); const clone = document.documentElement.cloneNode(true); clone.querySelector('#editor-ui')?.remove(); clone.querySelector('button[style*="position: fixed"]')?.remove(); clone.querySelectorAll('.editable').forEach(el => { el.removeAttribute('contenteditable'); el.removeAttribute('spellcheck'); }); const resGet = await fetch(`https://api.github.com/repos/${rp}/contents/index.html`, { headers: { 'Authorization': `token ${tk}` } }); let sha = resGet.ok ? (await resGet.json()).sha : null; const resPut = await fetch(`https://api.github.com/repos/${rp}/contents/index.html`, { method: 'PUT', headers: { 'Authorization': `token ${tk}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ message: 'CMS Typography UI Update (Fix Font Names)', content: btoa(unescape(encodeURIComponent('<!DOCTYPE html>\n' + clone.outerHTML))), sha: sha, branch: 'main' }) }); alert(resPut.ok ? '🚀 Hoàn thành! Giao diện chữ đã được tối ưu chuẩn xác.' : '❌ Lỗi API GitHub. Hãy kiểm tra lại cấu hình.'); } catch(e) { alert('❌ Lỗi kết nối: ' + e.message); } finally { btn.textContent = '⚡ LƯU LÊN GITHUB'; btn.disabled = false; } };
 
         window.addEventListener('DOMContentLoaded', () => { loadLocal('idx-gh-token'); loadLocal('idx-gh-repo'); loadBuffer(); const btnToggle = document.createElement('button'); btnToggle.innerHTML = 'Chế Độ Sửa: 🔴 TẮT'; btnToggle.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#222;color:#fff;border:1px solid #444;padding:12px 24px;border-radius:50px;cursor:pointer;z-index:100000;font-size:13px;font-weight:bold;transition:all 0.2s;'; document.body.appendChild(btnToggle); let isEdit = false; btnToggle.onclick = () => { window.getSelection().removeAllRanges(); isEdit = !isEdit; btnToggle.innerHTML = isEdit ? 'Chế Độ Sửa: 🟢 BẬT' : 'Chế Độ Sửa: 🔴 TẮT'; btnToggle.style.background = isEdit ? '#00F0FF' : '#222'; btnToggle.style.color = isEdit ? '#000' : '#fff'; btnToggle.style.borderColor = isEdit ? '#00F0FF' : '#444'; document.querySelectorAll('.editable').forEach(el => isEdit ? el.setAttribute('contenteditable', 'true') : el.removeAttribute('contenteditable')); if(!isEdit) getEl('inline-toolbar').classList.add('hidden'); }; document.body.addEventListener('click', (e) => { if(!isEdit) return; const el = e.target.closest('.editable'); if(el) { currentTarget = el; moveToolbar(currentTarget, getEl('inline-toolbar')); } else if(!e.target.closest('#inline-toolbar')) { getEl('inline-toolbar').classList.add('hidden'); } }); getEl('style-selector').onchange = (e) => { if(currentTarget && e.target.value) { cleanClasses(currentTarget); currentTarget.classList.add(e.target.value); } }; getEl('github-save-btn').onclick = () => { const tk = getVal('idx-gh-token'), rp = getVal('idx-gh-repo'); if(!tk || !rp) return alert('Vui lòng nhập đủ Token và Repository!'); setLocal('idx-gh-token', tk); setLocal('idx-gh-repo', rp); saveToGitHub(tk, rp); }; getEl('clear-buf-btn').onclick = () => clearBuffer(); });
     </script>
