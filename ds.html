@@ -3,118 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design System Studio — Studio Quản trị</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Design System Control Panel</title>
     <style>
-        body { padding: 0; background-color: #0B0B0C; margin: 0; }
-        .ds-layout { display: grid; grid-template-columns: 340px 1fr; min-height: 100vh; }
-        .ds-sidebar { background-color: #161617; border-right: 1px solid rgba(255,255,255,0.08); padding: 35px 24px; position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; overflow-y: auto; }
-        .sidebar-brand h1 { font-size: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-        .sidebar-brand p { font-size: 12px; color: var(--text-muted); margin: 0 0 30px 0; }
-        .ds-workspace { padding: 60px 80px; max-width: 1000px; box-sizing: border-box; }
-        .ds-block { margin-bottom: 50px; }
-        .ds-block-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--cyan-neon); margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 8px; }
+        /* MATERIAL DESIGN V3 DARK THEME */
+        :root { --md-sys-color-background: #141218; --md-sys-color-surface: #211F26; --md-sys-color-primary: #00F0FF; --md-sys-color-on-primary: #000; --md-sys-color-outline: #938F99; --md-elevation: 0 4px 6px -1px rgba(0,0,0,0.2); }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--md-sys-color-background); color: #E6E1E5; margin: 0; padding: 40px 20px 100px; line-height: 1.5; }
+        .md-container { max-width: 650px; margin: 0 auto; }
+        h1 { font-weight: 300; letter-spacing: 1px; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 30px; }
         
-        /* Outlined Inputs & Panels */
-        .panel-title { font-size: 12px; text-transform: uppercase; color: #fff; margin: 20px 0 10px; font-weight: 600; letter-spacing: 0.5px; border-left: 2px solid var(--cyan-neon); padding-left: 8px;}
-        .control-group { margin-bottom: 16px; }
-        .control-group label { display: block; font-size: 11px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
-        .control-group select, .control-group input { width: 100%; background-color: #0B0B0C; color: #fff; border: 1px solid rgba(255,255,255,0.08); padding: 12px; border-radius: 8px; font-size: 13px; font-family: var(--font-body); }
-        .control-group select:focus, .control-group input:focus { outline: none; border-color: var(--cyan-neon); }
+        /* CARD COMPONENT */
+        .md-card { background: var(--md-sys-color-surface); border-radius: 16px; padding: 30px; margin-bottom: 24px; box-shadow: var(--md-elevation); border: 1px solid rgba(255,255,255,0.05); }
+        .md-card-title { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 24px 0; color: var(--md-sys-color-primary); font-weight: 600; display: flex; align-items: center; gap: 10px; }
         
-        .type-scale-row { display: grid; grid-template-columns: 180px 1fr; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.06); gap: 20px; }
-        .type-meta { font-size: 11px; color: var(--text-muted); font-family: monospace; }
-        .type-meta span { color: var(--cyan-neon); display: block; font-weight: 600; margin-bottom: 2px; }
+        /* OUTLINED TEXT FIELD */
+        .md-input-group { margin-bottom: 20px; display: flex; flex-direction: column; position: relative; }
+        .md-input-group label { font-size: 0.85rem; color: var(--md-sys-color-outline); margin-bottom: 8px; font-weight: 500; }
+        .md-input { background: transparent; border: 1px solid var(--md-sys-color-outline); color: #fff; padding: 14px 16px; border-radius: 8px; outline: none; transition: all 0.2s; font-size: 1rem; }
+        .md-input:focus { border-color: var(--md-sys-color-primary); box-shadow: 0 0 0 1px var(--md-sys-color-primary); }
         
-        .btn-sync-system { background-color: #fff; color: #000; font-weight: 600; font-size: 13px; border: none; padding: 16px; border-radius: 8px; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 20px; transition: all 0.2s; }
-        .btn-sync-system:hover { background-color: var(--cyan-neon); }
-        .icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 12px; }
-        .icon-box { background-color: #161617; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; aspect-ratio: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; font-size: 10px; color: var(--text-muted); }
+        /* BOTTOM APP BAR & FAB */
+        .md-bottom-bar { position: fixed; bottom: 0; left: 0; right: 0; padding: 20px; background: rgba(33, 31, 38, 0.85); backdrop-filter: blur(12px); border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: center; z-index: 100; }
+        .md-fab { background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); border: none; padding: 16px 40px; border-radius: 100px; font-weight: bold; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 240, 255, 0.3); transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+        .md-fab:hover { filter: brightness(1.15); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 240, 255, 0.4); }
+        .md-fab:active { transform: translateY(0); }
     </style>
 </head>
 <body>
+    <div class="md-container">
+        <h1>⚙️ CMS Design Tokens</h1>
 
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-        <g id="icon-anatomy"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></g>
-        <g id="icon-premium"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></g>
-        <g id="icon-map"><path d="M3 5v14l6-3 6 3 6-3V3l-6 3-6-3-6 3zm6-3v14m6-3V3"/></g>
-        <g id="icon-arrow"><path d="M5 12h14M12 5l7 7-7 7"/></g>
-    </svg>
-
-    <div class="ds-layout">
-        
-        <aside class="ds-sidebar">
-            <div class="sidebar-top">
-                <div class="sidebar-brand">
-                    <h1>Design System Studio</h1>
-                    <p>Engine Điều Hướng Trực Quan</p>
-                </div>
-
-                <div class="panel-title">Cấu hình kết nối API</div>
-                <div class="control-group">
-                    <label>GitHub Personal Token</label>
-                    <input type="password" id="ui-gh-token" placeholder="ghp_xxxxxxxxxxxx">
-                </div>
-                <div class="control-group">
-                    <label>Repository (user/repo)</label>
-                    <input type="text" id="ui-gh-repo" placeholder="nguyen/typography-landing">
-                </div>
-
-                <div class="panel-title">Cấu hình Font chữ</div>
-                <div class="control-group">
-                    <label>Font Tiêu Đề</label>
-                    <select id="heading-font-select">
-                        <option value="SVN-NoeDisplay-Bold.ttf" selected>SVN Noe Display Bold</option>
-                        <option value="GT-Sectra-LCGV-Display-Bold.otf">GT Sectra Display Bold</option>
-                    </select>
-                </div>
-                <div class="control-group">
-                    <label>Font Nội dung & Nút</label>
-                    <select id="body-font-select">
-                        <option value="SVN-AEONIK-REGULAR.TTF" selected>SVN Aeonik Regular</option>
-                        <option value="SVN-AEONIK-LIGHT.TTF">SVN Aeonik Light</option>
-                    </select>
-                </div>
+        <div class="md-card">
+            <h2 class="md-card-title">✒️ Typography Config</h2>
+            <div class="md-input-group">
+                <label>Heading Font (Noe Display)</label>
+                <input type="text" class="md-input" value="SVN-NoeDisplay-Bold.ttf">
             </div>
-
-            <div class="sidebar-bottom">
-                <button id="sync-theme-btn" class="btn-sync-system">
-                    ĐỒNG BỘ DESIGN SYSTEM
-                </button>
+            <div class="md-input-group">
+                <label>Body Font (Aeonik)</label>
+                <input type="text" class="md-input" value="SVN-AEONIK-REGULAR.TTF">
             </div>
-        </aside>
+        </div>
 
-        <main class="ds-workspace">
-            <section class="ds-block">
-                <div class="ds-block-title">1. Typography Scale Mặc định</div>
-                <div class="type-scale-row">
-                    <div class="type-meta"><span>ds-display</span>56px / HeadingFont</div>
-                    <div class="ds-display">TYPOGRAPHY LÀ TOÁN HỌC THỊ GIÁC.</div>
-                </div>
-                <div class="type-scale-row">
-                    <div class="type-meta"><span>ds-body</span>15px / BodyFont</div>
-                    <div class="ds-body">Nội dung và hệ thống nút bấm sử dụng font Aeonik tinh tế.</div>
-                </div>
-            </section>
+        <div class="md-card">
+            <h2 class="md-card-title">🎨 Color Palette</h2>
+            <div class="md-input-group">
+                <label>Primary Brand (Neon Cyan)</label>
+                <input type="color" class="md-input" value="#00F0FF" style="height: 50px; cursor: pointer;">
+            </div>
+            <div class="md-input-group">
+                <label>Accent (Glow Orange)</label>
+                <input type="color" class="md-input" value="#FF5A00" style="height: 50px; cursor: pointer;">
+            </div>
+        </div>
 
-            <section class="ds-block">
-                <div class="ds-block-title">2. Thừa Kế Hệ Thống Biểu Tượng (Icon System)</div>
-                <div class="icon-grid">
-                    <div class="icon-box"><svg class="sys-icon"><use href="#icon-anatomy"/></svg>anatomy</div>
-                    <div class="icon-box"><svg class="sys-icon"><use href="#icon-premium"/></svg>premium</div>
-                    <div class="icon-box"><svg class="sys-icon"><use href="#icon-map"/></svg>map</div>
-                    <div class="icon-box"><svg class="sys-icon"><use href="#icon-arrow"/></svg>arrow</div>
-                </div>
-            </section>
-        </main>
+        <div class="md-card">
+            <h2 class="md-card-title">🔌 API Credentials</h2>
+            <div class="md-input-group">
+                <label>GitHub Repository (User/Repo)</label>
+                <input type="text" id="repo-input" class="md-input" placeholder="vietndj/typo">
+            </div>
+            <div class="md-input-group">
+                <label>Personal Access Token (PAT)</label>
+                <input type="password" id="pat-input" class="md-input" placeholder="ghp_xxxxxxxxxxxx">
+            </div>
+        </div>
     </div>
-<script>
-        const getUiVal = id => document.getElementById(id)?.value?.trim();
-        window.addEventListener('DOMContentLoaded', () => { ['ui-gh-token', 'ui-gh-repo'].forEach(id => { if(localStorage.getItem(id)) document.getElementById(id).value = localStorage.getItem(id); }); });
 
-        const syncDesignSystem = async (token, repo, hFont, bFont) => { const btn = document.getElementById('sync-theme-btn'); btn.textContent = '⏳ ĐANG ĐỒNG BỘ...'; btn.disabled = true; try { const url = `https://api.github.com/repos/${repo}/contents/style.css?ref=main`; const resGet = await fetch(url, { headers: { 'Authorization': `token ${token}` } }); if(!resGet.ok) throw new Error("Không thể kết nối hoặc tìm thấy file style.css"); const data = await resGet.json(); let css = decodeURIComponent(escape(atob(data.content))); const block = `/* --- THEME START --- */\n@font-face { font-family: 'HeadingFont'; src: url('fonts/${hFont}'); font-display: swap; }\n@font-face { font-family: 'BodyFont'; src: url('fonts/${bFont}'); font-display: swap; }\n:root {\n    --font-heading: 'HeadingFont', serif;\n    --font-body: 'BodyFont', sans-serif;\n    --bg-matte: #121212;\n    --surface-1: #1A1A1A;\n    --surface-2: #242424;\n    --text-main: #FFFFFF;\n    --text-muted: #A0A0A5;\n    --cyan-neon: #00F0FF;\n    --orange-glow: #FF5A00;\n}\n/* --- THEME END --- */`; if(css.includes('/* --- THEME START --- */')) { css = css.replace(/\/\* --- THEME START --- \*\/[\s\S]*?\/\* --- THEME END --- \*\//, block); } else { css = block + '\n' + css; } const resPut = await fetch(url, { method: 'PUT', headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ message: 'Sync Design System Tokens', content: btoa(unescape(encodeURIComponent(css))), sha: data.sha, branch: 'main' }) }); alert(resPut.ok ? '✨ Đồng bộ Design System sang style.css hoàn tất!' : '❌ Thất bại khi ghi đè tệp tin.'); } catch(e) { alert('❌ Lỗi: ' + e.message); } finally { btn.textContent = 'ĐỒNG BỘ DESIGN SYSTEM'; btn.disabled = false; } };
+    <div class="md-bottom-bar">
+        <button id="save-btn" class="md-fab">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+            <span id="btn-text">LƯU & ĐĂNG NHẬP</span>
+        </button>
+    </div>
 
-        document.getElementById('sync-theme-btn').onclick = () => { const tk = getUiVal('ui-gh-token'), rp = getUiVal('ui-gh-repo'), hf = document.getElementById('heading-font-select').value, bf = document.getElementById('body-font-select').value; if(!tk || !rp) return alert('Vui lòng điền đủ Token và Repo!'); localStorage.setItem('ui-gh-token', tk); localStorage.setItem('ui-gh-repo', rp); syncDesignSystem(tk, rp, hf, bf); };
+    <script>
+        // Tự động điền nếu đã có dữ liệu từ trước
+        window.addEventListener('DOMContentLoaded', () => {
+            if(localStorage.getItem('cms_repo')) document.getElementById('repo-input').value = localStorage.getItem('cms_repo');
+            if(localStorage.getItem('cms_pat')) document.getElementById('pat-input').value = localStorage.getItem('cms_pat');
+        });
+
+        // Xử lý sự kiện Lưu Token & Chuyển trang
+        document.getElementById('save-btn').addEventListener('click', () => {
+            const repo = document.getElementById('repo-input').value.trim();
+            const pat = document.getElementById('pat-input').value.trim();
+            
+            if(!pat) {
+                alert('Vui lòng nhập Personal Access Token (PAT) để tiếp tục!');
+                document.getElementById('pat-input').focus();
+                return;
+            }
+
+            // Lưu vào LocalStorage
+            localStorage.setItem('cms_repo', repo);
+            localStorage.setItem('cms_pat', pat);
+
+            // Hiệu ứng UX chuyển đổi trạng thái nút
+            const btn = document.getElementById('save-btn');
+            btn.style.backgroundColor = '#00E676'; // Xanh lá cây báo thành công
+            btn.style.color = '#000';
+            btn.style.boxShadow = '0 4px 15px rgba(0, 230, 118, 0.4)';
+            document.getElementById('btn-text').innerText = 'ĐÃ LƯU - ĐANG CHUYỂN TRANG...';
+
+            // Delay 800ms để user cảm nhận được phản hồi hệ thống rồi mới sang index
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 800);
+        });
     </script>
 </body>
 </html>
