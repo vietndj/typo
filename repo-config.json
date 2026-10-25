@@ -1,0 +1,17 @@
+{
+  "site_id": "typo",
+  "title": "TYPOGRAPHY MASTERCLASS • Kho Giải Phẫu Chữ & Thị Giác",
+  "brand_badge": "T",
+  "brand_name": "TYPO",
+  "github_repo": "vietndj/typo",
+  "allow_embedded_cover": false,
+  "live_discovery": false,
+  "cover_base_url": "https://media.fedu.vn/k_covers",
+  "exclude_files": [
+    "index.html",
+    "hub.html",
+    "404.html",
+    "fix-url.html",
+    "admin.html"
+  ]
+}
